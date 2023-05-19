@@ -1,0 +1,9 @@
+{
+    "User": true,
+    "Blog": true,
+    "Page": true,
+    "Slider": true,
+    "SocialMedia": true,
+    "Setting": true,
+    "Group": true
+}
