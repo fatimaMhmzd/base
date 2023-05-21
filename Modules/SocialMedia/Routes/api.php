@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\SocialMedia\Http\Controllers\Api\v1\SocialMediaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/socialmedia', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::prefix('social-media')->group(function () {
+        Route::get('/', [SocialMediaController::class, 'index']);
+        Route::get('/{id}', [SocialMediaController::class, 'find']);
+        Route::delete('/{id}', [SocialMediaController::class, 'delete']);
+        Route::post('/{id}', [SocialMediaController::class, 'update']);
+        Route::post('/', [SocialMediaController::class, 'store']);
+    });
+
 });

@@ -102,17 +102,6 @@ class User extends Authenticatable
         'image',
     ];
 
-    public static array $relations_ = [
-        'roles',
-        'permissions',
-        'userMobiles',
-        'devices',
-        'customers',
-        'markets',
-        'market',
-        'image',
-    ];
-
 
     public static function getStatusGender(): array
     {
