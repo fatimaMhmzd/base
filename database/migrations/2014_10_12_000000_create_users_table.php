@@ -33,8 +33,6 @@ return new class extends Migration
             $table->string('career')->nullable();
             $table->string('degree')->nullable();
             $table->tinyInteger('status')->nullable()->comment('وضعیت کاربر');
-            $table->rememberToken();
-            $table->timestamps();
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
