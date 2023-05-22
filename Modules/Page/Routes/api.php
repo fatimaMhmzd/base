@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\Page\Http\Controllers\Api\v1\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/page', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::prefix('page')->group(function () {
+        Route::get('/', [PageController::class, 'index']);
+        Route::get('/{id}', [PageController::class, 'find']);
+        Route::delete('/{id}', [PageController::class, 'delete']);
+        Route::post('/{id}', [PageController::class, 'update']);
+        Route::post('/', [PageController::class, 'store']);
+    });
+
 });
