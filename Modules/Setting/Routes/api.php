@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\Setting\Http\Controllers\Api\v1\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/setting', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::prefix('setting')->group(function () {
+        Route::get('/', [SettingController::class, 'index']);
+        Route::get('/{id}', [SettingController::class, 'find']);
+        Route::delete('/{id}', [SettingController::class, 'delete']);
+        Route::post('/{id}', [SettingController::class, 'update']);
+        Route::post('/', [SettingController::class, 'store']);
+    });
+
 });

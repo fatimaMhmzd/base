@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Slider\Http\Controllers;
+namespace Modules\Page\Http\Controllers\Api\v1;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class SliderController extends Controller
+class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        return view('slider::index');
+        return view('page::index');
     }
 
     /**
@@ -23,7 +23,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('slider::create');
+        return view('page::create');
     }
 
     /**
@@ -43,7 +43,7 @@ class SliderController extends Controller
      */
     public function show($id)
     {
-        return view('slider::show');
+        return view('page::show');
     }
 
     /**
@@ -53,7 +53,7 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        return view('slider::edit');
+        return view('page::edit');
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\Slider\Http\Controllers\Api\v1\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/slider', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::prefix('slider')->group(function () {
+        Route::get('/', [SliderController::class, 'index']);
+        Route::get('/{id}', [SliderController::class, 'find']);
+        Route::delete('/{id}', [SliderController::class, 'delete']);
+        Route::post('/{id}', [SliderController::class, 'update']);
+        Route::post('/', [SliderController::class, 'store']);
+    });
+
 });
