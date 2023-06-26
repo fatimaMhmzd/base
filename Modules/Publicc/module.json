@@ -1,0 +1,11 @@
+{
+    "name": "Publicc",
+    "alias": "publicc",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Publicc\\Providers\\PubliccServiceProvider"
+    ],
+    "files": []
+}
