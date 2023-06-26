@@ -11,6 +11,11 @@
 |
 */
 
+use Illuminate\Routing\Route;
+use Modules\Publicc\Http\Controllers\PubliccController;
+
 Route::prefix('publicc')->group(function() {
     Route::get('/', 'PubliccController@index');
 });
+
+Route::get('/', PubliccController::class, 'index')->name('indexClient');
