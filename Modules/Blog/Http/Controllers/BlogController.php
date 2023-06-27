@@ -76,4 +76,10 @@ class BlogController extends Controller
     {
         //
     }
+
+    public function test()
+    {
+
+        return view('dashboard.layoute.total');
+    }
 }
