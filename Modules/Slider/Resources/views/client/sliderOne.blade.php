@@ -1,4 +1,5 @@
-@section('slider-one')
+
+
 
     <div class="intro-section pt-3 pb-3 mb-2">
         <div class="container">
@@ -135,4 +136,4 @@
         </div><!-- End .container -->
     </div><!-- End .intro-section -->
 
-@endsection
+

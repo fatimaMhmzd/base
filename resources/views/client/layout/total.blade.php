@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>قالب Molla - قالب بوت استرپ فروشگاهی</title>
+    <title>سایت فروشگاهی</title>
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <!-- Favicon -->
@@ -39,7 +39,7 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-left">
-                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : 02155667788</a>
+                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : 09024980577</a>
                 </div><!-- End .header-left -->
 
                 <div class="header-right">

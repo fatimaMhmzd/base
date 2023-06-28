@@ -1,4 +1,4 @@
-@section('homeTopCategoryProduct')
+
 
     <div class="container featured">
         <ul class="nav nav-pills nav-border-anim nav-big justify-content-center mb-3" role="tablist">
@@ -682,4 +682,4 @@
         </div><!-- End .tab-content -->
     </div><!-- End .container -->
 
-@endsection
+
