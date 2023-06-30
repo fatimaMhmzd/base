@@ -3,6 +3,7 @@
 namespace Modules\User\Services;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Http\Repositories\UserRepository;
@@ -14,28 +15,26 @@ class AuthenticationService
     {
     }
 
-    public function register(RegisterRequest $request)
+    public function singUp(Request $request)
     {
 
-            $fields = $request->validated();
+          /*  $fields = $request->validated();*/
 
 
-            $mobile = $fields['mobile'] ?? null;
+            $mobile = $request['mobile'] ?? null;
 
             $exist = $this->userRepository->findBy("mobile", $mobile);
 
             if (!$exist) {
-                $fields ['code'] = rand(1111, 9999);
-
                 DB::beginTransaction();
                 try {
                     $user_fields = [
+                        'status' => User::status_unknown,
                         'gender' => User::gender_unknown,
                         'username' => $username ?? null,
-                        'status' => User::status_unknown,
-                        'mobile' => $fields['mobile'],
-                        'code' => $fields['code'],
-                        'password' => Hash::make($fields['password']),
+                        'mobile' => $request['mobile'],
+                        'password' => Hash::make($request['password']),
+                        'code' => rand(1111, 9999),
                     ];
 
                     # save user
@@ -45,11 +44,35 @@ class AuthenticationService
                     return $user;
                 } catch (\Exception $exception) {
                     DB::rollBack();
-
+                    return null;
                     throw new \Exception(trans("custom.defaults.store_failed"));
                 }
             }else{
                 return null;
+            }
+
+
+
+
+    }
+    public function singIn(Request $request)
+    {
+
+          /*  $fields = $request->validated();*/
+
+
+            $mobile = $request['mobile'] ?? null;
+
+            $exist = $this->userRepository->findBy("mobile", $mobile);
+
+            if (!$exist) {
+            return null;
+            }else{
+                if (!Hash::check($request['password'] ,$exist->password)){
+                    return  null;
+                }
+                return $exist;
+
             }
 
 

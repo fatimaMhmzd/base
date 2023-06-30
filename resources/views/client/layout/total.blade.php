@@ -71,7 +71,11 @@
                                         </div><!-- End .header-menu -->
                                     </div><!-- End .header-dropdown -->
                                 </li>
-                                <li><a href="#signin-modal" data-toggle="modal">ورود / ثبت نام</a></li>
+                                @if(\Illuminate\Support\Facades\Auth::check())
+                                    <li><a href="{{ route('user_logout') }}" >خروج</a></li>
+                                @else
+                                    <li><a href="#signin-modal" data-toggle="modal">ورود / ثبت نام</a></li>
+                                @endif
                             </ul>
                         </li>
                     </ul><!-- End .top-menu -->
@@ -1156,17 +1160,46 @@
                                 </div><!-- End .form-choice -->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                <form action="#">
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <strong></strong> {{ Session::get('message', '') }}
+                                    </div>
+                                @endif
+                                @if(Session::has('error'))
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <strong></strong> {{ Session::get('message', '') }}
+                                    </div>
+                                @endif
+                                @if(count($errors) > 0 )
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <ul class="p-0 m-0" style="list-style: none;">
+                                            @foreach($errors->all() as $error)
+                                                <li>{{$error}}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                <form method="POST" action="{{ route('user_singUp') }}">
+                                    @csrf
                                     <div class="form-group">
-                                        <label for="register-email">آدرس ایمیل شما *</label>
-                                        <input type="email" class="form-control" id="register-email"
-                                               name="register-email" required>
+                                        <label for="register-email">شماره موبایل شما *</label>
+                                        <input type="tel" class="form-control" id="register-phone"
+                                               name="mobile" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group">
                                         <label for="register-password">رمز عبور *</label>
                                         <input type="password" class="form-control" id="register-password"
-                                               name="register-password" required>
+                                               name="password" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-footer">

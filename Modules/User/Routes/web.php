@@ -11,9 +11,12 @@
 |
 */
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-use Modules\User\Http\Controllers\api\AuthenticationController;
+use Modules\User\Http\Controllers\AuthenticationController;
 
-Route::prefix('user')->group(function() {
-    Route::post('/', [AuthenticationController::class, 'register'])->name('index');
+Route::group(['prefix' => 'user', 'as' => 'user_'], function (){
+    Route::post('/singUp', [AuthenticationController::class, 'singUp'])->name('singUp');
+    Route::post('/singIn', [AuthenticationController::class, 'singIn'])->name('singUp');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
