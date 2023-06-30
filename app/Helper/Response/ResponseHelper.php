@@ -270,7 +270,7 @@ class ResponseHelper
      */
     public static function responseSuccessStore(array|object $object=[], array|object $errors = [], string $message = "", int $statusCode = Response::HTTP_OK): JsonResponse
     {
-        $message= filled($message) ? $message : trans_("custom.defaults.store_success");
+        $message= filled($message) ? $message : trans("custom.defaults.store_success");
         return self::responseSuccess(object:$object,errors:$errors,message:$message,statusCode:$statusCode);
     }
 
@@ -283,7 +283,7 @@ class ResponseHelper
      */
     public static function responseFailedStore(array|object $object = [], array|object $errors = new \stdClass(), string $message = "", int $statusCode = Response::HTTP_UNPROCESSABLE_ENTITY): JsonResponse
     {
-        $message= filled($message) ? $message : trans_("custom.defaults.store_failed");
+        $message= filled($message) ? $message : trans("custom.defaults.store_failed");
         return self::responseError(object:$object,errors:$errors,message:$message,statusCode:$statusCode);
     }
 }
