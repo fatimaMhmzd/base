@@ -53,6 +53,7 @@ return [
             'otp_check_allow_send_code' => 'چند دقیقه دیگر امتحان کنید',
             'otp_check_mobile_exist_in_cache' => 'تا به حال برای این موبایل کدی ارسال نشده است',
             'register_success' => 'کد تایید برای شما ارسال شد',
+            'register_failed' => 'شماره موبایل قبلا ثبت شده',
             'login_unauthorized' => 'نام کاربری یا رمز عبور مطابقت ندارد',
             'login_forbidden' => 'شما مجوز ورود به این پنل را ندارید',
             'user_not_active' => 'کاربر فعال نیست، با پشتیبانی تماس بگیرید',

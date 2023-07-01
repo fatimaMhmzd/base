@@ -11,6 +11,12 @@
 |
 */
 
-Route::prefix('page')->group(function() {
-    Route::get('/', 'PageController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\Page\Http\Controllers\PageController;
+
+//Route::prefix('page')->group(function() {
+//    Route::get('/', 'PageController@index');
+//});
+
+
+Route::get('/', [PageController::class, 'index'])->name('indexClient');
