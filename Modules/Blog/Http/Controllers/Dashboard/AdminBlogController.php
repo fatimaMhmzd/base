@@ -32,10 +32,10 @@ class AdminBlogController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+/*    public function store(Request $request)
     {
         //
-    }
+    }*/
 
     /**
      * Show the specified resource.
@@ -63,20 +63,20 @@ class AdminBlogController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+/*    public function update(Request $request, $id)
     {
         //
-    }
+    }*/
 
     /**
      * Remove the specified resource from storage.
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+/*    public function destroy($id)
     {
         //
-    }
+    }*/
 
 
     public function add()
