@@ -76,4 +76,16 @@ class PageController extends Controller
     {
         //
     }
+
+//    COMPARE PAGE
+    public function compare()
+    {
+        return view('page::client.compare.compare');
+    }
+
+    //    WISHLIST PAGE
+    public function wishlist()
+    {
+        return view('page::client.wishlist.wishlist');
+    }
 }

@@ -138,14 +138,14 @@
 
                             <div class="compare-actions">
                                 <a href="#" class="action-link">حذف همه</a>
-                                <a href="compare.html" class="btn btn-outline-primary-2"><span>مقایسه</span><i
+                                <a href="/compare" class="btn btn-outline-primary-2"><span>مقایسه</span><i
                                         class="icon-long-arrow-left"></i></a>
                             </div>
                         </div><!-- End .dropdown-menu -->
                     </div><!-- End .compare-dropdown -->
 
                     <div class="wishlist">
-                        <a href="wishlist.html" title="لیست محصولات مورد علاقه شما">
+                        <a href="/wishlist" title="لیست محصولات مورد علاقه شما">
                             <div class="icon">
                                 <i class="icon-heart-o"></i>
                                 <span class="wishlist-count badge">3</span>
@@ -797,12 +797,11 @@
                         <div class="widget widget-about">
                             <img src="assets/images/demos/demo-3/logo-footer.png" class="footer-logo"
                                  alt="Footer Logo" width="105" height="25">
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی
-                                نامفهوم. </p>
+                            <p></p>
 
                             <div class="widget-call">
                                 <i class="icon-phone"></i>
-                                سوالی دارید؟ 7روز هفته/24ساعته
+                                سوالی دارید؟<br/> 7روز هفته/24ساعته
                                 <a href="tel:#">02155667788</a>
                             </div><!-- End .widget-call -->
                         </div><!-- End .widget about-widget -->
@@ -853,12 +852,6 @@
             </div><!-- End .container -->
         </div><!-- End .footer-middle -->
 
-        <div class="footer-bottom">
-            <div class="container">
-                <p class="footer-copyright">کپی رایت © 2019 تمامی حقوق محفوظ است.</p>
-                <!-- End .footer-copyright -->
-            </div><!-- End .container -->
-        </div><!-- End .footer-bottom -->
     </footer><!-- End .footer -->
 </div><!-- End .page-wrapper -->
 <button id="scroll-top" title="بازگشت به بالا"><i class="icon-arrow-up"></i></button>
