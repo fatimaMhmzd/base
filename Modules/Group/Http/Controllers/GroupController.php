@@ -2,78 +2,75 @@
 
 namespace Modules\Group\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use App\Helper\Response\ResponseHelper;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Group\Http\Requests\group\ValidateGroupRequest;
+use Modules\Group\Services\GroupService;
+
 
 class GroupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
-    public function index()
+    public function __construct(public GroupService $service)
     {
-        return view('group::index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
+
+
+    public function index(Request $request)
     {
-        return view('group::create');
+        $result = $this->service->index($request);
+        $data = ["data" => $result];
+        return ResponseHelper::responseSuccess($data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+
+    public function find($id)
     {
-        //
+        $data = $this->service->find($id);
+        if ($data) {
+            return ResponseHelper::responseSuccess($data);
+        }
+        $message = trans("custom.defaults.not_found");
+        return ResponseHelper::responseCustomError($message);
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+
+    public function delete($id)
     {
-        return view('group::show');
+        try {
+            $this->service->delete($id);
+            $message = trans("custom.defaults.delete_success");
+            return ResponseHelper::responseSuccess([],[],$message);
+        }catch (\Exception $exception){
+            $message = $exception->getMessage();
+            return ResponseHelper::responseCustomError($message);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+
+    public function store(ValidateGroupRequest $request)
     {
-        return view('group::edit');
+        try {
+            $result = $this->service->store($request);
+            return ResponseHelper::responseSuccess($result);
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return ResponseHelper::responseCustomError($message);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
+
+    public function update(ValidateGroupRequest $request, $id)
     {
-        //
+        try {
+            $this->service->update($request, $id);
+            $message = trans("custom.defaults.update_success");
+            return $this->response_success([], $message);
+        }catch (\Exception $exception){
+            $message = $exception->getMessage();
+            return ResponseHelper::responseCustomError($message);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

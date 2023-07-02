@@ -21,8 +21,8 @@ Route::prefix('blog')->group(function () {
 
     Route::get('/add', [AdminBlogController::class, 'add'])->name('add');
     Route::get('/list', [AdminBlogController::class, 'list'])->name('list');
-   /* Route::post('/add', [AdminBlogController::class, 'store'])->name('store');
-    Route::post('/storeUpdate', [AdminBlogController::class, 'storeUpdate'])->name('store_update');
+    Route::post('/update', [AdminBlogController::class, 'update'])->name('update');
+  /*  Route::post('/storeUpdate', [AdminBlogController::class, 'storeUpdate'])->name('store_update');
     Route::get('/test', [AdminBlogController::class, 'ajax'])->name('ajax');
     Route::get('/delete/{id}', [AdminBlogController::class, 'delete'])->name('delete');
     Route::get('/update/{id}', [AdminBlogController::class, 'update'])->name('update');*/
