@@ -30,7 +30,8 @@ class SliderDashboardController extends Controller
      */
     public function create()
     {
-        return view('slider::create');
+        $allPage = PageService::all();
+        return view('slider::create' , compact('allPage'));
     }
 
     /**
