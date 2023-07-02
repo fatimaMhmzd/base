@@ -27,8 +27,9 @@
                     <thead>
                     <tr>
                         <th>ردیف</th>
-                        <th>نام</th>
-                        <th>نام خانوادگی</th>
+                        <th>عنوان</th>
+                        <th>زیرعنوان</th>
+                        <th>عکس</th>
                         <th width="100px">عملیات</th>
                     </tr>
                     </thead>
@@ -62,11 +63,12 @@
                 "pageLength": 25,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('ajax') }}",
+                ajax: "{{ route('dashboard_page_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'name', name: 'name'},
-                    {data: 'family', name: 'family'},
+                    {data: 'title', name: 'title'},
+                    {data: 'sub_title', name: 'sub_title'},
+                    {data: 'image', name: 'image', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });

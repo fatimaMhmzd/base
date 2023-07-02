@@ -5,9 +5,11 @@ namespace Modules\Page\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Page\Services\PageService;
 
 class PageController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      * @return Renderable

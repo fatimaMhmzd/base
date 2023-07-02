@@ -65,7 +65,12 @@ class SliderService
             try {
                 $totalUnitItemUpdated = $this->sliderRepository->update($totalUnitItem, $inputs);
                 DB::commit();
-                return $totalUnitItemUpdated;
+                $image = $inputs["file"] ?? null;
+                if ($image !== null) {
+
+                        $this->uploadImage($totalUnitItemUpdated, $image);
+                    }
+
             } catch (\Exception $exception) {
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.update_failed"));
@@ -74,14 +79,8 @@ class SliderService
         } else {
             throw new \Exception(trans("custom.defaults.not_found"));
         }
-        $image = $inputs["file"] ?? null;
-        if ($image !== null) {
-            foreach ($image as $item){
-                $this->uploadImage($totalUnitsItem, $item);
-            }
 
-        }
-        return $totalUnitsItem;
+        return $totalUnitItemUpdated;
     }
 
     public function store(ValidateSliderRequest $request)
@@ -96,7 +95,14 @@ class SliderService
             try {
                 $totalUnitsItem = $this->sliderRepository->create($inputs);
                 DB::commit();
-                return $totalUnitsItem;
+                $image = $inputs["file"] ?? null;
+                if ($image !== null) {
+
+                    $this->uploadImage($totalUnitsItem, $image);
+
+
+                }
+
             } catch (\Exception $exception) {
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.store_failed"));
@@ -105,13 +111,7 @@ class SliderService
             throw new \Exception(trans("custom.publicContent.item_with_application_id_already_exist"));
         }
 
-        $image = $inputs["file"] ?? null;
-        if ($image !== null) {
-            foreach ($image as $item){
-                $this->uploadImage($totalUnitsItem, $item);
-            }
 
-        }
         return $totalUnitsItem;
 
     }

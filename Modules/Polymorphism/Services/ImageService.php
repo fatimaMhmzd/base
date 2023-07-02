@@ -10,6 +10,20 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
+function randomString($length = 10, $start_with = '', $end_with = '')
+{
+
+    $start_with = filled($start_with) ? $start_with . "_" : $start_with;
+    $end_with = filled($end_with) ? "_" . $end_with : $end_with;
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[random_int(0, $charactersLength - 1)];
+    }
+    return $start_with . $randomString . $end_with;
+}
+
 class ImageService
 {
     use HelpersFileTrait;
@@ -43,7 +57,7 @@ class ImageService
             $image_url = Storage::putFileAs($destinationPath, $image, $new_name_image);
 
             if (!$image_url) {
-                throw new Exception(___("custom.defaults.upload_failed"));
+                throw new Exception(trans("custom.defaults.upload_failed"));
             }
             $image_url = str_replace('public', 'storage', $image_url);
             # save image model
@@ -97,8 +111,13 @@ class ImageService
         $start_with = $start_with ?? $type;
         $end_with = $end_with ?? time();
         $end_with = $end_with . "." . ($file?->getClientOriginalExtension() ?? '');
-        return random_string(length: $length, start_with: $start_with, end_with: $end_with);
+        return randomString(length: $length, start_with: $start_with, end_with: $end_with);
     }
+
+
+
+
+
 
     public static function deleteImages(Model $model)
     {

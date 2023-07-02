@@ -142,6 +142,7 @@ if (!function_exists('is_string_persian')) {
 if (!function_exists('random_string')) {
     function random_string($length = 10, $start_with = '', $end_with = ''): string
     {
+
         $start_with = filled($start_with) ? $start_with . "_" : $start_with;
         $end_with = filled($end_with) ? "_" . $end_with : $end_with;
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

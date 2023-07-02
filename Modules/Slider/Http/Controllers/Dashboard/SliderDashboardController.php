@@ -1,29 +1,27 @@
 <?php
 
-namespace Modules\Page\Http\Controllers\Dashboard;
+namespace Modules\Slider\Http\Controllers\Dashboard;
 
-use App\Helper\Response\ResponseHelper;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Page\Http\Requests\page\ValidatePageRequest;
 use Modules\Page\Services\PageService;
+use Modules\Slider\Http\Requests\slider\ValidateSliderRequest;
+use Modules\Slider\Services\SliderService;
 use Yajra\DataTables\Facades\DataTables;
 
-class AdminPageController extends Controller
+class SliderDashboardController extends Controller
 {
-    public function __construct(public PageService $service)
+    public function __construct(public SliderService $service)
     {
     }
-
-
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('page::dashboard.list');
+        return view('slider::index');
     }
 
     /**
@@ -32,7 +30,7 @@ class AdminPageController extends Controller
      */
     public function create()
     {
-        return view('page::dashboard.add');
+        return view('slider::create');
     }
 
     /**
@@ -40,10 +38,8 @@ class AdminPageController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(ValidatePageRequest $request)
+    public function store(ValidateSliderRequest $request)
     {
-
-
         try {
             $result = $this->service->store($request);
             return back()->with('success', true)->with('message', 'با موفقیت انجام شد.');
@@ -60,7 +56,7 @@ class AdminPageController extends Controller
      */
     public function show($id)
     {
-        return view('page::show');
+        return view('slider::show');
     }
 
     /**
@@ -70,7 +66,7 @@ class AdminPageController extends Controller
      */
     public function edit($id)
     {
-        return view('page::edit');
+        return view('slider::edit');
     }
 
     /**
@@ -79,7 +75,7 @@ class AdminPageController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(ValidatePageRequest $request, $id)
+    public function update(ValidateSliderRequest $request, $id)
     {
         try {
             $this->service->update($request, $id);
@@ -111,7 +107,6 @@ class AdminPageController extends Controller
         }
     }
 
-
     public function ajax()
     {
 
@@ -120,8 +115,8 @@ class AdminPageController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                $btn = '<a href="' . route('dashboard_page_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_page_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+                $btn = '<a href="' . route('dashboard_slider_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_slider_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
 
                 return $btn;
             })

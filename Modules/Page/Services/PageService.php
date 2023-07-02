@@ -87,16 +87,16 @@ class PageService
     public function store(ValidatePageRequest $request)
     {
         $inputs = $request->validated();
+
         $exist = $this->pageRepository->findBy("title", $inputs["title"]);
         if (!$exist) {
-
 
 
             DB::beginTransaction();
             try {
                 $totalUnitsItem = $this->pageRepository->create($inputs);
                 DB::commit();
-                return $totalUnitsItem;
+
             } catch (\Exception $exception) {
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.store_failed"));
@@ -107,9 +107,9 @@ class PageService
 
         $image = $inputs["file"] ?? null;
         if ($image !== null) {
-            foreach ($image as $item){
-                $this->uploadImage($totalUnitsItem, $item);
-            }
+
+                $this->uploadImage($totalUnitsItem, $image);
+
 
         }
         return $totalUnitsItem;

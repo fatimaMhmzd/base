@@ -4,16 +4,14 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Page\Http\Controllers\Dashboard\AdminPageController;
 
-Route::prefix('Page')->group(function () {
-//    Route::get('/', [AdminPageController::class, 'test'])->name('test');
+Route::group(['prefix' => 'page', 'as' => 'page_'], function (){
+    Route::get('/', [AdminPageController::class, 'index'])->name('index');
+    Route::get('/ajax', [AdminPageController::class, 'ajax'])->name('ajax');
+    Route::get('/create', [AdminPageController::class, 'create'])->name('create');
+    Route::post('/store', [AdminPageController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [AdminPageController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [AdminPageController::class, 'update'])->name('update');
+    Route::delete('/destroy/{id}', [AdminPageController::class, 'destroy'])->name('destroy');
 
-
-    Route::get('/add', [AdminPageController::class, 'add'])->name('add');
-    Route::get('/list', [AdminPageController::class, 'list'])->name('list');
-    Route::get('/update', [AdminPageController::class, 'update'])->name('update');
-    /*  Route::post('/storeUpdate', [AdminPageController::class, 'storeUpdate'])->name('store_update');
-      Route::get('/test', [AdminPageController::class, 'ajax'])->name('ajax');
-      Route::get('/delete/{id}', [AdminPageController::class, 'delete'])->name('delete');
-      Route::get('/update/{id}', [AdminPageController::class, 'update'])->name('update');*/
 
 });
