@@ -9,7 +9,7 @@
 
 
     <div class="card content-right">
-        <div class="card-header"><h4 class="card-title">لیست کاربران</h4></div>
+        <div class="card-header"><h4 class="card-title">لیست صفحه ها</h4></div>
         <div class="card-content">
             <div class="card-body">
 

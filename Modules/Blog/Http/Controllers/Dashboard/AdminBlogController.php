@@ -81,11 +81,16 @@ class AdminBlogController extends Controller
 
     public function add()
     {
-         return view('blog::dashboard.addBlog');
+         return view('blog::dashboard.add');
     }
     public function list()
     {
-        return view('blog::dashboard.addBlog');
+        return view('blog::dashboard.list');
+    }
+
+    public function update()
+    {
+        return view('blog::dashboard.update');
     }
 
 
