@@ -14,7 +14,7 @@ class ValidateSliderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'page_id' => 'required|integer|exists:page,id',
+            'page_id' => 'required|integer',
             'title' => 'required|string',
             'file' => 'nullable|image|mimes:jpg,png|max:5000',
             'sub_title' => 'nullable|string',

@@ -70,7 +70,8 @@ class AdminPageController extends Controller
      */
     public function edit($id)
     {
-        return view('page::edit');
+        $data = $this->service->find($id);
+        return view('page::dashboard.update' , compact('data'));
     }
 
     /**

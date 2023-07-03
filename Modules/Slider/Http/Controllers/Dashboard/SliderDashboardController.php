@@ -30,6 +30,7 @@ class SliderDashboardController extends Controller
      */
     public function create()
     {
+
         $allPage = resolve(PageService::class)->all();
         return view('slider::dashboard.add' , compact('allPage'));
     }
@@ -41,6 +42,7 @@ class SliderDashboardController extends Controller
      */
     public function store(ValidateSliderRequest $request)
     {
+
         try {
             $result = $this->service->store($request);
             return back()->with('success', true)->with('message', 'با موفقیت انجام شد.');
@@ -67,7 +69,9 @@ class SliderDashboardController extends Controller
      */
     public function edit($id)
     {
-        return view('slider::edit');
+        $data = $this->service->find($id);
+        $allPage = resolve(PageService::class)->all();
+        return view('slider::dashboard.update',compact('data','allPage'));
     }
 
     /**
