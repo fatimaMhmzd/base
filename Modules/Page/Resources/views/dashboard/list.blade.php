@@ -7,40 +7,44 @@
 @stop
 @section('content')
 
+    <section id="multiple-column-form">
+        <div class="row match-height">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><h4 class="card-title">لیست صفحه ها</h4></div>
+                    <div class="card-content">
+                        <div class="card-body">
 
-    <div class="card content-right">
-        <div class="card-header"><h4 class="card-title">لیست صفحه ها</h4></div>
-        <div class="card-content">
-            <div class="card-body">
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
 
-                @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    </button>
+                                    <strong></strong> {{ Session::get('message', '') }}
+                                </div>
+                            @endif
 
-                        </button>
-                        <strong></strong> {{ Session::get('message', '') }}
+
+                            <table class="table table-bordered data-table">
+                                <thead>
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>عنوان</th>
+                                    <th>زیرعنوان</th>
+                                    <th>عکس</th>
+                                    <th width="100px">عملیات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                @endif
-
-
-                <table class="table table-bordered data-table">
-                    <thead>
-                    <tr>
-                        <th>ردیف</th>
-                        <th>عنوان</th>
-                        <th>زیرعنوان</th>
-                        <th>عکس</th>
-                        <th width="100px">عملیات</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
+                </div>
             </div>
         </div>
-    </div>
-
+    </section>
 
 @stop
 

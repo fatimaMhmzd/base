@@ -21,7 +21,7 @@ class SliderDashboardController extends Controller
      */
     public function index()
     {
-        return view('slider::index');
+        return view('slider::dashboard.list');
     }
 
     /**
@@ -30,8 +30,8 @@ class SliderDashboardController extends Controller
      */
     public function create()
     {
-        $allPage = PageService::all();
-        return view('slider::create' , compact('allPage'));
+        $allPage = resolve(PageService::class)->all();
+        return view('slider::dashboard.add' , compact('allPage'));
     }
 
     /**

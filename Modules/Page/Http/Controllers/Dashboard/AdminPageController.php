@@ -128,7 +128,7 @@ class AdminPageController extends Controller
             ->addColumn('image', function ($row) {
                 $img = '';
                 if ($row->image) {
-                    $img = '<img src="' . $row->image->url . '" class="danger w-25"/>';
+                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
                 }
 
                 return $img;

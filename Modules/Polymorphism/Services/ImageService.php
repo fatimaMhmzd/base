@@ -91,7 +91,7 @@ class ImageService
     private static function destinationPath($destinationPath = null)
     {
         if (is_null($destinationPath) || !filled($destinationPath)) {
-            return config_('configs.images.destination_path_default');
+            return config('configs.images.destination_path_default');
         }
         return $destinationPath;
     }
