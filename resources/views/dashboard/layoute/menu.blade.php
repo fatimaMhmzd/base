@@ -39,6 +39,15 @@
 
                 </ul>
             </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">بلاگ</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_blog_index') ? 'active' : '' }}"><a href="{{route('dashboard_blog_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_blog_create') ? 'active' : '' }}"><a href="{{route('dashboard_blog_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
 
         </ul>
     </div>

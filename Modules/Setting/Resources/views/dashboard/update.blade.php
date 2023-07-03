@@ -5,10 +5,10 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header"><h4 class="card-title">لیست صفحه ها</h4></div>
+                    <div class="card-header"><h4 class="card-title">بروزرسانی تنظیمات </h4></div>
                     <div class="card-content">
 
-                        <h4 class="card-title">افزودن صفحه</h4>
+                        <h4 class="card-title">بروزرسانی تنظیمات</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -32,7 +32,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form" method="post" action="{{route('dashboard_page_store')}}"
+                            <form class="form" method="post" action="{{route('dashboard_setting_update')}}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
@@ -45,27 +45,11 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-label-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title">
-                                                <label for="last-name-column">زیر عنوان</label>
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="مقدار" name="value">
+                                                <label for="last-name-column">مقدار</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="companyinput1" style="margin-top: 20px">عکس اصلی</label>
-                                                <fieldset class="form-group">
-                                                    <input type="file" name="file" class="form-control-file"
-                                                           id="exampleInputFile">
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="companyinput1" style="margin-top: 20px">link</label>
-                                                <fieldset class="form-group">
-                                                <input type="text" id="company-column" class="form-control" name="link" placeholder="link">
-                                                </fieldset>
-                                            </div>
-                                        </div>
+
                                         <div class="col-md-12 col-12">
                                             <div class="form-group">
                                                 <label for="companyinput8">توضیحات </label>
@@ -74,16 +58,6 @@
                                                           placeholder="توضیحات "></textarea>
                                             </div>
                                         </div>
-
-
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <div class="form-group">
-                                                <label for="companyinput8">محتوا</label>
-                                                <textarea id="companyinput8" rows="10" class="form-control"
-                                                          name="content" placeholder="محتوا"></textarea>
-                                            </div>
-                                        </div>
-
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary mr-1 mb-1">ارسال</button>
                                             <button type="reset" class="btn btn-outline-warning mr-1 mb-1">تنظیم مجدد</button>
@@ -102,16 +76,3 @@
 
 @stop
 
-@section('script')
-
-    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('content', {
-            language: 'fa',
-            content: 'fa',
-            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
-            filebrowserUploadMethod: 'form'
-        });
-    </script>
-
-@endsection

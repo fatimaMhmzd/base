@@ -11,7 +11,7 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header"><h4 class="card-title">لیست بلاگ ها</h4></div>
+                    <div class="card-header"><h4 class="card-title">لیست تنظیمات</h4></div>
                     <div class="card-content">
                         <div class="card-body">
 
@@ -30,7 +30,7 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>عنوان</th>
-                                    <th>زیرعنوان</th>
+                                    <th>مقدار</th>
                                     <th>عکس</th>
                                     <th width="100px">عملیات</th>
                                 </tr>
@@ -67,11 +67,11 @@
                 "pageLength": 25,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('dashboard_blog_ajax') }}",
+                ajax: "{{ route('dashboard_setting_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'title', name: 'title'},
-                    {data: 'sub_title', name: 'sub_title'},
+                    {data: 'value', name: 'value'},
                     {data: 'image', name: 'image', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]

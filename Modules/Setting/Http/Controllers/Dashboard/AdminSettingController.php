@@ -1,13 +1,14 @@
 <?php
 
-namespace Modules\Blog\Http\Controllers\Dashboard;
+namespace Modules\Setting\Http\Controllers\Dashboard;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Yajra\DataTables\Facades\DataTables;
 
-class AdminBlogController extends Controller
+
+class AdminSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class AdminBlogController extends Controller
      */
     public function index()
     {
-        return view('blog::dashboard.list');
+        return view('setting::dashboard.list');
     }
 
     /**
@@ -24,7 +25,7 @@ class AdminBlogController extends Controller
      */
     public function create()
     {
-        return view('blog::dashboard.add');
+        return view('setting::dashboard.add');
     }
 
     /**
@@ -50,7 +51,7 @@ class AdminBlogController extends Controller
      */
     public function show($id)
     {
-        return view('blog::show');
+        return view('setting::show');
     }
 
     /**
@@ -61,7 +62,7 @@ class AdminBlogController extends Controller
     public function edit($id)
     {
         $data = $this->service->find($id);
-        return view('blog::dashboard.update' , compact('data'));
+        return view('setting::dashboard.update' , compact('data'));
     }
 
     /**
@@ -110,8 +111,8 @@ class AdminBlogController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                $btn = '<a href="' . route('dashboard_blog_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_blog_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+                $btn = '<a href="' . route('dashboard_setting_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_setting_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
 
                 return $btn;
             })
@@ -126,8 +127,4 @@ class AdminBlogController extends Controller
             ->rawColumns(['action', 'image'])
             ->make(true);
     }
-
-
-
-
 }

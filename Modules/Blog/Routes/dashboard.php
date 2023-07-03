@@ -11,20 +11,16 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Blog\Http\Controllers\BlogController;
 use Modules\Blog\Http\Controllers\Dashboard\AdminBlogController;
 
+Route::group(['prefix' => 'blog', 'as' => 'blog_'], function (){
+    Route::get('/', [AdminBlogController::class, 'index'])->name('index');
+    Route::get('/ajax', [AdminBlogController::class, 'ajax'])->name('ajax');
+    Route::get('/create', [AdminBlogController::class, 'create'])->name('create');
+    Route::post('/store', [AdminBlogController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [AdminBlogController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [AdminBlogController::class, 'update'])->name('update');
+    Route::delete('/destroy/{id}', [AdminBlogController::class, 'destroy'])->name('destroy');
 
-Route::prefix('blog')->group(function () {
-        Route::get('/', [BlogController::class, 'test'])->name('test');
-
-
-    Route::get('/add', [AdminBlogController::class, 'add'])->name('add');
-    Route::get('/list', [AdminBlogController::class, 'list'])->name('list');
-    Route::post('/update', [AdminBlogController::class, 'update'])->name('update');
-  /*  Route::post('/storeUpdate', [AdminBlogController::class, 'storeUpdate'])->name('store_update');
-    Route::get('/test', [AdminBlogController::class, 'ajax'])->name('ajax');
-    Route::get('/delete/{id}', [AdminBlogController::class, 'delete'])->name('delete');
-    Route::get('/update/{id}', [AdminBlogController::class, 'update'])->name('update');*/
 
 });
