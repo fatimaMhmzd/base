@@ -29,6 +29,7 @@
                                 <thead>
                                 <tr>
                                     <th>ردیف</th>
+                                    <th>صفحه ی مربوطه</th>
                                     <th>عنوان</th>
                                     <th>زیرعنوان</th>
                                     <th>عکس</th>
@@ -70,6 +71,7 @@
                 ajax: "{{ route('dashboard_slider_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'page', name: 'page'},
                     {data: 'title', name: 'title'},
                     {data: 'sub_title', name: 'sub_title'},
                     {data: 'image', name: 'image', orderable: false, searchable: false},

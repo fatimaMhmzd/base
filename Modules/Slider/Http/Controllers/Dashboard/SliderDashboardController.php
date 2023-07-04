@@ -116,6 +116,7 @@ class SliderDashboardController extends Controller
     {
 
         $data = $this->service->ajax();
+
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
@@ -128,12 +129,18 @@ class SliderDashboardController extends Controller
             ->addColumn('image', function ($row) {
                 $img = '';
                 if ($row->image) {
-                    $img = '<img src="' . $row->image->url . '" class="danger w-25"/>';
+                    $img = '<img src="/' . $row->image->url . '" class="danger w-25"/>';
                 }
 
                 return $img;
             })
-            ->rawColumns(['action', 'image'])
+            ->addColumn('page', function ($row) {
+                $page = $row->page->title;
+
+
+                return $page;
+            })
+            ->rawColumns(['action', 'image' , 'page'])
             ->make(true);
     }
 }

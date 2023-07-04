@@ -33,29 +33,32 @@
                             <form class="form" method="post" action="{{route('dashboard_product_group_store')}}"
                                   enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-body" id="foo" >
+                                <div class="form-body" id="foo">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">انتخاب سرگروه</label>
+                                            <label style="margin-top: 20px">انتخاب سرگروه</label>
                                             <fieldset class="form-group">
-                                                <select class="form-control" id="select_main" name="father_id" >
+                                                <select class="form-control" id="select_main" name="father_id">
                                                     <option value="0">سرگروه</option>
                                                     @foreach($all as $item)
-                                                        <option value="{{$item->id}}"> زیر گروه {{$item->title}}</option>
+                                                        <option value="{{$item->id}}"> زیر
+                                                            گروه {{$item->title}}</option>
                                                     @endforeach
                                                 </select>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">عنوان</label>
+                                            <label style="margin-top: 20px">عنوان</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="first-name-column" class="form-control" placeholder="عنوان" name="title">
+                                                <input type="text" id="first-name-column" class="form-control"
+                                                       placeholder="عنوان" name="title">
                                             </fieldset>
-                                            </div>
+                                        </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">زیر عنوان</label>
+                                            <label style="margin-top: 20px">زیر عنوان</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="زیر عنوان" name="sub_title">
 
                                             </fieldset>
                                         </div>
@@ -80,10 +83,10 @@
                                         </div>
 
 
-
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary mr-1 mb-1">ارسال</button>
-                                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1">تنظیم مجدد</button>
+                                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1">تنظیم مجدد
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -95,56 +98,56 @@
         </div>
     </section>
 
-
-
 @stop
 @section('script')
     <script>
         document.querySelector('select').addEventListener('change', selectChanged);
+
         // Create the tree node element
 
 
         function selectChanged(evt) {
-          console.log(evt.target.parentElement.parentElement.parentElement)
+            alert(evt.target.value);
 
-            $.ajax({
-                url: "/dashboard/product/group/getSubGroup/" + evt.target.value,
 
-                type: 'GET',
-                success: function (res) {
+                $.ajax({
+                    url: "/dashboard/product/group/getSubGroup/" + evt.target.value,
 
-                    if (res.length !== 0){
-                       var options = ``;
+                    type: 'GET',
+                    success: function (res) {
+                        var node = ``;
+                        if (res.length !== 0) {
+                            var options = ``;
 
-                        for (var i = 0; i < res.length; i++){
-                            options = `<option value="`+res[i]['id']+`"> `+res[i]['title']+`</option>`
+                            for (var i = 0; i < res.length; i++) {
+                                options = `<option value="` + res[i]['id'] + `"> ` + res[i]['title'] + `</option>`
 
-                        }
-                        var node =` <div class="col-md-6 col-12">
+                            }
+                             node += ` <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">انتخاب سرگروه</label>
                                             <fieldset class="form-group">
-                                                <select class="form-control" id="select_main" name="father_id" >
+                                                <select class="form-control"  name="father_id" onchange="selectChanged()" >
                                                     <option value="0">سرگروه</option>
-                                              `+options+`
+                                              ` + options + `
                         </select>
                     </fieldset>
                 </div>`
+                            var divShow = evt.target.nextElementSibling;
+                            evt.target.parentElement.parentElement.innerHTML += node;
+                            /* evt.target.parentElement.parentElement.parentElement.insertAfterElement(node);*/
+                        }
 
 
-                        evt.target.parentElement.parentElement.parentElement.insertAfterElement=(node);
+                        // document.getElementById('subGroup').innerHTML = res;
+
+
                     }
+                });
 
 
-                    // document.getElementById('subGroup').innerHTML = res;
+            /*         var divShow = evt.target.nextElementSibling;
 
-
-
-
-                }
-            });
-   /*         var divShow = evt.target.nextElementSibling;
-
-            divShow.style.display = evt.target.value;*/
+                     divShow.style.display = evt.target.value;*/
         }
     </script>
 

@@ -14,6 +14,6 @@ class SliderRepository extends BaseRepository
 
     public function relations(): array
     {
-        return [];
+        return ['image','page'];
     }
 }

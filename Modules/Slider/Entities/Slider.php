@@ -23,12 +23,12 @@ class Slider extends Model
         "description",
     ];
 
-    protected $with = ["image"];
+    protected $with = ["image" , "page"];
 
     /**
      * @return HasOne
      */
-    public function market():HasOne
+    public function page():HasOne
     {
         return $this->hasOne(Page::class,"id","page_id");
     }
