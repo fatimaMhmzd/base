@@ -50,6 +50,11 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->moduleNamespace)
             ->group(module_path('SocialMedia', '/Routes/web.php'));
+        Route::prefix('dashboard')
+            ->as('dashboard_')
+            ->middleware('web')
+            ->namespace($this->moduleNamespace)
+            ->group(module_path('SocialMedia', '/Routes/dashboard.php'));
     }
 
     /**
