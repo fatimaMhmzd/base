@@ -11,7 +11,7 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header"><h4 class="card-title">لیست تنظیمات</h4></div>
+                    <div class="card-header"><h4 class="card-title">لیست محصولات</h4></div>
                     <div class="card-content">
                         <div class="card-body">
 
@@ -29,9 +29,12 @@
                                 <thead>
                                 <tr>
                                     <th>ردیف</th>
-                                    <th>عنوان</th>
-                                    <th>مقدار</th>
-                                    <th>توضیحات</th>
+                                    <th>نام</th>
+                                    <th>نام خانوادگی</th>
+                                    <th>تلفن</th>
+                                    <th>موبایل</th>
+                                    <th>نام کاربری</th>
+                                    <th>عکس</th>
                                     <th width="100px">عملیات</th>
                                 </tr>
                                 </thead>
@@ -67,15 +70,19 @@
                 "pageLength": 25,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('dashboard_setting_ajax') }}",
+                ajax: "{{ route('dashboard_user_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'title', name: 'title'},
-                    {data: 'value', name: 'value'},
+                    {data: 'name', name: 'name'},
+                    {data: 'family', name: 'family'},
+                    {data: 'phone', name: 'phone'},
+                    {data: 'mobile', name: 'mobile'},
+                    {data: 'username', name: 'username'},
                     {data: 'image', name: 'image', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
+
         });
     </script>
 

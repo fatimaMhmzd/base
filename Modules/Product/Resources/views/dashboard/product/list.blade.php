@@ -11,7 +11,7 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header"><h4 class="card-title">لیست صفحه ها</h4></div>
+                    <div class="card-header"><h4 class="card-title">لیست محصولات</h4></div>
                     <div class="card-content">
                         <div class="card-body">
 
@@ -31,6 +31,12 @@
                                     <th>ردیف</th>
                                     <th>عنوان</th>
                                     <th>زیرعنوان</th>
+                                    <th>برند</th>
+                                    <th>قیمت</th>
+                                    <th>قیمت با تخفیف</th>
+                                    <th>موجودی</th>
+                                    <th>وزن</th>
+                                    <th>وضعیت</th>
                                     <th>عکس</th>
                                     <th width="100px">عملیات</th>
                                 </tr>
@@ -67,11 +73,17 @@
                 "pageLength": 25,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('dashboard_page_ajax') }}",
+                ajax: "{{ route('dashboard_product_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'title', name: 'title'},
                     {data: 'sub_title', name: 'sub_title'},
+                    {data: 'brand', name: 'brand'},
+                    {data: 'price', name: 'price'},
+                    {data: 'off_price', name: 'off_price'},
+                    {data: 'available', name: 'available'},
+                    {data: 'weight', name: 'weight'},
+                    {data: 'status', name: 'status'},
                     {data: 'image', name: 'image', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]

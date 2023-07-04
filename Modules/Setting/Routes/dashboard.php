@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Setting\Http\Controllers\Dashboard\AdminSettingController;
 
 
-Route::group(['prefix' => 'blog', 'as' => 'blog_'], function (){
+Route::group(['prefix' => 'setting', 'as' => 'setting_'], function (){
     Route::get('/', [AdminSettingController::class, 'index'])->name('index');
     Route::get('/ajax', [AdminSettingController::class, 'ajax'])->name('ajax');
     Route::get('/create', [AdminSettingController::class, 'create'])->name('create');

@@ -48,6 +48,15 @@
 
                 </ul>
             </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">تنظیمات</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_setting_index') ? 'active' : '' }}"><a href="{{route('dashboard_setting_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_setting_create') ? 'active' : '' }}"><a href="{{route('dashboard_setting_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
             <li class=" navigation-header"><span>مدیریت محصولات</span>
             </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">گروهبندی</span></a>
@@ -69,6 +78,17 @@
                 </ul>
             </li>
 
+            <li class=" navigation-header"><span>مدیریت کاربران</span>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">کاربران</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_user_index') ? 'active' : '' }}"><a href="{{route('dashboard_user_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_user_create') ? 'active' : '' }}"><a href="{{route('dashboard_user_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
 
         </ul>
     </div>

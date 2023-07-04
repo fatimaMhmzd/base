@@ -7,10 +7,6 @@
                 <div class="card">
                     <div class="card-header"><h4 class="card-title">افزودن تنظیمات </h4></div>
                     <div class="card-content">
-
-                        <h4 class="card-title">افزودن تنظیمات</h4>
-                    </div>
-                    <div class="card-content">
                         <div class="card-body">
                             @if(Session::has('success'))
                                 <div class="alert alert-success mt-3">
