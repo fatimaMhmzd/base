@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('title')->nullable()->comment('عنوان');
             $table->string('sub_title')->nullable()->comment('زیر عنوان');
             $table->text('description')->nullable()->comment('توضیحات');
-            $table->unsignedBigInteger('father_id')->nullable();
+            $table->unsignedBigInteger('father_id')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

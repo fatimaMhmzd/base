@@ -7,5 +7,6 @@
     "Page": true,
     "Group": true,
     "Blog": true,
-    "Polymorphism": true
+    "Polymorphism": true,
+    "Product": true
 }

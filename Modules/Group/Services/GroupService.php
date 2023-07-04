@@ -2,6 +2,7 @@
 
 namespace Modules\Group\Services;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Modules\Group\Http\Repositories\GroupRepository;
 use Modules\Group\Http\Requests\group\ValidateGroupRequest;
@@ -42,20 +43,41 @@ class GroupService
     }
 
 
-    public function store(ValidateGroupRequest $request)
+    public function store(
+        $title,
+        Model $model,
+        $image = null,
+        $sub_title = null,
+        $description = null,
+        $father_id = 0,
+        $relation = null
+    )
     {
-        $inputs = $request->validated();
             DB::beginTransaction();
             try {
-                $totalUnitsItem = $this->groupRepository->create($inputs);
+                $data = [
+                    'title' => $title,
+                    'sub_title' => $sub_title,
+                    'description' => $description,
+                    'father_id' => $father_id,
+                ];
+                if ($relation && method_exists($model, $relation)) {
+                    $model->$relation()->create($data);
+                } elseif (method_exists($model, 'group')) {
+                    $model->group()->create($data);
+                } elseif (method_exists($model, 'groups')) {
+                    $model->groups()->create($data);
+                } else {
+                    throw new DeveloperException(message: 'function image or images not set in model');
+                }
+                $totalUnitsItem = $this->groupRepository->create($data);
                 DB::commit();
 
-                $image = $inputs["file"] ?? null;
                 if ($image !== null) {
                     $this->uploadGroupImage($totalUnitsItem, $image);
                 }
 
-                return $totalUnitsItem;
+                return true;
             } catch (\Exception $exception) {
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.store_failed"));

@@ -15,3 +15,4 @@ Route::group(['prefix' => 'page', 'as' => 'page_'], function (){
 
 
 });
+

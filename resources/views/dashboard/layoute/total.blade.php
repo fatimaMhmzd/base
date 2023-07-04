@@ -56,7 +56,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <!-- BEGIN: Body-->
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
-{{--@include('dashboard.layoute.header')--}}
+@include('dashboard.layoute.header')
 
 @include('dashboard.layoute.menu')
 

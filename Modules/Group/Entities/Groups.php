@@ -45,6 +45,8 @@ class Groups extends Model
         'updated_at' => 'timestamp',
     ];
 
+
+    protected $with = ["image"];
     /**
      * @return MorphOne
      */

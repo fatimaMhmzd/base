@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Group\Http\Requests\group\ValidateGroupRequest;
 use Modules\Group\Services\GroupService;
+use Yajra\DataTables\Facades\DataTables;
 
 class GroupDashboardController extends Controller
 {
@@ -20,7 +21,7 @@ class GroupDashboardController extends Controller
      */
     public function index()
     {
-        return view('group::dashboard/list');
+        return view('group::dashboard.list');
     }
 
     public function ajax()
@@ -29,39 +30,16 @@ class GroupDashboardController extends Controller
         $data = $this->service->ajax();
         return Datatables::of($data)
             ->addIndexColumn()
-            ->addColumn('action', function ($row) {
+/*            ->addColumn('action', function ($row) {
 
                 $btn = '<a href="' . route('karzar_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
 <a href="' . route('karzar_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
 
                 return $btn;
-            })
-            ->addColumn('user', function ($row) {
-                if ($row->user) {
-                    $user = $row->user->name;
-                } else {
-                    $user = '';
-                }
-                return $user;
-            })
-            ->addColumn('karzar', function ($row) {
-                if ($row->karzar) {
-                    $group = $row->karzar->title ;
-                } else {
-                    $group = '';
-                }
-                return $group;
-            })
-            ->addColumn('type', function ($row) {
-                if ($row->type) {
-                    $type = 'مخالف' ;
-                } else {
-                    $type = 'موافق';
-                }
-                return $type;
-            })
+            })*/
 
-            ->rawColumns(['action', 'karzar','user','type'])
+
+            ->rawColumns([])
             ->make(true);
     }
 
@@ -71,7 +49,7 @@ class GroupDashboardController extends Controller
      */
     public function create()
     {
-        return view('group::dashboard/add');
+        return view('group::dashboard.add');
     }
 
     /**
@@ -79,7 +57,7 @@ class GroupDashboardController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(ValidateKarzarAcceptedRequest $request)
+    public function store(Request $request)
     {
         try {
             $result = $this->service->store($request);
@@ -98,7 +76,7 @@ class GroupDashboardController extends Controller
      */
     public function show($id)
     {
-        return view('karzar::show');
+        return view('group::show');
     }
 
     /**
@@ -110,7 +88,7 @@ class GroupDashboardController extends Controller
     {
         $data = $this->service->find($id);
         if ($data) {
-            return view('karzar::karzarAccepted/edit' , compact('data'));
+            return view('group::dashboard.edit' , compact('data'));
 
         }
 
@@ -123,7 +101,7 @@ class GroupDashboardController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(ValidateKarzarAcceptedRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         try {

@@ -5,6 +5,7 @@ namespace Modules\Page\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Group\Entities\Groups;
 use Modules\Polymorphism\Entities\Images;
 
 class Page extends Model
@@ -25,4 +26,5 @@ class Page extends Model
     {
         return $this->morphOne(Images::class, 'imageable');
     }
+
 }

@@ -51,6 +51,7 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->moduleNamespace)
             ->group(module_path('Group', '/Routes/web.php'));
         Route::prefix('dashboard')
+            ->as('dashboard_')
             ->middleware('web')
             ->namespace($this->moduleNamespace)
             ->group(module_path('Group', '/Routes/dashboard.php'));
