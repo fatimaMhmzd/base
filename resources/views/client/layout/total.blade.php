@@ -1,3 +1,5 @@
+@inject('groups', 'Modules\Product\Services\ProductGroupService')
+{{--@dd($groups->all())--}}
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
@@ -237,6 +239,13 @@
                         <div class="dropdown-menu">
                             <nav class="side-nav">
                                 <ul class="menu-vertical sf-arrows">
+                                    @if($groups)
+                                        @foreach($groups->all() as $group)
+                                            @if($group->sub_title === null)
+                                                <li class="item-lead"><a href="#">{{$group->title}}</a></li>
+                                            @endif
+                                        @endforeach
+                                    @else
                                     <li class="item-lead"><a href="#">تخفیف های روزانه</a></li>
                                     <li class="item-lead"><a href="#">هدیه ها</a></li>
                                     <li><a href="#">تخت خواب</a></li>
@@ -248,6 +257,7 @@
                                     <li><a href="#">کابینت آشپزخانه</a></li>
                                     <li><a href="#">قهوه</a></li>
                                     <li><a href="#">لوازم تعمیرات </a></li>
+                                    @endif
                                 </ul><!-- End .menu-vertical -->
                             </nav><!-- End .side-nav -->
                         </div><!-- End .dropdown-menu -->

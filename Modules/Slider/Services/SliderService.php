@@ -100,7 +100,6 @@ class SliderService
     {
         $inputs = $request->validated();
         $exist = $this->sliderRepository->findBy("title", $inputs["title"]);
-        if (!$exist) {
 
 
 
@@ -120,10 +119,6 @@ class SliderService
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.store_failed"));
             }
-        } else {
-            throw new \Exception(trans("custom.publicContent.item_with_application_id_already_exist"));
-        }
-
 
         return $totalUnitsItem;
 
