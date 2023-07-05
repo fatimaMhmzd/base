@@ -73,6 +73,7 @@ class ProductGroupService
         $inputs = $request->validated();
         $totalUnitItem = $this->productGroupRepository->find($id);
         if ($totalUnitItem) {
+            $inputs["father_id"]=0;
             DB::beginTransaction();
             try {
                 $totalUnitItemUpdated = $this->productGroupRepository->update($totalUnitItem, $inputs);
@@ -98,7 +99,7 @@ class ProductGroupService
     public function store(ValidateProductGroupRequest $request)
     {
         $inputs = $request->validated();
-
+        $inputs["father_id"]=0;
             DB::beginTransaction();
             try {
                 $totalUnitsItem = $this->productGroupRepository->create($inputs);

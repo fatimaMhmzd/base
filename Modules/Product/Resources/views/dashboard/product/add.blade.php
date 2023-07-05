@@ -60,23 +60,37 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">برند</label>
+                                            <fieldset class="form-group">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="برند" name="brand">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">برند</label>
+                                            <fieldset class="form-group">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="برند" name="full_title">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">قیمت</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="قیمت" name="price">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="قیمت" name="price">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">قیمت با تخفیف </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="قیمت با تخفیف " name="off_price">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="قیمت با تخفیف " name="off_price">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">تخفیف </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="تخفیف " name="off">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="تخفیف " name="off">
 
                                             </fieldset>
                                         </div>
@@ -97,7 +111,7 @@
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">موجودی </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="موجودی " name="available">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="موجودی " name="available">
 
                                             </fieldset>
                                         </div>
@@ -132,21 +146,21 @@
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">وزن</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="وزن" name="weight">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن" name="weight">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">وزن با بسته بندی</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="وزن با بسته بندی " name="weight_with_packaging">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن با بسته بندی " name="weight_with_packaging">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">وزن خالص</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="وزن خالص " name="unit_weight">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن خالص " name="unit_weight">
 
                                             </fieldset>
                                         </div>
@@ -171,7 +185,7 @@
                                             <div class="form-group">
                                                 <label for="companyinput1" style="margin-top: 20px">عکس اصلی</label>
                                                 <fieldset class="form-group">
-                                                    <input type="file" name="file" class="form-control-file"
+                                                    <input type="file" name="file[]" class="form-control-file"
                                                            id="exampleInputFile">
                                                 </fieldset>
                                             </div>
@@ -186,7 +200,7 @@
                                                         </p>
                                                         <input type="file" class="form-control"
                                                                placeholder="عکس اسلایدر"
-                                                               name="sliderimg[]">
+                                                               name="file[]">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12">
@@ -233,33 +247,6 @@
 
 
     <script>
-
-        function getData() {
-
-            //var firstGroupId = document.getElementById('group').value;
-            var firstGroupId = $('#group').val();
-
-            $.ajax({
-                url: "/admin/getSubGroup/" + firstGroupId,
-
-                type: 'GET',
-                success: function (res) {
-
-                    // document.getElementById('subGroup').innerHTML = res;
-
-                    $('#subGroup').html(res)
-
-
-                }
-            });
-
-
-        }
-
-    </script>
-
-
-    <script>
         counter = 1;
 
         function addRow() {
@@ -272,7 +259,7 @@
                                                             </p>
                                                             <input type="file" class="form-control"
                                                                    placeholder="عکس اسلایدر"
-                                                                   name="sliderimg[]">
+                                                                   name="file[]">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-6 col-lg-12">

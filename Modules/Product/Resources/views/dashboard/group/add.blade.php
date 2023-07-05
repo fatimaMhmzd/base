@@ -36,18 +36,6 @@
                                 <div class="form-body" id="foo">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
-                                            <label style="margin-top: 20px">انتخاب سرگروه</label>
-                                            <fieldset class="form-group">
-                                                <select class="form-control" id="select_main" name="father_id">
-                                                    <option value="0">سرگروه</option>
-                                                    @foreach($all as $item)
-                                                        <option value="{{$item->id}}"> زیر
-                                                            گروه {{$item->title}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6 col-12">
                                             <label style="margin-top: 20px">عنوان</label>
                                             <fieldset class="form-group">
                                                 <input type="text" id="first-name-column" class="form-control"
@@ -100,7 +88,7 @@
 
 @stop
 @section('script')
-    <script>
+{{--    <script>
         document.querySelector('select').addEventListener('change', selectChanged);
 
         // Create the tree node element
@@ -195,7 +183,7 @@
             document.getElementById(idd).innerHTML = ''
         }
 
-    </script>
+    </script>--}}
 
 @endsection
 

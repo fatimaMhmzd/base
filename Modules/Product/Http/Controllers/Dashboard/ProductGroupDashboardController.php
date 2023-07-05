@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
 use Modules\Product\Services\ProductGroupService;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductGroupDashboardController extends Controller
 {
@@ -20,7 +21,7 @@ class ProductGroupDashboardController extends Controller
      */
     public function index()
     {
-        return view('product::index');
+        return view('product::dashboard.group.list');
     }
 
     /**
@@ -29,7 +30,7 @@ class ProductGroupDashboardController extends Controller
      */
     public function create()
     {
-        $all = $this->service->subGroup(0);
+        $all = $this->service->all();
         return view('product::dashboard.group.add', compact('all'));
     }
 
@@ -75,9 +76,18 @@ class ProductGroupDashboardController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateProductGroupRequest $request, $id)
     {
-        //
+        try {
+            $this->service->update($request, $id);
+            $message = trans("custom.defaults.update_success");
+            return back()->with('success', true)->with('message', $message);
+
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+
+        }
     }
 
     /**
@@ -87,9 +97,40 @@ class ProductGroupDashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->service->delete($id);
+            /* $message = "انجام شد";*/
+            $message = trans("custom.defaults.delete_success");
+            return back()->with('success', true)->with('message', $message);
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
     }
+    public function ajax()
+    {
 
+        $data = $this->service->ajax();
+        return Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+
+                $btn = '<a href="' . route('dashboard_product_group_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_product_group_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+
+                return $btn;
+            })
+            ->addColumn('image', function ($row) {
+                $img = '';
+                if ($row->image) {
+                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
+                }
+
+                return $img;
+            })
+            ->rawColumns(['action', 'image'])
+            ->make(true);
+    }
     public function getSubGroup($id)
     {
 

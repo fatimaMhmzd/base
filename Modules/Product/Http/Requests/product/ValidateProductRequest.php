@@ -16,7 +16,7 @@ class ValidateProductRequest extends FormRequest
         return [
             'title' => 'required|string',
             'sub_title' => 'nullable|string',
-            'file' => 'nullable|image|mimes:jpg,png|max:5000',
+            'file' => 'nullable|array',
             'brand' => 'nullable|string',
             'full_title' => 'nullable|string',
             'product_group_id' => 'required|integer',

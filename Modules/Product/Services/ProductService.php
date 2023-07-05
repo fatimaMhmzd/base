@@ -69,12 +69,14 @@ class ProductService
                 DB::commit();
                 $image = $inputs["file"] ?? null;
                 if ($image !== null) {
-
-                    $this->uploadImage($totalUnitItemUpdated, $image);
+                    foreach ($image as $item){
+                    $this->uploadImage($totalUnitItemUpdated, $item);
+                }
                 }
 
             } catch (\Exception $exception) {
                 DB::rollBack();
+
                 throw new \Exception(trans("custom.defaults.update_failed"));
             }
 
@@ -89,13 +91,38 @@ class ProductService
     {
         $inputs = $request->validated();
 
+        if ($inputs["off_price"] == null){
+            $inputs["off_price"] =0;
+        }
+        if ($inputs["off"] == null){
+            $inputs["off"] =0;
+        }
+        if ($inputs["available"] == null){
+            $inputs["available"] =0;
+        }
+        if ($inputs["weight"] == null){
+            $inputs["weight"] =0;
+        }
+        if ($inputs["weight_with_packaging"] == null){
+            $inputs["weight_with_packaging"] =0;
+        }
+        if ($inputs["unit_weight"] == null){
+            $inputs["unit_weight"] =0;
+        }
+        if ($inputs["status"] == null){
+            $inputs["status"] =0;
+        }
+
         DB::beginTransaction();
         try {
             $totalUnitsItem = $this->productRepository->create($inputs);
             DB::commit();
             $image = $inputs["file"] ?? null;
+
             if ($image !== null) {
-                $this->uploadImage($totalUnitsItem, $image);
+                foreach ($image as $item){
+                $this->uploadImage($totalUnitsItem, $item);
+                }
             }
 
         } catch (\Exception $exception) {
