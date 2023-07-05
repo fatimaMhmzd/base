@@ -1,4 +1,4 @@
-
+@inject('slider', 'Modules.Slider.Services.SliderService')
 
 
     <div class="intro-section pt-3 pb-3 mb-2">

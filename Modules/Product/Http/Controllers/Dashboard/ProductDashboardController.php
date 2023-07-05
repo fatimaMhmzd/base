@@ -114,6 +114,7 @@ class ProductDashboardController extends Controller
     {
 
         $data = $this->service->ajax();
+        return $data;
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {

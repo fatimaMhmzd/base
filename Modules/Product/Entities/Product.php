@@ -69,7 +69,7 @@ class Product extends Model
 
     public function image()
     {
-        return $this->morphOne(Images::class, 'imageable');
+        return $this->morphMany(Images::class, 'imageable');
     }
 
     public function group(): HasOne

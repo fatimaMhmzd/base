@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\Slider\Services;
+namespace Modules\Unit\Services;
 
 use Illuminate\Support\Facades\DB;
 use Modules\Polymorphism\Services\ImageService;
-use Modules\Slider\Http\Repositories\SliderRepository;
-use Modules\Slider\Http\Requests\slider\ValidateSliderRequest;
+use Modules\Unit\Http\Repositories\UnitRepository;
+use Modules\Unit\Http\Requests\unit\ValidateUnitRequest;
 
-class SliderService
+class UnitService
 {
-    public function __construct(public SliderRepository $sliderRepository)
+    public function __construct(public UnitRepository $pageRepository)
     {
     }
 
@@ -23,41 +23,28 @@ class SliderService
                 "like" => true,
             ];
         }
-        $all = $this->sliderRepository->getByInput($filter, $request->perPage, $request->pageNumber);
-        return $all;
-    }
-    public function getBy($pageId)
-    {
-        $filter = [];
-        if ($pageId) {
-            $filter[] = (object)[
-                "col" => "page_id",
-                "value" => $pageId,
-                "like" => false,
-            ];
-        }
-        $all = $this->sliderRepository->getByInput($filter);
+        $all = $this->pageRepository->getByInput($filter, $request->perPage, $request->pageNumber);
         return $all;
     }
 
     public function ajax()
     {
-        $all = $this->sliderRepository->getByInput();
+        $all = $this->pageRepository->getByInput();
         return $all;
     }
 
     public function find($id)
     {
-        return $this->sliderRepository->find($id);
+        return $this->pageRepository->find($id);
     }
 
     public function delete($id)
     {
-        $item = $this->sliderRepository->find($id);
+        $item = $this->pageRepository->find($id);
         if ($item) {
             DB::beginTransaction();
             try {
-                $itemDeleted = $this->sliderRepository->delete($item);
+                $itemDeleted = $this->pageRepository->delete($item);
                 DB::commit();
                 return $itemDeleted;
             } catch (\Exception $exception) {
@@ -69,21 +56,16 @@ class SliderService
         }
     }
 
-    public function update(ValidateSliderRequest $request, $id): mixed
+    public function update(ValidateUnitRequest $request, $id): mixed
     {
         $inputs = $request->validated();
-        $totalUnitItem = $this->sliderRepository->find($id);
+        $totalUnitItem = $this->pageRepository->find($id);
         if ($totalUnitItem) {
             DB::beginTransaction();
             try {
-                $totalUnitItemUpdated = $this->sliderRepository->update($totalUnitItem, $inputs);
+                $totalUnitItemUpdated = $this->pageRepository->update($totalUnitItem, $inputs);
                 DB::commit();
-                $image = $inputs["file"] ?? null;
-                if ($image !== null) {
-
-                        $this->uploadImage($totalUnitItemUpdated, $image);
-                    }
-
+                return $totalUnitItemUpdated;
             } catch (\Exception $exception) {
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.update_failed"));
@@ -92,29 +74,28 @@ class SliderService
         } else {
             throw new \Exception(trans("custom.defaults.not_found"));
         }
+        $image = $inputs["file"] ?? null;
+        if ($image !== null) {
+            foreach ($image as $item){
+                $this->uploadImage($totalUnitsItem, $item);
+            }
 
-        return $totalUnitItemUpdated;
+        }
+        return $totalUnitsItem;
     }
 
-    public function store(ValidateSliderRequest $request)
+    public function store(ValidateUnitRequest $request)
     {
         $inputs = $request->validated();
-        $exist = $this->sliderRepository->findBy("title", $inputs["title"]);
-        if (!$exist) {
 
+        $exist = $this->pageRepository->findBy("title", $inputs["title"]);
+        if (!$exist) {
 
 
             DB::beginTransaction();
             try {
-                $totalUnitsItem = $this->sliderRepository->create($inputs);
+                $totalUnitsItem = $this->pageRepository->create($inputs);
                 DB::commit();
-                $image = $inputs["file"] ?? null;
-                if ($image !== null) {
-
-                    $this->uploadImage($totalUnitsItem, $image);
-
-
-                }
 
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -124,7 +105,13 @@ class SliderService
             throw new \Exception(trans("custom.publicContent.item_with_application_id_already_exist"));
         }
 
+        $image = $inputs["file"] ?? null;
+        if ($image !== null) {
 
+            $this->uploadImage($totalUnitsItem, $image);
+
+
+        }
         return $totalUnitsItem;
 
     }
@@ -132,12 +119,11 @@ class SliderService
 
     public function all()
     {
-        return $this->sliderRepository->getByInput();
+        return $this->pageRepository->getByInput();
     }
     public function uploadImage($guild, $file)
     {
-        $destinationPath = "public/slider/" . $guild->id;
+        $destinationPath = "public/unit/" . $guild->id;
         ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
     }
-
 }

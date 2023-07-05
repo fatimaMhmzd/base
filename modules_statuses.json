@@ -8,5 +8,8 @@
     "Group": true,
     "Blog": true,
     "Polymorphism": true,
-    "Product": true
+    "Product": true,
+    "Comment": true,
+    "Unit": true,
+    "Size": true
 }
