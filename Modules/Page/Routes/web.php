@@ -22,3 +22,5 @@ use Modules\Page\Http\Controllers\PageController;
 Route::get('/', [PageController::class, 'index'])->name('indexClient');
 Route::get('/compare', [PageController::class, 'compare'])->name('compareClient');
 Route::get('/wishlist', [PageController::class, 'wishlist'])->name('wishlistClient');
+Route::get('/about', [PageController::class, 'about'])->name('aboutClient');
+

@@ -76,4 +76,10 @@ class ProductController extends Controller
     {
         //
     }
+
+    //STORE PAGE
+    public function storepage()
+    {
+        return view('product::client.store');
+}
 }

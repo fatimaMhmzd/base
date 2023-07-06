@@ -90,4 +90,12 @@ class PageController extends Controller
     {
         return view('page::client.wishlist.wishlist');
     }
+
+//    ABOUT PAGE
+    public function about()
+    {
+        return view('page::client.publicc.about.about');
+}
+
+
 }
