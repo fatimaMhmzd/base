@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Page\Http\Repositories\PageRepository;
 use Modules\Page\Http\Requests\page\ValidatePageRequest;
 use Modules\Polymorphism\Services\ImageService;
+use Yajra\DataTables\Facades\DataTables;
 
 class PageService
 {
@@ -29,8 +30,19 @@ class PageService
 
     public function ajax()
     {
-        $all = $this->pageRepository->getByInput();
-        return $all;
+        $data = $this->pageRepository->getByInput();
+        return  Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+
+                $btn = '<a href="' . route('dashboard_page_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_page_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+
     }
 
     public function find($id)
@@ -90,8 +102,6 @@ class PageService
 
         $exist = $this->pageRepository->findBy("title", $inputs["title"]);
         if (!$exist) {
-
-
             DB::beginTransaction();
             try {
                 $totalUnitsItem = $this->pageRepository->create($inputs);

@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('page_id')->unsigned();
             $table->string('title');
-            $table->string('sub_title')->nullable();
+            $table->string('sub_title1')->nullable();
+            $table->string('sub_title2')->nullable();
+            $table->string('sub_title3')->nullable();
+            $table->string('sub_title4')->nullable();
             $table->string('link')->nullable();
             $table->string('url')->nullable();
             $table->text('description')->nullable();

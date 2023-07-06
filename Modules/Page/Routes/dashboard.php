@@ -11,7 +11,7 @@ Route::group(['prefix' => 'page', 'as' => 'page_'], function (){
     Route::post('/store', [AdminPageController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [AdminPageController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [AdminPageController::class, 'update'])->name('update');
-    Route::delete('/destroy/{id}', [AdminPageController::class, 'destroy'])->name('destroy');
+    Route::get('/destroy/{id}', [AdminPageController::class, 'destroy'])->name('destroy');
 
 
 });

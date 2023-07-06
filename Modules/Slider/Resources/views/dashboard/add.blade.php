@@ -56,7 +56,31 @@
                                             <div class="form-group">
                                                 <label  style="margin-top: 20px"> زیر عنوان</label>
                                                 <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title1">
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label  style="margin-top: 20px"> زیر عنوان</label>
+                                                <fieldset class="form-group">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title2">
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label  style="margin-top: 20px"> زیر عنوان</label>
+                                                <fieldset class="form-group">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title3">
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label  style="margin-top: 20px"> زیر عنوان</label>
+                                                <fieldset class="form-group">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title4">
                                                 </fieldset>
                                             </div>
                                         </div>

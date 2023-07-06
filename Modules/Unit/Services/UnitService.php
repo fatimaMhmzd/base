@@ -9,7 +9,7 @@ use Modules\Unit\Http\Requests\unit\ValidateUnitRequest;
 
 class UnitService
 {
-    public function __construct(public UnitRepository $pageRepository)
+    public function __construct(public UnitRepository $unitRepository)
     {
     }
 
@@ -23,28 +23,28 @@ class UnitService
                 "like" => true,
             ];
         }
-        $all = $this->pageRepository->getByInput($filter, $request->perPage, $request->pageNumber);
+        $all = $this->unitRepository->getByInput($filter, $request->perPage, $request->pageNumber);
         return $all;
     }
 
     public function ajax()
     {
-        $all = $this->pageRepository->getByInput();
+        $all = $this->unitRepository->getByInput();
         return $all;
     }
 
     public function find($id)
     {
-        return $this->pageRepository->find($id);
+        return $this->unitRepository->find($id);
     }
 
     public function delete($id)
     {
-        $item = $this->pageRepository->find($id);
+        $item = $this->unitRepository->find($id);
         if ($item) {
             DB::beginTransaction();
             try {
-                $itemDeleted = $this->pageRepository->delete($item);
+                $itemDeleted = $this->unitRepository->delete($item);
                 DB::commit();
                 return $itemDeleted;
             } catch (\Exception $exception) {
@@ -59,11 +59,11 @@ class UnitService
     public function update(ValidateUnitRequest $request, $id): mixed
     {
         $inputs = $request->validated();
-        $totalUnitItem = $this->pageRepository->find($id);
+        $totalUnitItem = $this->unitRepository->find($id);
         if ($totalUnitItem) {
             DB::beginTransaction();
             try {
-                $totalUnitItemUpdated = $this->pageRepository->update($totalUnitItem, $inputs);
+                $totalUnitItemUpdated = $this->unitRepository->update($totalUnitItem, $inputs);
                 DB::commit();
                 return $totalUnitItemUpdated;
             } catch (\Exception $exception) {
@@ -74,29 +74,23 @@ class UnitService
         } else {
             throw new \Exception(trans("custom.defaults.not_found"));
         }
-        $image = $inputs["file"] ?? null;
-        if ($image !== null) {
-            foreach ($image as $item){
-                $this->uploadImage($totalUnitsItem, $item);
-            }
 
-        }
-        return $totalUnitsItem;
+
     }
 
     public function store(ValidateUnitRequest $request)
     {
         $inputs = $request->validated();
 
-        $exist = $this->pageRepository->findBy("title", $inputs["title"]);
+        $exist = $this->unitRepository->findBy("title", $inputs["title"]);
         if (!$exist) {
 
 
             DB::beginTransaction();
             try {
-                $totalUnitsItem = $this->pageRepository->create($inputs);
+                $totalUnitsItem = $this->unitRepository->create($inputs);
                 DB::commit();
-
+                return $totalUnitsItem;
             } catch (\Exception $exception) {
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.store_failed"));
@@ -105,25 +99,14 @@ class UnitService
             throw new \Exception(trans("custom.publicContent.item_with_application_id_already_exist"));
         }
 
-        $image = $inputs["file"] ?? null;
-        if ($image !== null) {
 
-            $this->uploadImage($totalUnitsItem, $image);
-
-
-        }
-        return $totalUnitsItem;
 
     }
 
 
     public function all()
     {
-        return $this->pageRepository->getByInput();
+        return $this->unitRepository->getByInput();
     }
-    public function uploadImage($guild, $file)
-    {
-        $destinationPath = "public/unit/" . $guild->id;
-        ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
-    }
+
 }
