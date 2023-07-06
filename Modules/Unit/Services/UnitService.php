@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Unit\Http\Repositories\UnitRepository;
 use Modules\Unit\Http\Requests\unit\ValidateUnitRequest;
+use Yajra\DataTables\Facades\DataTables;
 
 class UnitService
 {
@@ -29,8 +30,18 @@ class UnitService
 
     public function ajax()
     {
-        $all = $this->unitRepository->getByInput();
-        return $all;
+        $data = $this->unitRepository->getByInput();
+        return Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+
+                $btn = '<a href="' . route('dashboard_unit_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_unit_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 
     public function find($id)
