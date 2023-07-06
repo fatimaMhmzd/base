@@ -38,6 +38,9 @@ return new class extends Migration
             $table->bigInteger('barcode')->nullable();
             $table->unsignedBigInteger('creator')->nullable();
             $table->unsignedBigInteger('updater')->nullable();
+            $table->bigInteger('avg_rate')->default(0);
+            $table->bigInteger('num_sell')->default(0);
+            $table->bigInteger('num_visit')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

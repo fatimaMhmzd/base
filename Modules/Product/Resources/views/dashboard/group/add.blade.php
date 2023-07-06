@@ -50,14 +50,13 @@
 
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="companyinput1" style="margin-top: 20px">عکس اصلی</label>
-                                                <fieldset class="form-group">
-                                                    <input type="file" name="file" class="form-control-file"
-                                                           id="exampleInputFile">
-                                                </fieldset>
-                                            </div>
+                                        <div class="col-xl-6 col-md-6 col-6 mb-1">
+                                            <fieldset class="form-group">
+                                                <div class="col mb-1">
+                                                    <label>عکس</label>
+                                                </div>
+                                                <img id="companyLogo" data-type="editable" height="200px" width="200px"/>
+                                            </fieldset>
                                         </div>
 
 
@@ -88,102 +87,62 @@
 
 @stop
 @section('script')
-{{--    <script>
-        document.querySelector('select').addEventListener('change', selectChanged);
-
-        // Create the tree node element
-
-
-        function selectChanged(evt) {
-            alert(evt.target.value);
-
-
-                $.ajax({
-                    url: "/dashboard/product/group/getSubGroup/" + evt.target.value,
-
-                    type: 'GET',
-                    success: function (res) {
-                        var node = ``;
-                        if (res.length !== 0) {
-                            var options = ``;
-
-                            for (var i = 0; i < res.length; i++) {
-                                options = `<option value="` + res[i]['id'] + `"> ` + res[i]['title'] + `</option>`
-
-                            }
-                             node += ` <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">انتخاب سرگروه</label>
-                                            <fieldset class="form-group">
-                                                <select class="form-control"  name="father_id" onchange="selectChanged()" >
-                                                    <option value="0">سرگروه</option>
-                                              ` + options + `
-                        </select>
-                    </fieldset>
-                </div>`
-                            var divShow = evt.target.nextElementSibling;
-                            evt.target.parentElement.parentElement.innerHTML += node;
-                            /* evt.target.parentElement.parentElement.parentElement.insertAfterElement(node);*/
-                        }
-
-
-                        // document.getElementById('subGroup').innerHTML = res;
-
-
-                    }
-                });
-
-
-            /*         var divShow = evt.target.nextElementSibling;
-
-                     divShow.style.display = evt.target.value;*/
-        }
-    </script>
-
-
-
-
     <script>
-        counter = 1;
 
-        function addRow() {
+        function init() {
+            $("img[data-type=editable]").each(function (i, e) {
+                var _inputFile = $('<input/>')
+                    .attr('type', 'file')
+                    .attr('hidden', 'hidden')
+                    .attr('onchange', 'readImage()')
+                    .attr('name', 'file')
+                    .attr('data-image-placeholder', e.id);
 
-            var node = `
-                                                    <div class="col-xl-6 col-lg-12">
-                                                        <div class="form-group">
-                                                            <p class="text-bold-600 font-medium-2">
-                                                                عکس اسلایدر
-                                                            </p>
-                                                            <input type="file" class="form-control"
-                                                                   placeholder="عکس اسلایدر"
-                                                                   name="sliderimg[]">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl-6 col-lg-12">
-                                                        <button type="button" class="btn btn-danger mt-3" onclick="deleteRow(` + counter + `)">delete</button>
-                                                    </div>
-                                                `
+                $(e.parentElement).append(_inputFile);
 
-            var divData = document.createElement("div");
-
-            divData.id = 'location' + counter
-            divData.className = 'row'
-
-            divData.innerHTML = node;
-
-
-            document.getElementById("sliderArea").appendChild(divData)
-            counter++
+                $(e).on("click", _inputFile, triggerClick);
+            });
         }
 
-
-        function deleteRow(index) {
-
-            var idd = 'location' + index
-
-            document.getElementById(idd).innerHTML = ''
+        function triggerClick(e) {
+            e.data.click();
         }
 
-    </script>--}}
+        Element.prototype.readImage = function () {
+            var _inputFile = this;
+            if (_inputFile && _inputFile.files && _inputFile.files[0]) {
+                var _fileReader = new FileReader();
+                _fileReader.onload = function (e) {
+                    var _imagePlaceholder = _inputFile.attributes.getNamedItem("data-image-placeholder").value;
+                    var _img = $("#" + _imagePlaceholder);
+                    _img.attr("src", e.target.result);
+                };
+                _fileReader.readAsDataURL(_inputFile.files[0]);
+            }
+        };
+
+        //
+        // IIFE - Immediately Invoked Function Expression
+        // https://stackoverflow.com/questions/18307078/jquery-best-practises-in-case-of-document-ready
+        (
+
+            function (yourcode) {
+                "use strict";
+                // The global jQuery object is passed as a parameter
+                yourcode(window.jQuery, window, document);
+            }(
+                function ($, window, document) {
+                    "use strict";
+                    // The $ is now locally scoped
+                    $(function () {
+                        // The DOM is ready!
+                        init();
+                    });
+
+                    // The rest of your code goes here!
+                }));
+
+    </script>
 
 @endsection
 

@@ -45,7 +45,7 @@ class ProductDashboardController extends Controller
         try {
             $result = $this->service->store($request);
 
-            return back()->with('success', true)->with('message', 'با موفقیت انجام شد.');
+            return back()->with('success', true)->with('message', $result);
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
@@ -114,25 +114,7 @@ class ProductDashboardController extends Controller
     {
 
         $data = $this->service->ajax();
+
         return $data;
-        return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-
-                $btn = '<a href="' . route('dashboard_product_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_product_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
-
-                return $btn;
-            })
-            ->addColumn('image', function ($row) {
-                $img = '';
-                if ($row->image) {
-                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
-                }
-
-                return $img;
-            })
-            ->rawColumns(['action', 'image'])
-            ->make(true);
     }
 }

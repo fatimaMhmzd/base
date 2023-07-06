@@ -8,6 +8,7 @@ use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Repositories\ProductRepository;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
 use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductService
 {
@@ -31,8 +32,26 @@ class ProductService
 
     public function ajax()
     {
-        $all = $this->productRepository->getByInput();
-        return $all;
+        $data = $this->productRepository->getByInput();
+        return  Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+
+                $btn = '<a href="' . route('dashboard_product_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_product_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+
+                return $btn;
+            })
+            ->addColumn('image', function ($row) {
+                $img = '';
+                if ($row->image) {
+                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
+                }
+
+                return $img;
+            })
+            ->rawColumns(['action', 'image'])
+            ->make(true);;
     }
 
     public function find($id)

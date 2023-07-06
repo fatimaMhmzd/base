@@ -16,6 +16,8 @@ class ProductGroup extends Model
         "sub_title",
         "description",
         "father_id",
+        "sort_id",
+        "display_on_homepage",
     ];
 
     protected $with = ["image"];

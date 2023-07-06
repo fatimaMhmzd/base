@@ -36,6 +36,9 @@ class Product extends Model
         "barcode",
         "creator",
         "updater",
+        "avg_rate",
+        "num_sell",
+        "num_visit",
     ];
 
     protected $casts = [
@@ -61,6 +64,9 @@ class Product extends Model
         "barcode" => "integer",
         "creator" => "integer",
         "updater" => "integer",
+        "avg_rate" => "integer",
+        "num_sell" => "integer",
+        "num_visit" => "integer",
         "deleted_at" => "timestamp",
         "created_at" => "timestamp",
         "updated_at" => "timestamp"
