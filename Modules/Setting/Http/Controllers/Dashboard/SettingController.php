@@ -5,11 +5,14 @@ namespace Modules\Setting\Http\Controllers\Dashboard;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Yajra\DataTables\Facades\DataTables;
+use Modules\Setting\Http\Requests\setting\ValidateSettingRequest;
+use Modules\Setting\Services\SettingService;
 
-
-class AdminSettingController extends Controller
+class SettingController extends Controller
 {
+    public function __construct(public SettingService $settingService)
+    {
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -33,7 +36,7 @@ class AdminSettingController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidateSettingRequest $request)
     {
         try {
             $result = $this->service->store($request);
@@ -71,7 +74,7 @@ class AdminSettingController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateSettingRequest $request, $id)
     {
         try {
             $this->service->update($request, $id);
@@ -102,29 +105,10 @@ class AdminSettingController extends Controller
             return back()->with('error', true)->with('message', $message);
         }
     }
-
     public function ajax()
     {
 
         $data = $this->service->ajax();
-        return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-
-                $btn = '<a href="' . route('dashboard_setting_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_setting_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
-
-                return $btn;
-            })
-            ->addColumn('image', function ($row) {
-                $img = '';
-                if ($row->image) {
-                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
-                }
-
-                return $img;
-            })
-            ->rawColumns(['action', 'image'])
-            ->make(true);
+        return $data;
     }
 }
