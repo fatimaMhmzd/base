@@ -11,7 +11,7 @@ class Unit extends Model
 
     protected $table = "units";
 
-    protected $fillable = ["title"];
+    protected $fillable = ["title","description"];
 
     protected $casts = [
         "title" => "string"
