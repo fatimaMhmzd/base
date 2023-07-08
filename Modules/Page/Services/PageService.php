@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Page\Http\Repositories\PageRepository;
 use Modules\Page\Http\Requests\page\ValidatePageRequest;
 use Modules\Polymorphism\Services\ImageService;
+use Modules\SocialMedia\Services\SocialMediaService;
 use Yajra\DataTables\Facades\DataTables;
 
 class PageService
@@ -136,5 +137,14 @@ class PageService
         $destinationPath = "public/page/" . $guild->id;
         ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
     }
+
+    public function indexPageData(): object
+    {
+        $socialMediaService = resolve(SocialMediaService::class);
+        $allSocialMedia = $socialMediaService->all();
+
+        return (object)array("allSocialMedia"=>$allSocialMedia);
+    }
+
 
 }

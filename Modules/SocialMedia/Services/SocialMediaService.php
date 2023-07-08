@@ -68,7 +68,7 @@ class SocialMediaService
                 $image = $inputs["file"] ?? null;
                 if ($image !== null) {
                     foreach ($image as $item){
-                        $this->uploadImage($totalUnitsItem, $item);
+                        $this->uploadImage($totalUnitItemUpdated, $item);
                     }
 
                 }
@@ -81,7 +81,7 @@ class SocialMediaService
             throw new \Exception(trans("custom.defaults.not_found"));
         }
 
-        return $totalUnitsItem;
+        return $totalUnitItemUpdated;
     }
 
     public function store(ValidateSocialMediaRequest $request)

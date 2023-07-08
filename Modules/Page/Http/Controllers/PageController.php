@@ -10,13 +10,14 @@ use Modules\Page\Services\PageService;
 class PageController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+    public function __construct(public PageService $service)
+    {
+    }
+
     public function index()
     {
-        return view('page::client.publicc.home.home');
+        $indexPageData = $this->service->indexPageData();
+        return view('page::client.publicc.home.home',compact('indexPageData'));
     }
 
     /**
@@ -95,7 +96,7 @@ class PageController extends Controller
     public function about()
     {
         return view('page::client.publicc.about.about');
-}
+    }
 
 
 }

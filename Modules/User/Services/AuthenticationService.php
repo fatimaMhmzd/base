@@ -44,7 +44,6 @@ class AuthenticationService
                     return $user;
                 } catch (\Exception $exception) {
                     DB::rollBack();
-                    return null;
                     throw new \Exception(trans("custom.defaults.store_failed"));
                 }
             }else{

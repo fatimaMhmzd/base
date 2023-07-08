@@ -8,31 +8,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>سایت فروشگاهی</title>
-    <meta name="keywords" content="HTML5 Template">
-    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="keywords" content="فروشگاه">
+    <meta name="description" content="فروشگاه">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
-    <link rel="manifest" href="assets/images/icons/site.webmanifest">
-    <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#666666">
-    <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/icons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/images/icons/safari-pinned-tab.svg" color="#666666">
+    <link rel="shortcut icon" href="/assets/images/icons/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
     <meta name="msapplication-TileColor" content="#cc9966">
     <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-rtl.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/plugins/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/plugins/jquery.countdown.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/plugins/jquery.countdown.css">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/skins/skin-demo-3.css">
-    <link rel="stylesheet" href="assets/css/demos/demo-3.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/skins/skin-demo-3.css">
+    <link rel="stylesheet" href="/assets/css/demos/demo-3.css">
 </head>
 
 <body>
@@ -146,6 +146,7 @@
                         </div><!-- End .dropdown-menu -->
                     </div><!-- End .compare-dropdown -->
 
+                    @if(\Illuminate\Support\Facades\Auth::check())
                     <div class="wishlist">
                         <a href="/wishlist" title="لیست محصولات مورد علاقه شما">
                             <div class="icon">
@@ -154,20 +155,21 @@
                             </div>
                             <p>مورد علاقه</p>
                         </a>
-                    </div><!-- End .compare-dropdown -->
+                    </div>
 
                     <div class="dropdown cart-dropdown">
                         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" data-display="static">
                             <div class="icon">
                                 <i class="icon-shopping-cart"></i>
-                                <span class="cart-count">2</span>
+                                <span class="cart-count">{{count($groups->cartItems())}}</span>
                             </div>
                             <p>سبد خرید</p>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-cart-products">
+                                @foreach($groups->cartItems() as $item)
                                 <div class="product">
                                     <div class="product-cart-details">
                                         <h4 class="product-title">
@@ -186,33 +188,15 @@
                                         </a>
                                     </figure>
                                     <a href="#" class="btn-remove" title="حذف محصول"><i class="icon-close"></i></a>
-                                </div><!-- End .product -->
+                                </div>
+                                @endforeach
 
-                                <div class="product">
-                                    <div class="product-cart-details">
-                                        <h4 class="product-title">
-                                            <a href="product.html">لباس زنانه آبی</a>
-                                        </h4>
-
-                                        <span class="cart-product-info">
-                                                <span class="cart-product-qty">1 x </span>
-                                                76,000 تومان
-                                            </span>
-                                    </div><!-- End .product-cart-details -->
-
-                                    <figure class="product-image-container">
-                                        <a href="product.html" class="product-image">
-                                            <img src="assets/images/products/cart/product-2.jpg" alt="product">
-                                        </a>
-                                    </figure>
-                                    <a href="#" class="btn-remove" title="حذف محصول"><i class="icon-close"></i></a>
-                                </div><!-- End .product -->
                             </div><!-- End .cart-product -->
 
                             <div class="dropdown-cart-total">
                                 <span>مجموع</span>
 
-                                <span class="cart-total-price">160,000 تومان</span>
+                                <span class="cart-total-price">0 تومان</span>
                             </div><!-- End .dropdown-cart-total -->
 
                             <div class="dropdown-cart-action">
@@ -221,7 +205,8 @@
                                         class="icon-long-arrow-left"></i></a>
                             </div><!-- End .dropdown-cart-total -->
                         </div><!-- End .dropdown-menu -->
-                    </div><!-- End .cart-dropdown -->
+                    </div>
+                    @endif
                 </div><!-- End .header-right -->
             </div><!-- End .container -->
         </div><!-- End .header-middle -->
@@ -1119,17 +1104,18 @@
                         <div class="tab-content" id="tab-content-5">
                             <div class="tab-pane fade show active" id="signin" role="tabpanel"
                                  aria-labelledby="signin-tab">
-                                <form action="#">
+                                <form method="POST" action="{{ route('user_singIn') }}">
+                                    @csrf
                                     <div class="form-group">
-                                        <label for="singin-email">نام کاربری یا آدرس ایمیل *</label>
+                                        <label for="singin-email">شماره موبایل *</label>
                                         <input type="text" class="form-control" id="singin-email"
-                                               name="singin-email" required>
+                                               name="mobile" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group">
                                         <label for="singin-password">رمز عبور *</label>
                                         <input type="password" class="form-control" id="singin-password"
-                                               name="singin-password" required>
+                                               name="password" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-footer">

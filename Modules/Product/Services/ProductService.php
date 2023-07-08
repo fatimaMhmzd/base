@@ -4,6 +4,7 @@ namespace Modules\Product\Services;
 
 use Illuminate\Support\Facades\DB;
 use Modules\Polymorphism\Services\ImageService;
+use Modules\Product\Entities\ProductGroup;
 use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Repositories\ProductRepository;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
@@ -163,4 +164,13 @@ class ProductService
         $destinationPath = "public/productGroup/" . $guild->id;
         ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
     }
+
+    public function shopIndexPage(): object
+    {
+        $groupService = resolve(ProductGroupService::class);
+        $groups = $groupService->all();
+        return (object)array("groups"=>$groups);
+
+    }
+
 }

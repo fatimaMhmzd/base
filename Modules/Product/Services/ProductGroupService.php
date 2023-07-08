@@ -119,7 +119,7 @@ class ProductGroupService
     }
 
 
-    public function all()
+    public function all(): \Illuminate\Support\Collection
     {
         return $this->productGroupRepository->getByInput();
     }
@@ -127,6 +127,11 @@ class ProductGroupService
     {
         $destinationPath = "public/productGroup/" . $guild->id;
         ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
+    }
+
+    public function cartItems(): array
+    {
+        return [];
     }
 
 }
