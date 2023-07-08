@@ -82,4 +82,8 @@ class ProductController extends Controller
     {
         return view('product::client.store');
 }
+    public function productdetail()
+    {
+        return view('product::client.productDetail');
+    }
 }

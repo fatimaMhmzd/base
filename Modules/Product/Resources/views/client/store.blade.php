@@ -40,7 +40,7 @@
                                     </div>
                                 </div><!-- End .toolbox-sort -->
                                 <div class="toolbox-layout">
-                                    <a onclick="changeStyle('one',this)" class="btn-layout activing">
+                                    <a onclick="changeStyle('one')" id="one" class="btn-layout active">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="10" height="4"/>
@@ -49,7 +49,7 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('two',this)" class="btn-layout activing">
+                                    <a onclick="changeStyle('two')" id="two" class="btn-layout">
                                         <svg width="10" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -58,7 +58,7 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('three',this)" class="btn-layout activing">
+                                    <a onclick="changeStyle('three')" id="three" class="btn-layout">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -69,7 +69,7 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('four',this)" class="btn-layout activing">
+                                    <a onclick="changeStyle('four')" id="four" class="btn-layout">
                                         <svg width="22" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -2237,26 +2237,42 @@
     </main><!-- End .main -->
 
     <script>
-        function changeStyle($str, $ssss) {
-            if ($str === 'one') { //document.getElementsById('one').classList.remove = "active"
+        function changeStyle($str) {
+            if ($str === 'one') {
+                const ss1 = document.getElementById('one'); ss1.classList.add("active");
+                const ss2 = document.getElementById('two');ss2.classList.remove("active");
+                const ss3 = document.getElementById('three');ss3.classList.remove("active");
+                const ss4 = document.getElementById('four');ss4.classList.remove("active");
                 const myElement1 = document.getElementById("showStyleOne");myElement1.style.display = "block";
                 const myElement2 = document.getElementById("showStyleTwo");myElement2.style.display = "none";
                 const myElement3 = document.getElementById("showStyleThree");myElement3.style.display = "none";
                 const myElement4 = document.getElementById("showStyleFour");myElement4.style.display = "none";
             }
-            if ($str === 'two') {//document.getElementById('two').attributes = "active"
+            if ($str === 'two') {
+                const ss1 = document.getElementById('one'); ss1.classList.remove("active");
+                const ss2 = document.getElementById('two');ss2.classList.add("active");
+                const ss3 = document.getElementById('three');ss3.classList.remove("active");
+                const ss4 = document.getElementById('four');ss4.classList.remove("active");
                 const myElement1 = document.getElementById("showStyleOne");myElement1.style.display = "none";
                 const myElement2 = document.getElementById("showStyleTwo");myElement2.style.display = "block";
                 const myElement3 = document.getElementById("showStyleThree");myElement3.style.display = "none";
                 const myElement4 = document.getElementById("showStyleFour");myElement4.style.display = "none";
             }
             if ($str === 'three') {
+                const ss1 = document.getElementById('one'); ss1.classList.remove("active");
+                const ss2 = document.getElementById('two');ss2.classList.remove("active");
+                const ss3 = document.getElementById('three');ss3.classList.add("active");
+                const ss4 = document.getElementById('four');ss4.classList.remove("active");
                 const myElement1 = document.getElementById("showStyleOne");myElement1.style.display = "none";
                 const myElement2 = document.getElementById("showStyleTwo");myElement2.style.display = "none";
                 const myElement3 = document.getElementById("showStyleThree");myElement3.style.display = "block";
                 const myElement4 = document.getElementById("showStyleFour");myElement4.style.display = "none";
             }
             if ($str === 'four') {
+                const ss1 = document.getElementById('one'); ss1.classList.remove("active");
+                const ss2 = document.getElementById('two');ss2.classList.remove("active");
+                const ss3 = document.getElementById('three');ss3.classList.remove("active");
+                const ss4 = document.getElementById('four');ss4.classList.add("active");
                 const myElement1 = document.getElementById("showStyleOne");myElement1.style.display = "none";
                 const myElement2 = document.getElementById("showStyleTwo");myElement2.style.display = "none";
                 const myElement3 = document.getElementById("showStyleThree");myElement3.style.display = "none";
