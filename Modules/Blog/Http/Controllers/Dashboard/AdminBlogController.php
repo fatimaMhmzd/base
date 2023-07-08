@@ -9,6 +9,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class AdminBlogController extends Controller
 {
+
+
+
     /**
      * Display a listing of the resource.
      * @return Renderable

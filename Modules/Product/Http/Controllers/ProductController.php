@@ -14,14 +14,15 @@ class ProductController extends Controller
     {
     }
 
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function index()
     {
         $data = $this->service->shopIndexPage();
         return view('product::client.store',compact('data'));
     }
 
-    public function productdetail()
+    public function productDetail($slug)
     {
-        return view('product::client.productDetail');
+        $data = $this->service->productDetail($slug);
+        return view('product::client.productDetail',compact('data'));
     }
 }

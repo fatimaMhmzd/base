@@ -176,4 +176,8 @@ class ProductService
         return (object)array("groups"=>$groups);
     }
 
+    public function productDetail($slug)
+    {
+        return $this->productRepository->findBy("slug",$slug);
+    }
 }

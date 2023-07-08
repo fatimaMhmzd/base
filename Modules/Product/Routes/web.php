@@ -18,6 +18,6 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Product\Http\Controllers\ProductController;
 
-Route::get('/storepage', [ProductController::class, 'index'])->name('storepageClient');
-Route::get('/productdetail', [ProductController::class, 'productdetail'])->name('productClient');
+Route::get('/storePage', [ProductController::class, 'index'])->name('storePageClient');
+Route::get('/productDetail/{slug}', [ProductController::class, 'productDetail'])->name('productDetail');
 
