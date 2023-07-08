@@ -2,7 +2,7 @@
 @section('content')
 
     <main class="main">
-        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
             <div class="container">
                 <h1 class="page-title">لیست<span>فروشگاه</span></h1>
             </div><!-- End .container -->
@@ -10,7 +10,7 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index-1.html">خانه</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('indexClient')}}">خانه</a></li>
                     <li class="breadcrumb-item"><a href="#">فروشگاه</a></li>
                     <li class="breadcrumb-item active" aria-current="page">لیست</li>
                 </ol>
@@ -40,7 +40,7 @@
                                     </div>
                                 </div><!-- End .toolbox-sort -->
                                 <div class="toolbox-layout">
-                                    <a onclick="changeStyle('one',this)" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleOne')" class="btn-layout activing">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="10" height="4"/>
@@ -49,7 +49,7 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('two',this)" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleTwo')" class="btn-layout activing">
                                         <svg width="10" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -58,7 +58,7 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('three',this)" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleThree')" class="btn-layout activing">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -69,7 +69,7 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('four',this)" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleFour')" class="btn-layout activing">
                                         <svg width="22" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -85,7 +85,7 @@
                             </div><!-- End .toolbox-right -->
                         </div><!-- End .toolbox -->
 
-                        <div class="products mb-3" style="display: block" id="showStyleOne">
+                        <div class="products products-area mb-3" style="display: block" id="showStyleOne">
                             <div class="product product-list">
                                 <div class="row">
                                     <div class="col-6 col-lg-3">
@@ -479,7 +479,7 @@
                             </div><!-- End .product -->
                         </div><!-- End .products -->
 
-                        <div class="products mb-3" style="display: none" id="showStyleTwo">
+                        <div class="products products-area mb-3" style="display: none" id="showStyleTwo">
                             <div class="row justify-content-center">
                                 <div class="col-6">
                                     <div class="product product-7 text-center">
@@ -809,7 +809,7 @@
                             </div><!-- End .row -->
                         </div><!-- End .products -->
 
-                        <div class="products mb-3" style="display: none" id="showStyleThree">
+                        <div class="products products-area mb-3" style="display: none" id="showStyleThree">
                             <div class="row justify-content-center">
                                 <div class="col-6 col-md-4 col-lg-4">
                                     <div class="product product-7 text-center">
@@ -1291,7 +1291,7 @@
                             </div><!-- End .row -->
                         </div><!-- End .products -->
 
-                        <div class="products mb-3" style="display: none" id="showStyleFour">
+                        <div class="products products-area mb-3" style="display: none" id="showStyleFour">
                             <div class="row justify-content-center">
                                 <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                                     <div class="product product-7 text-center">
@@ -2237,31 +2237,13 @@
     </main><!-- End .main -->
 
     <script>
-        function changeStyle($str, $ssss) {
-            if ($str === 'one') { //document.getElementsById('one').classList.remove = "active"
-                const myElement1 = document.getElementById("showStyleOne");myElement1.style.display = "block";
-                const myElement2 = document.getElementById("showStyleTwo");myElement2.style.display = "none";
-                const myElement3 = document.getElementById("showStyleThree");myElement3.style.display = "none";
-                const myElement4 = document.getElementById("showStyleFour");myElement4.style.display = "none";
+
+        function changeStyle(divId) {
+            const divsToHide = document.getElementsByClassName('products-area');
+            for(var i = 0; i < divsToHide.length; i++){
+                divsToHide[i].style.display = "none";
             }
-            if ($str === 'two') {//document.getElementById('two').attributes = "active"
-                const myElement1 = document.getElementById("showStyleOne");myElement1.style.display = "none";
-                const myElement2 = document.getElementById("showStyleTwo");myElement2.style.display = "block";
-                const myElement3 = document.getElementById("showStyleThree");myElement3.style.display = "none";
-                const myElement4 = document.getElementById("showStyleFour");myElement4.style.display = "none";
-            }
-            if ($str === 'three') {
-                const myElement1 = document.getElementById("showStyleOne");myElement1.style.display = "none";
-                const myElement2 = document.getElementById("showStyleTwo");myElement2.style.display = "none";
-                const myElement3 = document.getElementById("showStyleThree");myElement3.style.display = "block";
-                const myElement4 = document.getElementById("showStyleFour");myElement4.style.display = "none";
-            }
-            if ($str === 'four') {
-                const myElement1 = document.getElementById("showStyleOne");myElement1.style.display = "none";
-                const myElement2 = document.getElementById("showStyleTwo");myElement2.style.display = "none";
-                const myElement3 = document.getElementById("showStyleThree");myElement3.style.display = "none";
-                const myElement4 = document.getElementById("showStyleFour");myElement4.style.display = "block";
-            }
+            document.getElementById(`${divId}`).style.display = "block";
         }
     </script>
 @endsection

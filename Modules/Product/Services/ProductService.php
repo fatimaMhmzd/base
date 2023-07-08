@@ -169,8 +169,11 @@ class ProductService
     {
         $groupService = resolve(ProductGroupService::class);
         $groups = $groupService->all();
-        return (object)array("groups"=>$groups);
 
+        /*$sizeService = resolve(SizeSe::class);
+        $sizes = $groupService->all();*/
+
+        return (object)array("groups"=>$groups);
     }
 
 }
