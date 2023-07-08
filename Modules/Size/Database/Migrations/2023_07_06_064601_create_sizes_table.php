@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
             $table->comment('جدول اندازه ها');
-            $table->id();
             $table->integer('unit_id');
             $table->string('title')->unique()->comment('عنوان');
             $table->string('sub_title')->nullable()->comment('زیر عنوان');

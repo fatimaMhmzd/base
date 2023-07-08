@@ -98,5 +98,10 @@ class PageController extends Controller
         return view('page::client.publicc.about.about');
     }
 
+//    CONTACT PAGE
+    public function contact()
+    {
+        return view('page::client.publicc.contact.contact');
+    }
 
 }

@@ -521,7 +521,7 @@
                                 <!-- End .megamenu -->
                             </li>
                             <li>
-                                <a href="/storepage" class="sf-with-ul">فروشگاه</a>
+                                <a href="/storePage" class="sf-with-ul">فروشگاه</a>
 
 {{--                                <div class="megamenu megamenu-md">--}}
 {{--                                    <div class="row no-gutters">--}}
@@ -696,46 +696,47 @@
 </div>
                             </li>
                             <li>
-                                <a href="blog.html" class="sf-with-ul">اخبار</a>
-
-                                <ul>
-                                    <li><a href="blog.html">کلاسیک</a></li>
-                                    <li><a href="blog-listing.html">لیست</a></li>
-                                    <li>
-                                        <a href="#">شبکه بندی</a>
-                                        <ul>
-                                            <li><a href="blog-grid-2cols.html">2 ستونه</a></li>
-                                            <li><a href="blog-grid-3cols.html">3 ستونه</a></li>
-                                            <li><a href="blog-grid-4cols.html">4 ستونه</a></li>
-                                            <li><a href="blog-grid-sidebar.html">با سایدبار</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">سایز های مختلف</a>
-                                        <ul>
-                                            <li><a href="blog-masonry-2cols.html">2 ستونه</a></li>
-                                            <li><a href="blog-masonry-3cols.html">3 ستونه</a></li>
-                                            <li><a href="blog-masonry-4cols.html">4 ستونه</a></li>
-                                            <li><a href="blog-masonry-sidebar.html">با سایدبار</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">ماسک</a>
-                                        <ul>
-                                            <li><a href="blog-mask-grid.html">نوع 1</a></li>
-                                            <li><a href="blog-mask-masonry.html">نوع 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">پست تکی</a>
-                                        <ul>
-                                            <li><a href="single.html">پیش فرض با سایدبار</a></li>
-                                            <li><a href="single-fullwidth.html">تمام صفحه بدون سایدبار</a></li>
-                                            <li><a href="single-fullwidth-sidebar.html">تمام صفحه باسایدبار</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                <a href="/contact" class="sf-with-ul">تماس با ما</a>
+<div>
+{{--                                <ul>--}}
+{{--                                    <li><a href="blog.html">کلاسیک</a></li>--}}
+{{--                                    <li><a href="blog-listing.html">لیست</a></li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">شبکه بندی</a>--}}
+{{--                                        <ul>--}}
+{{--                                            <li><a href="blog-grid-2cols.html">2 ستونه</a></li>--}}
+{{--                                            <li><a href="blog-grid-3cols.html">3 ستونه</a></li>--}}
+{{--                                            <li><a href="blog-grid-4cols.html">4 ستونه</a></li>--}}
+{{--                                            <li><a href="blog-grid-sidebar.html">با سایدبار</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">سایز های مختلف</a>--}}
+{{--                                        <ul>--}}
+{{--                                            <li><a href="blog-masonry-2cols.html">2 ستونه</a></li>--}}
+{{--                                            <li><a href="blog-masonry-3cols.html">3 ستونه</a></li>--}}
+{{--                                            <li><a href="blog-masonry-4cols.html">4 ستونه</a></li>--}}
+{{--                                            <li><a href="blog-masonry-sidebar.html">با سایدبار</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">ماسک</a>--}}
+{{--                                        <ul>--}}
+{{--                                            <li><a href="blog-mask-grid.html">نوع 1</a></li>--}}
+{{--                                            <li><a href="blog-mask-masonry.html">نوع 2</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">پست تکی</a>--}}
+{{--                                        <ul>--}}
+{{--                                            <li><a href="single.html">پیش فرض با سایدبار</a></li>--}}
+{{--                                            <li><a href="single-fullwidth.html">تمام صفحه بدون سایدبار</a></li>--}}
+{{--                                            <li><a href="single-fullwidth-sidebar.html">تمام صفحه باسایدبار</a>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+</div>
                             </li>
                             <li>
                                 <a href="elements-list.html" class="sf-with-ul">عناصر طراحی</a>
@@ -1235,40 +1236,41 @@
     </div><!-- End .modal-dialog -->
 </div><!-- End .modal -->
 
-<div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
-    <div class="row justify-content-center">
-        <div class="col-10">
-            <div class="row no-gutters bg-white newsletter-popup-content">
-                <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
-                    <div class="banner-content text-center">
-                        <img src="assets/images/popup/newsletter/logo.png" class="logo" alt="logo" width="60"
-                             height="15">
-                        <h2 class="banner-title">دریافت <span>25<light>%</light></span> تخفیف</h2>
-                        <p>با عضویت در خبرنامه فروشگاه ما، یک تخفیف 25 درصدی دریافت کنید و از جدیدترین تخفیف ها مطلع
-                            شوید</p>
-                        <form action="#">
-                            <div class="input-group input-group-round">
-                                <input type="email" class="form-control form-control-white" placeholder="ایمیل شما"
-                                       aria-label="Email Adress" required>
-                                <div class="input-group-append">
-                                    <button class="btn" type="submit"><span>تایید</span></button>
-                                </div><!-- .End .input-group-append -->
-                            </div><!-- .End .input-group -->
-                        </form>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
-                            <label class="custom-control-label" for="register-policy-2">این پنجره را دوباره
-                                نشان نده</label>
-                        </div><!-- End .custom-checkbox -->
-                    </div>
-                </div>
-                <div class="col-xl-2-5col col-lg-5 ">
-                    <img src="assets/images/popup/newsletter/img-1.jpg" class="newsletter-img" alt="newsletter">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{{--<div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">--}}
+{{--    <div class="row justify-content-center">--}}
+{{--        <div class="col-10">--}}
+{{--            <div class="row no-gutters bg-white newsletter-popup-content">--}}
+{{--                <div class="col-xl-3-5col col-lg-7 banner-content-wrap">--}}
+{{--                    <div class="banner-content text-center">--}}
+{{--                        <img src="assets/images/popup/newsletter/logo.png" class="logo" alt="logo" width="60"--}}
+{{--                             height="15">--}}
+{{--                        <h2 class="banner-title">دریافت <span>25<light>%</light></span> تخفیف</h2>--}}
+{{--                        <p>با عضویت در خبرنامه فروشگاه ما، یک تخفیف 25 درصدی دریافت کنید و از جدیدترین تخفیف ها مطلع--}}
+{{--                            شوید</p>--}}
+{{--                        <form action="#">--}}
+{{--                            <div class="input-group input-group-round">--}}
+{{--                                <input type="email" class="form-control form-control-white" placeholder="ایمیل شما"--}}
+{{--                                       aria-label="Email Adress" required>--}}
+{{--                                <div class="input-group-append">--}}
+{{--                                    <button class="btn" type="submit"><span>تایید</span></button>--}}
+{{--                                </div><!-- .End .input-group-append -->--}}
+{{--                            </div><!-- .End .input-group -->--}}
+{{--                        </form>--}}
+{{--                        <div class="custom-control custom-checkbox">--}}
+{{--                            <input type="checkbox" class="custom-control-input" id="register-policy-2" required>--}}
+{{--                            <label class="custom-control-label" for="register-policy-2">این پنجره را دوباره--}}
+{{--                                نشان نده</label>--}}
+{{--                        </div><!-- End .custom-checkbox -->--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-2-5col col-lg-5 ">--}}
+{{--                    <img src="assets/images/popup/newsletter/img-1.jpg" class="newsletter-img" alt="newsletter">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
+
 <!-- Plugins JS File -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
