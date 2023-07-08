@@ -11,5 +11,10 @@
     "Product": true,
     "Comment": true,
     "Unit": true,
-    "Size": true
+    "Size": true,
+    "Discount": true,
+    "Rateing": true,
+    "Address": true,
+    "Wallet": true,
+    "Location": true
 }

@@ -4,6 +4,7 @@ namespace Modules\Product\Services;
 
 use Illuminate\Support\Facades\DB;
 use Modules\Polymorphism\Services\ImageService;
+use Modules\Product\Entities\ProductGroup;
 use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
 

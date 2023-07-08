@@ -1,22 +1,25 @@
 <?php
 
-namespace Modules\Setting\Http\Controllers\Dashboard;
+namespace Modules\Location\Http\Controllers\Dashboard;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Yajra\DataTables\Facades\DataTables;
+use Modules\Location\Http\Requests\area\ValidateAreaRequest;
+use Modules\Location\Services\AreaService;
 
-
-class AdminSettingController extends Controller
+class AreaController extends Controller
 {
+    public function __construct(public AreaService $service)
+    {
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('setting::dashboard.list');
+        return view('location::index');
     }
 
     /**
@@ -25,7 +28,7 @@ class AdminSettingController extends Controller
      */
     public function create()
     {
-        return view('setting::dashboard.add');
+        return view('location::create');
     }
 
     /**
@@ -33,11 +36,11 @@ class AdminSettingController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidateAreaRequest $request)
     {
         try {
             $result = $this->service->store($request);
-            return back()->with('success', true)->with('message', 'با موفقیت انجام شد.');
+            return back()->with('success', true)->with('message',$result);
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
@@ -51,7 +54,7 @@ class AdminSettingController extends Controller
      */
     public function show($id)
     {
-        return view('setting::show');
+        return view('location::show');
     }
 
     /**
@@ -61,8 +64,7 @@ class AdminSettingController extends Controller
      */
     public function edit($id)
     {
-        $data = $this->service->find($id);
-        return view('setting::dashboard.update' , compact('data'));
+        return view('location::edit');
     }
 
     /**
@@ -71,7 +73,7 @@ class AdminSettingController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateAreaRequest $request, $id)
     {
         try {
             $this->service->update($request, $id);
@@ -102,29 +104,9 @@ class AdminSettingController extends Controller
             return back()->with('error', true)->with('message', $message);
         }
     }
-
     public function ajax()
     {
-
         $data = $this->service->ajax();
-        return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-
-                $btn = '<a href="' . route('dashboard_setting_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_setting_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
-
-                return $btn;
-            })
-            ->addColumn('image', function ($row) {
-                $img = '';
-                if ($row->image) {
-                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
-                }
-
-                return $img;
-            })
-            ->rawColumns(['action', 'image'])
-            ->make(true);
+        return $data;
     }
 }

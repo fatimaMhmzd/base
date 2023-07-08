@@ -20,4 +20,8 @@ class ProductController extends Controller
         return view('product::client.store',compact('data'));
     }
 
+    public function productdetail()
+    {
+        return view('product::client.productDetail');
+    }
 }

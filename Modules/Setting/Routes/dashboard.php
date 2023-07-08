@@ -11,17 +11,17 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Setting\Http\Controllers\Dashboard\AdminSettingController;
+use Modules\Setting\Http\Controllers\Dashboard\SettingController;
 
 
 Route::group(['prefix' => 'setting', 'as' => 'setting_'], function (){
-    Route::get('/', [AdminSettingController::class, 'index'])->name('index');
-    Route::get('/ajax', [AdminSettingController::class, 'ajax'])->name('ajax');
-    Route::get('/create', [AdminSettingController::class, 'create'])->name('create');
-    Route::post('/store', [AdminSettingController::class, 'store'])->name('store');
-    Route::get('/edit/{id}', [AdminSettingController::class, 'edit'])->name('edit');
-    Route::post('/update/{id}', [AdminSettingController::class, 'update'])->name('update');
-    Route::delete('/destroy/{id}', [AdminSettingController::class, 'destroy'])->name('destroy');
+    Route::get('/', [SettingController::class, 'index'])->name('index');
+    Route::get('/ajax', [SettingController::class, 'ajax'])->name('ajax');
+    Route::get('/create', [SettingController::class, 'create'])->name('create');
+    Route::post('/store', [SettingController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [SettingController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [SettingController::class, 'update'])->name('update');
+    Route::delete('/destroy/{id}', [SettingController::class, 'destroy'])->name('destroy');
 
 
 });

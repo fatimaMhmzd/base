@@ -6,10 +6,15 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Unit\Http\Requests\unit\ValidateUnitRequest;
+use Modules\Unit\Services\UnitService;
 use Yajra\DataTables\Facades\DataTables;
 
 class UnitDashboardController extends Controller
 {
+    public function __construct(public UnitService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable

@@ -5,6 +5,7 @@ namespace Modules\Product\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Polymorphism\Entities\Images;
 
@@ -73,7 +74,7 @@ class Product extends Model
     ];
     protected $with = ["image" , "group"];
 
-    public function image()
+    public function image(): MorphMany
     {
         return $this->morphMany(Images::class, 'imageable');
     }
@@ -82,4 +83,6 @@ class Product extends Model
     {
         return $this->hasOne(ProductGroup::class, "id", "product_group_id");
     }
+
+
 }
