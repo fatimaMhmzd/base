@@ -5,9 +5,13 @@ namespace Modules\Product\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Modules\Color\Services\ColorService;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
 use Modules\Product\Services\ProductGroupService;
 use Modules\Product\Services\ProductService;
+use Modules\Size\Entities\Size;
+use Modules\Size\Services\SizeService;
+use Modules\Unit\Services\UnitService;
 use Yajra\DataTables\Facades\DataTables;
 
 class ProductDashboardController extends Controller
@@ -30,8 +34,11 @@ class ProductDashboardController extends Controller
      */
     public function create()
     {
-        $all= resolve(ProductGroupService::class)->all();
-        return view('product::dashboard.product.add' , compact('all'));
+        $group= resolve(ProductGroupService::class)->all();
+        $unit= resolve(UnitService::class)->all();
+        $color= resolve(ColorService::class)->all();
+        /*return resolve(SizeService::class)->index($unitId = 1);*/
+        return view('product::dashboard.product.add' , compact('group','unit','color'));
     }
 
     /**
@@ -41,6 +48,7 @@ class ProductDashboardController extends Controller
      */
     public function store(ValidateProductRequest $request)
     {
+
 
         try {
             $result = $this->service->store($request);

@@ -34,12 +34,19 @@ class ColorService
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                $btn = '<a href="' . route('dashboard_unit_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_unit_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+                $btn = '<a href="' . route('dashboard_color_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_color_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
 
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('color', function ($row) {
+                $color = "";
+                if ($row->code != null) {
+                    $color = '<div style="color:'.$row->code.';">'.$row->code.'</div>';
+                }
+                return $color;
+            })
+            ->rawColumns(['action', 'color'])
             ->make(true);
     }
 
@@ -92,6 +99,7 @@ class ColorService
     {
         $inputs = $request->validated();
 
+
         $exist = $this->colorRepository->findBy("title", $inputs["title"]);
         if (!$exist) {
 
@@ -108,7 +116,6 @@ class ColorService
         } else {
             throw new \Exception(trans("custom.publicContent.item_with_application_id_already_exist"));
         }
-
 
 
     }

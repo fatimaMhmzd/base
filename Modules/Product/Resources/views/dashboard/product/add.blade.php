@@ -1,5 +1,7 @@
 @extends('dashboard.layoute.total')
-
+@section('link')
+    <link rel="stylesheet" type="text/css" href="/dashboard/app-assets/vendors/css/forms/select/select2.min.css">
+@endsection
 @section('content')
     <section id="multiple-column-form">
         <div class="row match-height">
@@ -38,12 +40,43 @@
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">انتخاب گروهبندی</label>
                                             <fieldset class="form-group">
-                                                <select class="form-control" id="basicSelect" name="product_group_id"  id="group"
-                                                        onchange="getData()">
-                                                    @foreach($all as $item)
+                                                <select class="form-control" id="basicSelect" name="product_group_id"  id="group">
+                                                    @foreach($group as $item)
                                                         <option value="{{$item->id}}">{{$item->title}}</option>
                                                     @endforeach
                                                 </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">انتخاب رنگ بندی</label>
+                                            <div class="form-group">
+                                                <select class="select2 form-control" name="color_id[]" multiple="multiple">
+                                                    @foreach($color as $item)
+                                                    <option value="{{$item->id}}" style="background-color: {{$item->code}};">{{$item->title}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">انتخاب واحد</label>
+                                            <fieldset class="form-group">
+                                                <select class="form-control" id="unit" name="unit_id"  id="group"
+                                                        onchange="getData()">
+                                                    <option value="0">انتخاب کنید</option>
+                                                    @foreach($unit as $item)
+                                                        <option value="{{$item->id}}">{{$item->title}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">انتخاب اندازه</label>
+                                            <fieldset class="form-group">
+                                                <select class="select2 form-control" id="size"  name="size_id[]" multiple="multiple">
+
+                                                </select>
+
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
@@ -67,9 +100,9 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">برند</label>
+                                            <label  style="margin-top: 20px">عنوان کامل</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="برند" name="full_title">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="عنوان کامل" name="full_title">
 
                                             </fieldset>
                                         </div>
@@ -244,6 +277,36 @@
 @stop
 
 @section('script')
+    <script>
+
+        function getData() {
+
+            //var firstGroupId = document.getElementById('group').value;
+            var unitId = $('#unit').val();
+
+            $.ajax({
+                url: "/dashboard/size/getSizeByUnit?unitId=" + unitId,
+
+                type: 'GET',
+                success: function (res) {
+                    var result = ``
+                    for (var i = 0 ; i < res.length ; i++){
+                         result += `<option value="`+res[i]['id']+`">`+res[i]['title']+`</option>`
+
+                    }
+
+                    // document.getElementById('subGroup').innerHTML = res;
+
+                    $('#size').html(result)
+
+
+                }
+            });
+
+
+        }
+
+    </script>
 
 
     <script>
@@ -288,5 +351,6 @@
         }
 
     </script>
+    <script src="/dashboard/app-assets/js/scripts/forms/select/form-select2.min.js"></script>
 
 @endsection

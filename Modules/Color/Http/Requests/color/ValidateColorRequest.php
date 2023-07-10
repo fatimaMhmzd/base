@@ -15,6 +15,8 @@ class ValidateColorRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
+            'code' => 'nullable|string',
+            'description' => 'nullable|string',
         ];
     }
 

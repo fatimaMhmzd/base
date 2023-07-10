@@ -2,20 +2,25 @@
 
 namespace Modules\Color\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+
 use Modules\Color\Http\Requests\color\ValidateColorRequest;
+use Modules\Color\Services\ColorService;
 
 class ColorController extends Controller
 {
+    public function __construct(public ColorService $service)
+    {
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('color::index');
+        return view('color::dashboard.list');
     }
 
     /**
@@ -24,7 +29,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        return view('color::create');
+        return view('color::dashboard.add');
     }
 
     /**
@@ -34,9 +39,13 @@ class ColorController extends Controller
      */
     public function store(ValidateColorRequest $request)
     {
+
+
         try {
             $result = $this->service->store($request);
-            return back()->with('success', true)->with('message',$result);
+
+            $message = trans("custom.defaults.store_success");
+            return back()->with('success', true)->with('message',$message);
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);

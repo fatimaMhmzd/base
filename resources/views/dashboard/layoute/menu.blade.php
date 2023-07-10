@@ -68,6 +68,33 @@
             </li>
             <li class=" navigation-header"><span>مدیریت محصولات</span>
             </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">رنگ بندی</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_color_index') ? 'active' : '' }}"><a href="{{route('dashboard_color_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_color_create') ? 'active' : '' }}"><a href="{{route('dashboard_color_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">واحد ها</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_unit_index') ? 'active' : '' }}"><a href="{{route('dashboard_unit_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_unit_create') ? 'active' : '' }}"><a href="{{route('dashboard_unit_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">سایزبندی</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_size_index') ? 'active' : '' }}"><a href="{{route('dashboard_size_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_size_create') ? 'active' : '' }}"><a href="{{route('dashboard_size_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">گروهبندی</span></a>
                 <ul class="menu-content">
                     <li class="{{ Request::routeIs('dashboard_product_group_index') ? 'active' : '' }}"><a href="{{route('dashboard_product_group_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>

@@ -117,30 +117,6 @@ class SliderDashboardController extends Controller
 
         $data = $this->service->ajax();
 
-        return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-
-                $btn = '<a href="' . route('dashboard_slider_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_slider_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
-
-                return $btn;
-            })
-            ->addColumn('image', function ($row) {
-                $img = '';
-                if ($row->image) {
-                    $img = '<img src="/' . $row->image->url . '" class="danger w-25"/>';
-                }
-
-                return $img;
-            })
-            ->addColumn('page', function ($row) {
-                $page = $row->page->title;
-
-
-                return $page;
-            })
-            ->rawColumns(['action', 'image' , 'page'])
-            ->make(true);
+        return $data;
     }
 }

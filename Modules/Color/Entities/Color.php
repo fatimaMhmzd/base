@@ -12,7 +12,7 @@ class Color extends Model
 
     protected $table = "colors";
 
-    protected $fillable = ["title","description"];
+    protected $fillable = ["title","description","code"];
 
     protected $casts = [
         "title" => "string"

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->comment('جدول رنگ ها');
             $table->id();
             $table->string('title')->unique()->comment('عنوان');
+            $table->string('code')->nullable()->comment('کد رنگ');
             $table->text('description')->nullable()->comment('توضیحات');
             $table->softDeletes();
             $table->timestamps();

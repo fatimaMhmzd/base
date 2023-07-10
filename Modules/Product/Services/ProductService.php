@@ -122,14 +122,27 @@ class ProductService
         $inputs["full_title"] = $inputs["full_title"] ?? $inputs["title"] ;
 
 
+
         DB::beginTransaction();
         try {
             $totalUnitsItem = $this->productRepository->create($inputs);
             DB::commit();
             $image = $inputs["file"] ?? null;
+            $color = $inputs["color"] ?? null;
+            $size = $inputs["size"] ?? null;
 
             if ($image !== null) {
                 foreach ($image as $item){
+                $this->uploadImage($totalUnitsItem, $item);
+                }
+            }
+            if ($color !== null) {
+                foreach ($color as $item){
+                $this->uploadImage($totalUnitsItem, $item);
+                }
+            }
+            if ($size !== null) {
+                foreach ($size as $item){
                 $this->uploadImage($totalUnitsItem, $item);
                 }
             }

@@ -11,7 +11,7 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header"><h4 class="card-title">لیست واحد ها</h4></div>
+                    <div class="card-header"><h4 class="card-title">لیست اندازه ها</h4></div>
                     <div class="card-content">
                         <div class="card-body">
 
@@ -29,7 +29,9 @@
                                 <thead>
                                 <tr>
                                     <th>ردیف</th>
+                                    <th>واحدمربوطه</th>
                                     <th>عنوان</th>
+                                    <th>زیرعنوان</th>
                                     <th>توضیحات</th>
                                     <th width="100px">عملیات</th>
                                 </tr>
@@ -66,10 +68,12 @@
                 "pageLength": 25,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('dashboard_unit_ajax') }}",
+                ajax: "{{ route('dashboard_size_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'unit', name: 'unit'},
                     {data: 'title', name: 'title'},
+                    {data: 'sub_title', name: 'sub_title'},
                     {data: 'description', name: 'description'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]

@@ -16,15 +16,27 @@ class SizeService
 
     public function index($request)
     {
+
         $filter = [];
+        $all = [];
         if ($request->title) {
             $filter[] = (object)[
                 "col" => "title",
                 "value" => $request->title,
                 "like" => true,
             ];
+            $all = $this->sizeRepository->getByInput($filter, $request->perPage, $request->pageNumber);
         }
-        $all = $this->sizeRepository->getByInput($filter, $request->perPage, $request->pageNumber);
+        if ($request->unitId and $request->unitId != "0") {
+
+            $filter[] = (object)[
+                "col" => "unit_id",
+                "value" => $request->unitId,
+                "like" => false,
+            ];
+            $all = $this->sizeRepository->getByInput($filter, $request->perPage, $request->pageNumber);
+        }
+
         return $all;
     }
 
@@ -40,7 +52,11 @@ class SizeService
 
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('unit', function ($row) {
+                $unit = $row->unit->title;
+                return $unit;
+            })
+            ->rawColumns(['action', 'unit'])
             ->make(true);
 
     }

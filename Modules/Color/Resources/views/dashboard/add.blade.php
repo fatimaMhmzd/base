@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">افزودن واحد جدید</h4>
+                        <h4 class="card-title">افزودن رنگ جدید</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -29,12 +29,11 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form" method="post" action="{{route('dashboard_unit_store')}}"
+                            <form class="form" method="post" action="{{route('dashboard_color_store')}}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
-
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label  style="margin-top: 20px">عنوان</label>
@@ -43,7 +42,14 @@
                                                 </fieldset>
                                             </div>
                                         </div>
-
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label  style="margin-top: 20px">کد رنگ</label>
+                                                <fieldset class="form-group">
+                                                <input type="color" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="code">
+                                                </fieldset>
+                                            </div>
+                                        </div>
 
                                         <div class="col-md-12 col-12">
                                             <div class="form-group">

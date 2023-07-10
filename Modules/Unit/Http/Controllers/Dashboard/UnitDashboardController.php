@@ -2,9 +2,9 @@
 
 namespace Modules\Unit\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Modules\Unit\Http\Requests\unit\ValidateUnitRequest;
 use Modules\Unit\Services\UnitService;
 use Yajra\DataTables\Facades\DataTables;
@@ -21,7 +21,7 @@ class UnitDashboardController extends Controller
      */
     public function index()
     {
-        return view('unit::index');
+        return view('unit::dashboard.list');
     }
 
     /**
@@ -30,7 +30,7 @@ class UnitDashboardController extends Controller
      */
     public function create()
     {
-        return view('unit::create');
+        return view('unit::dashboard.add');
     }
 
     /**
@@ -42,7 +42,8 @@ class UnitDashboardController extends Controller
     {
         try {
             $result = $this->service->store($request);
-            return back()->with('success', true)->with('message',$result);
+            $message = trans("custom.defaults.store_success");
+            return back()->with('success', true)->with('message',$message);
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
@@ -108,7 +109,6 @@ class UnitDashboardController extends Controller
     }
     public function ajax()
     {
-
         $data = $this->service->ajax();
         return $data;
     }
