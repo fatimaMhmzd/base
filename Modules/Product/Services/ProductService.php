@@ -34,6 +34,7 @@ class ProductService
     public function ajax()
     {
         $data = $this->productRepository->getByInput();
+
         return  Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
@@ -46,13 +47,13 @@ class ProductService
             ->addColumn('image', function ($row) {
                 $img = '';
                 if ($row->image) {
-                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
+                    $img = '<img src="/' . $row->image[0]->url. '" class="danger w-25"/>';
                 }
 
                 return $img;
             })
             ->rawColumns(['action', 'image'])
-            ->make(true);;
+            ->make(true);
     }
 
     public function find($id)
@@ -109,44 +110,47 @@ class ProductService
 
     public function store(ValidateProductRequest $request)
     {
-        $inputs = $request->validated();
 
-        if ($inputs["off_price"] == null){
-            $inputs["off_price"] =0;
-        }
-        if ($inputs["off"] == null){
-            $inputs["off"] =0;
-        }
-        if ($inputs["available"] == null){
-            $inputs["available"] =0;
-        }
-        if ($inputs["weight"] == null){
-            $inputs["weight"] =0;
-        }
-        if ($inputs["weight_with_packaging"] == null){
-            $inputs["weight_with_packaging"] =0;
-        }
-        if ($inputs["unit_weight"] == null){
-            $inputs["unit_weight"] =0;
-        }
-        if ($inputs["status"] == null){
-            $inputs["status"] =0;
-        }
+        $inputs = $request->validated();
+        $inputs["off_price"] = $inputs["off_price"] ?? 0 ;
+        $inputs["off"] = $inputs["off"] ?? 0 ;
+        $inputs["available"] = $inputs["available"] ?? 0 ;
+        $inputs["weight"] = $inputs["weight"] ?? 0 ;
+        $inputs["weight_with_packaging"] = $inputs["weight_with_packaging"] ?? 0 ;
+        $inputs["unit_weight"] = $inputs["unit_weight"] ?? 0 ;
+        $inputs["status"] = $inputs["status"] ?? 0 ;
+        $inputs["full_title"] = $inputs["full_title"] ?? $inputs["title"] ;
+
+
 
         DB::beginTransaction();
         try {
             $totalUnitsItem = $this->productRepository->create($inputs);
             DB::commit();
             $image = $inputs["file"] ?? null;
+            $color = $inputs["color"] ?? null;
+            $size = $inputs["size"] ?? null;
 
             if ($image !== null) {
                 foreach ($image as $item){
                 $this->uploadImage($totalUnitsItem, $item);
                 }
             }
+            if ($color !== null) {
+                foreach ($color as $item){
+                $this->uploadImage($totalUnitsItem, $item);
+                }
+            }
+            if ($size !== null) {
+                foreach ($size as $item){
+                $this->uploadImage($totalUnitsItem, $item);
+                }
+            }
+            return "sucseess";
 
         } catch (\Exception $exception) {
             DB::rollBack();
+            return $exception;
             throw new \Exception(trans("custom.defaults.store_failed"));
         }
 

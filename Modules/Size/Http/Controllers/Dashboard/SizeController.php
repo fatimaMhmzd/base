@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Modules\Size\Http\Requests\size\ValidateSizeRequest;
 use Modules\Size\Services\SizeService;
+use Modules\Unit\Services\UnitService;
 
 
 class SizeController extends Controller
@@ -20,7 +21,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        return view('size::index');
+        return view('size::dashboard.list');
     }
 
     /**
@@ -29,7 +30,8 @@ class SizeController extends Controller
      */
     public function create()
     {
-        return view('size::create');
+        $allUnit = resolve(UnitService::class)->all();
+        return view('size::dashboard.add' , compact('allUnit'));
     }
 
     /**
@@ -41,7 +43,8 @@ class SizeController extends Controller
     {
         try {
             $result = $this->service->store($request);
-            return back()->with('success', true)->with('message', $result);
+            $message = trans("custom.defaults.store_success");
+            return back()->with('success', true)->with('message',$message);
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
@@ -109,6 +112,11 @@ class SizeController extends Controller
     public function ajax()
     {
         $data = $this->service->ajax();
+        return $data;
+    }
+    public function getSizeByUnit(Request $request)
+    {
+        $data = $this->service->index($request);
         return $data;
     }
 }

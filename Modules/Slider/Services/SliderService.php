@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Slider\Http\Repositories\SliderRepository;
 use Modules\Slider\Http\Requests\slider\ValidateSliderRequest;
+use Yajra\DataTables\Facades\DataTables;
 
 class SliderService
 {
@@ -42,8 +43,32 @@ class SliderService
 
     public function ajax()
     {
-        $all = $this->sliderRepository->getByInput();
-        return $all;
+        $data = $this->sliderRepository->getByInput();
+        return  Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+
+                $btn = '<a href="' . route('dashboard_slider_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_slider_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+
+                return $btn;
+            })
+            ->addColumn('image', function ($row) {
+                $img = '';
+                if ($row->image) {
+                    $img = '<img src="/' . $row->image->url . '" class="danger w-25"/>';
+                }
+
+                return $img;
+            })
+            ->addColumn('page', function ($row) {
+                $page = $row->page->title;
+
+
+                return $page;
+            })
+            ->rawColumns(['action', 'image' , 'page'])
+            ->make(true);;
     }
 
     public function find($id)

@@ -34,7 +34,7 @@ class AuthenticationController extends Controller
             Auth::loginUsingId($user->id,false);
             return back();
         }else{
-            return back()->with('error', true)->with('message', trans("custom.defaults.store_failed"));
+            return back()->with('error', true)->with('message', trans("auth.failed"));
         }
     }
     public function singIn(Request $request)

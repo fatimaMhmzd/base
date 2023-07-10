@@ -50,6 +50,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css" href="/dashboard/app-assets/css-rtl/custom-rtl.min.css">
     <link rel="stylesheet" type="text/css" href="/dashboard/assets/css/style-rtl.css">
     <!-- END: Custom CSS-->
+    @yield('link')
 
 </head>
 <!-- END: Head-->
