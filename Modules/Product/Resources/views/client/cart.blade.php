@@ -2,7 +2,7 @@
 @section('content')
 
     <main class="main">
-        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
             <div class="container">
                 <h1 class="page-title">سبد خرید<span>فروشگاه</span></h1>
             </div><!-- End .container -->
@@ -11,7 +11,7 @@
             <div class="container">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('indexClient')}}">خانه</a></li>
-                    <li class="breadcrumb-item"><a href="#">فروشگاه</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('shop_storePageClient')}}">فروشگاه</a></li>
                     <li class="breadcrumb-item active" aria-current="page">سبد خرید</li>
                 </ol>
             </div><!-- End .container -->
@@ -39,7 +39,7 @@
                                         <div class="product">
                                             <figure class="product-media">
                                                 <a href="#">
-                                                    <img src="assets/images/products/table/product-1.jpg"
+                                                    <img src="/assets/images/products/table/product-1.jpg"
                                                          alt="تصویر محصول">
                                                 </a>
                                             </figure>
@@ -65,7 +65,7 @@
                                         <div class="product">
                                             <figure class="product-media">
                                                 <a href="#">
-                                                    <img src="assets/images/products/table/product-2.jpg"
+                                                    <img src="/assets/images/products/table/product-2.jpg"
                                                          alt="تصویر محصول">
                                                 </a>
                                             </figure>
@@ -169,11 +169,11 @@
                                     </tbody>
                                 </table><!-- End .table table-summary -->
 
-                                <a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">رفتن
+                                <a href="{{route('shop_checkoutPageClient')}}" class="btn btn-outline-primary-2 btn-order btn-block">رفتن
                                     به صفحه پرداخت</a>
                             </div><!-- End .summary -->
 
-                            <a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>ادامه
+                            <a href="{{route('shop_storePageClient')}}" class="btn btn-outline-dark-2 btn-block mb-3"><span>ادامه
                                         خرید</span><i class="icon-refresh"></i></a>
                         </aside><!-- End .col-lg-3 -->
                     </div><!-- End .row -->

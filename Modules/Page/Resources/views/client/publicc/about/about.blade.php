@@ -3,17 +3,17 @@
 
     <main class="main">
         {{--        slider        --}}
-        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
             <div class="container">
-                <h1 class="page-title">درباره ما 2<span>صفحات</span></h1>
+                <h1 class="page-title">درباره ما <span>صفحات</span></h1>
             </div><!-- End .container -->
         </div><!-- End .page-header -->
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index-1.html">خانه</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('indexClient')}}">خانه</a></li>
                     <li class="breadcrumb-item"><a href="#">صفحات</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">درباره ما 2</li>
+                    <li class="breadcrumb-item active" aria-current="page">درباره ما </li>
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
@@ -34,10 +34,10 @@
                                 سادگی نامفهوم. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی
                                 با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با
                                 تولید سادگی نامفهوم! لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم. </p>
-                            <img src="assets/images/about/about-2/signature.png" alt="signature"
+                            <img src="/assets/images/about/about-2/signature.png" alt="signature"
                                  class="mx-auto mb-5">
 
-                            <img src="assets/images/about/about-2/img-1.jpg" alt="image" class="mx-auto mb-6">
+                            <img src="/assets/images/about/about-2/img-1.jpg" alt="image" class="mx-auto mb-6">
                         </div><!-- End .about-text -->
                     </div><!-- End .col-lg-10 offset-1 -->
                 </div><!-- End .row -->
@@ -96,7 +96,7 @@
 
             {{--       statistics       --}}
             <div class="bg-image pt-7 pb-5 pt-md-12 pb-md-9"
-                 style="background-image: url(assets/images/backgrounds/bg-4.jpg)">
+                 style="background-image: url('/assets/images/backgrounds/bg-4.jpg')">
                 <div class="container">
                     <div class="row">
                         <div class="col-6 col-md-3">
@@ -153,7 +153,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="member member-2 text-center">
                                 <figure class="member-media">
-                                    <img src="assets/images/team/about-2/member-1.jpg" alt="توضیح عکس">
+                                    <img src="/assets/images/team/about-2/member-1.jpg" alt="توضیح عکس">
 
                                     <figcaption class="member-overlay">
                                         <div class="social-icons social-icons-simple">
@@ -176,7 +176,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="member member-2 text-center">
                                 <figure class="member-media">
-                                    <img src="assets/images/team/about-2/member-2.jpg" alt="توضیح عکس">
+                                    <img src="/assets/images/team/about-2/member-2.jpg" alt="توضیح عکس">
 
                                     <figcaption class="member-overlay">
                                         <div class="social-icons social-icons-simple">
@@ -199,7 +199,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="member member-2 text-center">
                                 <figure class="member-media">
-                                    <img src="assets/images/team/about-2/member-3.jpg" alt="توضیح عکس">
+                                    <img src="/assets/images/team/about-2/member-3.jpg" alt="توضیح عکس">
 
                                     <figcaption class="member-overlay">
                                         <div class="social-icons social-icons-simple">
@@ -222,7 +222,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="member member-2 text-center">
                                 <figure class="member-media">
-                                    <img src="assets/images/team/about-2/member-4.jpg" alt="توضیح عکس">
+                                    <img src="/assets/images/team/about-2/member-4.jpg" alt="توضیح عکس">
 
                                     <figcaption class="member-overlay">
                                         <div class="social-icons social-icons-simple">
@@ -245,7 +245,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="member member-2 text-center">
                                 <figure class="member-media">
-                                    <img src="assets/images/team/about-2/member-5.jpg" alt="توضیح عکس">
+                                    <img src="/assets/images/team/about-2/member-5.jpg" alt="توضیح عکس">
 
                                     <figcaption class="member-overlay">
                                         <div class="social-icons social-icons-simple">
@@ -268,7 +268,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="member member-2 text-center">
                                 <figure class="member-media">
-                                    <img src="assets/images/team/about-2/member-6.jpg" alt="توضیح عکس">
+                                    <img src="/assets/images/team/about-2/member-6.jpg" alt="توضیح عکس">
 
                                     <figcaption class="member-overlay">
                                         <div class="social-icons social-icons-simple">
@@ -291,7 +291,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="member member-2 text-center">
                                 <figure class="member-media">
-                                    <img src="assets/images/team/about-2/member-7.jpg" alt="توضیح عکس">
+                                    <img src="/assets/images/team/about-2/member-7.jpg" alt="توضیح عکس">
 
                                     <figcaption class="member-overlay">
                                         <div class="social-icons social-icons-simple">
@@ -314,7 +314,7 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="member member-2 text-center">
                                 <figure class="member-media">
-                                    <img src="assets/images/team/about-2/member-8.jpg" alt="توضیح عکس">
+                                    <img src="/assets/images/team/about-2/member-8.jpg" alt="توضیح عکس">
 
                                     <figcaption class="member-overlay">
                                         <div class="social-icons social-icons-simple">
@@ -351,49 +351,49 @@
                             <div class="row justify-content-center">
                                 <div class="col-6 col-sm-4 col-md-3">
                                     <a href="#" class="brand">
-                                        <img src="assets/images/brands/1.png" alt="نام برند">
+                                        <img src="/assets/images/brands/1.png" alt="نام برند">
                                     </a>
                                 </div><!-- End .col-md-3 -->
 
                                 <div class="col-6 col-sm-4 col-md-3">
                                     <a href="#" class="brand">
-                                        <img src="assets/images/brands/2.png" alt="نام برند">
+                                        <img src="/assets/images/brands/2.png" alt="نام برند">
                                     </a>
                                 </div><!-- End .col-md-3 -->
 
                                 <div class="col-6 col-sm-4 col-md-3">
                                     <a href="#" class="brand">
-                                        <img src="assets/images/brands/3.png" alt="نام برند">
+                                        <img src="/assets/images/brands/3.png" alt="نام برند">
                                     </a>
                                 </div><!-- End .col-md-3 -->
 
                                 <div class="col-6 col-sm-4 col-md-3">
                                     <a href="#" class="brand">
-                                        <img src="assets/images/brands/7.png" alt="نام برند">
+                                        <img src="/assets/images/brands/7.png" alt="نام برند">
                                     </a>
                                 </div><!-- End .col-md-3 -->
 
                                 <div class="col-6 col-sm-4 col-md-3">
                                     <a href="#" class="brand">
-                                        <img src="assets/images/brands/4.png" alt="نام برند">
+                                        <img src="/assets/images/brands/4.png" alt="نام برند">
                                     </a>
                                 </div><!-- End .col-md-3 -->
 
                                 <div class="col-6 col-sm-4 col-md-3">
                                     <a href="#" class="brand">
-                                        <img src="assets/images/brands/5.png" alt="نام برند">
+                                        <img src="/assets/images/brands/5.png" alt="نام برند">
                                     </a>
                                 </div><!-- End .col-md-3 -->
 
                                 <div class="col-6 col-sm-4 col-md-3">
                                     <a href="#" class="brand">
-                                        <img src="assets/images/brands/6.png" alt="نام برند">
+                                        <img src="/assets/images/brands/6.png" alt="نام برند">
                                     </a>
                                 </div><!-- End .col-md-3 -->
 
                                 <div class="col-6 col-sm-4 col-md-3">
                                     <a href="#" class="brand">
-                                        <img src="assets/images/brands/9.png" alt="نام برند">
+                                        <img src="/assets/images/brands/9.png" alt="نام برند">
                                     </a>
                                 </div><!-- End .col-md-3 -->
                             </div><!-- End .row -->

@@ -1,6 +1,6 @@
 @extends('client.layout.total')
 @section('content')
-
+    @inject('slider', 'Modules\Slider\Services\SliderService')
 
     <main class="main">
 
@@ -4370,7 +4370,7 @@
                 </div><!-- End .row -->
             </div><!-- End .container -->
         </div><!-- End .icon-boxes-container -->
-        {{--    End services    --}}
+    {{--    End services    --}}
 
 
     <!-- start social media -->

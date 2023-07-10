@@ -23,7 +23,16 @@ class ProductController extends Controller
     public function productDetail($slug)
     {
         $data = $this->service->productDetail($slug);
-        return $data;
+//        return $data;
         return view('product::client.productDetail',compact('data'));
+    }
+
+    public function cart()
+    {
+        return view('product::client.cart');
+    }
+    public function checkout()
+    {
+        return view('product::client.checkout');
     }
 }

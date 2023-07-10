@@ -2,7 +2,7 @@
 @section('content')
 
     <main class="main">
-        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
             <div class="container">
                 <h1 class="page-title">تماس با ما <span>صفحات</span></h1>
             </div><!-- End .container -->
@@ -34,7 +34,7 @@
                             <h3>اطلاعات تماس</h3>
 
                             <div><a href="mailto:#">info@exaple.com</a></div>
-                            <div><a href="tel:#">55667788</a>، <a href="tel:#">99887733</a></div>
+                            <div><a href="tel:#">09024980577</a></div>
                         </div><!-- End .contact-box -->
                     </div><!-- End .col-md-4 -->
 
@@ -106,7 +106,72 @@
                     </div><!-- End .row -->
                 </div><!-- End .container -->
             </div>
-            <div class="col-12 d-flex mb-5">
+
+            <hr class="mt-4 mb-5">
+
+            <div class="stores mb-4 mb-lg-5">
+                <h2 class="title text-center mb-3">فروشگاه های ما</h2><!-- End .title text-center mb-2 -->
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="store">
+                            <div class="row">
+                                <div class="col-sm-5 col-xl-6">
+                                    <figure class="store-media mb-2 mb-lg-0">
+                                        <img src="/assets/images/stores/img-1.jpg" alt="image">
+                                    </figure><!-- End .store-media -->
+                                </div><!-- End .col-xl-6 -->
+                                <div class="col-sm-7 col-xl-6">
+                                    <div class="store-content">
+                                        <h3 class="store-title">فروشگاه شماره 1</h3><!-- End .store-title -->
+                                        <address>تهران، میدان تجریش</address>
+                                        <div><a href="tel:#">88776655</a></div>
+
+                                        <h4 class="store-subtitle">ساعت کاری فروشگاه :</h4>
+                                        <!-- End .store-subtitle -->
+                                        <div>شنبه-چهارشنبه 11صبح تا 7 عصر</div>
+                                        <div>پنج شنبه 11 صبح تا 6 عصر</div>
+
+                                        <a href="#" class="btn btn-link" target="_blank"><span>مشاهده روی
+                                                        نقشه</span><i class="icon-long-arrow-left"></i></a>
+                                    </div><!-- End .store-content -->
+                                </div><!-- End .col-xl-6 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .store -->
+                    </div><!-- End .col-lg-6 -->
+
+                    <div class="col-lg-6">
+                        <div class="store">
+                            <div class="row">
+                                <div class="col-sm-5 col-xl-6">
+                                    <figure class="store-media mb-2 mb-lg-0">
+                                        <img src="/assets/images/stores/img-2.jpg" alt="image">
+                                    </figure><!-- End .store-media -->
+                                </div><!-- End .col-xl-6 -->
+
+                                <div class="col-sm-7 col-xl-6">
+                                    <div class="store-content">
+                                        <h3 class="store-title">فروشگاه شماره 2</h3><!-- End .store-title -->
+                                        <address>تهران، میدان منیریه</address>
+                                        <div><a href="tel:#">77558866</a></div>
+
+                                        <h4 class="store-subtitle">ساعت کاری فروشگاه :</h4>
+                                        <!-- End .store-subtitle -->
+                                        <div>شنبه-چهارشنبه 11صبح تا 7 عصر</div>
+                                        <div>پنج شنبه 11 صبح تا 6 عصر</div>
+                                        <div>جمعه - تعطیل</div>
+
+                                        <a href="#" class="btn btn-link" target="_blank"><span>مشاهده روی
+                                                        نقشه</span><i class="icon-long-arrow-left"></i></a>
+                                    </div><!-- End .store-content -->
+                                </div><!-- End .col-xl-6 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .store -->
+                    </div><!-- End .col-lg-6 -->
+                </div><!-- End .row -->
+            </div><!-- End .stores -->
+
+            <div class="col-12 d-flex">
                 <div class="bg-white w-100">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.0762034011345!2d51.33938432078328!3d35.69974233666176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQxJzU5LjEiTiA1McKwMjAnMTMuOSJF!5e0!3m2!1sfa!2s!4v1585894944267!5m2!1sfa!2s"

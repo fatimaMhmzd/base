@@ -104,4 +104,15 @@ class PageController extends Controller
         return view('page::client.publicc.contact.contact');
     }
 
+//    CONTACT PANEL
+    public function panel()
+    {
+        return view('page::client.myAccount.maccount');
+    }
+
+    //    CONTACT FAQ
+    public function faq()
+    {
+        return view('page::client.publicc.faq.faq');
+    }
 }

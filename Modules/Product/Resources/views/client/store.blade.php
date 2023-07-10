@@ -11,7 +11,7 @@
             <div class="container">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('indexClient')}}">خانه</a></li>
-                    <li class="breadcrumb-item"><a href="#">فروشگاه</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('shop_storePageClient')}}">فروشگاه</a></li>
                     <li class="breadcrumb-item active" aria-current="page">لیست</li>
                 </ol>
             </div><!-- End .container -->
@@ -40,7 +40,7 @@
                                     </div>
                                 </div><!-- End .toolbox-sort -->
                                 <div class="toolbox-layout">
-                                    <a onclick="changeStyle('showStyleOne')" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleOne', 'one')" id="one" class="btn-layout active activing">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="10" height="4"/>
@@ -49,7 +49,7 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('showStyleTwo')" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleTwo', 'two')" id="two" class="btn-layout activing">
                                         <svg width="10" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -58,7 +58,7 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('showStyleThree')" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleThree', 'three')" id="three" class="btn-layout activing">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -69,7 +69,7 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('showStyleFour')" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleFour', 'four')" id="four" class="btn-layout activing">
                                         <svg width="22" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -92,7 +92,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-new">جدید</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-4.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
                                         </figure><!-- End .product-media -->
@@ -141,16 +141,16 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-4-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-4-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
 
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-4-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -164,7 +164,7 @@
                                     <div class="col-6 col-lg-3">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-5.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
                                         </figure><!-- End .product-media -->
@@ -213,11 +213,11 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-5-thumb.jpg"
+                                                    <img src="/assets/images/products/product-5-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-5-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-5-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -232,7 +232,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-out">ناموجود</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-6.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
                                         </figure><!-- End .product-media -->
@@ -288,7 +288,7 @@
                                     <div class="col-6 col-lg-3">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-7.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
                                         </figure><!-- End .product-media -->
@@ -345,7 +345,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-new">جدید</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-8.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
                                         </figure><!-- End .product-media -->
@@ -394,11 +394,11 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-8-thumb.jpg"
+                                                    <img src="/assets/images/products/product-8-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-8-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-8-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -412,7 +412,7 @@
                                     <div class="col-6 col-lg-3">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-9.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
                                         </figure><!-- End .product-media -->
@@ -461,15 +461,15 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-9-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-9-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-9-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -486,7 +486,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-new">جدید</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-4.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -526,16 +526,16 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-4-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-4-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
 
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-4-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -547,7 +547,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-5.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -587,11 +587,11 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-5-thumb.jpg"
+                                                    <img src="/assets/images/products/product-5-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-5-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-5-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -604,7 +604,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-out">ناموجود</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-6.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -649,7 +649,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-7.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -695,7 +695,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-new">جدید</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-8.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -735,11 +735,11 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-8-thumb.jpg"
+                                                    <img src="/assets/images/products/product-8-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-8-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-8-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -751,7 +751,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-9.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -791,15 +791,15 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-9-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-9-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-9-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -816,7 +816,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-new">جدید</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-4.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -856,16 +856,16 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-4-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-4-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
 
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-4-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -877,7 +877,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-5.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -917,11 +917,11 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-5-thumb.jpg"
+                                                    <img src="/assets/images/products/product-5-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-5-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-5-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -934,7 +934,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-out">ناموجود</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-6.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -979,7 +979,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-7.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1025,7 +1025,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-new">جدید</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-8.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1065,11 +1065,11 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-8-thumb.jpg"
+                                                    <img src="/assets/images/products/product-8-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-8-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-8-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1081,7 +1081,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-9.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1121,15 +1121,15 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-9-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-9-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-9-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1142,7 +1142,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-top">برتر</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-11.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-11.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1182,16 +1182,16 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-11-thumb.jpg"
+                                                    <img src="/assets/images/products/product-11-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-11-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-11-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
 
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-11-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-11-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1203,7 +1203,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-10.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-10.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1248,7 +1248,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-12.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-12.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1298,7 +1298,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-new">جدید</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-4.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1338,16 +1338,16 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-4-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-4-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
 
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-4-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-4-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1359,7 +1359,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-5.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1399,11 +1399,11 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-5-thumb.jpg"
+                                                    <img src="/assets/images/products/product-5-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-5-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-5-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1416,7 +1416,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-out">ناموجود</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-6.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1461,7 +1461,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-7.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1507,7 +1507,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-new">جدید</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-8.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1547,11 +1547,11 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-8-thumb.jpg"
+                                                    <img src="/assets/images/products/product-8-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-8-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-8-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1563,7 +1563,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-9.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1603,15 +1603,15 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-9-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-9-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-9-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-9-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1624,7 +1624,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-top">برتر</span>
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-11.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-11.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1664,16 +1664,16 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-11-thumb.jpg"
+                                                    <img src="/assets/images/products/product-11-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-11-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-11-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
 
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-11-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-11-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1685,7 +1685,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-10.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-10.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1730,7 +1730,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-12.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-12.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1775,7 +1775,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-13.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-13.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1815,11 +1815,11 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-13-thumb.jpg"
+                                                    <img src="/assets/images/products/product-13-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-13-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-13-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1831,7 +1831,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-14.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-14.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -1871,15 +1871,15 @@
 
                                             <div class="product-nav product-nav-thumbs">
                                                 <a href="#" class="active">
-                                                    <img src="assets/images/products/product-14-thumb.jpg"
+                                                    <img src="/assets/images/products/product-14-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-14-2-thumb.jpg"
+                                                    <img src="/assets/images/products/product-14-2-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                                 <a href="#">
-                                                    <img src="assets/images/products/product-14-3-thumb.jpg"
+                                                    <img src="/assets/images/products/product-14-3-thumb.jpg"
                                                          alt="product desc">
                                                 </a>
                                             </div><!-- End .product-nav -->
@@ -1891,7 +1891,7 @@
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/products/product-15.jpg" alt="تصویر محصول"
+                                                <img src="/assets/images/products/product-15.jpg" alt="تصویر محصول"
                                                      class="product-image">
                                             </a>
 
@@ -2238,12 +2238,18 @@
 
     <script>
 
-        function changeStyle(divId) {
+        function changeStyle(divId , iconId) {
             const divsToHide = document.getElementsByClassName('products-area');
             for(var i = 0; i < divsToHide.length; i++){
                 divsToHide[i].style.display = "none";
             }
             document.getElementById(`${divId}`).style.display = "block";
+
+            const iconActve = document.getElementsByClassName('activing');
+            for(var j = 0; j < iconActve.length; j++) {
+                iconActve[j].classList.remove('active');
+            }
+            document.getElementById(`${iconId}`).classList.add('active');
         }
     </script>
 @endsection

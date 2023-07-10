@@ -36,5 +36,15 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+    }
+
+    public function login()
+    {
+        return view('user::client.login');
+    }
+
+    public function forgetPassword(){
+        return view('user::client.forgetPassword');
     }
 }
