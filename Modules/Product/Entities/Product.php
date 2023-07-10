@@ -4,10 +4,13 @@ namespace Modules\Product\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Color\Entities\Color;
 use Modules\Polymorphism\Entities\Images;
+use Modules\Size\Entities\Size;
 
 class Product extends Model
 {
@@ -82,6 +85,16 @@ class Product extends Model
     public function group(): HasOne
     {
         return $this->hasOne(ProductGroup::class, "id", "product_group_id");
+    }
+    public function color(): BelongsToMany
+    {
+        return $this->belongsToMany(Color::class,"color_products","product_id","color_id");
+
+    }
+    public function size(): BelongsToMany
+    {
+        return $this->belongsToMany(Size::class,"size_products","product_id","size_id");
+
     }
 
 

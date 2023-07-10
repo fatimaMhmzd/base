@@ -16,5 +16,7 @@
     "Rateing": true,
     "Address": true,
     "Wallet": true,
-    "Location": true
+    "Location": true,
+    "ShopBasket": true,
+    "Color": true
 }

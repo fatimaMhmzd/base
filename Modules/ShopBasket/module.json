@@ -1,0 +1,11 @@
+{
+    "name": "ShopBasket",
+    "alias": "shopbasket",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ShopBasket\\Providers\\ShopBasketServiceProvider"
+    ],
+    "files": []
+}

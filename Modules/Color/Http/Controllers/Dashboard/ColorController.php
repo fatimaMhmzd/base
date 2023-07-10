@@ -1,27 +1,21 @@
 <?php
 
-namespace Modules\Product\Http\Controllers\Dashboard;
+namespace Modules\Color\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Modules\Product\Http\Requests\product\ValidateProductRequest;
-use Modules\Product\Services\ProductGroupService;
-use Modules\Product\Services\ProductService;
-use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Routing\Controller;
+use Modules\Color\Http\Requests\color\ValidateColorRequest;
 
-class ProductDashboardController extends Controller
+class ColorController extends Controller
 {
-    public function __construct(public ProductService $service)
-    {
-    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('product::dashboard.product.list');
+        return view('color::index');
     }
 
     /**
@@ -30,8 +24,7 @@ class ProductDashboardController extends Controller
      */
     public function create()
     {
-        $all= resolve(ProductGroupService::class)->all();
-        return view('product::dashboard.product.add' , compact('all'));
+        return view('color::create');
     }
 
     /**
@@ -39,14 +32,11 @@ class ProductDashboardController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(ValidateProductRequest $request)
+    public function store(ValidateColorRequest $request)
     {
-
         try {
             $result = $this->service->store($request);
-
-            $message = trans("custom.defaults.store_success");
-            return back()->with('success', true)->with('message', $message);
+            return back()->with('success', true)->with('message',$result);
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
@@ -60,7 +50,7 @@ class ProductDashboardController extends Controller
      */
     public function show($id)
     {
-        return view('product::show');
+        return view('color::show');
     }
 
     /**
@@ -70,7 +60,7 @@ class ProductDashboardController extends Controller
      */
     public function edit($id)
     {
-        return view('product::edit');
+        return view('color::edit');
     }
 
     /**
@@ -79,7 +69,7 @@ class ProductDashboardController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateColorRequest $request, $id)
     {
         try {
             $this->service->update($request, $id);
@@ -110,13 +100,10 @@ class ProductDashboardController extends Controller
             return back()->with('error', true)->with('message', $message);
         }
     }
-
     public function ajax()
     {
 
         $data = $this->service->ajax();
-
-
         return $data;
     }
 }
