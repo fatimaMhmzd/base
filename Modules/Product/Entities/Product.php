@@ -75,7 +75,7 @@ class Product extends Model
         "created_at" => "timestamp",
         "updated_at" => "timestamp"
     ];
-    protected $with = ["image" , "group"];
+    protected $with = ["image" , "group" , "color" , "size"];
 
     public function image(): MorphMany
     {

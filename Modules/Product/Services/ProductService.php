@@ -37,6 +37,7 @@ class ProductService
     public function ajax()
     {
         $data = $this->productRepository->getByInput();
+        return $data;
 
         return  Datatables::of($data)
             ->addIndexColumn()
