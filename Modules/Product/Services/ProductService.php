@@ -3,12 +3,15 @@
 namespace Modules\Product\Services;
 
 use Illuminate\Support\Facades\DB;
+use Modules\Color\Entities\Color;
+use Modules\Color\Services\ColorService;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Product\Entities\ProductGroup;
 use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Repositories\ProductRepository;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
 use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
+use Modules\Size\Services\SizeService;
 use Yajra\DataTables\Facades\DataTables;
 
 class ProductService
@@ -126,27 +129,29 @@ class ProductService
         DB::beginTransaction();
         try {
             $totalUnitsItem = $this->productRepository->create($inputs);
-            DB::commit();
             $image = $inputs["file"] ?? null;
-            $color = $inputs["color"] ?? null;
-            $size = $inputs["size"] ?? null;
+            $color = $inputs["color_id"] ?? null;
+            $size = $inputs["size_id"] ?? null;
 
-            if ($image !== null) {
+
+            if ($image != null) {
                 foreach ($image as $item){
-                $this->uploadImage($totalUnitsItem, $item);
+                    $this->uploadImage($totalUnitsItem, $item);
                 }
             }
-            if ($color !== null) {
+            if ($color != null) {
                 foreach ($color as $item){
-                $this->uploadImage($totalUnitsItem, $item);
+                    $totalUnitsItem->color()->save(resolve(ColorService::class)->find($item));
                 }
             }
             if ($size !== null) {
                 foreach ($size as $item){
-                $this->uploadImage($totalUnitsItem, $item);
+                    $totalUnitsItem->size()->save(resolve(SizeService::class)->find($item));
                 }
             }
-            return "sucseess";
+
+            DB::commit();
+
 
         } catch (\Exception $exception) {
             DB::rollBack();

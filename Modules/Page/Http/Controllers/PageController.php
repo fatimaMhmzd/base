@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Page\Services\PageService;
+use Modules\Product\Services\ProductService;
 
 class PageController extends Controller
 {
@@ -17,7 +18,11 @@ class PageController extends Controller
     public function index()
     {
         $indexPageData = $this->service->indexPageData();
-        return view('page::client.publicc.home.home',compact('indexPageData'));
+        $bestProduct= resolve(ProductService::class)->all();
+        $mostSell= resolve(ProductService::class)->all();
+        $highestRate= resolve(ProductService::class)->all();
+
+        return view('page::client.publicc.home.home',compact('indexPageData' , 'bestProduct' ,'mostSell' , 'highestRate'));
     }
 
     /**

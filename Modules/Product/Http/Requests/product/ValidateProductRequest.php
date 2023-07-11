@@ -37,6 +37,8 @@ class ValidateProductRequest extends FormRequest
             'barcode' => 'nullable|integer',
             'creator' => 'nullable|integer',
             'updater' => 'nullable|integer',
+            'color_id' => 'nullable|array',
+            'size_id' => 'nullable|array',
         ];
     }
 
