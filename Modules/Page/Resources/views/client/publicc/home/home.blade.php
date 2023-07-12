@@ -150,7 +150,7 @@
                             @else
                                 <div class="banner mb-lg-1 mb-xl-2">
                                     <a href="#">
-                                        <img src="assets/images/demos/demo-3/banners/banner-1.jpg" alt="بنر">
+                                        <img src="/assets/images/demos/demo-3/banners/banner-1.jpg" alt="بنر">
                                     </a>
 
                                     <div class="banner-content text-right">
@@ -164,7 +164,7 @@
 
                                 <div class="banner mb-lg-1 mb-xl-2">
                                     <a href="#">
-                                        <img src="assets/images/demos/demo-3/banners/banner-2.jpg" alt="بنر">
+                                        <img src="/assets/images/demos/demo-3/banners/banner-2.jpg" alt="بنر">
                                     </a>
 
                                     <div class="banner-content text-right">
@@ -179,7 +179,7 @@
 
                                 <div class="banner mb-0">
                                     <a href="#">
-                                        <img src="assets/images/demos/demo-3/banners/banner-3.jpg" alt="بنر">
+                                        <img src="/assets/images/demos/demo-3/banners/banner-3.jpg" alt="بنر">
                                     </a>
 
                                     <div class="banner-content text-right">
@@ -246,7 +246,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -286,9 +286,9 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">جدید</span>
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-2.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-2.jpg" alt="تصویر محصول"
                                          class="product-image">
-                                    <img src="assets/images/demos/demo-3/products/product-2-2.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-2-2.jpg" alt="تصویر محصول"
                                          class="product-image-hover">
                                 </a>
 
@@ -336,7 +336,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-3.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-3.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -377,7 +377,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-4.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-4.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -416,7 +416,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -480,7 +480,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-4.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-4.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -519,7 +519,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -558,7 +558,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-3.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-3.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -599,9 +599,9 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">جدید</span>
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-2.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-2.jpg" alt="تصویر محصول"
                                          class="product-image">
-                                    <img src="assets/images/demos/demo-3/products/product-2-2.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-2-2.jpg" alt="تصویر محصول"
                                          class="product-image-hover">
                                 </a>
 
@@ -674,7 +674,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-3.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-3.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -714,7 +714,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -753,7 +753,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-4.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-4.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -793,9 +793,9 @@
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">جدید</span>
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-2.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-2.jpg" alt="تصویر محصول"
                                          class="product-image">
-                                    <img src="assets/images/demos/demo-3/products/product-2-2.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-2-2.jpg" alt="تصویر محصول"
                                          class="product-image-hover">
                                 </a>
 
@@ -843,7 +843,7 @@
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
+                                    <img src="/assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>
 
@@ -890,7 +890,7 @@
         {{--        newOffer        --}}
         <div class="container">
             <div class="cta cta-border cta-border-image mb-5 mb-lg-7"
-                 style="background-image: url('assets/images/demos/demo-3/bg-1.jpg');">
+                 style="background-image: url('/assets/images/demos/demo-3/bg-1.jpg');">
                 <div class="cta-border-wrapper bg-white">
                     <div class="row justify-content-center">
                         <div class="col-md-11 col-xl-11">
@@ -962,7 +962,7 @@
                                             <span class="product-label label-circle label-top">برتر</span>
                                             <span class="product-label label-circle label-sale">فروش ویژه</span>
                                             <a href="product.html">
-                                                <img src="assets/images/demos/demo-3/products/product-5.jpg"
+                                                <img src="/assets/images/demos/demo-3/products/product-5.jpg"
                                                      alt="تصویر محصول" class="product-image">
                                             </a>
 
@@ -1006,7 +1006,7 @@
                                         <figure class="product-media">
                                             <span class="product-label label-circle label-sale">فروش ویژه</span>
                                             <a href="product.html">
-                                                <img src="assets/images/demos/demo-3/products/product-6.jpg"
+                                                <img src="/assets/images/demos/demo-3/products/product-6.jpg"
                                                      alt="تصویر محصول" class="product-image">
                                             </a>
 

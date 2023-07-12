@@ -741,23 +741,6 @@
                             </li>
                             <li>
                             <a href="{{route('page_panelClient')}}" class="">پنل کاربری</a>
-                                <!--                                                            <ul>
-                                                                                                                            <li><a href="elements-products.html">محصولات</a></li>
-                                                                                                                            <li><a href="elements-typography.html">تایپوگرافی</a></li>
-                                                                                                                            <li><a href="elements-titles.html">عناوین</a></li>
-                                                                                                                            <li><a href="elements-banners.html">بنرها</a></li>
-                                                                                                                            <li><a href="elements-product-category.html">دسته بندی محصولات</a></li>
-                                                                                                                            <li><a href="elements-video-banners.html">بنرهای ویدیویی</a></li>
-                                                                                                                            <li><a href="elements-buttons.html">دکمه ها</a></li>
-                                                                                                                            <li><a href="elements-accordions.html">آکاردئون</a></li>
-                                                                                                                            <li><a href="elements-lookbook.html">لوک بوک</a></li>
-                                                                                                                            <li><a href="elements-tabs.html">تب ها</a></li>
-                                                                                                                            <li><a href="elements-testimonials.html">توصیف و نقل قول</a></li>
-                                                                                                                            <li><a href="elements-blog-posts.html">اخبار</a></li>
-                                                                                                                            <li><a href="elements-portfolio.html">نمونه کار</a></li>
-                                                                                                                            <li><a href="elements-cta.html">پاسخ به عمل</a></li>
-                                                                                                                            <li><a href="elements-icon-boxes.html">باکس های آیکون</a></li>
-                                                                                                                        </ul>-->
                             </li>
                         </ul><!-- End .menu -->
                     </nav><!-- End .main-nav -->
@@ -788,7 +771,7 @@
                             <div class="widget-call">
                                 <i class="icon-phone"></i>
                                 سوالی دارید؟<br/> 7روز هفته/24ساعته
-                                <a href="tel:#">02155667788</a>
+                                <a href="tel:#">09024980577</a>
                             </div><!-- End .widget-call -->
                         </div><!-- End .widget about-widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
@@ -799,8 +782,8 @@
 
                             <ul class="widget-list">
                                 <li><a href="{{route('page_aboutClient')}}">درباره ما</a></li>
-                                <li><a href="#">خدمات</a></li>
-                                <li><a href="#">نحوه خرید</a></li>
+                                <li><a href="{{route('page_services_serviceClient')}}">خدمات</a></li>
+                                <li><a href="{{route('page_services_howToBuyClient')}}">نحوه خرید</a></li>
                                 <li><a href="{{route('page_faqClient')}}">سوالات متداول</a></li>
                                 <li><a href="{{route('page_contactClient')}}">تماس با ما</a></li>
                             </ul><!-- End .widget-list -->
@@ -812,11 +795,11 @@
                             <h4 class="widget-title">خدمات مشتری</h4><!-- End .widget-title -->
 
                             <ul class="widget-list">
-                                <li><a href="#">شیوه پرداخت</a></li>
-                                <li><a href="#">گارانتی بازگشت وجه</a></li>
-                                <li><a href="#">شیوه ارسال محصولات</a></li>
-                                <li><a href="#">قوانین و مقررات</a></li>
-                                <li><a href="#">خط مشی</a></li>
+                                <li><a href="{{route('page_services_howToPayClient')}}">شیوه پرداخت</a></li>
+                                <li><a href="{{route('page_services_PaybackClient')}}">گارانتی بازگشت وجه</a></li>
+                                <li><a href="{{route('page_services_deliveryMethodClient')}}">شیوه ارسال محصولات</a></li>
+                                <li><a href="{{route('page_services_rulesClient')}}">قوانین و مقررات</a></li>
+                                <li><a href="{{route('page_services_policyClient')}}">خط مشی</a></li>
                             </ul><!-- End .widget-list -->
                         </div><!-- End .widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->

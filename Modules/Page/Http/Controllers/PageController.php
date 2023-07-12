@@ -21,7 +21,7 @@ class PageController extends Controller
         $bestProduct = resolve(ProductService::class)->all();
         $mostSell = resolve(ProductService::class)->all();
         $highestRate = resolve(ProductService::class)->all();
-
+//return $mostSell;
         return view('page::client.publicc.home.home', compact('indexPageData', 'bestProduct', 'mostSell', 'highestRate'));
     }
 
@@ -109,15 +109,51 @@ class PageController extends Controller
         return view('page::client.publicc.contact.contact');
     }
 
-//    CONTACT PANEL
+//    PANEL PAGE
     public function panel()
     {
         return view('page::client.myAccount.maccount');
     }
 
-    //    CONTACT FAQ
+    //    FAQ PAGE
     public function faq()
     {
         return view('page::client.publicc.faq.faq');
+    }
+
+//    SERVICE PAGE
+    public function service()
+    {
+        return view('page::client.customerServices.services');
+    }
+    //    howToBuy PAGE
+    public function howToBuy()
+    {
+        return view('page::client.customerServices.howToBuy');
+    }
+    //    howToPay PAGE
+    public function howToPay()
+    {
+        return view('page::client.customerServices.howToPay');
+    }
+    //    PAYBACK PAGE
+    public function Payback()
+    {
+        return view('page::client.customerServices.Payback');
+    }
+    //    DELIVERYMETHOD PAGE
+    public function deliveryMethod()
+{
+    return view('page::client.customerServices.deliveryMethod');
+}
+    //    RULES PAGE
+    public function rules()
+    {
+        return view('page::client.customerServices.rules');
+    }
+    //    POLICY PAGE
+    public function policy()
+    {
+        return view('page::client.customerServices.policy');
     }
 }
