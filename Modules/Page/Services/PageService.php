@@ -25,6 +25,7 @@ class PageService
                 "like" => true,
             ];
         }
+
         $all = $this->pageRepository->getByInput($filter, $request->perPage, $request->pageNumber);
         return $all;
     }
@@ -102,6 +103,7 @@ class PageService
         $inputs = $request->validated();
 
         $exist = $this->pageRepository->findBy("title", $inputs["title"]);
+
         if (!$exist) {
             DB::beginTransaction();
             try {

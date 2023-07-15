@@ -88,14 +88,15 @@ class Product extends Model
     }
     public function color(): BelongsToMany
     {
-        return $this->belongsToMany(Color::class,"color_products","product_id","color_id");
+        return $this->belongsToMany(Color::class,"product_properties","product_id","color_id");
 
     }
     public function size(): BelongsToMany
     {
-        return $this->belongsToMany(Size::class,"size_products","product_id","size_id");
+        return $this->belongsToMany(Size::class,"product_properties","product_id","size_id");
 
     }
+
 
 
 }

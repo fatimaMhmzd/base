@@ -16,10 +16,14 @@ return new class extends Migration
         Schema::create('factors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('address_id');
-            $table->integer('total_amount');
-            $table->tinyInteger('factor_status');
-            $table->tinyInteger('status');
+            $table->unsignedBigInteger('address_id')->nullable();
+            $table->unsignedBigInteger('discount_id')->nullable();
+            $table->integer('total_part_price')->nullable()->comment('جمع جزء');
+            $table->integer('total_amount')->nullable()->comment('مجموع');
+            $table->integer('shipping_amount')->nullable()->comment('هزینه ی ارسال');
+            $table->tinyInteger('send_method')->default(0)->comment('شیوه ارسال ');
+            $table->tinyInteger('factor_status')->default(0)->comment('وضعیت فاکتور');
+            $table->tinyInteger('status')->default(0)->comment('وضعیت مرسوله');
             $table->softDeletes();
             $table->timestamps();
         });

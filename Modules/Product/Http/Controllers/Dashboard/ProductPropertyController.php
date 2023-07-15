@@ -6,17 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Modules\Color\Services\ColorService;
-use Modules\Product\Http\Requests\product\ValidateProductRequest;
+use Modules\Product\Http\Requests\properties\ValidatePropertiesRequest;
 use Modules\Product\Services\ProductGroupService;
-use Modules\Product\Services\ProductService;
-use Modules\Size\Entities\Size;
-use Modules\Size\Services\SizeService;
+use Modules\Product\Services\ProductPropertyService;
 use Modules\Unit\Services\UnitService;
-use Yajra\DataTables\Facades\DataTables;
 
-class ProductDashboardController extends Controller
+class ProductPropertyController extends Controller
 {
-    public function __construct(public ProductService $service)
+    public function __construct(public ProductPropertyService $service)
     {
     }
     /**
@@ -25,18 +22,19 @@ class ProductDashboardController extends Controller
      */
     public function index()
     {
-        return view('product::dashboard.product.list');
+        return view('product::index');
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function create($id)
     {
-        $group= resolve(ProductGroupService::class)->all();
-
-        return view('product::dashboard.product.add' , compact('group'));
+        $productId = $id;
+        $unit= resolve(UnitService::class)->all();
+        $color= resolve(ColorService::class)->all();
+        return view('product::dashboard.property.add' ,compact('productId', 'unit' , 'color'));
     }
 
     /**
@@ -44,13 +42,11 @@ class ProductDashboardController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(ValidateProductRequest $request)
+    public function store(ValidatePropertiesRequest $request)
     {
-
 
         try {
             $result = $this->service->store($request);
-
             $message = trans("custom.defaults.store_success");
             return back()->with('success', true)->with('message', $message);
         } catch (\Exception $exception) {
@@ -87,16 +83,7 @@ class ProductDashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            $this->service->update($request, $id);
-            $message = trans("custom.defaults.update_success");
-            return back()->with('success', true)->with('message', $message);
-
-        } catch (\Exception $exception) {
-            $message = $exception->getMessage();
-            return back()->with('error', true)->with('message', $message);
-
-        }
+        //
     }
 
     /**
@@ -106,20 +93,12 @@ class ProductDashboardController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $this->service->delete($id);
-            /* $message = "انجام شد";*/
-            $message = trans("custom.defaults.delete_success");
-            return back()->with('success', true)->with('message', $message);
-        } catch (\Exception $exception) {
-            $message = $exception->getMessage();
-            return back()->with('error', true)->with('message', $message);
-        }
+        //
     }
 
-    public function ajax()
+    public function ajax($id)
     {
-        $data = $this->service->ajax();
+        $data = $this->service->ajax($id);
         return $data;
     }
 }

@@ -14,6 +14,7 @@ use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
 use Modules\Size\Services\SizeService;
 use Yajra\DataTables\Facades\DataTables;
 
+
 class ProductService
 {
     public function __construct(public ProductRepository $productRepository)
@@ -36,10 +37,11 @@ class ProductService
 
     public function ajax()
     {
-        $data = $this->productRepository->getByInput();
-        return $data;
 
-        return  Datatables::of($data)
+        $all = $this->productRepository->getByInput();
+
+
+        return  Datatables::of($all)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
@@ -48,15 +50,21 @@ class ProductService
 
                 return $btn;
             })
+            ->addColumn('property', function ($row) {
+
+                $property = '<a href="' . route('dashboard_product_property_create', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+
+                return $property;
+            })
             ->addColumn('image', function ($row) {
                 $img = '';
-                if ($row->image) {
+                if (count($row->image) !=0) {
                     $img = '<img src="/' . $row->image[0]->url. '" class="danger w-25"/>';
                 }
 
                 return $img;
             })
-            ->rawColumns(['action', 'image'])
+            ->rawColumns(['action', 'image','property'])
             ->make(true);
     }
 

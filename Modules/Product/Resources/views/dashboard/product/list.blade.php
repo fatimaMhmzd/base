@@ -37,6 +37,7 @@
                                     <th>موجودی</th>
                                     <th>وزن</th>
                                     <th>وضعیت</th>
+                                    <th>مشخصات محصول</th>
                                     <th>عکس</th>
                                     <th width="100px">عملیات</th>
                                 </tr>
@@ -57,18 +58,18 @@
 
 @section('script')
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/dashboard/datatable/ajax.js"></script>
+    <script src="/dashboard/datatable/jquery.validate.js"></script>
+    <script src="/dashboard/datatable/jquery.dataTables.min.js"></script>
+    <script src="/dashboard/datatable/bootstrap.min.js"></script>
+    <script src="/dashboard/datatable/dataTables.bootstrap4.min.js"></script>
 
     <script type="text/javascript">
         $(function () {
 
             var table = $('.data-table').DataTable({
                 "oLanguage": {
-                    "sUrl": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Persian.json"
+                    "sUrl": "/dashboard/datatable/Persian.json"
                 },
                 "pageLength": 25,
                 processing: true,
@@ -84,6 +85,7 @@
                     {data: 'available', name: 'available'},
                     {data: 'weight', name: 'weight'},
                     {data: 'status', name: 'status'},
+                    {data: 'property', name: 'property', orderable: false, searchable: false},
                     {data: 'image', name: 'image', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
