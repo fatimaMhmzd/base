@@ -7,6 +7,8 @@ use Modules\Polymorphism\Services\ImageService;
 use Modules\Product\Entities\ProductGroup;
 use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
+use Modules\Setting\Services\SettingService;
+use stdClass;
 
 class ProductGroupService
 {
@@ -133,6 +135,11 @@ class ProductGroupService
     public function cartItems(): array
     {
         return [];
+    }
+
+    public function setting(){
+        $settingService = resolve(SettingService::class);
+        return $settingService->allAsObjet();
     }
 
 }

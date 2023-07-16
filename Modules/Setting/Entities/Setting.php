@@ -14,6 +14,7 @@ class Setting extends Model
     protected $fillable = [
         "key",
         "value",
+        "label",
     ];
 
     protected $with = ["image"];

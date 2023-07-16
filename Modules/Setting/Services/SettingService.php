@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Setting\Http\Repositories\SettingRepository;
 use Modules\Setting\Http\Requests\setting\ValidateSettingRequest;
+use stdClass;
 use Yajra\DataTables\Facades\DataTables;
 
 class SettingService
@@ -136,9 +137,20 @@ class SettingService
     }
 
 
-    public function all()
+    public function all(): \Illuminate\Support\Collection
     {
         return $this->settingRepositoryy->getByInput();
+    }
+    public function allAsObjet(): stdClass
+    {
+        $settings = $this->all();
+        $setting = new stdClass;
+        foreach ($settings as $item) {
+            $key = $item->key;
+            $value = $item->value;
+            $setting->$key = $value;
+        }
+        return $setting;
     }
     public function uploadImage($guild, $file)
     {

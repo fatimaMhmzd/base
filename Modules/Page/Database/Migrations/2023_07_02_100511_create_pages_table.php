@@ -17,9 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('sub_title')->nullable();
+            $table->string('seo_keyword')->nullable();
+            $table->text('seo_description')->nullable();
             $table->string('link')->nullable();
             $table->text('description')->nullable();
             $table->longText('content')->nullable();
+            $table->boolean('can_delete')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

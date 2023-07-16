@@ -41,7 +41,7 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-left">
-                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : 09024980577</a>
+                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : {{$groups->setting()->phone}}</a>
                 </div><!-- End .header-left -->
 
                 <div class="header-right">
@@ -95,7 +95,7 @@
                     </button>
 
                     <a href="/" class="logo">
-                        <img src="/assets/images/demos/demo-3/logo.png" alt="Molla Logo" width="105" height="25">
+                        <img src="{{$groups->setting()->logo}}" alt="Molla Logo" width="105" height="25">
                     </a>
                 </div><!-- End .header-left -->
 
@@ -113,7 +113,7 @@
                     </div><!-- End .header-search -->
                 </div>
 
-                <div class="header-right">
+<!--                <div class="header-right">
                     <div class="dropdown compare-dropdown">
                         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" data-display="static" title="مقایسه محصولات"
@@ -144,11 +144,11 @@
                                    class="btn btn-outline-primary-2"><span>مقایسه</span><i
                                         class="icon-long-arrow-left"></i></a>
                             </div>
-                        </div><!-- End .dropdown-menu -->
-                    </div><!-- End .compare-dropdown -->
+                        </div>&lt;!&ndash; End .dropdown-menu &ndash;&gt;
+                    </div>--><!-- End .compare-dropdown -->
 
                     @if(\Illuminate\Support\Facades\Auth::check())
-                        <div class="wishlist">
+<!--                        <div class="wishlist">
                             <a href="{{route('page_wishlistClient')}}" title="لیست محصولات مورد علاقه شما">
                                 <div class="icon">
                                     <i class="icon-heart-o"></i>
@@ -156,7 +156,7 @@
                                 </div>
                                 <p>مورد علاقه</p>
                             </a>
-                        </div>
+                        </div>-->
 
                         <div class="dropdown cart-dropdown">
                             <a href="{{route('shop_cartPageClient')}}" class="dropdown-toggle" role="button"
@@ -764,14 +764,14 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget widget-about">
-                            <img src="/assets/images/demos/demo-3/logo-footer.png" class="footer-logo"
+                            <img src="{{$groups->setting()->footerLogo}}" class="footer-logo"
                                  alt="Footer Logo" width="105" height="25">
                             <p></p>
 
                             <div class="widget-call">
                                 <i class="icon-phone"></i>
                                 سوالی دارید؟<br/> 7روز هفته/24ساعته
-                                <a href="tel:#">09024980577</a>
+                                <a href="tel:#">{{$groups->setting()->phone}}</a>
                             </div><!-- End .widget-call -->
                         </div><!-- End .widget about-widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
