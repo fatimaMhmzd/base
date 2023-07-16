@@ -139,25 +139,20 @@ class ProductService
         try {
             $totalUnitsItem = $this->productRepository->create($inputs);
             $image = $inputs["file"] ?? null;
-            $color = $inputs["color_id"] ?? null;
-            $size = $inputs["size_id"] ?? null;
+            $IsCover = $inputs["isCover"] ?? null;
 
 
             if ($image != null) {
-                foreach ($image as $item){
-                    $this->uploadImage($totalUnitsItem, $item);
+                foreach ($image as $key =>$item){
+                    $cover =$IsCover[$key] ?? false;
+                    if ($key == 0){
+                        $cover =true;
+                    }
+
+                    $this->uploadImage($totalUnitsItem, $item ,$cover);
                 }
             }
-            if ($color != null) {
-                foreach ($color as $item){
-                    $totalUnitsItem->color()->save(resolve(ColorService::class)->find($item));
-                }
-            }
-            if ($size !== null) {
-                foreach ($size as $item){
-                    $totalUnitsItem->size()->save(resolve(SizeService::class)->find($item));
-                }
-            }
+
 
             DB::commit();
 
@@ -177,10 +172,10 @@ class ProductService
     {
         return $this->productRepository->getByInput();
     }
-    public function uploadImage($guild, $file)
+    public function uploadImage($guild, $file , $IsCover = false)
     {
         $destinationPath = "public/productGroup/" . $guild->id;
-        ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
+        ImageService::saveImage(image: $file, model: $guild, is_cover: $IsCover, is_public: true, destinationPath: $destinationPath);
     }
 
     public function shopIndexPage(): object

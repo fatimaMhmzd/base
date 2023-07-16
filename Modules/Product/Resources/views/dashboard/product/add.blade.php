@@ -47,38 +47,7 @@
                                                 </select>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">انتخاب رنگ بندی</label>
-                                            <div class="form-group">
-                                                <select class="select2 form-control" name="color_id[]" multiple="multiple">
-                                                    @foreach($color as $item)
-                                                    <option value="{{$item->id}}" style="background-color: {{$item->code}};">{{$item->title}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
 
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">انتخاب واحد</label>
-                                            <fieldset class="form-group">
-                                                <select class="form-control" id="unit" name="unit_id"  id="group"
-                                                        onchange="getData()">
-                                                    <option value="0">انتخاب کنید</option>
-                                                    @foreach($unit as $item)
-                                                        <option value="{{$item->id}}">{{$item->title}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">انتخاب اندازه</label>
-                                            <fieldset class="form-group">
-                                                <select class="select2 form-control" id="size"  name="size_id[]" multiple="multiple">
-
-                                                </select>
-
-                                            </fieldset>
-                                        </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">عنوان</label>
                                             <fieldset class="form-group">
@@ -127,20 +96,7 @@
 
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">توضیحات کوتاه</label>
-                                            <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="توضیحات کوتاه" name="short_description">
 
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">توضیحات بلند</label>
-                                            <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="توضیحات بلند " name="short_description">
-
-                                            </fieldset>
-                                        </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">موجودی </label>
                                             <fieldset class="form-group">
@@ -214,16 +170,17 @@
 
 
 
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="companyinput1" style="margin-top: 20px">عکس اصلی</label>
-                                                <fieldset class="form-group">
-                                                    <input type="file" name="file[]" class="form-control-file"
-                                                           id="exampleInputFile">
-                                                </fieldset>
-                                            </div>
-                                        </div>
+                                        <div class="col-xl-12 col-md-12 col-12 mb-1">
+                                            <fieldset class="form-group">
+                                                <div class="col mb-1">
+                                                    <label>عکس اصلی</label>
+                                                </div>
 
+                                                <img id="companyLogo" data-type="editable" height="200px" width="200px"/>
+
+
+                                            </fieldset>
+                                        </div>
                                         <div class="col-12" id="sliderArea">
                                             <div class="row" id="location0">
                                                 <div class="col-xl-6 col-lg-12">
@@ -251,9 +208,17 @@
 
                                         <div class="col-md-12 col-12">
                                             <div class="form-group">
-                                                <label for="companyinput8">توضیحات </label>
+                                                <label for="companyinput8">توضیحات کوتاه </label>
                                                 <textarea id="companyinput8" rows="5" class="form-control"
-                                                          name="description"
+                                                          name="short_description"
+                                                          placeholder="توضیحات "></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-group">
+                                                <label for="companyinput8">توضیحات بلند </label>
+                                                <textarea id="long_description" rows="5" class="form-control"
+                                                          name="long_description"
                                                           placeholder="توضیحات "></textarea>
                                             </div>
                                         </div>
@@ -352,5 +317,69 @@
 
     </script>
     <script src="/dashboard/app-assets/js/scripts/forms/select/form-select2.min.js"></script>
+    <script src="/dashboard/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('long_description', {
+            language: 'fa',
+            content: 'fa',
+            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
+    <script>
 
+        function init() {
+            $("img[data-type=editable]").each(function (i, e) {
+                var _inputFile = $('<input/>')
+                    .attr('type', 'file')
+                    .attr('hidden', 'hidden')
+                    .attr('onchange', 'readImage()')
+                    .attr('name', 'file[]')
+                    .attr('data-image-placeholder', e.id);
+
+                $(e.parentElement).append(_inputFile);
+
+                $(e).on("click", _inputFile, triggerClick);
+            });
+        }
+
+        function triggerClick(e) {
+            e.data.click();
+        }
+
+        Element.prototype.readImage = function () {
+            var _inputFile = this;
+            if (_inputFile && _inputFile.files && _inputFile.files[0]) {
+                var _fileReader = new FileReader();
+                _fileReader.onload = function (e) {
+                    var _imagePlaceholder = _inputFile.attributes.getNamedItem("data-image-placeholder").value;
+                    var _img = $("#" + _imagePlaceholder);
+                    _img.attr("src", e.target.result);
+                };
+                _fileReader.readAsDataURL(_inputFile.files[0]);
+            }
+        };
+
+        //
+        // IIFE - Immediately Invoked Function Expression
+        // https://stackoverflow.com/questions/18307078/jquery-best-practises-in-case-of-document-ready
+        (
+
+            function (yourcode) {
+                "use strict";
+                // The global jQuery object is passed as a parameter
+                yourcode(window.jQuery, window, document);
+            }(
+                function ($, window, document) {
+                    "use strict";
+                    // The $ is now locally scoped
+                    $(function () {
+                        // The DOM is ready!
+                        init();
+                    });
+
+                    // The rest of your code goes here!
+                }));
+
+    </script>
 @endsection
