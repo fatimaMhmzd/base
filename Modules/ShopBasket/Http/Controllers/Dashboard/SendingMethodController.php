@@ -1,26 +1,26 @@
 <?php
 
-namespace Modules\ShopBasket\Http\Controllers;
+namespace Modules\ShopBasket\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Modules\ShopBasket\Services\OrderService;
+use Illuminate\Routing\Controller;
+use Modules\ShopBasket\Http\Requests\sendingMethod\ValidateSendingMethodRequest;
+use Modules\ShopBasket\Services\SendingMethodService;
 
-
-class OrderController extends Controller
+class SendingMethodController extends Controller
 {
-    public function __construct(public OrderService $service)
+    public function __construct(public SendingMethodService $service)
     {
     }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('shopbasket::index');
+        return view('shopbasket::dashboard.sendingMethod.list');
     }
 
     /**
@@ -29,7 +29,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('shopbasket::create');
+        return view('shopbasket::dashboard.sendingMethod.add');
     }
 
     /**
@@ -37,9 +37,8 @@ class OrderController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidateSendingMethodRequest $request)
     {
-
         try {
             $result = $this->service->store($request);
             $message = trans("custom.defaults.store_success");
@@ -55,14 +54,9 @@ class OrderController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show()
+    public function show($id)
     {
-
-
-        $cart = $this->service->index()->first();
-
-
-        return view('shopbasket::client.cart', compact('cart'));
+        return view('shopbasket::show');
     }
 
     /**
@@ -81,9 +75,18 @@ class OrderController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateSendingMethodRequest $request, $id)
     {
-        //
+        try {
+            $this->service->update($request, $id);
+            $message = trans("custom.defaults.update_success");
+            return back()->with('success', true)->with('message', $message);
+
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+
+        }
     }
 
     /**
@@ -102,5 +105,11 @@ class OrderController extends Controller
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
         }
+    }
+
+    public function ajax()
+    {
+        $data = $this->service->ajax();
+        return $data;
     }
 }
