@@ -19,6 +19,7 @@ class ProductDashboardController extends Controller
     public function __construct(public ProductService $service)
     {
     }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -34,9 +35,10 @@ class ProductDashboardController extends Controller
      */
     public function create()
     {
-        $group= resolve(ProductGroupService::class)->all();
-
-        return view('product::dashboard.product.add' , compact('group'));
+        $group = resolve(ProductGroupService::class)->all();
+        $color = resolve(ColorService::class)->all();
+        $unit = resolve(UnitService::class)->all();
+        return view('product::dashboard.product.add', compact('group','color','unit'));
     }
 
     /**
