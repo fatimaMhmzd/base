@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Page\Http\Repositories\PageRepository;
 use Modules\Page\Http\Requests\page\ValidatePageRequest;
 use Modules\Polymorphism\Services\ImageService;
+use Modules\Product\Services\ProductService;
 use Modules\SocialMedia\Services\SocialMediaService;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -142,10 +143,12 @@ class PageService
 
     public function indexPageData(): object
     {
-        $socialMediaService = resolve(SocialMediaService::class);
-        $allSocialMedia = $socialMediaService->all();
+        $allSocialMedia = resolve(SocialMediaService::class)->all();
+        $bestProduct = resolve(ProductService::class)->all();
+        $mostSell = resolve(ProductService::class)->all();
+        $highestRate = resolve(ProductService::class)->all();
 
-        return (object)array("allSocialMedia"=>$allSocialMedia);
+        return (object)array("allSocialMedia"=>$allSocialMedia,"bestProduct"=>$bestProduct,"mostSell"=>$mostSell,"highestRate"=>$highestRate);
     }
 
 

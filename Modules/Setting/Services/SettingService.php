@@ -4,6 +4,7 @@ namespace Modules\Setting\Services;
 
 use Illuminate\Support\Facades\DB;
 use Modules\Polymorphism\Services\ImageService;
+use Modules\Setting\Entities\Setting;
 use Modules\Setting\Http\Repositories\SettingRepository;
 use Modules\Setting\Http\Requests\setting\ValidateSettingRequest;
 use stdClass;
@@ -107,10 +108,18 @@ class SettingService
     public function store(ValidateSettingRequest $request)
     {
         $inputs = $request->validated();
+
+        [
+            'key'=>'value',
+            'value'=>'value',
+            'label'=>'value',
+            'file'=>'value',
+        ];
+
+        Setting::query()->create($inputs);
+
         $exist = $this->settingRepositoryy->findBy("key", $inputs["key"]);
         if (!$exist) {
-
-
 
             DB::beginTransaction();
             try {
@@ -122,7 +131,7 @@ class SettingService
                 throw new \Exception(trans("custom.defaults.store_failed"));
             }
         } else {
-            throw new \Exception(trans("custom.publicContent.item_with_application_id_already_exist"));
+            throw new \Exception(trans("custom.publicContent.item_already_exist"));
         }
 
         $image = $inputs["file"] ?? null;

@@ -13,7 +13,6 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Setting\Http\Controllers\Dashboard\SettingController;
 
-
 Route::group(['prefix' => 'setting', 'as' => 'setting_'], function (){
     Route::get('/', [SettingController::class, 'index'])->name('index');
     Route::get('/ajax', [SettingController::class, 'ajax'])->name('ajax');
@@ -22,7 +21,5 @@ Route::group(['prefix' => 'setting', 'as' => 'setting_'], function (){
     Route::get('/edit/{id}', [SettingController::class, 'edit'])->name('edit');
     Route::post('/update/{id}', [SettingController::class, 'update'])->name('update');
     Route::delete('/destroy/{id}', [SettingController::class, 'destroy'])->name('destroy');
-
-
 });
 

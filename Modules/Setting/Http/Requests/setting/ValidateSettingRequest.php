@@ -16,6 +16,7 @@ class ValidateSettingRequest extends FormRequest
         return [
             'key' => 'required|string',
             'value' => 'required|string',
+            'label' => 'required|string',
             'file' => 'nullable|image|mimes:jpg,png|max:5000',
         ];
     }

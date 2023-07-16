@@ -18,12 +18,8 @@ class PageController extends Controller
     public function index()
     {
         $indexPageData = $this->service->indexPageData();
-        $bestProduct = resolve(ProductService::class)->all();
-        $mostSell = resolve(ProductService::class)->all();
-        $highestRate = resolve(ProductService::class)->all();
 
-//return $mostSell;
-        return view('page::client.publicc.home.home', compact('indexPageData', 'bestProduct', 'mostSell', 'highestRate'));
+        return view('page::client.publicc.home.home', compact('indexPageData'));
     }
 
     /**

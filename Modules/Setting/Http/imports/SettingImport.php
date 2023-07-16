@@ -22,6 +22,7 @@ class SettingImport extends BaseImport implements ToCollection
     public function collection(Collection $collection)
     {
         $settings = $this->standard_data($collection);
+
         $settingRepository = new SettingRepository();
 
         foreach ($settings as $setting) {

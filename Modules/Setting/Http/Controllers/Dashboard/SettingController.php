@@ -10,7 +10,7 @@ use Modules\Setting\Services\SettingService;
 
 class SettingController extends Controller
 {
-    public function __construct(public SettingService $settingService)
+    public function __construct(public SettingService $service)
     {
     }
     /**
@@ -107,7 +107,6 @@ class SettingController extends Controller
     }
     public function ajax()
     {
-
         $data = $this->service->ajax();
         return $data;
     }
