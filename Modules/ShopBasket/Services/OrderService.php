@@ -37,11 +37,11 @@ class OrderService
 
     public function delete($id)
     {
-        $item = $this->factorRepository->find($id);
+        $item = $this->factorItemRepository->find($id);
         if ($item) {
             DB::beginTransaction();
             try {
-                $itemDeleted = $this->factorRepository->delete($item);
+                $itemDeleted = $this->factorItemRepository->delete($item);
                 DB::commit();
                 return $itemDeleted;
             } catch (\Exception $exception) {
@@ -81,36 +81,54 @@ class OrderService
         return $totalUnitsItem;
     }
 
-    public function store($id , $propertyId = 0 ,$count =1)
+    public function store($request)
     {
         $factor =[];
         $factorItem =[];
-        if ($propertyId != 0){
-            $product = resolve(ProductPropertyService::class)->find($propertyId);
+
+        if ($request->propertyId){
+            $colorId =resolve(ProductPropertyService::class)->find($request->propertyId)->color_id;
+            $sizeId =resolve(ProductPropertyService::class)->find($request->propertyId)->size_id;
+            $price =resolve(ProductPropertyService::class)->find($request->propertyId)->price;
         }else{
-            $product = resolve(ProductService::class)->find($propertyId);
+            $price = resolve(ProductService::class)->find($request->productId)->price;
         }
         $factor["user_id"] = Auth::id();
         $factor["factor_status"] =0;
 
-        $factorItem["product_id"] = $id;
-        $factorItem["product_properties_id"] = $propertyId;
-        $factorItem["color_id"] = $product->color_id;
-        $factorItem["size_id"] = $product->size_id;
-
-
+        $factorItem["product_id"] = $request->productId;
+        $factorItem["product_properties_id"] = $request->propertyId ?? 0;
+        $factorItem["color_id"] = $colorId ?? null;
+        $factorItem["size_id"] = $sizeId ?? null;
 
             DB::beginTransaction();
             try {
                 $totalUnit= $this->factorRepository->firstOrCreate($factor);
                 $factorItem["factor_id"] = $totalUnit->id;
                 $totalUnitsItem = $this->factorItemRepository->firstOrCreate($factorItem);
-                $factorItemUpdate["count"] = $totalUnitsItem->count + $count ;
-                $factorItemUpdate["last_price"] = $product->price;
-                $factorItemUpdate["total_price"] =$totalUnitsItem->total_price +($product->price * $count) ;
+                $count =$request->count ?? 1 ;
+
+                if ($request->opr == "-"){
+
+                        $factorItemUpdate["count"] = $totalUnitsItem->count - $count ;
+
+
+                }
+                elseif ($request->opr == "+"){
+
+                        $factorItemUpdate["count"] = $totalUnitsItem->count + $count ;
+
+                }else{
+                    $factorItemUpdate["count"] = $count ;
+                }
+
+
+                $factorItemUpdate["last_price"] = $price;
+                $factorItemUpdate["total_price"] =$price * $factorItemUpdate["count"] ;
                 $totalUnitItemUpdated = $this->factorItemRepository->update($totalUnitsItem, $factorItemUpdate);
-                $factorUpdate["total_part_price"] = $totalUnit->total_part_price + ($product->price * $count);
-                $factorUpdate["total_amount"] = $totalUnit->total_amount + ($product->price * $count);
+
+                $factorUpdate["total_part_price"] = $totalUnit->total_part_price + $factorItemUpdate["total_price"];
+                $factorUpdate["total_amount"] = $totalUnit->total_amount + $factorItemUpdate["total_price"];
                 $totalUnitUpdated = $this->factorRepository->update($totalUnit, $factorUpdate);
 
                 DB::commit();
@@ -121,7 +139,7 @@ class OrderService
                 throw new \Exception(trans("custom.defaults.store_failed"));
             }
 
-        return $totalUnitsItem;
+
 
     }
 
@@ -130,17 +148,5 @@ class OrderService
     {
         return $this->factorRepository->getByInput();
     }
-    public function uploadImage($guild, $file)
-    {
-        $destinationPath = "public/page/" . $guild->id;
-        ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
-    }
 
-    public function indexPageData(): object
-    {
-        $socialMediaService = resolve(SocialMediaService::class);
-        $allSocialMedia = $socialMediaService->all();
-
-        return (object)array("allSocialMedia"=>$allSocialMedia);
-    }
 }

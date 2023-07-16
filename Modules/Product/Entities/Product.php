@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Color\Entities\Color;
+use Modules\Comment\Entities\Comment;
 use Modules\Polymorphism\Entities\Images;
 use Modules\Size\Entities\Size;
 
@@ -75,11 +76,15 @@ class Product extends Model
         "created_at" => "timestamp",
         "updated_at" => "timestamp"
     ];
-    protected $with = ["image" , "group" , "color" , "size"];
+    protected $with = ["image" ,"comments", "group" , "color" , "size"];
 
     public function image(): MorphMany
     {
         return $this->morphMany(Images::class, 'imageable');
+    }
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function group(): HasOne
