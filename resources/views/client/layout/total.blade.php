@@ -113,8 +113,8 @@
                     </div><!-- End .header-search -->
                 </div>
 
-<!--                <div class="header-right">
-                    <div class="dropdown compare-dropdown">
+                <div class="header-right">
+                <!--                    <div class="dropdown compare-dropdown">
                         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" data-display="static" title="مقایسه محصولات"
                            aria-label="Compare Products">

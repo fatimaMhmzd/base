@@ -17,6 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $data = $this->service->shopIndexPage();
+//        return $data;
         return view('product::client.store',compact('data'));
     }
 

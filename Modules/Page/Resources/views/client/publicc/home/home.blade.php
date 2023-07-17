@@ -93,8 +93,8 @@
                                         <figure class="slide-image">
                                             <picture>
                                                 <source media="(max-width: 480px)"
-                                                        srcset="assets/images/demos/demo-3/slider/slide-2-480w.jpg">
-                                                <img src="assets/images/demos/demo-3/slider/slide-2.jpg"
+                                                        srcset="/assets/images/demos/demo-3/slider/slide-2-480w.jpg">
+                                                <img src="/assets/images/demos/demo-3/slider/slide-2.jpg"
                                                      alt="توضیحات عکس">
                                             </picture>
                                         </figure><!-- End .slide-image -->
@@ -243,6 +243,7 @@
                                     }
                                 }
                             }'>
+                        @foreach($indexPageData->bestProduct as $bestP)
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
@@ -266,22 +267,22 @@
 
                             <div class="product-body">
                                 <div class="product-cat">
-                                    <a href="#">دوربین فیلمبرداری</a>
+                                    <a href="#">{{$bestP->title}}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">دوربین عکاسی 360 درجه ضد آب</a>
+                                <h3 class="product-title"><a href="product.html">{{$bestP->full_title}}</a>
                                 </h3><!-- End .product-title -->
                                 <div class="product-price">
-                                    349,000 تومان
+                                    {{$bestP->price}} تومان
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
+                                        <div class="ratings-val" style="width: {{$bestP->avg_rate}}%;"></div><!-- End .ratings-val -->
                                     </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 2 بازدید )</span>
+                                    <span class="ratings-text">( {{$bestP->num_visit}} بازدید )</span>
                                 </div><!-- End .rating-container -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
-
+                        @endforeach
                         <div class="product product-2">
                             <figure class="product-media">
                                 <span class="product-label label-circle label-new">جدید</span>
@@ -477,6 +478,7 @@
                                     }
                                 }
                             }'>
+                        @foreach($indexPageData->mostSell as $mostS)
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
@@ -500,22 +502,22 @@
 
                             <div class="product-body">
                                 <div class="product-cat">
-                                    <a href="#">دوربین دیجیتال</a>
+                                    <a href="#">{{$mostS->title}}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">دوربین سونی - آلفا 5100</a></h3>
+                                <h3 class="product-title"><a href="product.html">{{$mostS->full_title}}</a></h3>
                                 <!-- End .product-title -->
                                 <div class="product-price">
-                                    499,000 تومان
+                                    {{$mostS->price}} تومان
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
+                                        <div class="ratings-val" style="width: {{$mostS->avg_rate}}%;"></div><!-- End .ratings-val -->
                                     </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 11 بازدید )</span>
+                                    <span class="ratings-text">( {{$mostS->num_visit}} بازدید )</span>
                                 </div><!-- End .rating-container -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
-
+                        @endforeach
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
@@ -671,6 +673,7 @@
                                     }
                                 }
                             }'>
+                        @foreach($indexPageData->highestRate as $highR)
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
@@ -694,23 +697,23 @@
 
                             <div class="product-body">
                                 <div class="product-cat">
-                                    <a href="#">لپ تاپ</a>
+                                    <a href="#">{{$highR->title}}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">لپ تاپ لنوو - 15.6 اینچ</a></h3>
+                                <h3 class="product-title"><a href="product.html">{{$highR->full_title}}</a></h3>
                                 <!-- End .product-title -->
                                 <div class="product-price">
-                                    <span class="out-price">339,000 تومان</span>
-                                    <span class="out-text">ناموجود</span>
+                                    <span class="out-price">{{$highR->price}} تومان</span>
+                                    @if(!$highR->status)<span class="out-text">ناموجود</span>@endif
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
+                                        <div class="ratings-val" style="width: {{$highR->avg_rate}}%;"></div><!-- End .ratings-val -->
                                     </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 3 بازدید )</span>
+                                    <span class="ratings-text">( {{$highR->num_visit}} بازدید )</span>
                                 </div><!-- End .rating-container -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
-
+                        @endforeach
                         <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
