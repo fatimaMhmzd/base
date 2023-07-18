@@ -246,7 +246,7 @@
                         @foreach($indexPageData->bestProduct as $bestP)
                         <div class="product product-2">
                             <figure class="product-media">
-                                <a href="product.html">
+                                <a href={{route('shop_productDetail', $bestP->slug)}}>
                                     <img src="/assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
                                          class="product-image">
                                 </a>

@@ -1,6 +1,6 @@
 @extends('client.layout.total')
 @section('content')
-    <div class="page-content">
+    <div class="page-content mt-2">
         <div class="container">
             <div class="product-details-top">
                 <div class="row">
@@ -8,8 +8,8 @@
                         <div class="product-gallery product-gallery-vertical">
                             <div class="row">
                                 <figure class="product-main-image">
-                                    <img id="product-zoom" src="assets/images/products/single/1.jpg"
-                                         data-zoom-image="assets/images/products/single/1-big.jpg"
+                                    <img id="product-zoom" src="/assets/images/products/single/1.jpg"
+                                         data-zoom-image="/assets/images/products/single/1-big.jpg"
                                          alt="تصویر محصول">
 
                                     <a href="#" id="btn-product-gallery" class="btn-product-gallery">
@@ -19,30 +19,30 @@
 
                                 <div id="product-zoom-gallery" class="product-image-gallery">
                                     <a class="product-gallery-item active" href="#"
-                                       data-image="assets/images/products/single/1.jpg"
-                                       data-zoom-image="assets/images/products/single/1-big.jpg">
-                                        <img src="assets/images/products/single/1-small.jpg"
+                                       data-image="/assets/images/products/single/1.jpg"
+                                       data-zoom-image="/assets/images/products/single/1-big.jpg">
+                                        <img src="/assets/images/products/single/1-small.jpg"
                                              alt="توضیحات تصویر">
                                     </a>
 
                                     <a class="product-gallery-item" href="#"
-                                       data-image="assets/images/products/single/2.jpg"
-                                       data-zoom-image="assets/images/products/single/2-big.jpg">
-                                        <img src="assets/images/products/single/2-small.jpg"
+                                       data-image="/assets/images/products/single/2.jpg"
+                                       data-zoom-image="/assets/images/products/single/2-big.jpg">
+                                        <img src="/assets/images/products/single/2-small.jpg"
                                              alt="توضیحات تصویر">
                                     </a>
 
                                     <a class="product-gallery-item" href="#"
-                                       data-image="assets/images/products/single/3.jpg"
-                                       data-zoom-image="assets/images/products/single/3-big.jpg">
-                                        <img src="assets/images/products/single/3-small.jpg"
+                                       data-image="/assets/images/products/single/3.jpg"
+                                       data-zoom-image="/assets/images/products/single/3-big.jpg">
+                                        <img src="/assets/images/products/single/3-small.jpg"
                                              alt="توضیحات تصویر">
                                     </a>
 
                                     <a class="product-gallery-item" href="#"
-                                       data-image="assets/images/products/single/4.jpg"
-                                       data-zoom-image="assets/images/products/single/4-big.jpg">
-                                        <img src="assets/images/products/single/4-small.jpg" alt="product back">
+                                       data-image="/assets/images/products/single/4.jpg"
+                                       data-zoom-image="/assets/images/products/single/4-big.jpg">
+                                        <img src="/assets/images/products/single/4-small.jpg" alt="product back">
                                     </a>
                                 </div><!-- End .product-image-gallery -->
                             </div><!-- End .row -->
@@ -51,25 +51,25 @@
 
                     <div class="col-md-6">
                         <div class="product-details">
-                            <h1 class="product-title">لباس زنانه رنگ زرد تیره</h1>
+                            <h1 class="product-title">{{$data->full_title}}</h1>
                             <!-- End .product-title -->
 
                             <div class="ratings-container">
                                 <div class="ratings">
-                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                    <div class="ratings-val" style="width: {{$data->avg_rate}}%;"></div>
+                                    <!-- End .ratings-val -->
                                 </div><!-- End .ratings -->
-                                <a class="ratings-text" href="#product-review-link" id="review-link">( 2 نظر
+                                <a class="ratings-text" href="#product-review-link"
+                                   id="review-link">( {{$data->num_visit}} نظر
                                     )</a>
                             </div><!-- End .rating-container -->
 
                             <div class="product-price">
-                                84,000 تومان
+                                {{$data->price}} تومان
                             </div><!-- End .product-price -->
 
                             <div class="product-content">
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
-                                    سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                    ساختگی با تولید سادگی نامفهوم
+                                <p>{{$data->short_description}}
                                 </p>
                             </div><!-- End .product-content -->
 
@@ -77,12 +77,14 @@
                                 <label>رنگ : </label>
 
                                 <div class="product-nav product-nav-thumbs">
-                                    <a href="#" class="active">
-                                        <img src="assets/images/products/single/1-thumb.jpg" alt="product desc">
-                                    </a>
-                                    <a href="#">
-                                        <img src="assets/images/products/single/2-thumb.jpg" alt="product desc">
-                                    </a>
+                                    @foreach($data->color as $colour)
+                                        <a href="#">
+                                            {{--<img src="/assets/images/products/single/1-thumb.jpg" alt="product desc">--}}
+                                            <div
+                                                style="width: 50px ; height:40px; background-color: {{$colour->code}}"></div>
+                                        </a>
+                                    @endforeach
+
                                 </div><!-- End .product-nav -->
                             </div><!-- End .details-filter-row -->
 
@@ -91,10 +93,15 @@
                                 <div class="select-custom">
                                     <select name="size" id="size" class="form-control">
                                         <option value="#" selected="selected">سایز را انتخاب کنید</option>
-                                        <option value="s">کوچک (Small)</option>
-                                        <option value="m">متوسط (Medium)</option>
-                                        <option value="l">بزرگ (Large)</option>
-                                        <option value="xl">خیلی بزرگ (XLarge)</option>
+                                        @if(count($data->size) > 0)
+                                            @foreach($data->size as $item)
+                                            @endforeach
+                                        @else
+                                            <option value="s">کوچک (Small)</option>
+                                            <option value="m">متوسط (Medium)</option>
+                                            <option value="l">بزرگ (Large)</option>
+                                            <option value="xl">خیلی بزرگ (XLarge)</option>
+                                        @endif
                                     </select>
                                 </div><!-- End .select-custom -->
 
@@ -110,7 +117,8 @@
                             </div><!-- End .details-filter-row -->
 
                             <div class="product-details-action">
-                                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
+                                <a class="btn-product btn-cart" href={{route('shop_basket_order_store',$id=$data->id)}} >
+                                <span>افزودن به سبد خرید</span></a>
 
                                 <div class="details-action-wrapper">
                                     <a href="#" class="btn-product btn-wishlist"
@@ -174,22 +182,7 @@
                          aria-labelledby="product-desc-link">
                         <div class="product-desc-content">
                             <h3>اطلاعات محصول</h3>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
-                                سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم
-                                ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن ساختگی با تولید سادگی
-                                نامفهوم. </p>
-                            <ul>
-                                <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </li>
-                                <li>لورم ایپسوم متن ساختگی با تولید سادگی.</li>
-                                <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم</li>
-                            </ul>
-
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
-                                سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن
-                                ساختگی با تولید سادگی نامفهوم، لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم
-                                ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن ساختگی با تولید سادگی
-                                نامفهوملورم ایپسوم متن ساختگی با تولید سادگی نامفهوم. </p>
+                            {{$data->long_description}}
                         </div><!-- End .product-desc-content -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-info-tab" role="tabpanel"
@@ -206,7 +199,7 @@
                                 <li>لورم ایپسوم متن ساختگی</li>
                                 <li>لورم ایپسوم متن ساختگی با تولید سادگی</li>
                                 <li>لورم ایپسوم</li>
-                                <li>لورم ایپسوم متن ساختگی </li>
+                                <li>لورم ایپسوم متن ساختگی</li>
                                 <li>لورم ایپسوم متن ساختگی با تولید سادگی</li>
                                 <li> ارتفاع: 31سانتی متر; عرض: 32سانتی متر; عمق: 12سانتی متر</li>
                             </ul>
@@ -224,18 +217,18 @@
                                 ساختگی با تولید سادگی نامفهوم<br>
                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
                                 سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن
-                                ساختگی با تولید سادگی نامفهوملورم ایپسوم متن ساختگی با تولید سادگی نامفهوم.</a>
+                                ساختگی با تولید سادگی نامفهوملورم ایپسوم متن ساختگی با تولید سادگی نامفهوم.
                             </p>
                         </div><!-- End .product-desc-content -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-review-tab" role="tabpanel"
                          aria-labelledby="product-review-link">
                         <div class="reviews">
-                            <h3>نظر (2)</h3>
                             <div class="review">
                                 <div class="row no-gutters">
                                     <div class="col-auto">
-                                        <h4><a href="#">کاربر 1</a></h4>
+                                        <h4><a href="#">ک
+                                                <h3>نظر ({{count($data->comments)}})</h3>اربر 1</a></h4>
                                         <div class="ratings-container">
                                             <div class="ratings">
                                                 <div class="ratings-val" style="width: 80%;"></div>
@@ -327,7 +320,7 @@
                     <figure class="product-media">
                         <span class="product-label label-new">جدید</span>
                         <a href="product.html">
-                            <img src="assets/images/products/product-4.jpg" alt="تصویر محصول"
+                            <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
                                  class="product-image">
                         </a>
 
@@ -363,14 +356,14 @@
 
                         <div class="product-nav product-nav-thumbs">
                             <a href="#" class="active">
-                                <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                <img src="/assets/images/products/product-4-thumb.jpg" alt="product desc">
                             </a>
                             <a href="#">
-                                <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                <img src="/assets/images/products/product-4-2-thumb.jpg" alt="product desc">
                             </a>
 
                             <a href="#">
-                                <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                <img src="/assets/images/products/product-4-3-thumb.jpg" alt="product desc">
                             </a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
@@ -380,7 +373,7 @@
                     <figure class="product-media">
                         <span class="product-label label-out">ناموجود</span>
                         <a href="product.html">
-                            <img src="assets/images/products/product-6.jpg" alt="تصویر محصول"
+                            <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
                                  class="product-image">
                         </a>
 
@@ -420,7 +413,7 @@
                     <figure class="product-media">
                         <span class="product-label label-top">برتر</span>
                         <a href="product.html">
-                            <img src="assets/images/products/product-11.jpg" alt="تصویر محصول"
+                            <img src="/assets/images/products/product-11.jpg" alt="تصویر محصول"
                                  class="product-image">
                         </a>
 
@@ -457,14 +450,14 @@
 
                         <div class="product-nav product-nav-thumbs">
                             <a href="#" class="active">
-                                <img src="assets/images/products/product-11-thumb.jpg" alt="product desc">
+                                <img src="/assets/images/products/product-11-thumb.jpg" alt="product desc">
                             </a>
                             <a href="#">
-                                <img src="assets/images/products/product-11-2-thumb.jpg" alt="product desc">
+                                <img src="/assets/images/products/product-11-2-thumb.jpg" alt="product desc">
                             </a>
 
                             <a href="#">
-                                <img src="assets/images/products/product-11-3-thumb.jpg" alt="product desc">
+                                <img src="/assets/images/products/product-11-3-thumb.jpg" alt="product desc">
                             </a>
                         </div><!-- End .product-nav -->
                     </div><!-- End .product-body -->
@@ -473,7 +466,7 @@
                 <div class="product product-7 text-center">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="assets/images/products/product-10.jpg" alt="تصویر محصول"
+                            <img src="/assets/images/products/product-10.jpg" alt="تصویر محصول"
                                  class="product-image">
                         </a>
 
@@ -513,7 +506,7 @@
                 <div class="product product-7 text-center">
                     <figure class="product-media">
                         <a href="product.html">
-                            <img src="assets/images/products/product-7.jpg" alt="تصویر محصول"
+                            <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
                                  class="product-image">
                         </a>
 
