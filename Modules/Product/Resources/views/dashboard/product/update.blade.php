@@ -30,22 +30,23 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form" method="post" action="{{route('dashboard_product_update')}}"
+                            <form class="form" method="post" action="{{route('dashboard_product_update' , $data->id)}}"
                                   enctype="multipart/form-data">
+                                @method('PUT')
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">انتخاب گروهبندی</label>
                                             <fieldset class="form-group">
-                                                <select class="form-control" id="basicSelect" name="product_group_id"  id="group"
-                                                        onchange="getData()">
-                                                    @foreach($all as $item)
-                                                        <option value="{{$item->id}}">{{$item->title}}</option>
+                                                <select class="form-control" id="basicSelect" name="product_group_id"  id="group">
+                                                    @foreach($group as $item)
+                                                        <option @if($item->id == $data->product_group_id) selected @endif value="{{$item->id}}">{{$item->title}}</option>
                                                     @endforeach
                                                 </select>
                                             </fieldset>
                                         </div>
+
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">عنوان</label>
                                             <fieldset class="form-group">
@@ -60,51 +61,52 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">برند</label>
+                                            <fieldset class="form-group">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="برند" name="brand" value="{{$data->brand}}">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">عنوان کامل</label>
+                                            <fieldset class="form-group">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="عنوان کامل" name="full_title" value="{{$data->full_title}}">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">قیمت</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="قیمت" name="price" value="{{$data->price}}">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="قیمت" name="price" value="{{$data->price}}">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">قیمت با تخفیف </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="قیمت با تخفیف " name="off_price" value="{{$data->off_price}}">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="قیمت با تخفیف " name="off_price" value="{{$data->off_price}}">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">تخفیف </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="تخفیف " name="off">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="تخفیف " name="off" value="{{$data->off}}">
 
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">توضیحات کوتاه</label>
-                                            <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="توضیحات کوتاه" name="short_description" value="{{$data->short_description}}">
 
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">توضیحات بلند</label>
-                                            <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="توضیحات بلند " name="long_description" value="{{$data->long_description}}">
-
-                                            </fieldset>
-                                        </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">موجودی </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="موجودی " name="available" value="{{$data->available}}">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="موجودی " name="available" value="{{$data->available}}">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">اسلاگ </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="اسلاگ " name="slug" value="{{$data->slug}}">
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="اسلاگ " name="slug" value="{{$data->sub_title}}">
 
                                             </fieldset>
                                         </div>
@@ -132,21 +134,21 @@
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">وزن</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="وزن" name="weight" value="{{$data->weight}}">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن" name="weight" value="{{$data->weight}}">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">وزن با بسته بندی</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="وزن با بسته بندی " name="weight_with_packaging" value="{{$data->weight_with_packaging}}">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن با بسته بندی " name="weight_with_packaging" value="{{$data->weight_with_packaging}}">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">وزن خالص</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="وزن خالص " name="unit_weight" value="{{$data->unit_weight}}">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن خالص " name="unit_weight" value="{{$data->unit_weight}}">
 
                                             </fieldset>
                                         </div>
@@ -167,16 +169,17 @@
 
 
 
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="companyinput1" style="margin-top: 20px">عکس اصلی</label>
-                                                <fieldset class="form-group">
-                                                    <input type="file" name="file" class="form-control-file"
-                                                           id="exampleInputFile">
-                                                </fieldset>
-                                            </div>
-                                        </div>
+                                        <div class="col-xl-12 col-md-12 col-12 mb-1">
+                                            <fieldset class="form-group">
+                                                <div class="col mb-1">
+                                                    <label>عکس اصلی</label>
+                                                </div>
 
+                                                <img id="companyLogo" data-type="editable" height="200px" width="200px"/>
+
+
+                                            </fieldset>
+                                        </div>
                                         <div class="col-12" id="sliderArea">
                                             <div class="row" id="location0">
                                                 <div class="col-xl-6 col-lg-12">
@@ -186,7 +189,7 @@
                                                         </p>
                                                         <input type="file" class="form-control"
                                                                placeholder="عکس اسلایدر"
-                                                               name="sliderimg[]">
+                                                               name="file[]">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-12">
@@ -204,10 +207,18 @@
 
                                         <div class="col-md-12 col-12">
                                             <div class="form-group">
-                                                <label for="companyinput8">توضیحات </label>
+                                                <label for="companyinput8">توضیحات کوتاه </label>
                                                 <textarea id="companyinput8" rows="5" class="form-control"
-                                                          name="description"
-                                                          placeholder="توضیحات "></textarea>
+                                                          name="short_description"
+                                                          placeholder="توضیحات ">{{$data->short_description}}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-group">
+                                                <label for="companyinput8">توضیحات بلند </label>
+                                                <textarea id="long_description" rows="5" class="form-control"
+                                                          name="long_description"
+                                                          placeholder="توضیحات ">{{$data->long_description}}</textarea>
                                             </div>
                                         </div>
 

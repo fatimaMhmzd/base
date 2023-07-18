@@ -36,9 +36,7 @@ class ProductDashboardController extends Controller
     public function create()
     {
         $group = resolve(ProductGroupService::class)->all();
-        $color = resolve(ColorService::class)->all();
-        $unit = resolve(UnitService::class)->all();
-        return view('product::dashboard.product.add', compact('group','color','unit'));
+        return view('product::dashboard.product.add', compact('group'));
     }
 
     /**
@@ -78,7 +76,9 @@ class ProductDashboardController extends Controller
      */
     public function edit($id)
     {
-        return view('product::edit');
+        $data = $this->service->find($id);
+        $group = resolve(ProductGroupService::class)->all();
+        return view('product::dashboard.product.update',compact('data' ,'group'));
     }
 
     /**
@@ -87,7 +87,7 @@ class ProductDashboardController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateProductRequest $request, $id)
     {
         try {
             $this->service->update($request, $id);

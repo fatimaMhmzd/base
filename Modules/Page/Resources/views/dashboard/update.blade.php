@@ -58,7 +58,7 @@
                         </div>
                     @endif
                     <form class="form" method="put"
-                          action="{{route('dashboard_page_update' , $data->id)}}">
+                          action="{{route('dashboard_page_update' , $data->id)}}"  enctype="multipart/form-data" >
                          @csrf
                         <div class="form-body">
 
