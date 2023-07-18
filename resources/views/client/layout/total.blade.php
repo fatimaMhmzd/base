@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>سایت فروشگاهی</title>
+    <title>فروشگاه صنایع دستی</title>
     <meta name="keywords" content="فروشگاه">
     <meta name="description" content="فروشگاه">
     <!-- Favicon -->
@@ -147,8 +147,8 @@
                         </div>&lt;!&ndash; End .dropdown-menu &ndash;&gt;
                     </div>--><!-- End .compare-dropdown -->
 
-                    @if(\Illuminate\Support\Facades\Auth::check())
-<!--                        <div class="wishlist">
+                @if(\Illuminate\Support\Facades\Auth::check())
+                    <!--                        <div class="wishlist">
                             <a href="{{route('page_wishlistClient')}}" title="لیست محصولات مورد علاقه شما">
                                 <div class="icon">
                                     <i class="icon-heart-o"></i>
@@ -202,8 +202,10 @@
                                 </div><!-- End .dropdown-cart-total -->
 
                                 <div class="dropdown-cart-action">
-                                    <a href="{{route('shop_basket_order_show')}}" class="btn btn-primary">مشاهده سبد خرید</a>
-                                    <a href="{{route('shop_checkoutPageClient')}}" class="btn btn-outline-primary-2"><span>پرداخت</span><i
+                                    <a href="{{route('shop_basket_order_show')}}" class="btn btn-primary">مشاهده سبد
+                                        خرید</a>
+                                    <a href="{{route('shop_checkoutPageClient')}}"
+                                       class="btn btn-outline-primary-2"><span>پرداخت</span><i
                                             class="icon-long-arrow-left"></i></a>
                                 </div><!-- End .dropdown-cart-total -->
                             </div><!-- End .dropdown-menu -->
@@ -226,7 +228,7 @@
                         <div class="dropdown-menu">
                             <nav class="side-nav">
                                 <ul class="menu-vertical sf-arrows">
-                                    @if($groups)
+                                    @if(count($groups->all()) > 0)
                                         @foreach($groups->all() as $group)
                                             @if($group->sub_title === null)
                                                 <li class="item-lead"><a href="#">{{$group->title}}</a></li>
@@ -523,8 +525,8 @@
                             </li>
                             <li>
                                 <a href="{{route('shop_storePageClient')}}">فروشگاه</a>
-{{--                                class="sf-with-ul"--}}
-                                <!--                                <div class="megamenu megamenu-md">
+                            {{--                                class="sf-with-ul"--}}
+                            <!--                                <div class="megamenu megamenu-md">
                                                                     <div class="row no-gutters">
                                                                         <div class="col-md-8">
                                                                             <div class="menu-col">
@@ -605,46 +607,46 @@
                                                                 </div>-->
                                 <!-- End .megamenu megamenu-md -->
                             </li>
-<!--                            <li>
-                                <a href="#" class="sf-with-ul">محصول</a>
+                            <!--                            <li>
+                                                            <a href="#" class="sf-with-ul">محصول</a>
 
-                                &lt;!&ndash;                                <div class="megamenu megamenu-sm">
-                                                                    <div class="row no-gutters">
-                                                                        <div class="col-md-6">
-                                                                            <div class="menu-col">
-                                                                                <div class="menu-title">جزئیات محصول</div>
-                                                                                &lt;!&ndash; End .menu-title &ndash;&gt;
-                                                                                <ul>
-                                                                                    <li><a href="product.html">پیش فرض</a></li>
-                                                                                    <li><a href="product-centered.html">توضیحات وسط چین</a></li>
-                                                                                    <li><a href="product-extended.html"><span>توضیحات گسترده<span
-                                                                                                    class="tip tip-new">جدید</span></span></a></li>
-                                                                                    <li><a href="product-gallery.html">گالری</a></li>
-                                                                                    <li><a href="product-sticky.html">اطلاعات چسبیده</a></li>
-                                                                                    <li><a href="product-sidebar.html">صفحه جمع با سایدبار</a></li>
-                                                                                    <li><a href="product-fullwidth.html">تمام عرض</a></li>
-                                                                                    <li><a href="product-masonry.html">اطلاعات چسبیده</a></li>
-                                                                                </ul>
-                                                                            </div>&lt;!&ndash; End .menu-col &ndash;&gt;
-                                                                        </div>&lt;!&ndash; End .col-md-6 &ndash;&gt;
+                                                            &lt;!&ndash;                                <div class="megamenu megamenu-sm">
+                                                                                                <div class="row no-gutters">
+                                                                                                    <div class="col-md-6">
+                                                                                                        <div class="menu-col">
+                                                                                                            <div class="menu-title">جزئیات محصول</div>
+                                                                                                            &lt;!&ndash; End .menu-title &ndash;&gt;
+                                                                                                            <ul>
+                                                                                                                <li><a href="product.html">پیش فرض</a></li>
+                                                                                                                <li><a href="product-centered.html">توضیحات وسط چین</a></li>
+                                                                                                                <li><a href="product-extended.html"><span>توضیحات گسترده<span
+                                                                                                                                class="tip tip-new">جدید</span></span></a></li>
+                                                                                                                <li><a href="product-gallery.html">گالری</a></li>
+                                                                                                                <li><a href="product-sticky.html">اطلاعات چسبیده</a></li>
+                                                                                                                <li><a href="product-sidebar.html">صفحه جمع با سایدبار</a></li>
+                                                                                                                <li><a href="product-fullwidth.html">تمام عرض</a></li>
+                                                                                                                <li><a href="product-masonry.html">اطلاعات چسبیده</a></li>
+                                                                                                            </ul>
+                                                                                                        </div>&lt;!&ndash; End .menu-col &ndash;&gt;
+                                                                                                    </div>&lt;!&ndash; End .col-md-6 &ndash;&gt;
 
-                                                                        <div class="col-md-6">
-                                                                            <div class="banner banner-overlay">
-                                                                                <a href="category.html">
-                                                                                    <img src="assets/images/menu/banner-2.jpg" alt="Banner">
+                                                                                                    <div class="col-md-6">
+                                                                                                        <div class="banner banner-overlay">
+                                                                                                            <a href="category.html">
+                                                                                                                <img src="assets/images/menu/banner-2.jpg" alt="Banner">
 
-                                                                                    <div class="banner-content banner-content-bottom">
-                                                                                        <div class="banner-title text-white">محصولات
-                                                                                            جدید<br><span><strong>بهار 1401</strong></span>
-                                                                                        </div>&lt;!&ndash; End .banner-title &ndash;&gt;
-                                                                                    </div>&lt;!&ndash; End .banner-content &ndash;&gt;
-                                                                                </a>
-                                                                            </div>&lt;!&ndash; End .banner &ndash;&gt;
-                                                                        </div>&lt;!&ndash; End .col-md-6 &ndash;&gt;
-                                                                    </div>&lt;!&ndash; End .row &ndash;&gt;
-                                                                </div>&ndash;&gt;
-                                &lt;!&ndash; End .megamenu megamenu-sm &ndash;&gt;
-                            </li>-->
+                                                                                                                <div class="banner-content banner-content-bottom">
+                                                                                                                    <div class="banner-title text-white">محصولات
+                                                                                                                        جدید<br><span><strong>بهار 1401</strong></span>
+                                                                                                                    </div>&lt;!&ndash; End .banner-title &ndash;&gt;
+                                                                                                                </div>&lt;!&ndash; End .banner-content &ndash;&gt;
+                                                                                                            </a>
+                                                                                                        </div>&lt;!&ndash; End .banner &ndash;&gt;
+                                                                                                    </div>&lt;!&ndash; End .col-md-6 &ndash;&gt;
+                                                                                                </div>&lt;!&ndash; End .row &ndash;&gt;
+                                                                                            </div>&ndash;&gt;
+                                                            &lt;!&ndash; End .megamenu megamenu-sm &ndash;&gt;
+                                                        </li>-->
                             <li>
                                 <a href="{{route('page_aboutClient')}}" class="">درباره ما </a>
                                 <div>
@@ -740,7 +742,7 @@
                                 </div>
                             </li>
                             <li>
-                            <a href="{{route('page_panelClient')}}" class="">پنل کاربری</a>
+                                <a href="{{route('page_panelClient')}}" class="">پنل کاربری</a>
                             </li>
                         </ul><!-- End .menu -->
                     </nav><!-- End .main-nav -->
@@ -797,7 +799,8 @@
                             <ul class="widget-list">
                                 <li><a href="{{route('page_services_howToPayClient')}}">شیوه پرداخت</a></li>
                                 <li><a href="{{route('page_services_PaybackClient')}}">گارانتی بازگشت وجه</a></li>
-                                <li><a href="{{route('page_services_deliveryMethodClient')}}">شیوه ارسال محصولات</a></li>
+                                <li><a href="{{route('page_services_deliveryMethodClient')}}">شیوه ارسال محصولات</a>
+                                </li>
                                 <li><a href="{{route('page_services_rulesClient')}}">قوانین و مقررات</a></li>
                                 <li><a href="{{route('page_services_policyClient')}}">خط مشی</a></li>
                             </ul><!-- End .widget-list -->
@@ -856,186 +859,193 @@
                 <nav class="mobile-nav">
                     <ul class="mobile-menu">
                         <li class="active">
-                            <a href="index-1.html">خانه</a>
-
-                            <ul>
-                                <li><a href="index-1.html">01 - فروشگاه مبلمان</a></li>
-                                <li><a href="index-2.html">02 - فروشگاه مبلمان</a></li>
-                                <li><a href="index-3.html">03 - فروشگاه لوازم الکترونیکی</a></li>
-                                <li><a href="index-4.html">04 - فروشگاه لوازم الکترونیکی</a></li>
-                                <li><a href="index-5.html">05 - فروشگاه مد و لباس</a></li>
-                                <li><a href="index-6.html">06 - فروشگاه مد و لباس</a></li>
-                                <li><a href="index-7.html">07 - فروشگاه مد و لباس</a></li>
-                                <li><a href="index-8.html">08 - فروشگاه مد و لباس</a></li>
-                                <li><a href="index-9.html">09 - فروشگاه مد و لباس</a></li>
-                                <li><a href="index-10.html">10 - فروشگاه کفش</a></li>
-                                <li><a href="index-11.html">11 - فروشگاه مبل</a></li>
-                                <li><a href="index-12.html">12 - فروشگاه مد</a></li>
-                                <li><a href="index-13.html">13 - بازار</a></li>
-                                <li><a href="index-14.html">14 - بازار تمام عرض</a></li>
-                                <li><a href="index-15.html">15 - مد و زیبایی</a></li>
-                                <li><a href="index-16.html">16 - مد و زیبایی</a></li>
-                                <li><a href="index-17.html">17 - فروشگاه مد و لباس</a></li>
-                                <li><a href="index-18.html">18 - فروشگاه مد (با سایدبار)</a></li>
-                                <li><a href="index-19.html">19 - فروشگاه بازی</a></li>
-                                <li><a href="index-20.html">20 - فروشگاه کتاب</a></li>
-                                <li><a href="index-21.html">21 - فروشگاه ورزشی</a></li>
-                                <li><a href="index-22.html">22 - فروشگاه ابزار</a></li>
-                                <li><a href="index-23.html">23 - فروشگاه مد با نوبار سمت راست</a></li>
-                                <li><a href="index-24.html">24 - فروشگاه ورزشی</a></li>
-                                <li><a href="index-25.html">25 - فروشگاه زیورآلات</a></li>
-                                <li><a href="index-26.html">26 - فروشگاه بازار</a></li>
-                                <li><a href="index-27.html">27 - فروشگاه مُد</a></li>
-                                <li><a href="index-28.html">28 - فروشگاه مواد غذایی</a></li>
-                                <li><a href="index-29.html">29 - فروشگاه تی شرت</a></li>
-                                <li><a href="index-30.html">30 - فروشگاه هدفون</a></li>
-                                <li><a href="index-31.html">31 - فروشگاه یوگا</a></li>
-                            </ul>
+                            <a href={{route('indexClient')}}>خانه</a>
+                            <!--                            <ul>
+                                                            <li><a href="index-1.html">01 - فروشگاه مبلمان</a></li>
+                                                            <li><a href="index-2.html">02 - فروشگاه مبلمان</a></li>
+                                                            <li><a href="index-3.html">03 - فروشگاه لوازم الکترونیکی</a></li>
+                                                            <li><a href="index-4.html">04 - فروشگاه لوازم الکترونیکی</a></li>
+                                                            <li><a href="index-5.html">05 - فروشگاه مد و لباس</a></li>
+                                                            <li><a href="index-6.html">06 - فروشگاه مد و لباس</a></li>
+                                                            <li><a href="index-7.html">07 - فروشگاه مد و لباس</a></li>
+                                                            <li><a href="index-8.html">08 - فروشگاه مد و لباس</a></li>
+                                                            <li><a href="index-9.html">09 - فروشگاه مد و لباس</a></li>
+                                                            <li><a href="index-10.html">10 - فروشگاه کفش</a></li>
+                                                            <li><a href="index-11.html">11 - فروشگاه مبل</a></li>
+                                                            <li><a href="index-12.html">12 - فروشگاه مد</a></li>
+                                                            <li><a href="index-13.html">13 - بازار</a></li>
+                                                            <li><a href="index-14.html">14 - بازار تمام عرض</a></li>
+                                                            <li><a href="index-15.html">15 - مد و زیبایی</a></li>
+                                                            <li><a href="index-16.html">16 - مد و زیبایی</a></li>
+                                                            <li><a href="index-17.html">17 - فروشگاه مد و لباس</a></li>
+                                                            <li><a href="index-18.html">18 - فروشگاه مد (با سایدبار)</a></li>
+                                                            <li><a href="index-19.html">19 - فروشگاه بازی</a></li>
+                                                            <li><a href="index-20.html">20 - فروشگاه کتاب</a></li>
+                                                            <li><a href="index-21.html">21 - فروشگاه ورزشی</a></li>
+                                                            <li><a href="index-22.html">22 - فروشگاه ابزار</a></li>
+                                                            <li><a href="index-23.html">23 - فروشگاه مد با نوبار سمت راست</a></li>
+                                                            <li><a href="index-24.html">24 - فروشگاه ورزشی</a></li>
+                                                            <li><a href="index-25.html">25 - فروشگاه زیورآلات</a></li>
+                                                            <li><a href="index-26.html">26 - فروشگاه بازار</a></li>
+                                                            <li><a href="index-27.html">27 - فروشگاه مُد</a></li>
+                                                            <li><a href="index-28.html">28 - فروشگاه مواد غذایی</a></li>
+                                                            <li><a href="index-29.html">29 - فروشگاه تی شرت</a></li>
+                                                            <li><a href="index-30.html">30 - فروشگاه هدفون</a></li>
+                                                            <li><a href="index-31.html">31 - فروشگاه یوگا</a></li>
+                                                        </ul>-->
                         </li>
                         <li>
-                            <a href="category.html">فروشگاه</a>
-                            <ul>
-                                <li><a href="category-list.html">فروشگاه لیست</a></li>
-                                <li><a href="category-2cols.html">2 ستونه</a></li>
-                                <li><a href="category.html">3 ستونه</a></li>
-                                <li><a href="category-4cols.html">4 ستونه</a></li>
-                                <li><a href="category-boxed.html"><span>فروشگاه با حالت بسته بدون سایدبار<span
-                                                class="tip tip-hot">ویژه</span></span></a></li>
-                                <li><a href="category-fullwidth.html">فروشگاه تمام عرض بدون سایدبار</a></li>
-                                <li><a href="product-category-boxed.html">دسته بندی محصولات با حالت بسته</a></li>
-                                <li><a href="product-category-fullwidth.html"><span>دسته بندی محصولات تمام عرض<span
-                                                class="tip tip-new">جدید</span></span></a></li>
-                                <li><a href="cart.html">سبد خرید</a></li>
-                                <li><a href="checkout.html">پرداخت</a></li>
-                                <li><a href="checkout2.html">پرداخت 2</a></li>
-                                <li><a href="compare.html">مقایسه محصولات</a></li>
-                                <li><a href="compare2.html">مقایسه محصولات 2</a></li>
-                                <li><a href="wishlist.html">لیست علاقه مندی</a></li>
-                                <li><a href="gift-cart.html">کارت هدیه</a></li>
-                                <li><a href="dashboard.html">داشبورد</a></li>
-                            </ul>
+                            <a href={{route('shop_storePageClient')}}>فروشگاه</a>
+                            <!--                            <ul>
+                                                            <li><a href="category-list.html">فروشگاه لیست</a></li>
+                                                            <li><a href="category-2cols.html">2 ستونه</a></li>
+                                                            <li><a href="category.html">3 ستونه</a></li>
+                                                            <li><a href="category-4cols.html">4 ستونه</a></li>
+                                                            <li><a href="category-boxed.html"><span>فروشگاه با حالت بسته بدون سایدبار<span
+                                                                            class="tip tip-hot">ویژه</span></span></a></li>
+                                                            <li><a href="category-fullwidth.html">فروشگاه تمام عرض بدون سایدبار</a></li>
+                                                            <li><a href="product-category-boxed.html">دسته بندی محصولات با حالت بسته</a></li>
+                                                            <li><a href="product-category-fullwidth.html"><span>دسته بندی محصولات تمام عرض<span
+                                                                            class="tip tip-new">جدید</span></span></a></li>
+                                                            <li><a href="cart.html">سبد خرید</a></li>
+                                                            <li><a href="checkout.html">پرداخت</a></li>
+                                                            <li><a href="checkout2.html">پرداخت 2</a></li>
+                                                            <li><a href="compare.html">مقایسه محصولات</a></li>
+                                                            <li><a href="compare2.html">مقایسه محصولات 2</a></li>
+                                                            <li><a href="wishlist.html">لیست علاقه مندی</a></li>
+                                                            <li><a href="gift-cart.html">کارت هدیه</a></li>
+                                                            <li><a href="dashboard.html">داشبورد</a></li>
+                                                        </ul>-->
                         </li>
                         <li>
-                            <a href="product.html" class="sf-with-ul">محصولات</a>
-                            <ul>
-                                <li><a href="product.html">پیش فرض</a></li>
-                                <li><a href="product-centered.html">توضیحات وسط چین</a></li>
-                                <li><a href="product-extended.html"><span>توضیحات گسترده<span
-                                                class="tip tip-new">جدید</span></span></a></li>
-                                <li><a href="product-gallery.html">گالری</a></li>
-                                <li><a href="product-sticky.html">اطلاعات چسبیده</a></li>
-                                <li class=""><a href="product-sidebar.html">صفحه جمع با سایدبار</a></li>
-                                <li><a href="product-fullwidth.html">تمام صفحه</a></li>
-                                <li><a href="product-masonry.html">اطلاعات چسبیده</a></li>
-                            </ul>
+                            <a href={{route('page_aboutClient')}} class="sf-with-ul">درباره ما</a>
+                            <!--                            <ul>
+                                                            <li><a href="product.html">پیش فرض</a></li>
+                                                            <li><a href="product-centered.html">توضیحات وسط چین</a></li>
+                                                            <li><a href="product-extended.html"><span>توضیحات گسترده<span
+                                                                            class="tip tip-new">جدید</span></span></a></li>
+                                                            <li><a href="product-gallery.html">گالری</a></li>
+                                                            <li><a href="product-sticky.html">اطلاعات چسبیده</a></li>
+                                                            <li class=""><a href="product-sidebar.html">صفحه جمع با سایدبار</a></li>
+                                                            <li><a href="product-fullwidth.html">تمام صفحه</a></li>
+                                                            <li><a href="product-masonry.html">اطلاعات چسبیده</a></li>
+                                                        </ul>-->
                         </li>
                         <li>
-                            <a href="#">صفحات</a>
-                            <ul>
-                                <li>
-                                    <a href="about.html" class="sf-with-ul">درباره ما</a>
+                            <a href={{route('page_contactClient')}}>تماس با ما</a>
+                            <!--                            <ul>
+                                                            <li>
+                                                                <a href="about.html" class="sf-with-ul">درباره ما</a>
 
-                                    <ul style="display: none;">
-                                        <li><a href="about.html">درباره ما 01</a></li>
-                                        <li><a href="about-2.html">درباره ما 02</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="contact.html" class="sf-with-ul">تماس با ما</a>
+                                                                <ul style="display: none;">
+                                                                    <li><a href="about.html">درباره ما 01</a></li>
+                                                                    <li><a href="about-2.html">درباره ما 02</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="contact.html" class="sf-with-ul">تماس با ما</a>
 
-                                    <ul style="display: none;">
-                                        <li><a href="contact.html">تماس با ما 01</a></li>
-                                        <li><a href="contact-2.html">تماس با ما 02</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="login.html">ورود</a></li>
-                                <li><a href="forget-password.html">فراموشی رمز عبور</a></li>
-                                <li><a href="track-order.html">پیگیری سفارش</a></li>
-                                <li><a href="faq.html">سوالات متداول</a></li>
-                                <li><a href="404.html">خطای 404</a></li>
-                                <li><a href="coming-soon.html">به زودی</a></li>
-                            </ul>
+                                                                <ul style="display: none;">
+                                                                    <li><a href="contact.html">تماس با ما 01</a></li>
+                                                                    <li><a href="contact-2.html">تماس با ما 02</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="login.html">ورود</a></li>
+                                                            <li><a href="forget-password.html">فراموشی رمز عبور</a></li>
+                                                            <li><a href="track-order.html">پیگیری سفارش</a></li>
+                                                            <li><a href="faq.html">سوالات متداول</a></li>
+                                                            <li><a href="404.html">خطای 404</a></li>
+                                                            <li><a href="coming-soon.html">به زودی</a></li>
+                                                        </ul>-->
                         </li>
                         <li>
-                            <a href="blog.html">اخبار</a>
+                            <a href={{route('page_panelClient')}}>پنل کاربری</a>
 
-                            <ul>
-                                <li class=""><a href="blog.html">کلاسیک</a></li>
-                                <li><a href="blog-listing.html">لیست</a></li>
-                                <li>
-                                    <a href="#" class="sf-with-ul">شبکه بندی</a>
-                                    <ul style="display: none;">
-                                        <li><a href="blog-grid-2cols.html">2 ستونه</a></li>
-                                        <li><a href="blog-grid-3cols.html">3 ستونه</a></li>
-                                        <li><a href="blog-grid-4cols.html">4 ستونه</a></li>
-                                        <li><a href="blog-grid-sidebar.html">با سایدبار</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="sf-with-ul">سایز های مختلف</a>
-                                    <ul style="display: none;">
-                                        <li><a href="blog-masonry-2cols.html">2 ستونه</a></li>
-                                        <li><a href="blog-masonry-3cols.html">3 ستونه</a></li>
-                                        <li><a href="blog-masonry-4cols.html">4 ستونه</a></li>
-                                        <li><a href="blog-masonry-sidebar.html">با سایدبار</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="sf-with-ul">ماسک</a>
-                                    <ul style="display: none;">
-                                        <li><a href="blog-mask-grid.html">نوع 1</a></li>
-                                        <li><a href="blog-mask-masonry.html">نوع 2</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" class="sf-with-ul">پست تکی</a>
-                                    <ul style="display: none;">
-                                        <li><a href="single.html">پیش فرض با سایدبار</a></li>
-                                        <li><a href="single-fullwidth.html">تمام صفحه بدون سایدبار</a></li>
-                                        <li><a href="single-fullwidth-sidebar.html">تمام صفحه باسایدبار</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <!--                            <ul>
+                                                            <li class=""><a href="blog.html">کلاسیک</a></li>
+                                                            <li><a href="blog-listing.html">لیست</a></li>
+                                                            <li>
+                                                                <a href="#" class="sf-with-ul">شبکه بندی</a>
+                                                                <ul style="display: none;">
+                                                                    <li><a href="blog-grid-2cols.html">2 ستونه</a></li>
+                                                                    <li><a href="blog-grid-3cols.html">3 ستونه</a></li>
+                                                                    <li><a href="blog-grid-4cols.html">4 ستونه</a></li>
+                                                                    <li><a href="blog-grid-sidebar.html">با سایدبار</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="sf-with-ul">سایز های مختلف</a>
+                                                                <ul style="display: none;">
+                                                                    <li><a href="blog-masonry-2cols.html">2 ستونه</a></li>
+                                                                    <li><a href="blog-masonry-3cols.html">3 ستونه</a></li>
+                                                                    <li><a href="blog-masonry-4cols.html">4 ستونه</a></li>
+                                                                    <li><a href="blog-masonry-sidebar.html">با سایدبار</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="sf-with-ul">ماسک</a>
+                                                                <ul style="display: none;">
+                                                                    <li><a href="blog-mask-grid.html">نوع 1</a></li>
+                                                                    <li><a href="blog-mask-masonry.html">نوع 2</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="sf-with-ul">پست تکی</a>
+                                                                <ul style="display: none;">
+                                                                    <li><a href="single.html">پیش فرض با سایدبار</a></li>
+                                                                    <li><a href="single-fullwidth.html">تمام صفحه بدون سایدبار</a></li>
+                                                                    <li><a href="single-fullwidth-sidebar.html">تمام صفحه باسایدبار</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>-->
                         </li>
-                        <li>
-                            <a href="elements-list.html">عناصر طراحی</a>
-                            <ul>
-                                <li class=""><a href="elements-products.html">محصولات</a></li>
-                                <li><a href="elements-typography.html">تایپوگرافی</a></li>
-                                <li><a href="elements-titles.html">عناوین</a></li>
-                                <li><a href="elements-banners.html">بنرها</a></li>
+                        <!--                        <li>
+                                                    <a href="elements-list.html">عناصر طراحی</a>
+                                                    <ul>
+                                                        <li class=""><a href="elements-products.html">محصولات</a></li>
+                                                        <li><a href="elements-typography.html">تایپوگرافی</a></li>
+                                                        <li><a href="elements-titles.html">عناوین</a></li>
+                                                        <li><a href="elements-banners.html">بنرها</a></li>
 
-                                <li><a href="elements-product-category.html">دسته بندی محصولات</a></li>
-                                <li><a href="elements-video-banners.html">بنرهای ویدیویی</a></li>
-                                <li><a href="elements-buttons.html">دکمه ها</a></li>
-                                <li><a href="elements-accordions.html">آکاردئون</a></li>
-                                <li><a href="elements-lookbook.html">لوک بوک</a></li>
-                                <li><a href="elements-tabs.html">تب ها</a></li>
-                                <li><a href="elements-testimonials.html">توصیف و نقل قول</a></li>
-                                <li><a href="elements-blog-posts.html">اخبار</a></li>
-                                <li><a href="elements-portfolio.html">نمونه کار</a></li>
-                                <li><a href="elements-cta.html">پاسخ به عمل</a></li>
-                                <li><a href="elements-icon-boxes.html">باکس های آیکون</a></li>
-                            </ul>
-                        </li>
+                                                        <li><a href="elements-product-category.html">دسته بندی محصولات</a></li>
+                                                        <li><a href="elements-video-banners.html">بنرهای ویدیویی</a></li>
+                                                        <li><a href="elements-buttons.html">دکمه ها</a></li>
+                                                        <li><a href="elements-accordions.html">آکاردئون</a></li>
+                                                        <li><a href="elements-lookbook.html">لوک بوک</a></li>
+                                                        <li><a href="elements-tabs.html">تب ها</a></li>
+                                                        <li><a href="elements-testimonials.html">توصیف و نقل قول</a></li>
+                                                        <li><a href="elements-blog-posts.html">اخبار</a></li>
+                                                        <li><a href="elements-portfolio.html">نمونه کار</a></li>
+                                                        <li><a href="elements-cta.html">پاسخ به عمل</a></li>
+                                                        <li><a href="elements-icon-boxes.html">باکس های آیکون</a></li>
+                                                    </ul>
+                                                </li>-->
                     </ul>
                 </nav><!-- End .mobile-nav -->
             </div><!-- .End .tab-pane -->
             <div class="tab-pane fade" id="mobile-cats-tab" role="tabpanel" aria-labelledby="mobile-cats-link">
                 <nav class="mobile-cats-nav">
                     <ul class="mobile-cats-menu">
-                        <li><a class="mobile-cats-lead" href="#">پیشنهاد روزانه</a></li>
-                        <li><a class="mobile-cats-lead" href="#">هدیه</a></li>
-                        <li><a href="#">تخت خواب</a></li>
-                        <li><a href="#">روشنایی</a></li>
-                        <li><a href="#">مبلمان</a></li>
-                        <li><a href="#">فضای ذخیره سازی</a></li>
-                        <li><a href="#">میز وصندلی</a></li>
-                        <li><a href="#">دکور </a></li>
-                        <li><a href="#">کابینت</a></li>
-                        <li><a href="#">قهوه</a></li>
-                        <li><a href="#">مبلمان خارج از منزل </a></li>
+                        @if(count($groups->all()) > 0)
+                            @foreach($groups->all() as $group)
+                                @if($group->sub_title === null)
+                                    <li class="item-lead"><a href="#">{{$group->title}}</a></li>
+                                @endif
+                            @endforeach
+                        @else
+                            <li><a class="mobile-cats-lead" href="#">پیشنهاد روزانه</a></li>
+                            <li><a class="mobile-cats-lead" href="#">هدیه</a></li>
+                            <li><a href="#">تخت خواب</a></li>
+                            <li><a href="#">روشنایی</a></li>
+                            <li><a href="#">مبلمان</a></li>
+                            <li><a href="#">فضای ذخیره سازی</a></li>
+                            <li><a href="#">میز وصندلی</a></li>
+                            <li><a href="#">دکور </a></li>
+                            <li><a href="#">کابینت</a></li>
+                            <li><a href="#">قهوه</a></li>
+                            <li><a href="#">مبلمان خارج از منزل </a></li>
+                        @endif
                     </ul><!-- End .mobile-cats-menu -->
                 </nav><!-- End .mobile-cats-nav -->
             </div><!-- .End .tab-pane -->
@@ -1101,26 +1111,27 @@
                                                 بسپار</label>
                                         </div><!-- End .custom-checkbox -->
 
-                                        <a href="{{route('user_forgetPassword')}}" class="forgot-link">فراموشی رمز عبور؟</a>
+                                        <a href="{{route('user_forgetPassword')}}" class="forgot-link">فراموشی رمز
+                                            عبور؟</a>
                                     </div><!-- End .form-footer -->
                                 </form>
-<!--                                <div class="form-choice">
-                                    <p class="text-center">یا ورود با</p>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-login btn-g">
-                                                <i class="icon-google"></i>
-                                                حساب گوگل
-                                            </a>
-                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-login btn-f">
-                                                <i class="icon-facebook-f"></i>
-                                                حساب فیسبوک
-                                            </a>
-                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
-                                    </div>&lt;!&ndash; End .row &ndash;&gt;
-                                </div>&lt;!&ndash; End .form-choice &ndash;&gt;-->
+                                <!--                                <div class="form-choice">
+                                                                    <p class="text-center">یا ورود با</p>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <a href="#" class="btn btn-login btn-g">
+                                                                                <i class="icon-google"></i>
+                                                                                حساب گوگل
+                                                                            </a>
+                                                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                                                        <div class="col-sm-6">
+                                                                            <a href="#" class="btn btn-login btn-f">
+                                                                                <i class="icon-facebook-f"></i>
+                                                                                حساب فیسبوک
+                                                                            </a>
+                                                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                                                    </div>&lt;!&ndash; End .row &ndash;&gt;
+                                                                </div>&lt;!&ndash; End .form-choice &ndash;&gt;-->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
                                 @if(Session::has('success'))
@@ -1179,23 +1190,23 @@
                                         </div><!-- End .custom-checkbox -->
                                     </div><!-- End .form-footer -->
                                 </form>
-<!--                                <div class="form-choice">
-                                    <p class="text-center">یا عضویت با</p>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-login btn-g">
-                                                <i class="icon-google"></i>
-                                                حساب گوگل
-                                            </a>
-                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-login  btn-f">
-                                                <i class="icon-facebook-f"></i>
-                                                حساب فیسبوک
-                                            </a>
-                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
-                                    </div>&lt;!&ndash; End .row &ndash;&gt;
-                                </div>&lt;!&ndash; End .form-choice &ndash;&gt;-->
+                                <!--                                <div class="form-choice">
+                                                                    <p class="text-center">یا عضویت با</p>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <a href="#" class="btn btn-login btn-g">
+                                                                                <i class="icon-google"></i>
+                                                                                حساب گوگل
+                                                                            </a>
+                                                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                                                        <div class="col-sm-6">
+                                                                            <a href="#" class="btn btn-login  btn-f">
+                                                                                <i class="icon-facebook-f"></i>
+                                                                                حساب فیسبوک
+                                                                            </a>
+                                                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                                                    </div>&lt;!&ndash; End .row &ndash;&gt;
+                                                                </div>&lt;!&ndash; End .form-choice &ndash;&gt;-->
                             </div><!-- .End .tab-pane -->
                         </div><!-- End .tab-content -->
                     </div><!-- End .form-tab -->

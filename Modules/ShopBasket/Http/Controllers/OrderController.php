@@ -57,11 +57,8 @@ class OrderController extends Controller
      */
     public function show()
     {
-
-
         $cart = $this->service->index()->first();
-
-
+//        return $cart;
         return view('shopbasket::client.cart', compact('cart'));
     }
 

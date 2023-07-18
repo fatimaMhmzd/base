@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Page\Services\PageService;
+use Modules\Product\Services\ProductGroupService;
 use Modules\Product\Services\ProductService;
 
 class PageController extends Controller
@@ -91,7 +92,8 @@ class PageController extends Controller
     //    WISHLIST PAGE
     public function wishlist()
     {
-        return view('page::client.wishlist.wishlist');
+        $cartItems = $this->service->cartItems();
+        return view('page::client.wishlist.wishlist', compact('cartItems'));
     }
 
 //    ABOUT PAGE

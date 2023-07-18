@@ -244,44 +244,45 @@
                                 }
                             }'>
                         @foreach($indexPageData->bestProduct as $bestP)
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <a href={{route('shop_productDetail', $bestP->slug)}}>
-                                    <img src="/assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
-                                         class="product-image">
-                                </a>
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <a href={{route('shop_productDetail', $bestP->slug)}}>
+                                        <img src="/assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
+                                             class="product-image">
+                                    </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
                                                 لیست علاقه مندی</span></a>
-                                </div><!-- End .product-action -->
+                                    </div><!-- End .product-action -->
 
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
+                                    <div class="product-action product-action-dark">
+                                        <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
                                                 به
                                                 سبد خرید</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                        <a href="#quickview-modal" class="btn-product btn-quickview"
+                                           title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">{{$bestP->title}}</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">{{$bestP->full_title}}</a>
-                                </h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    {{$bestP->price}} تومان
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: {{$bestP->avg_rate}}%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( {{$bestP->num_visit}} بازدید )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#">{{$bestP->title}}</a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a href="product.html">{{$bestP->full_title}}</a>
+                                    </h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        {{$bestP->price}} تومان
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: {{$bestP->avg_rate}}%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( {{$bestP->num_visit}} بازدید )</span>
+                                    </div><!-- End .rating-container -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
                         @endforeach
                         <div class="product product-2">
                             <figure class="product-media">
@@ -479,44 +480,45 @@
                                 }
                             }'>
                         @foreach($indexPageData->mostSell as $mostS)
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="/assets/images/demos/demo-3/products/product-4.jpg" alt="تصویر محصول"
-                                         class="product-image">
-                                </a>
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <a href={{route('shop_productDetail', $mostS->slug)}}>
+                                        <img src="/assets/images/demos/demo-3/products/product-4.jpg" alt="تصویر محصول"
+                                             class="product-image">
+                                    </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
                                                 لیست علاقه مندی</span></a>
-                                </div><!-- End .product-action -->
+                                    </div><!-- End .product-action -->
 
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
+                                    <div class="product-action product-action-dark">
+                                        <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
                                                 به
                                                 سبد خرید</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                        <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                           title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">{{$mostS->title}}</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">{{$mostS->full_title}}</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    {{$mostS->price}} تومان
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: {{$mostS->avg_rate}}%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( {{$mostS->num_visit}} بازدید )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#">{{$mostS->title}}</a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a href="product.html">{{$mostS->full_title}}</a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price">
+                                        {{$mostS->price}} تومان
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: {{$mostS->avg_rate}}%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( {{$mostS->num_visit}} بازدید )</span>
+                                    </div><!-- End .rating-container -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
                         @endforeach
                         <div class="product product-2">
                             <figure class="product-media">
@@ -674,45 +676,46 @@
                                 }
                             }'>
                         @foreach($indexPageData->highestRate as $highR)
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="/assets/images/demos/demo-3/products/product-3.jpg" alt="تصویر محصول"
-                                         class="product-image">
-                                </a>
+                            <div class="product product-2">
+                                <figure class="product-media">
+                                    <a href={{route('shop_productDetail', $highR->slug)}}>
+                                        <img src="/assets/images/demos/demo-3/products/product-3.jpg" alt="تصویر محصول"
+                                             class="product-image">
+                                    </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
                                                 لیست علاقه مندی</span></a>
-                                </div><!-- End .product-action -->
+                                    </div><!-- End .product-action -->
 
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
+                                    <div class="product-action product-action-dark">
+                                        <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
                                                 به
                                                 سبد خرید</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                        <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                           title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">{{$highR->title}}</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">{{$highR->full_title}}</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    <span class="out-price">{{$highR->price}} تومان</span>
-                                    @if(!$highR->status)<span class="out-text">ناموجود</span>@endif
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: {{$highR->avg_rate}}%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( {{$highR->num_visit}} بازدید )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#">{{$highR->title}}</a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a href="product.html">{{$highR->full_title}}</a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price">
+                                        <span class="out-price">{{$highR->price}} تومان</span>
+                                        @if(!$highR->status)<span class="out-text">ناموجود</span>@endif
+                                    </div><!-- End .product-price -->
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: {{$highR->avg_rate}}%;"></div>
+                                            <!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( {{$highR->num_visit}} بازدید )</span>
+                                    </div><!-- End .rating-container -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
                         @endforeach
                         <div class="product product-2">
                             <figure class="product-media">
@@ -931,7 +934,7 @@
                 <div class="row">
                     <div class="col-lg-6 deal-col">
                         <div class="deal"
-                             style="background-image: url('assets/images/demos/demo-3/deal/bg-1.jpg');">
+                             style="background-image: url('/assets/images/demos/demo-3/deal/bg-1.jpg');">
                             <div class="deal-top">
                                 <h2>تخفیف ویژه امروز</h2>
                                 <h4 class="text-center">فروش محدود </h4>
@@ -4379,7 +4382,7 @@
     <!-- start social media -->
         <div class="container">
             <div class="cta cta-separator cta-border-image cta-half mb-0"
-                 style="background-image: url(assets/images/demos/demo-3/bg-2.jpg);">
+                 style="background-image: url(/assets/images/demos/demo-3/bg-2.jpg);">
                 <div class="cta-border-wrapper bg-white">
                     <div class="row">
                         <div class="col-lg-6">
@@ -4426,4 +4429,166 @@
 
     </main><!-- End .main -->
 
+    <div class="modal fade" id="quickview-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container quickView-container">
+                        <div class="quickView-content">
+                            <div class="row">
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="row">
+                                        <div class="product-left">
+                                            <a href="#one" class="carousel-dot active">
+                                                <img src="popup/assets/images/popup/quickView/1.jpg">
+                                            </a>
+                                            <a href="#two" class="carousel-dot">
+                                                <img src="popup/assets/images/popup/quickView/2.jpg">
+                                            </a>
+                                            <a href="#three" class="carousel-dot">
+                                                <img src="popup/assets/images/popup/quickView/3.jpg">
+                                            </a>
+                                            <a href="#four" class="carousel-dot">
+                                                <img src="popup/assets/images/popup/quickView/4.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="product-right">
+                                            <div class="owl-carousel owl-theme owl-nav-inside owl-light mb-0"
+                                                 data-toggle="owl"
+                                                 data-owl-options='{
+								"dots": false,
+								"nav": false,
+								"rtl": true,
+								"URLhashListener": true,
+								"responsive": {
+									"900": {
+										"nav": true,
+										"dots": true
+									}
+								}
+							}'>
+                                                <div class="intro-slide" data-hash="one">
+                                                    <img src="popup/assets/images/popup/quickView/1.jpg"
+                                                         alt="توضیحات عکس">
+                                                    <a href="./popup/popup/fullscreen.html" class="btn-fullscreen">
+                                                        <i class="icon-arrows"></i>
+                                                    </a>
+                                                </div><!-- End .intro-slide -->
+
+                                                <div class="intro-slide" data-hash="two">
+                                                    <img src="popup/assets/images/popup/quickView/2.jpg"
+                                                         alt="توضیحات عکس">
+                                                    <a href="popup/popup/fullscreen.html" class="btn-fullscreen">
+                                                        <i class="icon-arrows"></i>
+                                                    </a>
+                                                </div><!-- End .intro-slide -->
+
+                                                <div class="intro-slide" data-hash="three">
+                                                    <img src="popup/assets/images/popup/quickView/3.jpg"
+                                                         alt="توضیحات عکس">
+                                                    <a href="./popup/popup/fullscreen.html" class="btn-fullscreen">
+                                                        <i class="icon-arrows"></i>
+                                                    </a>
+                                                </div><!-- End .intro-slide -->
+
+                                                <div class="intro-slide" data-hash="four">
+                                                    <img src="popup/assets/images/popup/quickView/4.jpg"
+                                                         alt="توضیحات عکس">
+                                                    <a href="./popup/popup/fullscreen.html" class="btn-fullscreen">
+                                                        <i class="icon-arrows"></i>
+                                                    </a>
+                                                </div><!-- End .intro-slide -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-6">
+                                    <h2 class="product-title">لباس جنس کتان</h2>
+                                    <h3 class="product-price">60,000 تومان</h3>
+
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                                        </div><!-- End .ratings -->
+                                        <span class="ratings-text">( 2 دیدگاه )</span>
+                                    </div><!-- End .rating-container -->
+
+                                    <p class="product-txt">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
+                                        ساختگی با تولید
+                                        سادگی نامفهوم</p>
+
+
+                                    <div class="details-filter-row product-nav product-nav-thumbs">
+                                        <label for="size">رنگ : </label>
+                                        <a href="#" class="active">
+                                            <img src="popup/assets/images/popup/quickView/product-1-thumb.jpg"
+                                                 alt="product desc">
+                                        </a>
+                                        <a href="#">
+                                            <img src="popup/assets/images/popup/quickView/product-1-2-thumb.jpg"
+                                                 alt="product desc">
+                                        </a>
+                                    </div><!-- End .product-nav -->
+
+                                    <div class="details-filter-row details-row-size">
+                                        <label for="size">سایز : </label>
+                                        <div class="select-custom">
+                                            <select name="size" id="size" class="form-control">
+                                                <option value="#" selected="selected">انتخاب یک سایز</option>
+                                                <option value="s">کوچک</option>
+                                                <option value="m">متوسط</option>
+                                                <option value="l">بزرگ</option>
+                                                <option value="xl">خیلی بزرگ</option>
+                                            </select>
+                                        </div><!-- End .select-custom -->
+                                    </div>
+
+
+                                    <div class="details-filter-row details-row-size">
+                                        <label for="qty">تعداد : </label>
+                                        <div class="product-details-quantity">
+                                            <input type="number" id="qty" class="form-control" value="1" min="1"
+                                                   max="10" step="1"
+                                                   data-decimals="0" required>
+                                        </div><!-- End .product-details-quantity -->
+                                    </div><!-- End .details-filter-row -->
+
+                                    <div class="product-details-action">
+                                        <div class="details-action-wrapper">
+                                            <a href="#" class="btn-product btn-wishlist" title="لیست علاقه مندی"><span>افزودن به
+								لیست علاقه مندی</span></a>
+                                            <a href="#" class="btn-product btn-compare" title="مقایسه"><span>افزودن به لیست
+								مقایسه</span></a>
+                                        </div><!-- End .details-action-wrapper -->
+                                        <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
+                                    </div>
+
+                                    <div class="product-details-footer">
+                                        <div class="product-cat">
+                                            <span>دسته ها : </span>
+                                            <a href="#">زنانه</a>،
+                                            <a href="#">لباس زنانه</a>،
+                                            <a href="#">زرد</a>
+                                        </div><!-- End .product-cat -->
+
+                                        <div class="social-icons social-icons-sm">
+                                            <span class="social-label">اشتراک گذاری در : </span>
+                                            <a href="#" class="social-icon" title="فیسبوک" target="_blank"><i
+                                                    class="icon-facebook-f"></i></a>
+                                            <a href="#" class="social-icon" title="توییتر" target="_blank"><i
+                                                    class="icon-twitter"></i></a>
+                                            <a href="#" class="social-icon" title="اینستاگرام" target="_blank"><i
+                                                    class="icon-instagram"></i></a>
+                                            <a href="#" class="social-icon" title="پینترست" target="_blank"><i
+                                                    class="icon-pinterest"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

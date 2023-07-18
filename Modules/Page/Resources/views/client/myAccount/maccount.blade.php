@@ -82,7 +82,7 @@
 
                                 <div class="tab-pane fade" id="tab-address" role="tabpanel"
                                      aria-labelledby="tab-address-link">
-                                    <p>آدرسی که اینجا ثبت می کنید به صورت پیش فرض برای ارسال محصولات به شما استفاده
+                                    <p>آدرسی که اینجا ثبت می کنید به صورت پیش فرض برای ارسال محصولات برای شما استفاده
                                         می شود.</p>
 
                                     <div class="row">
@@ -97,7 +97,7 @@
                                                         تهران-تهران<br>
                                                         خیابان آزادی - پلاک 7<br>
                                                         yourmail@mail.com<br>
-                                                        <a href="#">ویرایش <i class="icon-edit"></i></a></p>
+                                                        <a href="#address-modal">ویرایش <i class="icon-edit"></i></a></p>
                                                 </div><!-- End .card-body -->
                                             </div><!-- End .card-dashboard -->
                                         </div><!-- End .col-lg-12 -->
@@ -124,7 +124,7 @@
                                         <small class="form-text">این نام در قسمت بازدیدها، نظرات و حساب کاربری شما
                                             نمایش داده می شود.</small>
 
-                                        <label>ایمیل *</label>
+                                        <label>شماره موبایل *</label>
                                         <input type="email" class="form-control" required>
 
                                         <label>پسورد فعلی</label>
@@ -149,5 +149,161 @@
             </div><!-- End .dashboard -->
         </div><!-- End .page-content -->
     </main><!-- End .main -->
+
+
+    <div class="modal fade" id="address-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="icon-close"></i></span>
+                    </button>
+
+                    <div class="form-box">
+                        <div class="form-tab">
+                            <ul class="nav nav-pills nav-fill nav-border-anim" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin"
+                                       role="tab" aria-controls="signin" aria-selected="true">ورود</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab"
+                                       aria-controls="register" aria-selected="false">ثبت نام</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="tab-content-5">
+                                <div class="tab-pane fade show active" id="signin" role="tabpanel"
+                                     aria-labelledby="signin-tab">
+                                    <form method="POST" action="{{ route('user_singIn') }}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="singin-email">شماره موبایل *</label>
+                                            <input type="text" class="form-control" id="singin-email"
+                                                   name="mobile" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="singin-password">رمز عبور *</label>
+                                            <input type="password" class="form-control" id="singin-password"
+                                                   name="password" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>ورود</span>
+                                                <i class="icon-long-arrow-left"></i>
+                                            </button>
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                       id="signin-remember">
+                                                <label class="custom-control-label" for="signin-remember">مرا به خاطر
+                                                    بسپار</label>
+                                            </div><!-- End .custom-checkbox -->
+
+                                            <a href="{{route('user_forgetPassword')}}" class="forgot-link">فراموشی رمز
+                                                عبور؟</a>
+                                        </div><!-- End .form-footer -->
+                                    </form>
+                                    <!--                                <div class="form-choice">
+                                                                        <p class="text-center">یا ورود با</p>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <a href="#" class="btn btn-login btn-g">
+                                                                                    <i class="icon-google"></i>
+                                                                                    حساب گوگل
+                                                                                </a>
+                                                                            </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                                                            <div class="col-sm-6">
+                                                                                <a href="#" class="btn btn-login btn-f">
+                                                                                    <i class="icon-facebook-f"></i>
+                                                                                    حساب فیسبوک
+                                                                                </a>
+                                                                            </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .row &ndash;&gt;
+                                                                    </div>&lt;!&ndash; End .form-choice &ndash;&gt;-->
+                                </div><!-- .End .tab-pane -->
+                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                    @if(Session::has('success'))
+                                        <div class="alert alert-success">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <strong></strong> {{ Session::get('message', '') }}
+                                        </div>
+                                    @endif
+                                    @if(Session::has('error'))
+                                        <div class="alert alert-danger">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <strong></strong> {{ Session::get('message', '') }}
+                                        </div>
+                                    @endif
+                                    @if(count($errors) > 0 )
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <ul class="p-0 m-0" style="list-style: none;">
+                                                @foreach($errors->all() as $error)
+                                                    <li>{{$error}}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    <form method="POST" action="{{ route('user_singUp') }}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="register-email">شماره موبایل شما *</label>
+                                            <input type="tel" class="form-control" id="register-phone"
+                                                   name="mobile" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="register-password">رمز عبور *</label>
+                                            <input type="password" class="form-control" id="register-password"
+                                                   name="password" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>ثبت نام</span>
+                                                <i class="icon-long-arrow-left"></i>
+                                            </button>
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="register-policy"
+                                                       required>
+                                                <label class="custom-control-label" for="register-policy">با
+                                                    <a href="#">قوانین و مقررات </a>موافقم *</label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </div><!-- End .form-footer -->
+                                    </form>
+                                    <!--                                <div class="form-choice">
+                                                                        <p class="text-center">یا عضویت با</p>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <a href="#" class="btn btn-login btn-g">
+                                                                                    <i class="icon-google"></i>
+                                                                                    حساب گوگل
+                                                                                </a>
+                                                                            </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                                                            <div class="col-sm-6">
+                                                                                <a href="#" class="btn btn-login  btn-f">
+                                                                                    <i class="icon-facebook-f"></i>
+                                                                                    حساب فیسبوک
+                                                                                </a>
+                                                                            </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .row &ndash;&gt;
+                                                                    </div>&lt;!&ndash; End .form-choice &ndash;&gt;-->
+                                </div><!-- .End .tab-pane -->
+                            </div><!-- End .tab-content -->
+                        </div><!-- End .form-tab -->
+                    </div><!-- End .form-box -->
+                </div><!-- End .modal-body -->
+            </div><!-- End .modal-content -->
+        </div><!-- End .modal-dialog -->
+    </div><!-- End .modal -->
 
 @endsection

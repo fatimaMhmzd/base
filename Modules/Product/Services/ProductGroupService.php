@@ -126,6 +126,7 @@ class ProductGroupService
     {
         return $this->productGroupRepository->getByInput();
     }
+
     public function uploadImage($guild, $file)
     {
         $destinationPath = "public/productGroup/" . $guild->id;

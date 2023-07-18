@@ -151,5 +151,8 @@ class PageService
         return (object)array("allSocialMedia"=>$allSocialMedia,"bestProduct"=>$bestProduct,"mostSell"=>$mostSell,"highestRate"=>$highestRate);
     }
 
-
+    public function cartItems(): array
+    {
+        return [];
+    }
 }
