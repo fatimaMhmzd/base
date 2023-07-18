@@ -140,6 +140,9 @@ class ProductService
             $totalUnitsItem = $this->productRepository->create($inputs);
             $image = $inputs["file"] ?? null;
             $IsCover = $inputs["isCover"] ?? null;
+            $prices = $inputs["pricearray"] ?? null;
+            $numberss = $inputs["numberarray"] ?? null;
+
 
 
             if ($image != null) {
@@ -150,6 +153,17 @@ class ProductService
                     }
 
                     $this->uploadImage($totalUnitsItem, $item ,$cover);
+                }
+            }
+            if ($prices != null and count($prices) != 0) {
+                foreach ($prices as $key => $item){
+                    $itemPrice =[];
+                    $itemPrice["price"] =$item;
+                    $itemPrice["number"] =$numberss[$key] ?? 0;
+                    $itemPrice["product_id"] =$totalUnitsItem->id;
+
+                  $totalUnitsItem->price()->save(resolve(PriceProductService::class)->store($itemPrice));
+
                 }
             }
 

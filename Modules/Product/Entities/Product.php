@@ -5,6 +5,7 @@ namespace Modules\Product\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -76,7 +77,7 @@ class Product extends Model
         "created_at" => "timestamp",
         "updated_at" => "timestamp"
     ];
-    protected $with = ["image" ,"comments", "group" , "color" , "size"];
+    protected $with = ["image" ,"comments", "group" , "color" , "size" ,"price"];
 
     public function image(): MorphMany
     {
@@ -99,6 +100,11 @@ class Product extends Model
     public function size(): BelongsToMany
     {
         return $this->belongsToMany(Size::class,"product_properties","product_id","size_id");
+
+    }
+    public function price(): HasMany
+    {
+        return $this->hasMany(Price::class , "product_id");
 
     }
 
