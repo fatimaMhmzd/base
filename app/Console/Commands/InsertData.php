@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Page\Http\imports\PageImport;
+use Modules\Product\Http\imports\ProductGroupImport;
+use Modules\Product\Http\imports\ProductImport;
 use Modules\Setting\Http\imports\SettingImport;
 
 class InsertData extends Command
@@ -38,6 +40,16 @@ class InsertData extends Command
 
         echo "Importing pages... :\n";
         Excel::import(new PageImport(), public_path('imports/page.xlsx'));
+
+        echo "\n";
+
+        echo "Importing productGroups... :\n";
+        Excel::import(new ProductGroupImport(), public_path('imports/productGroup.xlsx'));
+
+        echo "\n";
+
+        echo "Importing products... :\n";
+        Excel::import(new ProductImport(), public_path('imports/product.xlsx'));
 
     }
 }
