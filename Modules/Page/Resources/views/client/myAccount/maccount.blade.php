@@ -59,10 +59,12 @@
                                     <p>سلام <span class="font-weight-normal text-dark">کاربر</span>
                                         <br>
                                         شما در اینجا میتوانید <a href="#tab-orders"
-                                                                 class="tab-trigger-link link-underline">سفارشات خود را ببینید</a>، وضعیت
+                                                                 class="tab-trigger-link link-underline">سفارشات خود را
+                                            ببینید</a>، وضعیت
                                         ارسال <a href="#tab-address" class="tab-trigger-link">سفارشات خود را مشاهده
                                             کنید وآدرس خود را تغییر دهید</a>، و همچنین <a href="#tab-account"
-                                                                                          class="tab-trigger-link">می توانید رمز عبور یا جزئیات حساب کاربری خود را
+                                                                                          class="tab-trigger-link">می
+                                            توانید رمز عبور یا جزئیات حساب کاربری خود را
                                             ویرایش کنید </a>.</p>
                                 </div><!-- .End .tab-pane -->
 
@@ -97,7 +99,8 @@
                                                         تهران-تهران<br>
                                                         خیابان آزادی - پلاک 7<br>
                                                         yourmail@mail.com<br>
-                                                        <a href="#address-modal">ویرایش <i class="icon-edit"></i></a></p>
+                                                        <a href="#address-modal">ویرایش <i class="icon-edit"></i></a>
+                                                    </p>
                                                 </div><!-- End .card-body -->
                                             </div><!-- End .card-dashboard -->
                                         </div><!-- End .col-lg-12 -->
@@ -159,148 +162,45 @@
                         <span aria-hidden="true"><i class="icon-close"></i></span>
                     </button>
 
-                    <div class="form-box">
-                        <div class="form-tab">
-                            <ul class="nav nav-pills nav-fill nav-border-anim" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin"
-                                       role="tab" aria-controls="signin" aria-selected="true">ورود</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab"
-                                       aria-controls="register" aria-selected="false">ثبت نام</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="tab-content-5">
-                                <div class="tab-pane fade show active" id="signin" role="tabpanel"
-                                     aria-labelledby="signin-tab">
-                                    <form method="POST" action="{{ route('user_singIn') }}">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="singin-email">شماره موبایل *</label>
-                                            <input type="text" class="form-control" id="singin-email"
-                                                   name="mobile" required>
-                                        </div><!-- End .form-group -->
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>نام *</label>
+                                <input type="text" class="form-control" required>
+                            </div><!-- End .col-sm-6 -->
 
-                                        <div class="form-group">
-                                            <label for="singin-password">رمز عبور *</label>
-                                            <input type="password" class="form-control" id="singin-password"
-                                                   name="password" required>
-                                        </div><!-- End .form-group -->
+                            <div class="col-sm-6">
+                                <label>نام خانوادگی *</label>
+                                <input type="text" class="form-control" required>
+                            </div><!-- End .col-sm-6 -->
+                        </div><!-- End .row -->
 
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>ورود</span>
-                                                <i class="icon-long-arrow-left"></i>
-                                            </button>
+                        <label>نام کاربری *</label>
+                        <input type="text" class="form-control" required>
+                        <small class="form-text">این نام در قسمت بازدیدها، نظرات و حساب کاربری شما
+                            نمایش داده می شود.</small>
 
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input"
-                                                       id="signin-remember">
-                                                <label class="custom-control-label" for="signin-remember">مرا به خاطر
-                                                    بسپار</label>
-                                            </div><!-- End .custom-checkbox -->
+                        <label>شماره موبایل *</label>
+                        <input type="email" class="form-control" required>
 
-                                            <a href="{{route('user_forgetPassword')}}" class="forgot-link">فراموشی رمز
-                                                عبور؟</a>
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    <!--                                <div class="form-choice">
-                                                                        <p class="text-center">یا ورود با</p>
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <a href="#" class="btn btn-login btn-g">
-                                                                                    <i class="icon-google"></i>
-                                                                                    حساب گوگل
-                                                                                </a>
-                                                                            </div>&lt;!&ndash; End .col-6 &ndash;&gt;
-                                                                            <div class="col-sm-6">
-                                                                                <a href="#" class="btn btn-login btn-f">
-                                                                                    <i class="icon-facebook-f"></i>
-                                                                                    حساب فیسبوک
-                                                                                </a>
-                                                                            </div>&lt;!&ndash; End .col-6 &ndash;&gt;
-                                                                        </div>&lt;!&ndash; End .row &ndash;&gt;
-                                                                    </div>&lt;!&ndash; End .form-choice &ndash;&gt;-->
-                                </div><!-- .End .tab-pane -->
-                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                    @if(Session::has('success'))
-                                        <div class="alert alert-success">
-                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                                                &times;
-                                            </button>
-                                            <strong></strong> {{ Session::get('message', '') }}
-                                        </div>
-                                    @endif
-                                    @if(Session::has('error'))
-                                        <div class="alert alert-danger">
-                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                                                &times;
-                                            </button>
-                                            <strong></strong> {{ Session::get('message', '') }}
-                                        </div>
-                                    @endif
-                                    @if(count($errors) > 0 )
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <ul class="p-0 m-0" style="list-style: none;">
-                                                @foreach($errors->all() as $error)
-                                                    <li>{{$error}}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
-                                    <form method="POST" action="{{ route('user_singUp') }}">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="register-email">شماره موبایل شما *</label>
-                                            <input type="tel" class="form-control" id="register-phone"
-                                                   name="mobile" required>
-                                        </div><!-- End .form-group -->
+                        <label>استان</label>
+                        <input type="text" class="form-control">
 
-                                        <div class="form-group">
-                                            <label for="register-password">رمز عبور *</label>
-                                            <input type="password" class="form-control" id="register-password"
-                                                   name="password" required>
-                                        </div><!-- End .form-group -->
+                        <label>شهر</label>
+                        <input type="text" class="form-control">
 
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>ثبت نام</span>
-                                                <i class="icon-long-arrow-left"></i>
-                                            </button>
+                        <label>آدرس</label>
+                        <input type="text" class="form-control mb-2">
 
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="register-policy"
-                                                       required>
-                                                <label class="custom-control-label" for="register-policy">با
-                                                    <a href="#">قوانین و مقررات </a>موافقم *</label>
-                                            </div><!-- End .custom-checkbox -->
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    <!--                                <div class="form-choice">
-                                                                        <p class="text-center">یا عضویت با</p>
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <a href="#" class="btn btn-login btn-g">
-                                                                                    <i class="icon-google"></i>
-                                                                                    حساب گوگل
-                                                                                </a>
-                                                                            </div>&lt;!&ndash; End .col-6 &ndash;&gt;
-                                                                            <div class="col-sm-6">
-                                                                                <a href="#" class="btn btn-login  btn-f">
-                                                                                    <i class="icon-facebook-f"></i>
-                                                                                    حساب فیسبوک
-                                                                                </a>
-                                                                            </div>&lt;!&ndash; End .col-6 &ndash;&gt;
-                                                                        </div>&lt;!&ndash; End .row &ndash;&gt;
-                                                                    </div>&lt;!&ndash; End .form-choice &ndash;&gt;-->
-                                </div><!-- .End .tab-pane -->
-                            </div><!-- End .tab-content -->
-                        </div><!-- End .form-tab -->
-                    </div><!-- End .form-box -->
+                        <label>کد پستی</label>
+                        <input type="text" class="form-control mb-2">
+
+                        <button type="submit" class="btn btn-outline-primary-2 float-right">
+                            <span>ذخیره تغییرات</span>
+                            <i class="icon-long-arrow-left"></i>
+                        </button>
+                    </form>
+
                 </div><!-- End .modal-body -->
             </div><!-- End .modal-content -->
         </div><!-- End .modal-dialog -->
