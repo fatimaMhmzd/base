@@ -5,9 +5,11 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Page\Http\imports\PageImport;
+use Modules\Polymorphism\Http\imports\ImageImport;
 use Modules\Product\Http\imports\ProductGroupImport;
 use Modules\Product\Http\imports\ProductImport;
 use Modules\Setting\Http\imports\SettingImport;
+use Modules\Slider\Http\imports\SliderImport;
 
 class InsertData extends Command
 {
@@ -50,6 +52,16 @@ class InsertData extends Command
 
         echo "Importing products... :\n";
         Excel::import(new ProductImport(), public_path('imports/product.xlsx'));
+
+        echo "\n";
+
+        echo "Importing sliders... :\n";
+        Excel::import(new SliderImport(), public_path('imports/slider.xlsx'));
+
+        echo "\n";
+
+        echo "Importing images... :\n";
+        Excel::import(new ImageImport(), public_path('imports/images.xlsx'));
 
     }
 }
