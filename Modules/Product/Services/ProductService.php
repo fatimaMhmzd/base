@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Color\Entities\Color;
 use Modules\Color\Services\ColorService;
 use Modules\Polymorphism\Services\ImageService;
+use Modules\Polymorphism\Services\VideoService;
 use Modules\Product\Entities\ProductGroup;
 use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Repositories\ProductRepository;
@@ -94,18 +95,54 @@ class ProductService
     public function update(ValidateProductRequest $request, $id): mixed
     {
         $inputs = $request->validated();
+        $inputs["off_price"] = $inputs["off_price"] ?? 0 ;
+        $inputs["off"] = $inputs["off"] ?? 0 ;
+        $inputs["available"] = $inputs["available"] ?? 0 ;
+        $inputs["weight"] = $inputs["weight"] ?? 0 ;
+        $inputs["weight_with_packaging"] = $inputs["weight_with_packaging"] ?? 0 ;
+        $inputs["unit_weight"] = $inputs["unit_weight"] ?? 0 ;
+        $inputs["status"] = $inputs["status"] ?? 0 ;
+        $inputs["full_title"] = $inputs["full_title"] ?? $inputs["title"] ;
         $totalUnitItem = $this->productRepository->find($id);
         if ($totalUnitItem) {
             DB::beginTransaction();
             try {
                 $totalUnitItemUpdated = $this->productRepository->update($totalUnitItem, $inputs);
+                $image = $inputs["file"] ?? null;
+                $IsCover = $inputs["isCover"] ?? null;
+                $prices = $inputs["pricearray"] ?? null;
+                $numberss = $inputs["numberarray"] ?? null;
+
+
                 DB::commit();
                 $image = $inputs["file"] ?? null;
-                if ($image !== null) {
-                    foreach ($image as $item){
-                    $this->uploadImage($totalUnitItemUpdated, $item);
+                if ($image != null) {
+                    foreach ($image as $key =>$item){
+                        $cover =$IsCover[$key] ?? false;
+                        if ($key == 0){
+                            $cover =true;
+                        }
+
+                        $this->uploadImage($totalUnitItem, $item ,$cover);
+                    }
                 }
+
+                if(isset($inputs['video'])){
+                    $video = $inputs['video'] ?? null;
+                    VideoService::saveVideo(video:$video,model:$totalUnitItem);
                 }
+                if ($prices != null and count($prices) != 0) {
+                    foreach ($prices as $key => $item){
+                        $itemPrice =[];
+                        $itemPrice["price"] =$item;
+                        $itemPrice["number"] =$numberss[$key] ?? 0;
+                        $itemPrice["product_id"] =$totalUnitItem->id;
+
+                        $totalUnitItem->price()->save(resolve(PriceProductService::class)->store($itemPrice));
+
+                    }
+                }
+
 
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -155,6 +192,11 @@ class ProductService
                     $this->uploadImage($totalUnitsItem, $item ,$cover);
                 }
             }
+
+            if(isset($inputs['video'])){
+                $video = $inputs['video'] ?? null;
+                VideoService::saveVideo(video:$video,model:$totalUnitsItem);
+            }
             if ($prices != null and count($prices) != 0) {
                 foreach ($prices as $key => $item){
                     $itemPrice =[];
@@ -169,7 +211,7 @@ class ProductService
 
 
             DB::commit();
-
+            return $totalUnitsItem;
 
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -177,7 +219,7 @@ class ProductService
             throw new \Exception(trans("custom.defaults.store_failed"));
         }
 
-        return $totalUnitsItem;
+
 
     }
 

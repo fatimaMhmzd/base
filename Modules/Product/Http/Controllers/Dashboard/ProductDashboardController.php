@@ -36,7 +36,8 @@ class ProductDashboardController extends Controller
     public function create()
     {
         $group = resolve(ProductGroupService::class)->all();
-        return view('product::dashboard.product.add', compact('group'));
+        $unit = resolve(UnitService::class)->all();
+        return view('product::dashboard.product.add', compact('group' ,'unit'));
     }
 
     /**
@@ -78,8 +79,10 @@ class ProductDashboardController extends Controller
     public function edit($id)
     {
         $data = $this->service->find($id);
+
         $group = resolve(ProductGroupService::class)->all();
-        return view('product::dashboard.product.update',compact('data' ,'group'));
+        $unit = resolve(UnitService::class)->all();
+        return view('product::dashboard.product.update',compact('data' ,'group' , 'unit'));
     }
 
     /**

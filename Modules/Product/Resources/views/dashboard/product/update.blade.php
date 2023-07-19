@@ -75,11 +75,38 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">قیمت</label>
+                                            <label  style="margin-top: 20px">قیمت سازمانی</label>
                                             <fieldset class="form-group">
                                                 <input type="number" id="last-name-column" class="form-control" placeholder="قیمت" name="price" value="{{$data->price}}">
 
                                             </fieldset>
+                                        </div>
+                                        <div class="col-12" id="pricearea">
+                                            <div class="row" id="priceloc0">
+                                                <div class="col-xl-6 col-lg-12">
+                                                    <div class="form-group">
+                                                        <p class="text-bold-600 font-medium-2">
+                                                            قیمت ها
+                                                        </p>
+                                                        <input type="number" class="form-control"
+                                                               placeholder="قیمت به ازای خرید"
+                                                               name="pricearray[]">
+                                                        <input type="number" class="form-control"
+                                                               placeholder="تعداد خرید"
+                                                               name="numberarray[]">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12">
+                                                    <button type="button" class="btn btn-danger mt-3"
+                                                            onclick="deleteRowPrice(0)">حذف
+                                                    </button>
+
+                                                    <button type="button" class="btn btn-primary mt-3" onclick="addPrice()">
+                                                        افزودن ردیف
+                                                    </button>
+                                                </div>
+
+                                            </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">قیمت با تخفیف </label>
@@ -132,6 +159,27 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">طول</label>
+                                            <fieldset class="form-group">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="طول" name="length" value="{{$data->length}}">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">عرض</label>
+                                            <fieldset class="form-group">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="عرض" name="width" value="{{$data->width}}">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">ارتفاع</label>
+                                            <fieldset class="form-group">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="ارتفاع" name="height" value="{{$data->height}}">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">وزن</label>
                                             <fieldset class="form-group">
                                                 <input type="number" id="last-name-column" class="form-control" placeholder="وزن" name="weight" value="{{$data->weight}}">
@@ -146,11 +194,15 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">وزن خالص</label>
+                                            <label  style="margin-top: 20px">واحد وزن</label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن خالص " name="unit_weight" value="{{$data->unit_weight}}">
-
+                                                <select class="form-control" id="basicSelect" name="unit_weight" >
+                                                    @foreach($unit as $item)
+                                                        <option @if($data->unit_weight == $item->id) selected @endif value="{{$item->id}}">{{$item->title}}</option>
+                                                    @endforeach
+                                                </select>
                                             </fieldset>
+
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">وضعیت</label>
@@ -175,7 +227,7 @@
                                                     <label>عکس اصلی</label>
                                                 </div>
 
-                                                <img id="companyLogo" data-type="editable" height="200px" width="200px"/>
+                                                <img @if(count($data->image) != 0) src="/{{$data->image[0]->url}}" @endif id="companyLogo" data-type="editable" height="200px" width="200px"/>
 
 
                                             </fieldset>
@@ -242,23 +294,27 @@
 
 @section('script')
 
-
     <script>
 
         function getData() {
 
             //var firstGroupId = document.getElementById('group').value;
-            var firstGroupId = $('#group').val();
+            var unitId = $('#unit').val();
 
             $.ajax({
-                url: "/admin/getSubGroup/" + firstGroupId,
+                url: "/dashboard/size/getSizeByUnit?unitId=" + unitId,
 
                 type: 'GET',
                 success: function (res) {
+                    var result = ``
+                    for (var i = 0 ; i < res.length ; i++){
+                        result += `<option value="`+res[i]['id']+`">`+res[i]['title']+`</option>`
+
+                    }
 
                     // document.getElementById('subGroup').innerHTML = res;
 
-                    $('#subGroup').html(res)
+                    $('#size').html(result)
 
 
                 }
@@ -270,6 +326,51 @@
     </script>
 
 
+    <script>
+        counterp = 1;
+
+        function addPrice() {
+
+            var node = `
+                                                    <div class="col-xl-6 col-lg-12">
+                                                        <div class="form-group">
+ <p class="text-bold-600 font-medium-2">
+                                                           قیمت ها
+                                                        </p>
+                                                        <input type="number" class="form-control"
+                                                               placeholder="قیمت به ازای خرید"
+                                                               name="pricearray[]">
+                                                        <input type="number" class="form-control"
+                                                               placeholder="تعداد خرید"
+                                                               name="numberarray[]">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-12">
+                                                        <button type="button" class="btn btn-danger mt-3" onclick="deleteRowPrice(` + counterp + `)">delete</button>
+                                                    </div>
+                                                `
+
+            var divData = document.createElement("div");
+
+            divData.id = 'priceloc' + counterp
+            divData.className = 'row'
+
+            divData.innerHTML = node;
+
+
+            document.getElementById("pricearea").appendChild(divData)
+            counterp++
+        }
+
+
+        function deleteRowPrice(index) {
+
+            var idd = 'priceloc' + index
+
+            document.getElementById(idd).innerHTML = ''
+        }
+
+    </script>
     <script>
         counter = 1;
 
@@ -283,7 +384,7 @@
                                                             </p>
                                                             <input type="file" class="form-control"
                                                                    placeholder="عکس اسلایدر"
-                                                                   name="sliderimg[]">
+                                                                   name="file[]">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-6 col-lg-12">
@@ -312,5 +413,70 @@
         }
 
     </script>
+    <script src="/dashboard/app-assets/js/scripts/forms/select/form-select2.min.js"></script>
+    <script src="/dashboard/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('long_description', {
+            language: 'fa',
+            content: 'fa',
+            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
+    <script>
 
+        function init() {
+            $("img[data-type=editable]").each(function (i, e) {
+                var _inputFile = $('<input/>')
+                    .attr('type', 'file')
+                    .attr('hidden', 'hidden')
+                    .attr('onchange', 'readImage()')
+                    .attr('name', 'file[]')
+                    .attr('data-image-placeholder', e.id);
+
+                $(e.parentElement).append(_inputFile);
+
+                $(e).on("click", _inputFile, triggerClick);
+            });
+        }
+
+        function triggerClick(e) {
+            e.data.click();
+        }
+
+        Element.prototype.readImage = function () {
+            var _inputFile = this;
+            if (_inputFile && _inputFile.files && _inputFile.files[0]) {
+                var _fileReader = new FileReader();
+                _fileReader.onload = function (e) {
+                    var _imagePlaceholder = _inputFile.attributes.getNamedItem("data-image-placeholder").value;
+                    var _img = $("#" + _imagePlaceholder);
+                    _img.attr("src", e.target.result);
+                };
+                _fileReader.readAsDataURL(_inputFile.files[0]);
+            }
+        };
+
+        //
+        // IIFE - Immediately Invoked Function Expression
+        // https://stackoverflow.com/questions/18307078/jquery-best-practises-in-case-of-document-ready
+        (
+
+            function (yourcode) {
+                "use strict";
+                // The global jQuery object is passed as a parameter
+                yourcode(window.jQuery, window, document);
+            }(
+                function ($, window, document) {
+                    "use strict";
+                    // The $ is now locally scoped
+                    $(function () {
+                        // The DOM is ready!
+                        init();
+                    });
+
+                    // The rest of your code goes here!
+                }));
+
+    </script>
 @endsection

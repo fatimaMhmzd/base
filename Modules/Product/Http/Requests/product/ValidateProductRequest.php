@@ -13,6 +13,10 @@ class ValidateProductRequest extends FormRequest
      */
     public function rules(): array
     {
+/*        # video
+        $list_mimes_allowable_from_upload_video = config('configs.videos.mimes_allowable_from_upload');
+        $mimes_allowable_from_upload_video = implode(',', $list_mimes_allowable_from_upload_video);*/
+
         return [
             'title' => 'required|string',
             'sub_title' => 'nullable|string',
@@ -41,6 +45,7 @@ class ValidateProductRequest extends FormRequest
             'size_id' => 'nullable|array',
             'pricearray' => 'nullable|array',
             'numberarray' => 'nullable|array',
+            'video' => "nullable",
         ];
     }
 

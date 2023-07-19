@@ -13,6 +13,7 @@ use Modules\Color\Entities\Color;
 use Modules\Comment\Entities\Comment;
 use Modules\Polymorphism\Entities\Images;
 use Modules\Size\Entities\Size;
+use Modules\Unit\Entities\Unit;
 
 class Product extends Model
 {
@@ -100,6 +101,11 @@ class Product extends Model
     public function size(): BelongsToMany
     {
         return $this->belongsToMany(Size::class,"product_properties","product_id","size_id");
+
+    }
+    public function unit(): HasOne
+    {
+        return $this->hasOne(Unit::class,"unit_weight",);
 
     }
     public function price(): HasMany

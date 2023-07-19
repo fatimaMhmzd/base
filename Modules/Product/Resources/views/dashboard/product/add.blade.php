@@ -196,11 +196,15 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">وزن خالص</label>
+                                            <label  style="margin-top: 20px">واحد وزن</label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن خالص " name="unit_weight">
-
+                                                <select class="form-control" id="basicSelect" name="unit_weight" >
+                                                    @foreach($unit as $item)
+                                                        <option value="{{$item->id}}">{{$item->title}}</option>
+                                                    @endforeach
+                                                </select>
                                             </fieldset>
+
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">وضعیت</label>
