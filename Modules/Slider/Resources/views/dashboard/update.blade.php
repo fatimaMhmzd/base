@@ -40,7 +40,7 @@
                                             <fieldset class="form-group">
                                                 <select class="form-control" id="basicSelect" name="page_id">
                                                     @foreach($allPage as $item)
-                                                        <option value="{{$item->id}}">{{$item->title}}</option>
+                                                        <option @if($data->page_id == $item->id) selected @endif value="{{$item->id}}">{{$item->title}}</option>
                                                     @endforeach
                                                 </select>
                                             </fieldset>
@@ -57,7 +57,7 @@
                                             <div class="form-group">
                                                 <label  style="margin-top: 20px"> زیر عنوان</label>
                                                 <fieldset class="form-group">
-                                                    <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title1">
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title1" value="{{$data->sub_title1}}">
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
                                             <div class="form-group">
                                                 <label  style="margin-top: 20px"> زیر عنوان</label>
                                                 <fieldset class="form-group">
-                                                    <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title2">
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title2" value="{{$data->sub_title2}}">
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -73,7 +73,7 @@
                                             <div class="form-group">
                                                 <label  style="margin-top: 20px"> زیر عنوان</label>
                                                 <fieldset class="form-group">
-                                                    <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title3">
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title3" value="{{$data->sub_title3}}">
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
                                             <div class="form-group">
                                                 <label  style="margin-top: 20px"> زیر عنوان</label>
                                                 <fieldset class="form-group">
-                                                    <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title4">
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title4" value="{{$data->sub_title4}}">
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -98,7 +98,7 @@
                                             <div class="form-group">
                                                 <label for="companyinput1" style="margin-top: 20px">link</label>
                                                 <fieldset class="form-group">
-                                                    <input type="text" id="company-column" class="form-control" name="link" placeholder="link">
+                                                    <input type="text" id="company-column" class="form-control" name="link" placeholder="link" value="{{$data->link}}">
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -107,7 +107,7 @@
                                                 <label for="companyinput8">توضیحات </label>
                                                 <textarea id="companyinput8" rows="5" class="form-control"
                                                           name="description"
-                                                          placeholder="توضیحات "></textarea>
+                                                          placeholder="توضیحات ">  {{$data->description}}</textarea>
                                             </div>
                                         </div>
 
