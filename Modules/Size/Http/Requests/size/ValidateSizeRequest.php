@@ -14,7 +14,6 @@ class ValidateSizeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'unit_id' =>'required|integer',
             'title' => 'required|string',
             'sub_title' => 'nullable|string',
             'description' => 'nullable|string',

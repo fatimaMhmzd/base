@@ -15,16 +15,12 @@ class Size extends Model
     protected $table = "sizes";
 
     protected $fillable = [
-        "unit_id",
         "title",
         "sub_title",
         "description",
     ];
-    protected $with = ["unit"];
-    public function unit(): HasOne
-    {
-        return $this->hasOne(Unit::class, "id", "unit_id");
-    }
+
+
 
 
 

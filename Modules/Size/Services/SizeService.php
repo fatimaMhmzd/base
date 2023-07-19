@@ -27,15 +27,7 @@ class SizeService
             ];
             $all = $this->sizeRepository->getByInput($filter, $request->perPage, $request->pageNumber);
         }
-        if ($request->unitId and $request->unitId != "0") {
 
-            $filter[] = (object)[
-                "col" => "unit_id",
-                "value" => $request->unitId,
-                "like" => false,
-            ];
-            $all = $this->sizeRepository->getByInput($filter, $request->perPage, $request->pageNumber);
-        }
 
         return $all;
     }
@@ -52,11 +44,8 @@ class SizeService
 
                 return $btn;
             })
-            ->addColumn('unit', function ($row) {
-                $unit = $row->unit->title;
-                return $unit;
-            })
-            ->rawColumns(['action', 'unit'])
+
+            ->rawColumns(['action'])
             ->make(true);
 
     }
@@ -117,7 +106,7 @@ class SizeService
             try {
                 $totalUnitsItem = $this->sizeRepository->create($inputs);
                 DB::commit();
-
+                return $totalUnitsItem;
             } catch (\Exception $exception) {
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.store_failed"));
@@ -126,14 +115,8 @@ class SizeService
             throw new \Exception(trans("custom.publicContent.item_with_application_id_already_exist"));
         }
 
-        $image = $inputs["file"] ?? null;
-        if ($image !== null) {
-
-            $this->uploadImage($totalUnitsItem, $image);
 
 
-        }
-        return $totalUnitsItem;
 
     }
 

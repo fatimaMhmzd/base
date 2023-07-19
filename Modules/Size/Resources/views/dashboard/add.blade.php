@@ -34,16 +34,7 @@
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">واحدمربوطه</label>
-                                                <fieldset class="form-group">
-                                                    <select class="form-control" id="basicSelect" name="unit_id">
-                                                        @foreach($allUnit as $item)
-                                                        <option value="{{$item->id}}">{{$item->title}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </fieldset>
-                                        </div>
+
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label  style="margin-top: 20px">عنوان</label>

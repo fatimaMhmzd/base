@@ -30,8 +30,8 @@ class SizeController extends Controller
      */
     public function create()
     {
-        $allUnit = resolve(UnitService::class)->all();
-        return view('size::dashboard.add' , compact('allUnit'));
+
+        return view('size::dashboard.add' );
     }
 
     /**
@@ -68,7 +68,8 @@ class SizeController extends Controller
      */
     public function edit($id)
     {
-        return view('size::edit');
+        $data = $this->service->find($id);
+        return view('size::dashboard.update' , compact('data'));
     }
 
     /**

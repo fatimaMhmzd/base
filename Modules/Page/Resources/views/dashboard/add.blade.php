@@ -34,17 +34,18 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
-                                            <div class="form-label-group">
-                                                <input type="text" id="first-name-column" class="form-control" placeholder="عنوان" name="title">
-                                                <label for="first-name-column">عنوان</label>
+                                            <div class="form-group">
+                                                <label for="contactinput5">عنوان</label>
+                                                <input class="form-control border-primary" type="text" placeholder="عنوان" id="contactinput5" name="title" >
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <div class="form-label-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title">
-                                                <label for="last-name-column">زیر عنوان</label>
+                                            <div class="form-group">
+                                                <label for="contactinput5">زیرعنوان</label>
+                                                <input class="form-control border-primary" type="text" placeholder="زیرعنوان" id="contactemail5" name="sub_title">
                                             </div>
                                         </div>
+                                    </div>
 <!--                                        <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="companyinput1" style="margin-top: 20px">عکس اصلی</label>
@@ -54,7 +55,7 @@
                                                 </fieldset>
                                             </div>
                                         </div>-->
-                                        <div class="col-xl-12 col-md-12 col-12 mb-1">
+                                        <div class="col-xl-6 col-md-12 col-6 mb-1">
                                             <fieldset class="form-group">
                                                 <div class="col mb-1">
                                                     <label>عکس اصلی</label>
@@ -65,12 +66,12 @@
 
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-12">
+                                        <div class="col-md-6 col-6">
                                             <div class="form-group">
-                                                <label for="companyinput1" style="margin-top: 20px">link</label>
-                                                <fieldset class="form-group">
+                                                <label>link</label>
+
                                                 <input type="text" id="company-column" class="form-control" name="link" placeholder="link">
-                                                </fieldset>
+
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-12">
