@@ -76,11 +76,39 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">قیمت</label>
+                                            <label  style="margin-top: 20px">قیمت سازمانی</label>
                                             <fieldset class="form-group">
                                                 <input type="number" id="last-name-column" class="form-control" placeholder="قیمت" name="price">
 
                                             </fieldset>
+                                        </div>
+
+                                        <div class="col-12" id="pricearea">
+                                            <div class="row" id="priceloc0">
+                                                <div class="col-xl-6 col-lg-12">
+                                                    <div class="form-group">
+                                                        <p class="text-bold-600 font-medium-2">
+                                                           قیمت ها
+                                                        </p>
+                                                        <input type="number" class="form-control"
+                                                               placeholder="قیمت به ازای خرید"
+                                                               name="pricearray[]">
+                                                        <input type="number" class="form-control"
+                                                               placeholder="تعداد خرید"
+                                                               name="numberarray[]">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-12">
+                                                    <button type="button" class="btn btn-danger mt-3"
+                                                            onclick="deleteRowPrice(0)">حذف
+                                                    </button>
+
+                                                    <button type="button" class="btn btn-primary mt-3" onclick="addPrice()">
+                                                        افزودن ردیف
+                                                    </button>
+                                                </div>
+
+                                            </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label  style="margin-top: 20px">قیمت با تخفیف </label>
@@ -129,6 +157,27 @@
                                             <label  style="margin-top: 20px">توضیحات سـو</label>
                                             <fieldset class="form-group">
                                                 <input type="text" id="last-name-column" class="form-control" placeholder="توضیحات سـو" name="seo_description">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">طول</label>
+                                            <fieldset class="form-group">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="طول" name="length">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">عرض</label>
+                                            <fieldset class="form-group">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="عرض" name="width">
+
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <label  style="margin-top: 20px">ارتفاع</label>
+                                            <fieldset class="form-group">
+                                                <input type="number" id="last-name-column" class="form-control" placeholder="ارتفاع" name="height">
 
                                             </fieldset>
                                         </div>
@@ -274,6 +323,51 @@
     </script>
 
 
+    <script>
+        counterp = 1;
+
+        function addPrice() {
+
+            var node = `
+                                                    <div class="col-xl-6 col-lg-12">
+                                                        <div class="form-group">
+ <p class="text-bold-600 font-medium-2">
+                                                           قیمت ها
+                                                        </p>
+                                                        <input type="number" class="form-control"
+                                                               placeholder="قیمت به ازای خرید"
+                                                               name="pricearray[]">
+                                                        <input type="number" class="form-control"
+                                                               placeholder="تعداد خرید"
+                                                               name="numberarray[]">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-12">
+                                                        <button type="button" class="btn btn-danger mt-3" onclick="deleteRowPrice(` + counterp + `)">delete</button>
+                                                    </div>
+                                                `
+
+            var divData = document.createElement("div");
+
+            divData.id = 'priceloc' + counterp
+            divData.className = 'row'
+
+            divData.innerHTML = node;
+
+
+            document.getElementById("pricearea").appendChild(divData)
+            counterp++
+        }
+
+
+        function deleteRowPrice(index) {
+
+            var idd = 'priceloc' + index
+
+            document.getElementById(idd).innerHTML = ''
+        }
+
+    </script>
     <script>
         counter = 1;
 

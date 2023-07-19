@@ -3,17 +3,17 @@
 namespace Modules\Product\Http\Repositories;
 
 use App\Http\Repository\BaseRepository;
-use Modules\Product\Entities\Product;
+use Modules\Product\Entities\Price;
 
-class ProductRepository extends BaseRepository
+class PriceProductRepository extends BaseRepository
 {
     public function model(): string
     {
-        return Product::class;
+        return Price::class;
     }
 
     public function relations(): array
     {
-        return ['image','group','color','size','price'];
+        return [];
     }
 }

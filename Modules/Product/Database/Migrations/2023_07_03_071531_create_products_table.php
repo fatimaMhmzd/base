@@ -32,6 +32,9 @@ return new class extends Migration
             $table->text('key_word')->nullable();
             $table->text('seo_description')->nullable();
             $table->bigInteger('weight')->default(0);
+            $table->bigInteger('length')->default(0);
+            $table->bigInteger('width')->default(0);
+            $table->bigInteger('height')->default(0);
             $table->bigInteger('weight_with_packaging')->default(0);
             $table->integer('unit_weight')->default(0);
             $table->tinyInteger('status');

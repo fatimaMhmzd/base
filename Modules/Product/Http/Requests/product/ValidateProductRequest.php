@@ -39,6 +39,8 @@ class ValidateProductRequest extends FormRequest
             'updater' => 'nullable|integer',
             'color_id' => 'nullable|array',
             'size_id' => 'nullable|array',
+            'pricearray' => 'nullable|array',
+            'numberarray' => 'nullable|array',
         ];
     }
 
