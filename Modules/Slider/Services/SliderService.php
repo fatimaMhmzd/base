@@ -27,6 +27,7 @@ class SliderService
         $all = $this->sliderRepository->getByInput($filter, $request->perPage, $request->pageNumber);
         return $all;
     }
+
     public function getBy($pageId)
     {
         $filter = [];
@@ -44,7 +45,7 @@ class SliderService
     public function ajax()
     {
         $data = $this->sliderRepository->getByInput();
-        return  Datatables::of($data)
+        return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
@@ -67,7 +68,7 @@ class SliderService
 
                 return $page;
             })
-            ->rawColumns(['action', 'image' , 'page'])
+            ->rawColumns(['action', 'image', 'page'])
             ->make(true);;
     }
 
@@ -96,18 +97,20 @@ class SliderService
 
     public function update(ValidateSliderRequest $request, $id): mixed
     {
+
         $inputs = $request->validated();
         $totalUnitItem = $this->sliderRepository->find($id);
         if ($totalUnitItem) {
+
             DB::beginTransaction();
             try {
                 $totalUnitItemUpdated = $this->sliderRepository->update($totalUnitItem, $inputs);
                 DB::commit();
                 $image = $inputs["file"] ?? null;
                 if ($image !== null) {
-
-                        $this->uploadImage($totalUnitItemUpdated, $image);
-                    }
+                    $this->uploadImage($totalUnitItem, $image);
+                }
+                return $totalUnitItemUpdated;
 
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -118,7 +121,7 @@ class SliderService
             throw new \Exception(trans("custom.defaults.not_found"));
         }
 
-        return $totalUnitItemUpdated;
+
     }
 
     public function store(ValidateSliderRequest $request)
@@ -127,23 +130,22 @@ class SliderService
         $exist = $this->sliderRepository->findBy("title", $inputs["title"]);
 
 
+        DB::beginTransaction();
+        try {
+            $totalUnitsItem = $this->sliderRepository->create($inputs);
+            DB::commit();
+            $image = $inputs["file"] ?? null;
+            if ($image !== null) {
 
-            DB::beginTransaction();
-            try {
-                $totalUnitsItem = $this->sliderRepository->create($inputs);
-                DB::commit();
-                $image = $inputs["file"] ?? null;
-                if ($image !== null) {
-
-                    $this->uploadImage($totalUnitsItem, $image);
+                $this->uploadImage($totalUnitsItem, $image);
 
 
-                }
-
-            } catch (\Exception $exception) {
-                DB::rollBack();
-                throw new \Exception(trans("custom.defaults.store_failed"));
             }
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            throw new \Exception(trans("custom.defaults.store_failed"));
+        }
 
         return $totalUnitsItem;
 
@@ -154,6 +156,7 @@ class SliderService
     {
         return $this->sliderRepository->getByInput();
     }
+
     public function uploadImage($guild, $file)
     {
         $destinationPath = "public/slider/" . $guild->id;

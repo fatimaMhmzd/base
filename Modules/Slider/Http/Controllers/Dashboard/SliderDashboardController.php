@@ -70,6 +70,7 @@ class SliderDashboardController extends Controller
     public function edit($id)
     {
         $data = $this->service->find($id);
+
         $allPage = resolve(PageService::class)->all();
         return view('slider::dashboard.update',compact('data','allPage'));
     }
@@ -82,8 +83,10 @@ class SliderDashboardController extends Controller
      */
     public function update(ValidateSliderRequest $request, $id)
     {
+
         try {
-            $this->service->update($request, $id);
+            $result = $this->service->update($request, $id);
+
             $message = trans("custom.defaults.update_success");
             return back()->with('success', true)->with('message', $message);
 

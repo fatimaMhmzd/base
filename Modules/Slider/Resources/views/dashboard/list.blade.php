@@ -73,7 +73,7 @@
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'page', name: 'page'},
                     {data: 'title', name: 'title'},
-                    {data: 'sub_title', name: 'sub_title'},
+                    {data: 'sub_title1', name: 'sub_title1'},
                     {data: 'image', name: 'image', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
