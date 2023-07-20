@@ -1,17 +1,16 @@
 <?php
 
-namespace Modules\ShopBasket\Http\Controllers;
+namespace Modules\ContactUs\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Modules\ShopBasket\Services\OrderService;
+use Illuminate\Routing\Controller;
+use Modules\ContactUs\Http\Requests\contactUs\ValidateContactUsRequest;
+use Modules\ContactUs\Services\ContactUsService;
 
-
-class OrderController extends Controller
+class ContactUsController extends Controller
 {
-    public function __construct(public OrderService $service)
+    public function __construct(public ContactUsService $service)
     {
     }
     /**
@@ -20,7 +19,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('shopbasket::index');
+        return view('contactus::index');
     }
 
     /**
@@ -29,7 +28,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('shopbasket::create');
+        return view('contactus::create');
     }
 
     /**
@@ -37,7 +36,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidatecontactUsRequest $request)
     {
         try {
             $result = $this->service->store($request);
@@ -54,11 +53,9 @@ class OrderController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show()
+    public function show($id)
     {
-        $cart = $this->service->index()->first();
-//        return $cart;
-        return view('shopbasket::client.cart', compact('cart'));
+        return view('contactus::show');
     }
 
     /**
@@ -68,7 +65,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        return view('shopbasket::edit');
+        return view('contactus::edit');
     }
 
     /**
@@ -89,14 +86,6 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $this->service->delete($id);
-            /* $message = "انجام شد";*/
-            $message = trans("custom.defaults.delete_success");
-            return back()->with('success', true)->with('message', $message);
-        } catch (\Exception $exception) {
-            $message = $exception->getMessage();
-            return back()->with('error', true)->with('message', $message);
-        }
+        //
     }
 }
