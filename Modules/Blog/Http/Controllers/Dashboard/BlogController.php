@@ -5,16 +5,23 @@ namespace Modules\Blog\Http\Controllers\Dashboard;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Blog\Http\Requests\blog\ValidateBlogRequest;
+use Modules\Blog\Services\BlogGroupService;
+use Modules\Blog\Services\BlogService;
+use Modules\Blog\Services\LableService;
 
 class BlogController extends Controller
 {
+    public function __construct(public BlogService $service)
+    {
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('blog::index');
+        return view('blog::dashboard.list');
     }
 
     /**
@@ -23,7 +30,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog::create');
+        $group = resolve(BlogGroupService::class)->all();
+        $lable = resolve(LableService::class)->all();
+        return view('blog::dashboard.add',compact('group' ,'lable'));
     }
 
     /**
@@ -31,9 +40,17 @@ class BlogController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidateBlogRequest $request)
     {
-        //
+        try {
+            $result = $this->service->store($request);
+
+            $message = trans("custom.defaults.store_success");
+            return back()->with('success', true)->with('message', $message);
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
     }
 
     /**
@@ -53,7 +70,11 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        return view('blog::edit');
+        $data = $this->service->find($id);
+        $group = resolve(BlogGroupService::class)->all();
+        $lable = resolve(LableService::class)->all();
+
+        return view('blog::dashboard.update',compact('data','group' ,'lable'));
     }
 
     /**
@@ -62,9 +83,18 @@ class BlogController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateBlogRequest $request, $id)
     {
-        //
+        try {
+            $this->service->update($request, $id);
+            $message = trans("custom.defaults.update_success");
+            return back()->with('success', true)->with('message', $message);
+
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+
+        }
     }
 
     /**
@@ -74,6 +104,19 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->service->delete($id);
+            /* $message = "انجام شد";*/
+            $message = trans("custom.defaults.delete_success");
+            return back()->with('success', true)->with('message', $message);
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
+    }
+    public function ajax()
+    {
+        $data = $this->service->ajax();
+        return $data;
     }
 }

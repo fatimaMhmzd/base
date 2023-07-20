@@ -11,7 +11,7 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header"><h4 class="card-title">لیست بلاگ ها</h4></div>
+                    <div class="card-header"><h4 class="card-title">لیست برچسب</h4></div>
                     <div class="card-content">
                         <div class="card-body">
 
@@ -30,7 +30,7 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>عنوان</th>
-                                    <th>زیرعنوان</th>
+                                    <th>لینک</th>
                                     <th width="100px">عملیات</th>
                                 </tr>
                                 </thead>
@@ -50,7 +50,7 @@
 
 @section('script')
 
-    <script src="/dashboard/datatable/jquery.js"></script>
+    <script src="/dashboard/datatable/ajax.js"></script>
     <script src="/dashboard/datatable/jquery.validate.js"></script>
     <script src="/dashboard/datatable/jquery.dataTables.min.js"></script>
     <script src="/dashboard/datatable/bootstrap.min.js"></script>
@@ -66,11 +66,11 @@
                 "pageLength": 25,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('dashboard_blog_ajax') }}",
+                ajax: "{{ route('dashboard_blog_lable_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'title', name: 'title'},
-                    {data: 'sub_title', name: 'sub_title'},
+                    {data: 'link', name: 'link'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });

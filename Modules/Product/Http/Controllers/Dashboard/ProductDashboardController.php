@@ -51,7 +51,6 @@ class ProductDashboardController extends Controller
 
         try {
             $result = $this->service->store($request);
-            return $result;
 
             $message = trans("custom.defaults.store_success");
             return back()->with('success', true)->with('message', $message);

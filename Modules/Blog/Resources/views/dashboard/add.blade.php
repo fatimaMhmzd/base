@@ -1,9 +1,9 @@
 @extends('dashboard.layoute.total')
-
+@section('link')
+    <link rel="stylesheet" type="text/css" href="/dashboard/app-assets/vendors/css/forms/select/select2.min.css">
+@endsection
 
 @section('content')
-
-
 
     <div class="col-12">
         <div class="card">
@@ -59,51 +59,64 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form" method="post"
-{{--                          action="{{route('storeUserProfile')}}"--}}
-                    >
-{{--                        @csrf--}}
+                        <form class="form" method="post" action="{{route('dashboard_blog_store')}}"
+                              enctype="multipart/form-data">
+                            @csrf
                         <div class="form-body">
 
-<!--                            <h4 class="form-section">
-                                <i class="ft-briefcase"></i> ایجاد بلاگ جدید</h4>-->
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="contactinput5">عنوان</label>
-                                <input class="form-control border-primary" type="text" placeholder="عنوان" id="contactinput5" name="title">
-                            </div>
-                            </div>
+                                    <label  style="margin-top: 20px">انتخاب گروهبندی</label>
+                                    <fieldset class="form-group">
+                                        <select class="form-control" id="basicSelect" name="group_id"  id="group">
+                                            @foreach($group as $item)
+                                                <option value="{{$item->id}}">{{$item->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-6 col-12">
+                                    <label  style="margin-top: 20px">برچسب ها</label>
+                                    <div class="form-group">
+                                        <select class="select2 form-control" multiple="multiple" name="lable[]">
+                                            @foreach($lable as $item)
+                                            <option value="{{$item->id}}">{{$item->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="contactinput5">زیر عنوان</label>
-                                <input class="form-control border-primary" type="text" placeholder="زیر عنوان" id="contactemail5" name="sub_title">
-                            </div>
-                            </div>
-                            </div>
-                            <div class="row" >
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="companyinput1" style="margin-top: 20px">عکس اصلی</label>
-                                    <fieldset class="form-group">
-                                        <input type="file" name="file" class="form-control-file"
-                                               id="exampleInputFile">
-                                    </fieldset>
+                                    <div class="form-group">
+                                        <label for="contactinput5">عنوان</label>
+                                        <input class="form-control border-primary" type="text" placeholder="عنوان"
+                                               id="contactinput5" name="title">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="contactinput5">زیر عنوان</label>
+                                        <input class="form-control border-primary" type="text" placeholder="زیر عنوان"
+                                               id="contactemail5" name="sub_title">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="companyinput1" style="margin-top: 20px">link</label>
-                                    <fieldset class="form-group">
-                                        <input type="text" id="company-column" class="form-control" name="link" placeholder="link">
-                                    </fieldset>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="companyinput1" style="margin-top: 20px">link</label>
+                                        <fieldset class="form-group">
+                                            <input type="text" id="company-column" class="form-control" name="link"
+                                                   placeholder="link">
+                                        </fieldset>
+                                    </div>
                                 </div>
-                            </div>
 
                             </div>
                             <div class="form-group">
                                 <label>توضیحات</label>
-                                <input class="form-control border-primary" id="contactinput7" type="password" placeholder="توضیحات" name="description">
+                                <textarea id="description" rows="5" class="form-control"
+                                          name="description"
+                                          placeholder="توضیحات "></textarea>
                             </div>
 
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -114,7 +127,6 @@
                                 </div>
                             </div>
 
-                        </div>
 
                         <div class="form-actions right">
                             <button type="button" class="btn btn-danger mr-1">
@@ -130,14 +142,12 @@
             </div>
         </div>
     </div>
-    </div>
-
 
 @stop
 
 @section('script')
-
-    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <script src="/dashboard/app-assets/js/scripts/forms/select/form-select2.min.js"></script>
+    <script src="/dashboard/ckeditor/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('content', {
             language: 'fa',
