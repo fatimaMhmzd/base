@@ -742,6 +742,9 @@
                                 </div>
                             </li>
                             <li>
+                                <a href="{{route('blog_list')}}" class="">بلاگ</a>
+                            </li>
+                            <li>
                                 <a href="{{route('page_panelClient')}}" class="">پنل کاربری</a>
                             </li>
                         </ul><!-- End .menu -->

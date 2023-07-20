@@ -20,7 +20,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>ویرایش کاربر - Vuexy - قالب مدیریتی نوین پردازش آروکو</title>
+    <title>پیشخوان سایت صنایع دستی</title>
     <link rel="apple-touch-icon" href="/dashboard/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/dashboard/app-assets/images/ico/favicon.ico">
     <link href="/dashboard/app-assets/images/fonts.googleapis.css" rel="stylesheet">
