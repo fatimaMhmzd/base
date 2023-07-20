@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\SocialMedia\Http\Repositories\SocialMediaRepository;
 use Modules\SocialMedia\Http\Requests\socialMedia\ValidateSocialMediaRequest;
+use Yajra\DataTables\Facades\DataTables;
 
 class SocialMediaService
 {
@@ -29,8 +30,26 @@ class SocialMediaService
 
     public function ajax()
     {
-        $all = $this->socialMediaRepository->getByInput();
-        return $all;
+        $data = $this->socialMediaRepository->getByInput();
+        return  Datatables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+
+                $btn = '<a href="' . route('dashboard_social_media_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_social_media_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+
+                return $btn;
+            })
+            ->addColumn('image', function ($row) {
+                $img = '';
+                if ($row->image) {
+                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
+                }
+
+                return $img;
+            })
+            ->rawColumns(['action', 'image'])
+            ->make(true);
     }
 
     public function find($id)
@@ -67,9 +86,9 @@ class SocialMediaService
                 DB::commit();
                 $image = $inputs["file"] ?? null;
                 if ($image !== null) {
-                    foreach ($image as $item){
-                        $this->uploadImage($totalUnitItemUpdated, $item);
-                    }
+
+                        $this->uploadImage($totalUnitItem, $image);
+
 
                 }
             } catch (\Exception $exception) {
@@ -98,9 +117,9 @@ class SocialMediaService
                 DB::commit();
                 $image = $inputs["file"] ?? null;
                 if ($image !== null) {
-                    foreach ($image as $item){
-                        $this->uploadImage($totalUnitsItem, $item);
-                    }
+
+                        $this->uploadImage($totalUnitsItem, $image);
+
 
                 }
             } catch (\Exception $exception) {

@@ -19,12 +19,12 @@ class ValidateProductRequest extends FormRequest
 
         return [
             'title' => 'required|string',
-            'sub_title' => 'nullable|string',
+            'sub_title' => 'required|string',
             'file' => 'nullable|array',
             'brand' => 'required|string',
-            'full_title' => 'nullable|string',
+            'full_title' => 'required|string',
             'product_group_id' => 'required|integer',
-            'price' => 'nullable|integer',
+            'price' => 'required|integer',
             'off_price' => 'nullable|integer',
             'off' => 'nullable|integer',
             'short_description' => 'nullable|string',
@@ -52,6 +52,11 @@ class ValidateProductRequest extends FormRequest
     {
         return [
             'title' => "عنوان",
+            'sub_title' => "زیر عنوان",
+            'brand' => "برند",
+            'full_title' => "عنوان تکمیلی محصول",
+            'product_group_id' => "گروهبندی",
+            'price' => "قیمت",
         ];
     }
 }

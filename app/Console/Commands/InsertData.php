@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
+use Modules\Blog\Http\imports\BlogGroupImport;
+use Modules\Blog\Http\imports\BlogImport;
 use Modules\Page\Http\imports\PageImport;
 use Modules\Polymorphism\Http\imports\ImageImport;
 use Modules\Product\Http\imports\ProductGroupImport;
@@ -62,6 +64,16 @@ class InsertData extends Command
 
         echo "Importing images... :\n";
         Excel::import(new ImageImport(), public_path('imports/images.xlsx'));
+
+        echo "\n";
+
+        echo "Importing blogGroups... :\n";
+        Excel::import(new BlogGroupImport(), public_path('imports/blogGroup.xlsx'));
+
+        echo "\n";
+
+        echo "Importing blogs... :\n";
+        Excel::import(new BlogImport(), public_path('imports/blog.xlsx'));
 
     }
 }

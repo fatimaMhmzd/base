@@ -31,7 +31,6 @@
                                     <th>ردیف</th>
                                     <th>عنوان</th>
                                     <th>زیرعنوان</th>
-                                    <th>عکس</th>
                                     <th width="100px">عملیات</th>
                                 </tr>
                                 </thead>
@@ -72,7 +71,6 @@
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'title', name: 'title'},
                     {data: 'sub_title', name: 'sub_title'},
-                    {data: 'image', name: 'image', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });

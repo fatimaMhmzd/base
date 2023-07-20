@@ -39,7 +39,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
         try {
             $result = $this->service->store($request);
             $message = trans("custom.defaults.store_success");

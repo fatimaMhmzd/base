@@ -110,26 +110,8 @@ class ProductGroupDashboardController extends Controller
     public function ajax()
     {
 
-        $data = $this->service->ajax();
-        return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-
-                $btn = '<a href="' . route('dashboard_product_group_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_product_group_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
-
-                return $btn;
-            })
-            ->addColumn('image', function ($row) {
-                $img = '';
-                if ($row->image) {
-                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
-                }
-
-                return $img;
-            })
-            ->rawColumns(['action', 'image'])
-            ->make(true);
+        $all = $this->service->ajax();
+        return $all;
     }
     public function getSubGroup($id)
     {

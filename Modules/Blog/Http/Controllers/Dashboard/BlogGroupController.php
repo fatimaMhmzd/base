@@ -5,16 +5,21 @@ namespace Modules\Blog\Http\Controllers\Dashboard;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Blog\Http\Requests\group\ValidateBlogGroupRequest;
+use Modules\Blog\Services\BlogGroupService;
 
 class BlogGroupController extends Controller
 {
+    public function __construct(public BlogGroupService $service)
+    {
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('blog::index');
+        return view('blog::dashboard.group.list');
     }
 
     /**
@@ -23,7 +28,7 @@ class BlogGroupController extends Controller
      */
     public function create()
     {
-        return view('blog::create');
+        return view('blog::dashboard.group.add');
     }
 
     /**
@@ -31,9 +36,16 @@ class BlogGroupController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidateBlogGroupRequest $request)
     {
-        //
+
+        try {
+            $result = $this->service->store($request);
+            return back()->with('success', true)->with('message', 'با موفقیت انجام شد.');
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
     }
 
     /**
@@ -53,7 +65,8 @@ class BlogGroupController extends Controller
      */
     public function edit($id)
     {
-        return view('blog::edit');
+        $data = $this->service->find($id);
+        return view('blog::dashboard.group.update' , compact('data'));
     }
 
     /**
@@ -62,9 +75,18 @@ class BlogGroupController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateBlogGroupRequest $request, $id)
     {
-        //
+        try {
+            $this->service->update($request, $id);
+            $message = trans("custom.defaults.update_success");
+            return back()->with('success', true)->with('message', $message);
+
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+
+        }
     }
 
     /**
@@ -74,6 +96,19 @@ class BlogGroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->service->delete($id);
+            /* $message = "انجام شد";*/
+            $message = trans("custom.defaults.delete_success");
+            return back()->with('success', true)->with('message', $message);
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
+    }
+    public function ajax()
+    {
+        $data = $this->service->ajax();
+        return $data;
     }
 }

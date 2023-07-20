@@ -39,15 +39,7 @@
 
                 </ul>
             </li>
-            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">بلاگ</span></a>
-                <ul class="menu-content">
-                    <li class="{{ Request::routeIs('dashboard_blog_index') ? 'active' : '' }}"><a href="{{route('dashboard_blog_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
-                    </li>
-                    <li class="{{ Request::routeIs('dashboard_blog_create') ? 'active' : '' }}"><a href="{{route('dashboard_blog_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
-                    </li>
 
-                </ul>
-            </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">تنظیمات</span></a>
                 <ul class="menu-content">
                     <li class="{{ Request::routeIs('dashboard_setting_index') ? 'active' : '' }}"><a href="{{route('dashboard_setting_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
@@ -66,6 +58,36 @@
 
                 </ul>
             </li>
+            <li class=" navigation-header"><span>مدیریت وبلاگ</span>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">گروهبندی</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_blog_group_index') ? 'active' : '' }}"><a href="{{route('dashboard_blog_group_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_blog_group_create') ? 'active' : '' }}"><a href="{{route('dashboard_blog_group_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">برچسب</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_blog_lable_index') ? 'active' : '' }}"><a href="{{route('dashboard_blog_lable_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_blog_lable_create') ? 'active' : '' }}"><a href="{{route('dashboard_blog_lable_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">بلاگ</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_blog_index') ? 'active' : '' }}"><a href="{{route('dashboard_blog_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_blog_create') ? 'active' : '' }}"><a href="{{route('dashboard_blog_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
             <li class=" navigation-header"><span>مدیریت محصولات</span>
             </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">رنگ بندی</span></a>

@@ -9,7 +9,7 @@ Route::group(['prefix' => 'socialmedia', 'as' => 'social_media_'], function (){
     Route::get('/create', [SocialMediaDashboardController::class, 'create'])->name('create');
     Route::post('/store', [SocialMediaDashboardController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [SocialMediaDashboardController::class, 'edit'])->name('edit');
-    Route::post('/update/{id}', [SocialMediaDashboardController::class, 'update'])->name('update');
+    Route::put('/update/{id}', [SocialMediaDashboardController::class, 'update'])->name('update');
     Route::delete('/destroy/{id}', [SocialMediaDashboardController::class, 'destroy'])->name('destroy');
 
 

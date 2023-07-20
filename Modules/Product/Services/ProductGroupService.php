@@ -9,6 +9,7 @@ use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
 use Modules\Setting\Services\SettingService;
 use stdClass;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductGroupService
 {
@@ -45,7 +46,25 @@ class ProductGroupService
     public function ajax()
     {
         $all = $this->productGroupRepository->getByInput();
-        return $all;
+        return  Datatables::of($all)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+
+                $btn = '<a href="' . route('dashboard_product_group_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_product_group_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+
+                return $btn;
+            })
+            ->addColumn('image', function ($row) {
+                $img = '';
+                if ($row->image) {
+                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
+                }
+
+                return $img;
+            })
+            ->rawColumns(['action', 'image'])
+            ->make(true);
     }
 
     public function find($id)
