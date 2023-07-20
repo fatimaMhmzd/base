@@ -37,7 +37,7 @@ return new class extends Migration
             $table->bigInteger('height')->default(0);
             $table->bigInteger('weight_with_packaging')->default(0);
             $table->unsignedBigInteger('unit_weight')->default(0);
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(0);
             $table->bigInteger('barcode')->nullable();
             $table->unsignedBigInteger('creator')->nullable();
             $table->unsignedBigInteger('updater')->nullable();

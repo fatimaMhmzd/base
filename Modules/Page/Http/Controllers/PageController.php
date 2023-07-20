@@ -19,8 +19,6 @@ class PageController extends Controller
     public function index()
     {
         $indexPageData = $this->service->indexPageData();
-
-//        return $indexPageData;
         return view('page::client.publicc.home.home', compact('indexPageData'));
     }
 

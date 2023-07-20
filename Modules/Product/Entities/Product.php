@@ -2,6 +2,7 @@
 
 namespace Modules\Product\Entities;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,9 +18,22 @@ use Modules\Unit\Entities\Unit;
 
 class Product extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes,Sluggable;
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     protected $table = "products";
+
+    protected $appends = ['banner'];
+
+
     protected $fillable = [
         "title",
         "sub_title",
@@ -78,12 +92,13 @@ class Product extends Model
         "created_at" => "timestamp",
         "updated_at" => "timestamp"
     ];
-    protected $with = ["image" ,"comments", "group" , "color" , "size" ,"price"];
+    protected $with = ["image", "comments", "group", "color", "size", "price"];
 
     public function image(): MorphMany
     {
-        return $this->morphMany(Images::class, 'imageable');
+        return $this->morphMany(Images::class, 'imageable')->select('url');
     }
+
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
@@ -93,27 +108,36 @@ class Product extends Model
     {
         return $this->hasOne(ProductGroup::class, "id", "product_group_id");
     }
+
     public function color(): BelongsToMany
     {
-        return $this->belongsToMany(Color::class,"product_properties","product_id","color_id");
+        return $this->belongsToMany(Color::class, "product_properties", "product_id", "color_id");
 
     }
+
     public function size(): BelongsToMany
     {
-        return $this->belongsToMany(Size::class,"product_properties","product_id","size_id");
+        return $this->belongsToMany(Size::class, "product_properties", "product_id", "size_id");
 
     }
+
     public function unit(): HasOne
     {
-        return $this->hasOne(Unit::class,"unit_weight",);
+        return $this->hasOne(Unit::class, "unit_weight",);
 
     }
+
     public function price(): HasMany
     {
-        return $this->hasMany(Price::class , "product_id");
+        return $this->hasMany(Price::class, "product_id");
 
     }
 
-
+    public function getBannerAttribute()
+    {
+        /*$image ? $image->url : null;*/
+        $image =Images::query()->where('imageable_type',Product::class)->where('imageable_id',$this->id,)->where('is_cover',1)->first();
+        return $image?->url;
+    }
 
 }

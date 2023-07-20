@@ -215,7 +215,6 @@ class ProductService
 
         } catch (\Exception $exception) {
             DB::rollBack();
-            return $exception;
             throw new \Exception(trans("custom.defaults.store_failed"));
         }
 

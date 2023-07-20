@@ -30,7 +30,6 @@ class ValidateProductRequest extends FormRequest
             'short_description' => 'nullable|string',
             'long_description' => 'nullable|string',
             'available' => 'nullable|integer',
-            'slug' => 'nullable|string',
             'link' => 'nullable|string',
             'key_word' => 'nullable|string',
             'seo_description' => 'nullable|string',

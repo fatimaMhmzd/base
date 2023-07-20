@@ -29,7 +29,6 @@ class ImageImport extends BaseImport implements ToCollection
     {
         $images = $this->standard_data($collection);
         $imageRepository = new Images();
-
         foreach ($images as $image) {
             $imageRepository->create($image);
         }

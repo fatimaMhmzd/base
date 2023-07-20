@@ -45,13 +45,12 @@ class ProductDashboardController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(ValidateProductRequest $request)
+    public function store(ValidateProductRequest $request): Renderable
     {
 
 
         try {
             $result = $this->service->store($request);
-            return $result;
 
             $message = trans("custom.defaults.store_success");
             return back()->with('success', true)->with('message', $message);

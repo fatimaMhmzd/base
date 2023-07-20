@@ -27,6 +27,8 @@ class Images extends Model
     protected $fillable = [
         'id',
         'title',
+        'imageable_type',
+        'imageable_id',
         'original_name',
         'image',
         'type',
