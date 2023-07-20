@@ -5,6 +5,7 @@ namespace Modules\SocialMedia\Http\Controllers\Dashboard;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\SocialMedia\Http\Requests\socialMedia\ValidateSocialMediaRequest;
 use Modules\SocialMedia\Services\SocialMediaService;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -19,7 +20,7 @@ class SocialMediaDashboardController extends Controller
      */
     public function index()
     {
-        return view('socialmedia::index');
+        return view('socialmedia::dashboard.list');
     }
 
     /**
@@ -28,7 +29,7 @@ class SocialMediaDashboardController extends Controller
      */
     public function create()
     {
-        return view('socialmedia::create');
+        return view('socialmedia::dashboard.add');
     }
 
     /**
@@ -36,7 +37,7 @@ class SocialMediaDashboardController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidateSocialMediaRequest $request)
     {
         try {
             $result = $this->service->store($request);
@@ -64,7 +65,8 @@ class SocialMediaDashboardController extends Controller
      */
     public function edit($id)
     {
-        return view('socialmedia::edit');
+        $data = $this->service->find($id);
+        return view('socialmedia::dashboard.update' , compact('data'));
     }
 
     /**
@@ -73,7 +75,7 @@ class SocialMediaDashboardController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateSocialMediaRequest $request, $id)
     {
         try {
             $this->service->update($request, $id);
@@ -109,24 +111,6 @@ class SocialMediaDashboardController extends Controller
     {
 
         $data = $this->service->ajax();
-        return Datatables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-
-                $btn = '<a href="' . route('dashboard_page_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_page_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
-
-                return $btn;
-            })
-            ->addColumn('image', function ($row) {
-                $img = '';
-                if ($row->image) {
-                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
-                }
-
-                return $img;
-            })
-            ->rawColumns(['action', 'image'])
-            ->make(true);
+        return $data;
     }
 }
