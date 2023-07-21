@@ -8,6 +8,7 @@ use Modules\Color\Services\ColorService;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Polymorphism\Services\VideoService;
 use Modules\Product\Entities\ProductGroup;
+use Modules\Product\Http\Repositories\PriceProductRepository;
 use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Repositories\ProductRepository;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
@@ -112,6 +113,7 @@ class ProductService
                 $IsCover = $inputs["isCover"] ?? null;
                 $prices = $inputs["pricearray"] ?? null;
                 $numberss = $inputs["numberarray"] ?? null;
+                $ids = $inputs["numberarray"] ?? null;
 
 
                 DB::commit();
@@ -131,14 +133,26 @@ class ProductService
                     $video = $inputs['video'] ?? null;
                     VideoService::saveVideo(video:$video,model:$totalUnitItem);
                 }
+
                 if ($prices != null and count($prices) != 0) {
+                    $priceProductRepository = new PriceProductRepository();
+                    $procuctPrices = $priceProductRepository->by(col:'product_id',value:$id);
+                    if ($ids){
+                        $priceProductRepository->byArray($procuctPrices,'id',$ids,'Not')->delete();
+                    }else{
+                        $procuctPrices->delete();
+                    }
                     foreach ($prices as $key => $item){
                         $itemPrice =[];
                         $itemPrice["price"] =$item;
                         $itemPrice["number"] =$numberss[$key] ?? 0;
                         $itemPrice["product_id"] =$totalUnitItem->id;
-
-                        $totalUnitItem->price()->save(resolve(PriceProductService::class)->store($itemPrice));
+                        $priceProductService = resolve(PriceProductService::class);
+                        if ($ids and $key <= count($ids)){
+                            $priceProductService->update($itemPrice,$ids[$key]);
+                        }else{
+                            $priceProductService->store($itemPrice);
+                        }
 
                     }
                 }

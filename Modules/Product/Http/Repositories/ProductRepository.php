@@ -14,6 +14,6 @@ class ProductRepository extends BaseRepository
 
     public function relations(): array
     {
-        return ['image','group','color','size','price'];
+        return ['image','group','color','size','prices'];
     }
 }

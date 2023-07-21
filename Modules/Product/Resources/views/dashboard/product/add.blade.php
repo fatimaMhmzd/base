@@ -38,9 +38,10 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">انتخاب گروهبندی</label>
+                                            <label style="margin-top: 20px">انتخاب گروهبندی</label>
                                             <fieldset class="form-group">
-                                                <select class="form-control" id="basicSelect" name="product_group_id"  id="group">
+                                                <select class="form-control" id="basicSelect" name="product_group_id"
+                                                        id="group">
                                                     @foreach($group as $item)
                                                         <option value="{{$item->id}}">{{$item->title}}</option>
                                                     @endforeach
@@ -49,128 +50,145 @@
                                         </div>
 
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">عنوان</label>
+                                            <label style="margin-top: 20px">عنوان</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="first-name-column" class="form-control" placeholder="عنوان" name="title">
+                                                <input type="text" id="first-name-column" class="form-control"
+                                                       placeholder="عنوان" name="title">
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">زیر عنوان</label>
+                                            <label style="margin-top: 20px">زیر عنوان</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="زیر عنوان" name="sub_title">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">برند</label>
+                                            <label style="margin-top: 20px">برند</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="برند" name="brand">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="برند" name="brand">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">عنوان کامل</label>
+                                            <label style="margin-top: 20px">عنوان کامل</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="عنوان کامل" name="full_title">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="عنوان کامل" name="full_title">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">قیمت سازمانی</label>
+                                            <label style="margin-top: 20px">قیمت سازمانی</label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="قیمت" name="price">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="قیمت" name="price">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">قیمت با تخفیف </label>
+                                            <label style="margin-top: 20px">قیمت با تخفیف </label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="قیمت با تخفیف " name="off_price">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="قیمت با تخفیف " name="off_price">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">تخفیف </label>
+                                            <label style="margin-top: 20px">تخفیف </label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="تخفیف " name="off">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="تخفیف " name="off">
 
                                             </fieldset>
                                         </div>
 
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">موجودی </label>
+                                            <label style="margin-top: 20px">موجودی </label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="موجودی " name="available">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="موجودی " name="available">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">اسلاگ </label>
+                                            <label style="margin-top: 20px">اسلاگ </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="اسلاگ " name="slug">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="اسلاگ " name="slug">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">لینک </label>
+                                            <label style="margin-top: 20px">لینک </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="لینک " name="link">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="لینک " name="link">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">کلمه کلیدی </label>
+                                            <label style="margin-top: 20px">کلمه کلیدی </label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="کلمه کلیدی" name="key_word">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="کلمه کلیدی" name="key_word">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">توضیحات سـو</label>
+                                            <label style="margin-top: 20px">توضیحات سـو</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="توضیحات سـو" name="seo_description">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="توضیحات سـو" name="seo_description">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">طول</label>
+                                            <label style="margin-top: 20px">طول</label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="طول" name="length">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="طول" name="length">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">عرض</label>
+                                            <label style="margin-top: 20px">عرض</label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="عرض" name="width">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="عرض" name="width">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">ارتفاع</label>
+                                            <label style="margin-top: 20px">ارتفاع</label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="ارتفاع" name="height">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="ارتفاع" name="height">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">وزن</label>
+                                            <label style="margin-top: 20px">وزن</label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن" name="weight">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="وزن" name="weight">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">وزن با بسته بندی</label>
+                                            <label style="margin-top: 20px">وزن با بسته بندی</label>
                                             <fieldset class="form-group">
-                                                <input type="number" id="last-name-column" class="form-control" placeholder="وزن با بسته بندی " name="weight_with_packaging">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="وزن با بسته بندی " name="weight_with_packaging">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">واحد وزن</label>
+                                            <label style="margin-top: 20px">واحد وزن</label>
                                             <fieldset class="form-group">
-                                                <select class="form-control" id="basicSelect" name="unit_weight" >
+                                                <select class="form-control" id="basicSelect" name="unit_weight">
                                                     @foreach($unit as $item)
                                                         <option value="{{$item->id}}">{{$item->title}}</option>
                                                     @endforeach
@@ -179,20 +197,21 @@
 
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">وضعیت</label>
+                                            <label style="margin-top: 20px">وضعیت</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="وضعیت " name="status">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="وضعیت " name="status">
 
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">بارکد</label>
+                                            <label style="margin-top: 20px">بارکد</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="بارکد " name="barcode">
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="بارکد " name="barcode">
 
                                             </fieldset>
                                         </div>
-
 
 
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">
@@ -201,7 +220,8 @@
                                                     <label>عکس اصلی</label>
                                                 </div>
 
-                                                <img id="companyLogo" data-type="editable" height="200px" width="200px"/>
+                                                <img id="companyLogo" data-type="editable" height="200px"
+                                                     width="200px"/>
 
 
                                             </fieldset>
@@ -218,17 +238,19 @@
                                                                name="file[]">
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-6 col-lg-12">
+                                                <div class="col-xl-6 col-lg-12 text-center">
                                                     <button type="button" class="btn btn-danger mt-3"
                                                             onclick="deleteRow(0)">حذف
-                                                    </button>
-
-                                                    <button type="button" class="btn btn-primary mt-3" onclick="addRow()">
-                                                        افزودن ردیف
                                                     </button>
                                                 </div>
 
                                             </div>
+
+                                        </div>
+                                        <div class="col-12 mb-1">
+                                            <button type="button" class="w-100 btn btn-primary mt-3" onclick="addRow()">
+                                                افزودن ردیف اسلایدر
+                                            </button>
                                         </div>
 
                                         <div class="col-md-12 col-12">
@@ -252,7 +274,7 @@
                                             <div class="row" id="priceloc0">
                                                 <div class="col-xl-4 col-lg-12">
                                                     <div class="form-group">
-                                                        <label  style="margin-top: 20px">تعداد خرید</label>
+                                                        <label style="margin-top: 20px">تعداد خرید</label>
                                                         <fieldset class="form-group">
                                                             <input type="number" class="form-control"
                                                                    placeholder="تعداد خرید"
@@ -263,7 +285,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-lg-12">
-                                                    <label  style="margin-top: 20px">قیمت به ازای خرید</label>
+                                                    <label style="margin-top: 20px">قیمت به ازای خرید</label>
                                                     <fieldset class="form-group">
                                                         <input type="number" class="form-control"
                                                                placeholder="قیمت به ازای خرید"
@@ -281,14 +303,16 @@
                                             </div>
                                         </div>
                                         <div class="col-12 mb-2">
-                                            <button type="button" class="btn btn-primary mt-3 w-100" onclick="addPrice()">
+                                            <button type="button" class="btn btn-primary mt-3 w-100"
+                                                    onclick="addPrice()">
                                                 افزودن ردیف جدید برای قیمت گذاری
                                             </button>
                                         </div>
 
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary mr-1 mb-1">ارسال</button>
-                                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1">تنظیم مجدد</button>
+                                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1">تنظیم مجدد
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -299,8 +323,6 @@
             </div>
         </div>
     </section>
-
-
 
 @stop
 
@@ -318,8 +340,8 @@
                 type: 'GET',
                 success: function (res) {
                     var result = ``
-                    for (var i = 0 ; i < res.length ; i++){
-                         result += `<option value="`+res[i]['id']+`">`+res[i]['title']+`</option>`
+                    for (var i = 0; i < res.length; i++) {
+                        result += `<option value="` + res[i]['id'] + `">` + res[i]['title'] + `</option>`
 
                     }
 
@@ -408,8 +430,8 @@
                                                                    name="file[]">
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-6 col-lg-12">
-                                                        <button type="button" class="btn btn-danger mt-3" onclick="deleteRow(` + counter + `)">delete</button>
+                                                    <div class="col-xl-6 col-lg-12  text-center">
+                                                        <button type="button" class="btn btn-danger mt-3" onclick="deleteRow(` + counter + `)">حذف</button>
                                                     </div>
                                                 `
 

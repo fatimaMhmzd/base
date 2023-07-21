@@ -12,7 +12,7 @@ Route::group(['prefix' => 'product', 'as' => 'product_'], function (){
     Route::post('/store', [ProductDashboardController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [ProductDashboardController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [ProductDashboardController::class, 'update'])->name('update');
-    Route::delete('/destroy/{id}', [ProductDashboardController::class, 'destroy'])->name('destroy');
+    Route::get('/destroy/{id}', [ProductDashboardController::class, 'destroy'])->name('destroy');
     Route::group(['prefix' => 'group', 'as' => 'group_'], function (){
         Route::get('/', [ProductGroupDashboardController::class, 'index'])->name('index');
         Route::get('/ajax', [ProductGroupDashboardController::class, 'ajax'])->name('ajax');

@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Blog\Http\imports\BlogGroupImport;
 use Modules\Blog\Http\imports\BlogImport;
@@ -12,6 +13,7 @@ use Modules\Product\Http\imports\ProductGroupImport;
 use Modules\Product\Http\imports\ProductImport;
 use Modules\Setting\Http\imports\SettingImport;
 use Modules\Slider\Http\imports\SliderImport;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class InsertData extends Command
 {
@@ -74,6 +76,16 @@ class InsertData extends Command
 
         echo "Importing blogs... :\n";
         Excel::import(new BlogImport(), public_path('imports/blog.xlsx'));
+
+
+        echo "php artisan necessary command";
+        $output = new ConsoleOutput();
+        echo "**** Running Migrations **** :\n";
+        Artisan::call("migrate:refresh", [], $output);
+        echo "\n **** End Migrations **** :\n";echo "\n **** Storage Link Creating... **** :";
+        Artisan::call("storage:link", [], $output);
+        Artisan::call("optimize:clear", [], $output);
+        echo "\n";
 
     }
 }

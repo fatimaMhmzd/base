@@ -47,11 +47,8 @@ class ProductDashboardController extends Controller
      */
     public function store(ValidateProductRequest $request): Renderable
     {
-
-
         try {
             $result = $this->service->store($request);
-
             $message = trans("custom.defaults.store_success");
             return back()->with('success', true)->with('message', $message);
         } catch (\Exception $exception) {
@@ -78,7 +75,6 @@ class ProductDashboardController extends Controller
     public function edit($id)
     {
         $data = $this->service->find($id);
-
         $group = resolve(ProductGroupService::class)->all();
         $unit = resolve(UnitService::class)->all();
         return view('product::dashboard.product.update',compact('data' ,'group' , 'unit'));
@@ -86,14 +82,13 @@ class ProductDashboardController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @param Request $request
      * @param int $id
-     * @return Renderable
      */
     public function update(ValidateProductRequest $request, $id)
     {
         try {
-            $this->service->update($request, $id);
+            return $this->service->update($request, $id);
+
             $message = trans("custom.defaults.update_success");
             return back()->with('success', true)->with('message', $message);
 

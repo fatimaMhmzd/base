@@ -184,8 +184,11 @@ abstract class BaseRepository
         return $query->whereIn($col, $values);
     }
 
-    public function by(Builder $query, $col, $value): Builder
+    public function by(Builder $query=null, $col, $value): Builder
     {
+        if (!$query){
+            $query = $this->createQuery();
+        }
         return $query->where($col, $value);
     }
 

@@ -92,7 +92,7 @@ class Product extends Model
         "created_at" => "timestamp",
         "updated_at" => "timestamp"
     ];
-    protected $with = ["image", "comments", "group", "color", "size", "price"];
+    protected $with = ["image", "comments", "group", "color", "size", "prices"];
 
     public function image(): MorphMany
     {
@@ -127,7 +127,7 @@ class Product extends Model
 
     }
 
-    public function price(): HasMany
+    public function prices(): HasMany
     {
         return $this->hasMany(Price::class, "product_id");
 
