@@ -61,7 +61,7 @@ class ProductService
             ->addColumn('image', function ($row) {
                 $img = '';
                 if (count($row->image) !=0) {
-                    $img = '<img src="/' . $row->image[0]->url. '" class="danger w-25"/>';
+                    $img = '<img src="/' . $row->banner. '" class="danger w-25"/>';
                 }
 
                 return $img;
@@ -78,11 +78,15 @@ class ProductService
     public function delete($id)
     {
         $item = $this->productRepository->find($id);
+
         if ($item) {
             DB::beginTransaction();
             try {
+                $item->prices()->delete();
+                $item->image()->delete();
                 $itemDeleted = $this->productRepository->delete($item);
                 DB::commit();
+
                 return $itemDeleted;
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -218,7 +222,7 @@ class ProductService
                     $itemPrice["number"] =$numberss[$key] ?? 0;
                     $itemPrice["product_id"] =$totalUnitsItem->id;
 
-                  $totalUnitsItem->price()->save(resolve(PriceProductService::class)->store($itemPrice));
+                  $totalUnitsItem->prices()->save(resolve(PriceProductService::class)->store($itemPrice));
 
                 }
             }
@@ -229,6 +233,7 @@ class ProductService
 
         } catch (\Exception $exception) {
             DB::rollBack();
+            return $exception;
             throw new \Exception(trans("custom.defaults.store_failed"));
         }
 
@@ -243,7 +248,7 @@ class ProductService
     }
     public function uploadImage($guild, $file , $IsCover = false)
     {
-        $destinationPath = "public/productGroup/" . $guild->id;
+        $destinationPath = "public/product/" . $guild->id;
         ImageService::saveImage(image: $file, model: $guild, is_cover: $IsCover, is_public: true, destinationPath: $destinationPath);
     }
 

@@ -96,7 +96,7 @@ class Product extends Model
 
     public function image(): MorphMany
     {
-        return $this->morphMany(Images::class, 'imageable')->select('url');
+        return $this->morphMany(Images::class, 'imageable');
     }
 
     public function comments(): MorphMany
