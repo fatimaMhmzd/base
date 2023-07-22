@@ -13,9 +13,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Blog\Http\Controllers\BlogController;
+use Modules\Blog\Http\Controllers\BlogGroupController;
 
 Route::group(['prefix' => 'blog', 'as' => 'blog_'], function () {
-    Route::get('/blog', [BlogController::class, 'list'])->name('list');
+    Route::get('/blog', [BlogGroupController::class, 'list'])->name('list');
     Route::get('/blogDetail', [BlogController::class, 'blogDetail'])->name('blogDetail');
 });
 

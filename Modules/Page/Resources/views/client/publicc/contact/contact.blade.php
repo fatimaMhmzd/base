@@ -66,33 +66,53 @@
                             <p class="lead text-primary text-center mb-5">
                                 از طریق فرم زیر میتوانید با ما ارتباط برقرار کنید
                             </p><!-- End .lead text-primary -->
-
-                            <form action="#" class="contact-form mb-2">
+                            @if(Session::has('success'))
+                                <div class="alert alert-success mt-3">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <strong></strong> {{ Session::get('message', '') }}
+                                </div>
+                            @endif
+                            @if(count($errors) > 0 )
+                                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <ul class="p-0 m-0" style="list-style: none;">
+                                        @foreach($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <form action="{{route('contactus_store')}}" class="contact-form mb-2" method="post">
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <label for="cname" class="sr-only">نام</label>
-                                        <input type="text" class="form-control" id="cname"
+                                        <input type="text" class="form-control" id="cname" name="name"
                                                placeholder="نام خود را وارد کنید *" required>
                                     </div><!-- End .col-sm-4 -->
 
                                     <div class="col-sm-4">
                                         <label for="cemail" class="sr-only">ایمیل</label>
-                                        <input type="email" class="form-control" id="cemail"
+                                        <input type="email" class="form-control" id="cemail" name="email"
                                                placeholder="ایمیل خود را وارد کنید *" required>
                                     </div><!-- End .col-sm-4 -->
 
                                     <div class="col-sm-4">
                                         <label for="cphone" class="sr-only">شماره موبایل</label>
-                                        <input type="tel" class="form-control" id="cphone"
+                                        <input type="tel" class="form-control" id="cphone" name="mobile"
                                                placeholder="شماره موبایل خود را وارد کنید">
                                     </div><!-- End .col-sm-4 -->
                                 </div><!-- End .row -->
 
                                 <label for="csubject" class="sr-only">موضوع</label>
-                                <input type="text" class="form-control" id="csubject" placeholder="موضوع پیام شما">
+                                <input type="text" class="form-control" id="csubject" name="title"
+                                       placeholder="موضوع پیام شما">
 
                                 <label for="cmessage" class="sr-only">پیام</label>
-                                <textarea class="form-control" cols="30" rows="4" id="cmessage" required
+                                <textarea class="form-control" cols="30" rows="4" id="cmessage" name="message" required
                                           placeholder="متن پیام شما *"></textarea>
 
                                 <div class="text-center">

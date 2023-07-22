@@ -6,23 +6,24 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Blog\Services\BlogGroupService;
-use Modules\Blog\Services\BlogService;
 
-class BlogController extends Controller
+class BlogGroupController extends Controller
 {
-    public function __construct(public BlogService $service)
+    public function __construct(public BlogGroupService $service)
     {
     }
-
+    public function list()
+    {
+        $blogGroup = $this->service->all();
+        return view('blog::client.listBlog', compact('blogGroup'));
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-
-
-    public function blogDetail()
+    public function index()
     {
-        return view('blog::client.blogDetail');
+        return view('blog::index');
     }
 
     /**
@@ -83,11 +84,5 @@ class BlogController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function test()
-    {
-
-        return view('dashboard.layoute.total');
     }
 }

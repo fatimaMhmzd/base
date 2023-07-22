@@ -1,7 +1,7 @@
 @extends('client.layout.total')
 @section('content')
     @inject('slider', 'Modules\Slider\Services\SliderService')
-
+{{--@dd($slider->getBy(1))--}}
     <main class="main">
 
         {{--        'slider'         --}}
@@ -29,7 +29,7 @@
                                                 <figure class="slide-image">
                                                     <picture>
                                                         <source media="(max-width: 480px)"
-                                                                srcset="assets/images/demos/demo-3/slider/slide-1-480w.jpg">
+                                                                srcset="/assets/images/demos/demo-3/slider/slide-1-480w.jpg">
                                                         <img src="{{$slide->image->url}}"
                                                              alt="توضیحات عکس">
                                                     </picture>
@@ -62,8 +62,8 @@
                                         <figure class="slide-image">
                                             <picture>
                                                 <source media="(max-width: 480px)"
-                                                        srcset="assets/images/demos/demo-3/slider/slide-1-480w.jpg">
-                                                <img src="assets/images/demos/demo-3/slider/slide-1.jpg"
+                                                        srcset="/assets/images/demos/demo-3/slider/slide-1-480w.jpg">
+                                                <img src="/assets/images/demos/demo-3/slider/slide-1.jpg"
                                                      alt="توضیحات عکس">
                                             </picture>
                                         </figure><!-- End .slide-image -->
@@ -133,7 +133,7 @@
                                     @if($slide->title != "پیشنهادهای روزانه")
                                         <div class="banner mb-lg-1 mb-xl-2">
                                             <a href="#">
-                                                <img src="{{$slide->image->url}}" alt="بنر">
+                                                <img src="{{$slide->url}}" alt="بنر">
                                             </a>
 
                                             <div class="banner-content text-right">
