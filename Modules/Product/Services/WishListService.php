@@ -124,6 +124,7 @@ class WishListService
 
     public function store(Request $request)
     {
+        $res = false;
       /*  $inputs = $request->validated();*/
         $inputs['user_id']=Auth::id();
         $inputs['product_id']=$request->productId;
@@ -133,8 +134,10 @@ class WishListService
             $item = $this->wishListRepository->findWithInputs($inputs);
             if (!$item){
                 $totalUnitsItem = $this->wishListRepository->create($inputs);
+                $res = true;
             }else{
                 $totalUnitsItem = $this->wishListRepository->delete($item);
+                $res = false;
             }
 
             DB::commit();
@@ -144,7 +147,7 @@ class WishListService
             throw new \Exception(trans("custom.defaults.store_failed"));
         }
 
-        return $totalUnitsItem;
+        return $res;
 
     }
 
