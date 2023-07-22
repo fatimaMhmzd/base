@@ -14,6 +14,6 @@ class BlogGroupRepository extends BaseRepository
 
     public function relations(): array
     {
-        return ["image"];
+        return ["image"];//, "blogs"
     }
 }
