@@ -99,7 +99,7 @@
                                                         تهران-تهران<br>
                                                         خیابان آزادی - پلاک 7<br>
                                                         yourmail@mail.com<br>
-                                                        <a href="#address-modal">ویرایش <i class="icon-edit"></i></a>
+                                                        <a href="#address-modal" data-bs-dismiss="modal">ویرایش <i class="icon-edit"></i></a>
                                                     </p>
                                                 </div><!-- End .card-body -->
                                             </div><!-- End .card-dashboard -->
@@ -154,7 +154,7 @@
     </main><!-- End .main -->
 
 
-    <div class="modal fade" id="address-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="address-modal" tabindex="-1" role="dialog" aria-hidden="true" data-bs-dismiss="modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
