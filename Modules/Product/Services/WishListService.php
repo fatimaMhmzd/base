@@ -2,26 +2,29 @@
 
 namespace Modules\Product\Services;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Modules\Product\Http\Repositories\WishListRepository;
+use Modules\Product\Http\Requests\wishList\ValidateWishListRequest;
 use Yajra\DataTables\Facades\DataTables;
 
-class WishListServices
+class WishListService
 {
-    public function __construct(public WishListRepository $productPropertyRepository)
+    public function __construct(public WishListRepository $wishListRepository)
     {
     }
 
     public function index($request)
     {
         $filter = [];
-        if ($request->title) {
+
             $filter[] = (object)[
-                "col" => "title",
-                "value" => $request->title,
+                "col" => "user_id",
+                "value" => Auth::id(),
                 "like" => true,
             ];
-        }
-        $all = $this->productPropertyRepository->getByInput($filter, $request->perPage, $request->pageNumber);
+
+        $all = $this->wishListRepository->getByInput($filter, $request->perPage, $request->pageNumber);
         return $all;
     }
 
@@ -34,7 +37,7 @@ class WishListServices
             "like" => false,
         ];
 
-        $all = $this->productPropertyRepository->getByInput($filter);
+        $all = $this->wishListRepository->getByInput($filter);
 
 
         return  Datatables::of($all)
@@ -74,16 +77,16 @@ class WishListServices
 
     public function find($id)
     {
-        return $this->productPropertyRepository->find($id);
+        return $this->wishListRepository->find($id);
     }
 
     public function delete($id)
     {
-        $item = $this->productPropertyRepository->find($id);
+        $item = $this->wishListRepository->find($id);
         if ($item) {
             DB::beginTransaction();
             try {
-                $itemDeleted = $this->productPropertyRepository->delete($item);
+                $itemDeleted = $this->wishListRepository->delete($item);
                 DB::commit();
                 return $itemDeleted;
             } catch (\Exception $exception) {
@@ -95,21 +98,16 @@ class WishListServices
         }
     }
 
-    public function update(ValidatePropertiesRequest $request, $id): mixed
+    public function update(ValidateWishListRequest $request, $id): mixed
     {
         $inputs = $request->validated();
-        $totalUnitItem = $this->productPropertyRepository->find($id);
+        $totalUnitItem = $this->wishListRepository->find($id);
         if ($totalUnitItem) {
-            $inputs["father_id"]=0;
+
             DB::beginTransaction();
             try {
-                $totalUnitItemUpdated = $this->productPropertyRepository->update($totalUnitItem, $inputs);
+                $totalUnitItemUpdated = $this->wishListRepository->update($totalUnitItem, $inputs);
                 DB::commit();
-                $image = $inputs["file"] ?? null;
-                if ($image !== null) {
-
-                    $this->uploadImage($totalUnitItemUpdated, $image);
-                }
 
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -123,20 +121,21 @@ class WishListServices
         return $totalUnitItemUpdated;
     }
 
-    public function store(ValidatePropertiesRequest $request)
+    public function store(ValidateWishListRequest $request)
     {
         $inputs = $request->validated();
-        $inputs["price"] = $inputs["price"] ?? 0 ;
-        $inputs["available"] = $inputs["available"] ?? 0 ;
+        $inputs['user_id']=Auth::id();
+
         DB::beginTransaction();
         try {
-            $totalUnitsItem = $this->productPropertyRepository->create($inputs);
-            DB::commit();
-            $image = $inputs["file"] ?? null;
-            if ($image !== null) {
-                $this->uploadImage($totalUnitsItem, $image);
+            $item = $this->wishListRepository->findWithInputs($inputs);
+            if (!$item){
+                $totalUnitsItem = $this->wishListRepository->create($inputs);
+            }else{
+                $totalUnitsItem = $this->wishListRepository->delete($item);
             }
 
+            DB::commit();
 
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -147,10 +146,5 @@ class WishListServices
 
     }
 
-    public function uploadImage($guild, $file)
-    {
-        $destinationPath = "public/productProperty/" . $guild->id;
-        ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
-    }
 
 }
