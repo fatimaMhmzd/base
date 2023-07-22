@@ -57,9 +57,9 @@ class PriceProductService
         }
     }
 
-    public function update(ValidatePriceProductRequest $request, $id): mixed
+    public function update($request, $id)
     {
-        $inputs = $request->validated();
+        $inputs = $request;
         $totalUnitItem = $this->priceProductRepository->find($id);
         if ($totalUnitItem) {
 

@@ -97,8 +97,9 @@ class ProductService
         }
     }
 
-    public function update(ValidateProductRequest $request, $id): mixed
+    public function update(ValidateProductRequest $request, $id)
     {
+
         $inputs = $request->validated();
         $inputs["off_price"] = $inputs["off_price"] ?? 0 ;
         $inputs["off"] = $inputs["off"] ?? 0 ;
@@ -109,16 +110,18 @@ class ProductService
         $inputs["status"] = $inputs["status"] ?? 0 ;
         $inputs["full_title"] = $inputs["full_title"] ?? $inputs["title"] ;
         $totalUnitItem = $this->productRepository->find($id);
+
+
         if ($totalUnitItem) {
             DB::beginTransaction();
             try {
+
                 $totalUnitItemUpdated = $this->productRepository->update($totalUnitItem, $inputs);
                 $image = $inputs["file"] ?? null;
                 $IsCover = $inputs["isCover"] ?? null;
                 $prices = $inputs["pricearray"] ?? null;
                 $numberss = $inputs["numberarray"] ?? null;
-                $ids = $inputs["numberarray"] ?? null;
-
+                $ids = $inputs["ids"] ?? null;
 
                 DB::commit();
                 $image = $inputs["file"] ?? null;
@@ -140,22 +143,29 @@ class ProductService
 
                 if ($prices != null and count($prices) != 0) {
                     $priceProductRepository = new PriceProductRepository();
-                    $procuctPrices = $priceProductRepository->by(col:'product_id',value:$id);
+                    $procuctPrices = $priceProductRepository->by(null,'product_id',$id);
+
                     if ($ids){
+
                         $priceProductRepository->byArray($procuctPrices,'id',$ids,'Not')->delete();
                     }else{
+
                         $procuctPrices->delete();
+
                     }
+
                     foreach ($prices as $key => $item){
                         $itemPrice =[];
-                        $itemPrice["price"] =$item;
-                        $itemPrice["number"] =$numberss[$key] ?? 0;
+                        $itemPrice["price"] =(int)$item;
+                        $itemPrice["number"] =(int)$numberss[$key] ?? 0;
                         $itemPrice["product_id"] =$totalUnitItem->id;
                         $priceProductService = resolve(PriceProductService::class);
-                        if ($ids and $key <= count($ids)){
-                            $priceProductService->update($itemPrice,$ids[$key]);
+                        if ($ids and $key < count($ids)){
+                            $priceProductService->update($itemPrice,$ids[$key]) ;
                         }else{
-                            $priceProductService->store($itemPrice);
+
+                           $totalUnitItem->prices()->save($priceProductService->store($itemPrice));
+                           /* dump($priceProductService->store($itemPrice)) ;*/
                         }
 
                     }

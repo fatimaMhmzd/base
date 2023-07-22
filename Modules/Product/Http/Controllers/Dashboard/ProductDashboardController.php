@@ -89,7 +89,7 @@ class ProductDashboardController extends Controller
     public function update(ValidateProductRequest $request, $id)
     {
         try {
-            return $this->service->update($request, $id);
+             $this->service->update($request, $id);
             $message = trans("custom.defaults.update_success");
             return back()->with('success', true)->with('message', $message);
 
