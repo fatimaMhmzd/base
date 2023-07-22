@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Modules\Color\Services\ColorService;
+use Modules\Polymorphism\Entities\Images;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
 use Modules\Product\Services\ProductGroupService;
 use Modules\Product\Services\ProductService;
@@ -45,8 +46,9 @@ class ProductDashboardController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(ValidateProductRequest $request): Renderable
+    public function store(ValidateProductRequest $request)
     {
+
         try {
             $result = $this->service->store($request);
             $message = trans("custom.defaults.store_success");
@@ -87,8 +89,7 @@ class ProductDashboardController extends Controller
     public function update(ValidateProductRequest $request, $id)
     {
         try {
-            return $this->service->update($request, $id);
-
+             $this->service->update($request, $id);
             $message = trans("custom.defaults.update_success");
             return back()->with('success', true)->with('message', $message);
 
@@ -122,4 +123,10 @@ class ProductDashboardController extends Controller
         $data = $this->service->ajax();
         return $data;
     }
+    public function deleteImage($id)
+    {
+        $data = Images::where('id',$id)->delete();
+        return back()->with('success', true)->with('message', 'اطلاعات با حذف شد');
+    }
+
 }

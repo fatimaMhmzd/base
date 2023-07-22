@@ -228,13 +228,28 @@
                                                     <label>عکس اصلی</label>
                                                 </div>
 
-                                                <img @if(count($data->image) != 0) src="/{{$data->image[0]->url}}"
+                                                <img @if($data->banner) src="/{{$data->banner}}"
                                                      @endif id="companyLogo" data-type="editable" height="200px"
                                                      width="200px"/>
 
 
                                             </fieldset>
                                         </div>
+                                        @foreach($data->image as $key =>$item)
+                                            <div class="col-xl-3 col-md-3 col-3 mb-1">
+                                                <fieldset class="form-group">
+                                                    <div class="col mb-1">
+                                                        <label>عکس اسلایدر</label>
+                                                    </div>
+                                                    <a title="حذف" href="{{route('dashboard_product_deleteImage' , $item->id)}}"><i class="feather icon-trash danger"></i></a>
+                                                    <img @if($item->url) src="/{{$item->url}}"
+                                                         @endif height="200px"
+                                                         width="200px"/>
+
+
+                                                </fieldset>
+                                            </div>
+                                        @endforeach
                                         <div class="col-12" id="sliderArea">
                                             <div class="row" id="location0">
                                                 <div class="col-xl-6 col-lg-12">

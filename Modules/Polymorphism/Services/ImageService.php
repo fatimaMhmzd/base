@@ -119,7 +119,7 @@ class ImageService
 
 
 
-    public static function deleteImages(Model $model)
+    public static function deleteImages(Model $model )
     {
         try {
             if (method_exists($model, 'images')) {
@@ -133,4 +133,5 @@ class ImageService
             throw $exception;
         }
     }
+
 }

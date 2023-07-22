@@ -13,6 +13,7 @@ Route::group(['prefix' => 'product', 'as' => 'product_'], function (){
     Route::get('/edit/{id}', [ProductDashboardController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [ProductDashboardController::class, 'update'])->name('update');
     Route::get('/destroy/{id}', [ProductDashboardController::class, 'destroy'])->name('destroy');
+    Route::get('/deleteImage/{id}', [ProductDashboardController::class, 'deleteImage'])->name('deleteImage');
     Route::group(['prefix' => 'group', 'as' => 'group_'], function (){
         Route::get('/', [ProductGroupDashboardController::class, 'index'])->name('index');
         Route::get('/ajax', [ProductGroupDashboardController::class, 'ajax'])->name('ajax');
