@@ -8,6 +8,7 @@ use Modules\Group\Http\Repositories\GroupRepository;
 use Modules\Group\Http\Requests\group\ValidateGroupRequest;
 use Modules\Polymorphism\Entities\Images;
 use Modules\Polymorphism\Services\ImageService;
+use Yajra\DataTables\Facades\DataTables;
 
 class GroupService
 {
@@ -37,55 +38,57 @@ class GroupService
         return $all;
     }
 
+    public function ajax()
+    {
+        $all = $this->groupRepository->getByInput();
+        return  Datatables::of($all)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+
+                $btn = '<a href="' . route('dashboard_group_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_group_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+
+                return $btn;
+            })
+            ->addColumn('image', function ($row) {
+                $img = '';
+                if ($row->image) {
+                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
+                }
+
+                return $img;
+            })
+            ->rawColumns(['action', 'image'])
+            ->make(true);
+    }
+
     public function find($id)
     {
         return $this->groupRepository->find($id);
     }
 
 
-    public function store(
-        $title,
-        Model $model,
-        $image = null,
-        $sub_title = null,
-        $description = null,
-        $father_id = 0,
-        $relation = null
-    )
+    public function store(ValidateGroupRequest $request)
     {
-            DB::beginTransaction();
-            try {
-                $data = [
-                    'title' => $title,
-                    'sub_title' => $sub_title,
-                    'description' => $description,
-                    'father_id' => $father_id,
-                ];
-                if ($relation && method_exists($model, $relation)) {
-                    $model->$relation()->create($data);
-                } elseif (method_exists($model, 'group')) {
-                    $model->group()->create($data);
-                } elseif (method_exists($model, 'groups')) {
-                    $model->groups()->create($data);
-                } else {
-                    throw new DeveloperException(message: 'function image or images not set in model');
-                }
-                $totalUnitsItem = $this->groupRepository->create($data);
-                DB::commit();
-
-                if ($image !== null) {
-                    $this->uploadGroupImage($totalUnitsItem, $image);
-                }
-
-                return true;
-            } catch (\Exception $exception) {
-                DB::rollBack();
-                throw new \Exception(trans("custom.defaults.store_failed"));
+        $inputs = $request->validated();
+        $inputs["father_id"]=0;
+        DB::beginTransaction();
+        try {
+            $totalUnitsItem = $this->groupRepository->create($inputs);
+            DB::commit();
+            $image = $inputs["file"] ?? null;
+            if ($image !== null) {
+                $this->uploadGroupImage($totalUnitsItem, $image);
             }
 
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            throw new \Exception(trans("custom.defaults.store_failed"));
+        }
+
+        return $totalUnitsItem;
 
     }
-
 
     public function update(ValidateGroupRequest $request, $id): mixed
     {

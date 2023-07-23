@@ -31,6 +31,7 @@ class BlogGroupImport extends BaseImport implements ToCollection
         $blogGroupRepository = new BlogGroupRepository();
 
         foreach ($blogGroups as $blogGroup) {
+
             $blogGroupRepository->create($blogGroup);
         }
         echo "All BlogGroups Imported Successfully";

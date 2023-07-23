@@ -86,7 +86,9 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{route('contactus_store')}}" class="contact-form mb-2" method="post">
+                            <form class="form" method="post" action="{{route('contactus_store')}}"
+                                  enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <label for="cname" class="sr-only">نام</label>

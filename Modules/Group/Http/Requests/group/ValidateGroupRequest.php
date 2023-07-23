@@ -7,31 +7,27 @@ use Illuminate\Foundation\Http\FormRequest;
 class ValidateGroupRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize():bool
-    {
-        return true;
-//        return auth()->check();
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules():array
+    public function rules(): array
     {
         return [
             'title' => 'required|string',
-            'father_id' => 'required',
+            'sub_title' => 'nullable|string',
             'file' => 'nullable|image|mimes:jpg,png|max:5000',
+            'description' => 'nullable|string',
+            'father_id' => 'nullable|integer',
+
         ];
     }
 
-
-
+    public function attributes(): array
+    {
+        return [
+            'title' => "عنوان",
+        ];
+    }
 
 }

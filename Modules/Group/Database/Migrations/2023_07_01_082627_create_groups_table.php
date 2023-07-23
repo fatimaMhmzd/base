@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('groups_polymorphism', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->comment('جدول ذخیره انواع گروهبندی ها');
             $table->id();
-            $table->morphs('groupable');
-            $table->string('title')->nullable()->comment('عنوان');
+            $table->string('title')->comment('عنوان');
             $table->string('sub_title')->nullable()->comment('زیر عنوان');
+            $table->string('slug')->nullable();
             $table->text('description')->nullable()->comment('توضیحات');
             $table->unsignedBigInteger('father_id')->default(0);
+            $table->smallInteger('sort_id')->default(0);
+            $table->boolean('display_on_homepage')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups_polymorphism');
+        Schema::dropIfExists('groups');
     }
 };

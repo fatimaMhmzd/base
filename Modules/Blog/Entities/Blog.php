@@ -40,7 +40,7 @@ class Blog extends Model
         "description" => "string",
         "content" => "string"
     ];
-    protected $with = ["image" , "group" , "user" ,"lables"];
+    protected $with = ["image" , "user" ,"lables"];
 
     public function image(): MorphMany
     {

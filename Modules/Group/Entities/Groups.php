@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Modules\Blog\Entities\Blog;
 use Modules\Polymorphism\Entities\Images;
+use Modules\Product\Entities\Product;
 
 
 /**
@@ -20,26 +22,29 @@ use Modules\Polymorphism\Entities\Images;
  */
 class Groups extends Model
 {
-    protected $table = 'groups_polymorphism';
+    protected $table = 'groups';
 
     protected $fillable = [
         'id',
         'title',
         'sub_title',
         'description',
+        'slug',
+        'sort_id',
+        'display_on_homepage',
         'father_id',
         'created_at',
         'updated_at',
     ];
 
-    protected $hidden = [
-//        'id',
-    ];
 
     protected $casts = [
         'title' => 'string',
         'sub_title' => 'string',
         'description' => 'string',
+        'slug' => 'integer',
+        'sort_id' => 'integer',
+        'display_on_homepage' => 'integer',
         'father_id' => 'integer',
         'created_at' => 'timestamp',
         'updated_at' => 'timestamp',
@@ -56,8 +61,4 @@ class Groups extends Model
     }
 
 
-    public function groupable(): MorphTo
-    {
-        return $this->morphTo();
-    }
 }

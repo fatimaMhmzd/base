@@ -36,7 +36,9 @@ class InsertData extends Command
      */
     public function handle()
     {
-
+        $output = new ConsoleOutput();
+        echo "**** Running Migrations **** :\n";
+        Artisan::call("migrate:refresh", [], $output);
         echo "Start Importing :\n";
 
         echo "Importing Settings... :\n";
@@ -79,9 +81,7 @@ class InsertData extends Command
 
 
         echo "php artisan necessary command";
-        $output = new ConsoleOutput();
-        echo "**** Running Migrations **** :\n";
-        Artisan::call("migrate:refresh", [], $output);
+
         echo "\n **** End Migrations **** :\n";echo "\n **** Storage Link Creating... **** :";
         Artisan::call("storage:link", [], $output);
         Artisan::call("optimize:clear", [], $output);

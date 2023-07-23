@@ -9,7 +9,7 @@ use Modules\Group\Http\Requests\group\ValidateGroupRequest;
 use Modules\Group\Services\GroupService;
 use Yajra\DataTables\Facades\DataTables;
 
-class GroupDashboardController extends Controller
+class GroupController extends Controller
 {
     public function __construct(public GroupService $service)
     {
@@ -28,19 +28,7 @@ class GroupDashboardController extends Controller
     {
 
         $data = $this->service->ajax();
-        return Datatables::of($data)
-            ->addIndexColumn()
-/*            ->addColumn('action', function ($row) {
-
-                $btn = '<a href="' . route('karzar_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
-<a href="' . route('karzar_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
-
-                return $btn;
-            })*/
-
-
-            ->rawColumns([])
-            ->make(true);
+        return $data;
     }
 
     /**
@@ -57,7 +45,7 @@ class GroupDashboardController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidateGroupRequest $request)
     {
         try {
             $result = $this->service->store($request);

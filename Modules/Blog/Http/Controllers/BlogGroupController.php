@@ -5,6 +5,7 @@ namespace Modules\Blog\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Blog\Entities\BlogGroup;
 use Modules\Blog\Services\BlogGroupService;
 
 class BlogGroupController extends Controller
@@ -15,6 +16,8 @@ class BlogGroupController extends Controller
     public function list()
     {
         $blogGroup = $this->service->all();
+        return $blogGroup;
+
         return view('blog::client.listBlog', compact('blogGroup'));
     }
     /**

@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">افزودن گروهبندی</h4>
+                        <h4 class="card-title">ویرایش گروهبندی</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -30,8 +30,9 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form" method="post" action="{{route('dashboard_group_store')}}"
+                            <form class="form" method="post" action="{{route('dashboard_group_update' , $data->id)}}"
                                   enctype="multipart/form-data">
+                                @method('put')
                                 @csrf
                                 <div class="form-body" id="foo">
                                     <div class="row">
@@ -39,14 +40,14 @@
                                             <label style="margin-top: 20px">عنوان</label>
                                             <fieldset class="form-group">
                                                 <input type="text" id="first-name-column" class="form-control"
-                                                       placeholder="عنوان" name="title">
+                                                       placeholder="عنوان" name="title" value="{{$data->title}}">
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label style="margin-top: 20px">زیر عنوان</label>
                                             <fieldset class="form-group">
                                                 <input type="text" id="last-name-column" class="form-control"
-                                                       placeholder="زیر عنوان" name="sub_title">
+                                                       placeholder="زیر عنوان" name="sub_title" value="{{$data->sub_title}}">
 
                                             </fieldset>
                                         </div>
@@ -55,7 +56,7 @@
                                                 <div class="col mb-1">
                                                     <label>عکس</label>
                                                 </div>
-                                                <img id="companyLogo" data-type="editable" height="200px" width="200px"/>
+                                                <img @if($data->image) src="/{{$data->image->url}}" @endif id="companyLogo" data-type="editable" height="200px" width="200px"/>
                                             </fieldset>
                                         </div>
 
@@ -65,7 +66,7 @@
                                                 <label for="companyinput8">توضیحات </label>
                                                 <textarea id="companyinput8" rows="5" class="form-control"
                                                           name="description"
-                                                          placeholder="توضیحات "></textarea>
+                                                          placeholder="توضیحات ">{{$data->description}}</textarea>
                                             </div>
                                         </div>
 

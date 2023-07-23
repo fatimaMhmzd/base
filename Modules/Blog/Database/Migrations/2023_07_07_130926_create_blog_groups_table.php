@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('sub_title')->nullable()->comment('زیر عنوان');
             $table->string('slug')->nullable();
             $table->text('description')->nullable()->comment('توضیحات');
-            $table->integer('father_id')->default(0);
-            $table->smallInteger('sort_id')->default(0);
-            $table->boolean('display_on_homepage')->default(0);
+            $table->integer('father_id')->nullable()->default(0);
+            $table->smallInteger('sort_id')->nullable()->default(0);
+            $table->boolean('display_on_homepage')->nullable()->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

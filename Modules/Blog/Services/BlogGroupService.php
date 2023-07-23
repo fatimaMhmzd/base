@@ -130,10 +130,11 @@ class BlogGroupService
     }
 
 
-    public function all(): \Illuminate\Support\Collection
+    public function all()
     {
-        return $this->blogGroupRepository->getByInput();
+        return $this->blogGroupRepository->getByInput(relations: []);
     }
+
 
     public function uploadImage($guild, $file)
     {
