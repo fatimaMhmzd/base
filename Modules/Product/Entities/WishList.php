@@ -2,17 +2,27 @@
 
 namespace Modules\Product\Entities;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class WishList extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
-    
-    protected static function newFactory()
+    protected $fillable = [
+        "product_id",
+        "user_id",
+    ];
+
+    protected $with = ["user" , "product" ];
+    public function user():BelongsTo
     {
-        return \Modules\Product\Database\factories\WishListFactory::new();
+        return $this->belongsTo(User::class);
+    }
+    public function product():BelongsTo
+    {
+        return $this->belongsTo(Product::class);
     }
 }
