@@ -45,7 +45,7 @@ class BlogGroup extends Model
     }
     public function blogs()
     {
-        return $this->hasMany(Blog::class, "group_id")->select(['id','group_id']);
+        return $this->hasMany(Blog::class, "group_id");
     }
 
 }
