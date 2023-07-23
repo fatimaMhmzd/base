@@ -262,11 +262,11 @@ class ProductService
         ImageService::saveImage(image: $file, model: $guild, is_cover: $IsCover, is_public: true, destinationPath: $destinationPath);
     }
 
-    public function shopIndexPage(): object
+    public function shopIndexPage($slug): object
     {
         $groupService = resolve(ProductGroupService::class);
         $groups = $groupService->all();
-
+        $groups = resolve(ProductGroupService::class)->findBy("slug",$slug,['products']);
         /*$sizeService = resolve(SizeSe::class);
         $sizes = $groupService->all();*/
 

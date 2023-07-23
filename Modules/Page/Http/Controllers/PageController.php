@@ -89,9 +89,10 @@ class PageController extends Controller
     }
 
     //    WISHLIST PAGE
-    public function wishlist()
+    public function wishlist(Request $request)
     {
-        $cartItems = $this->service->cartItems();
+        $cartItems = $this->service->cartItems($request);
+
         return view('page::client.wishlist.wishlist', compact('cartItems'));
     }
 

@@ -2,6 +2,7 @@
 
 namespace Modules\Product\Services;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Modules\Product\Http\Repositories\WishListRepository;
@@ -121,10 +122,11 @@ class WishListService
         return $totalUnitItemUpdated;
     }
 
-    public function store(ValidateWishListRequest $request)
+    public function store(Request $request)
     {
-        $inputs = $request->validated();
+      /*  $inputs = $request->validated();*/
         $inputs['user_id']=Auth::id();
+        $inputs['product_id']=$request->productId;
 
         DB::beginTransaction();
         try {

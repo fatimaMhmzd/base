@@ -20,7 +20,7 @@ use Modules\Product\Http\Controllers\ProductController;
 use Modules\Product\Http\Controllers\WishListController;
 
 Route::group(['prefix' => 'shop', 'as' => 'shop_'], function () {
-    Route::get('/storePage', [ProductController::class, 'index'])->name('storePageClient');
+    Route::get('/storePage/{slug?}', [ProductController::class, 'index'])->name('storePageClient');
     Route::get('/productDetail/{slug}', [ProductController::class, 'productDetail'])->name('productDetail');
     Route::get('/cartPage', [ProductController::class, 'cart'])->name('cartPageClient');
     Route::get('/checkoutPage', [ProductController::class, 'checkout'])->name('checkoutPageClient');

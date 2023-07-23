@@ -84,10 +84,10 @@ class BlogController extends Controller
     {
         //
     }
-
-    public function test()
+/*    public function blogDetail($slug)
     {
-
-        return view('dashboard.layoute.total');
-    }
+        $data = $this->service->productDetail($slug);
+//       return $data;
+        return view('product::client.productDetail',compact('data'));
+    }*/
 }

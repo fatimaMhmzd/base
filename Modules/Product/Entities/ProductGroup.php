@@ -2,32 +2,47 @@
 
 namespace Modules\Product\Entities;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Polymorphism\Entities\Images;
 
 class ProductGroup extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes,Sluggable;
 
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
     protected $fillable = [
         "title",
         "sub_title",
+        "slug",
         "description",
         "father_id",
         "sort_id",
         "display_on_homepage",
     ];
 
-    protected $with = ["image","product"];
+    protected $with = ["image"];
 
     public function image()
     {
         return $this->morphOne(Images::class, 'imageable');
     }
-    public function product()
+
+    public function products():HasMany
     {
-        return $this->hasMany(Product::class, "group_id");
+        return $this->hasMany(Product::class, 'product_group_id');
     }
+
+
+
 }

@@ -14,10 +14,10 @@ class ProductController extends Controller
     {
     }
 
-    public function index()
+    public function index($slug=null)
     {
-        $data = $this->service->shopIndexPage();
-//        return $data;
+        $data = $this->service->shopIndexPage($slug);
+
         return view('product::client.store',compact('data'));
     }
 

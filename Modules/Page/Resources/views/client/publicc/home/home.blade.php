@@ -30,7 +30,7 @@
                                                     <picture>
                                                         <source media="(max-width: 480px)"
                                                                 srcset="/assets/images/demos/demo-3/slider/slide-1-480w.jpg">
-                                                        <img src="{{$slide->image->url}}"
+                                                        <img src="/{{$slide->image->url}}"
                                                              alt="توضیحات عکس">
                                                     </picture>
                                                 </figure><!-- End .slide-image -->
@@ -133,7 +133,7 @@
                                     @if($slide->title != "پیشنهادهای روزانه")
                                         <div class="banner mb-lg-1 mb-xl-2">
                                             <a href="#">
-                                                <img src="{{$slide->url}}" alt="بنر">
+                                                <img src="/{{$slide->image->url}}" alt="بنر">
                                             </a>
 
                                             <div class="banner-content text-right">
@@ -254,12 +254,12 @@
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
+                                        <a href="/product/wishlist/store?productId={{$bestP->id}}" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
                                                 لیست علاقه مندی</span></a>
                                     </div><!-- End .product-action -->
 
                                     <div class="product-action product-action-dark">
-                                        <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
+                                        <a href="/shop_basket/order/store?productId={{$bestP->id}}" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
                                                 به
                                                 سبد خرید</span></a>
                                         <a href="#quickview-modal" class="btn-product btn-quickview"

@@ -7,6 +7,7 @@ use Modules\Page\Http\Repositories\PageRepository;
 use Modules\Page\Http\Requests\page\ValidatePageRequest;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Product\Services\ProductService;
+use Modules\Product\Services\WishListService;
 use Modules\SocialMedia\Services\SocialMediaService;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -152,8 +153,10 @@ class PageService
         return (object)array("allSocialMedia"=>$allSocialMedia,"bestProduct"=>$bestProduct,"mostSell"=>$mostSell,"highestRate"=>$highestRate);
     }
 
-    public function cartItems(): array
+    public function cartItems($request)
     {
-        return [];
+
+        $data = resolve(WishListService::class)->index($request);
+        return $data;
     }
 }

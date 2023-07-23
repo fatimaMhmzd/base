@@ -126,7 +126,7 @@
 
                 </ul>
             </li>
-            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">گروهبندی</span></a>
+<!--            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">گروهبندی</span></a>
                 <ul class="menu-content">
                     <li class="{{ Request::routeIs('dashboard_group_index') ? 'active' : '' }}"><a href="{{route('dashboard_group_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
                     </li>
@@ -134,7 +134,7 @@
                     </li>
 
                 </ul>
-            </li>
+            </li>-->
             <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">محصول</span></a>
                 <ul class="menu-content">
                     <li class="{{ Request::routeIs('dashboard_product_index') ? 'active' : '' }}"><a href="{{route('dashboard_product_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>

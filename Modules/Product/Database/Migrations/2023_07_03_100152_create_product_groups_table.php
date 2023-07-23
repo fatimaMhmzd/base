@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable()->comment('عنوان');
             $table->string('sub_title')->nullable()->comment('زیر عنوان');
+            $table->string('slug')->nullable();
             $table->text('description')->nullable()->comment('توضیحات');
             $table->integer('father_id')->default(0);
             $table->smallInteger('sort_id')->default(0);

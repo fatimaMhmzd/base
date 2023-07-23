@@ -40,7 +40,7 @@ class WishListController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(ValidateWishListRequest $request)
+    public function store(Request $request)
     {
 
         try {
