@@ -20,10 +20,14 @@ class ProductGroup extends Model
         "display_on_homepage",
     ];
 
-    protected $with = ["image"];
+    protected $with = ["image","product"];
 
     public function image()
     {
         return $this->morphOne(Images::class, 'imageable');
+    }
+    public function product()
+    {
+        return $this->hasMany(Product::class, "group_id");
     }
 }
