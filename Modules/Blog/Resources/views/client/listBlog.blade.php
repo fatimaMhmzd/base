@@ -36,7 +36,7 @@
                 </ul><!-- End .blog-menu -->
             </nav><!-- End .blog-nav -->
 
-            <div class="entry-container max-col-3" data-layout="fitRows">
+            <div class="entry-container max-col-3" data-layout="fitRows" dir="rtl">
 
                 @if(count($blogGroup) > 0)
                     @foreach($blogGroup as $group)
@@ -53,12 +53,13 @@
                                         <div class="entry-body">
                                             <div class="entry-meta">
                                         <span class="entry-author">
-                                            نویسنده : <a href="#">مدیر سایت</a>
+                                            نویسنده : <a href="#">{{$blog->user->full_name}}</a>
                                         </span>
                                                 <span class="meta-separator">|</span>
-                                                <a href="#">22 اسفند 1401</a>
+                                                <a href="#">{{substr($blog->updated_at, 0, 9)}}</a>
                                                 <span class="meta-separator">|</span>
                                                 <a href="#">2 دیدگاه</a>
+{{--                                                {{count($blog->comments)}}--}}
                                             </div><!-- End .entry-meta -->
 
                                             <h2 class="entry-title text-center">
