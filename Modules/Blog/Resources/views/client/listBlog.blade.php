@@ -22,19 +22,70 @@
             <nav class="blog-nav">
                 <ul class="menu-cat entry-filter justify-content-center">
                     <li class="active"><a href="#" data-filter="*">همه اخبار<span>9</span></a></li>
+                    @if(count($blogGroup) > 0)
+                    @foreach($blogGroup as $group)
+                        <li><a href="#" data-filter=".{{$group->sub_title}}">{{$group->title}}<span>3</span></a></li>
+                    @endforeach
+                    @else
                     <li><a href="#" data-filter=".lifestyle">سبک زندگی<span>3</span></a></li>
                     <li><a href="#" data-filter=".shopping">فروشگاه<span>1</span></a></li>
                     <li><a href="#" data-filter=".fashion">مد<span>2</span></a></li>
                     <li><a href="#" data-filter=".travel">سفر<span>4</span></a></li>
                     <li><a href="#" data-filter=".hobbies">سرگرمی<span>2</span></a></li>
+                    @endif
                 </ul><!-- End .blog-menu -->
             </nav><!-- End .blog-nav -->
 
             <div class="entry-container max-col-3" data-layout="fitRows">
+
+                @if(count($blogGroup) > 0)
+                    @foreach($blogGroup as $group)
+                        @if(count($group->blogs) > 0)
+                            @foreach($group->blogs as $blog)
+                                <div class="entry-item lifestyle shopping col-sm-6 col-lg-4">
+                                    <article class="entry entry-grid text-center">
+                                        <figure class="entry-media">
+                                            <a href={{route('blog_blogDetail', $blog->slug)}}>
+                                                <img src="/assets/images/blog/grid/3cols/post-1.jpg" alt="توضیحات عکس">
+                                            </a>
+                                        </figure><!-- End .entry-media -->
+
+                                        <div class="entry-body">
+                                            <div class="entry-meta">
+                                        <span class="entry-author">
+                                            نویسنده : <a href="#">مدیر سایت</a>
+                                        </span>
+                                                <span class="meta-separator">|</span>
+                                                <a href="#">22 اسفند 1401</a>
+                                                <span class="meta-separator">|</span>
+                                                <a href="#">2 دیدگاه</a>
+                                            </div><!-- End .entry-meta -->
+
+                                            <h2 class="entry-title text-center">
+                                                <a href={{route('blog_blogDetail', $blog->slug)}}>{{$blog->title}}</a>
+                                            </h2><!-- End .entry-title -->
+
+                                            <div class="entry-cats text-center">
+                                                <a href="#">{{$group->title}}</a>
+                                            </div><!-- End .entry-cats -->
+
+                                            <div class="entry-content text-center">
+                                                <p>{{ substr($blog->content , 0, 199)."....." }}</p>
+                                                <a href={{route('blog_blogDetail', $blog->slug)}} class="read-more">ادامه
+                                                    خواندن</a>
+                                            </div><!-- End .entry-content -->
+                                        </div><!-- End .entry-body -->
+                                    </article><!-- End .entry -->
+                                </div><!-- End .entry-item -->
+                            @endforeach
+                        @endif
+                    @endforeach
+                @else
+
                 <div class="entry-item lifestyle shopping col-sm-6 col-lg-4">
                     <article class="entry entry-grid text-center">
                         <figure class="entry-media">
-                            <a href={{route('blog_blogDetail')}}>
+                            <a href={{route('blog_blogDetail', $blogGroup[0]->slug)}}>
                                 <img src="/assets/images/blog/grid/3cols/post-1.jpg" alt="توضیحات عکس">
                             </a>
                         </figure><!-- End .entry-media -->
@@ -51,7 +102,7 @@
                             </div><!-- End .entry-meta -->
 
                             <h2 class="entry-title text-center">
-                                <a href={{route('blog_blogDetail')}}>لورم ایپسوم متن ساختگی با تولید سادگی</a>
+                                <a href={{route('blog_blogDetail', $blogGroup[0]->slug)}}>لورم ایپسوم متن ساختگی با تولید سادگی</a>
                             </h2><!-- End .entry-title -->
 
                             <div class="entry-cats text-center">
@@ -63,7 +114,7 @@
                                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
                                     سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
                                     ساختگی با تولید سادگی نامفهوم ...</p>
-                                <a href={{route('blog_blogDetail')}} class="read-more">ادامه
+                                <a href={{route('blog_blogDetail', $blogGroup[0]->slug)}} class="read-more">ادامه
                                     خواندن</a>
                             </div><!-- End .entry-content -->
                         </div><!-- End .entry-body -->
@@ -73,7 +124,7 @@
                 <div class="entry-item lifestyle col-sm-6 col-lg-4">
                     <article class="entry entry-grid text-center">
                         <figure class="entry-media entry-video">
-                            <a href={{route('blog_blogDetail')}}>
+                            <a href={{route('blog_blogDetail', $blogGroup[0]->slug)}}>
                                 <img src="/assets/images/blog/grid/3cols/post-2.jpg" alt="توضیحات عکس">
                             </a>
                         </figure><!-- End .entry-media -->
@@ -90,7 +141,7 @@
                             </div><!-- End .entry-meta -->
 
                             <h2 class="entry-title text-center">
-                                <a href={{route('blog_blogDetail')}}>لورم ایپسوم متن ساختگی با تولید سادگی</a>
+                                <a href={{route('blog_blogDetail', $blogGroup[0]->slug)}}>لورم ایپسوم متن ساختگی با تولید سادگی</a>
                             </h2><!-- End .entry-title -->
 
                             <div class="entry-cats text-center">
@@ -101,7 +152,7 @@
                                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
                                     سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
                                     ساختگی با تولید سادگی نامفهوم ...</p>
-                                <a href={{route('blog_blogDetail')}} class="read-more">ادامه
+                                <a href={{route('blog_blogDetail', $blogGroup[0]->slug)}} class="read-more">ادامه
                                     خواندن</a>
                             </div><!-- End .entry-content -->
                         </div><!-- End .entry-body -->
@@ -113,10 +164,10 @@
                         <figure class="entry-media">
                             <div class="owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl"
                                  data-owl-options='{"rtl": true}'>
-                                <a href={{route('blog_blogDetail')}}>
+                                <a href={{route('blog_blogDetail', $blogGroup[0]->slug)}}>
                                     <img src="/assets/images/blog/grid/3cols/post-3.jpg" alt="توضیحات عکس">
                                 </a>
-                                <a href={{route('blog_blogDetail')}}>
+                                <a href={{route('blog_blogDetail', $blogGroup[0]->slug)}}>
                                     <img src="/assets/images/blog/grid/3cols/post-4.jpg" alt="توضیحات عکس">
                                 </a>
                             </div><!-- End .owl-carousel -->
@@ -387,6 +438,7 @@
                         </div><!-- End .entry-body -->
                     </article><!-- End .entry -->
                 </div><!-- End .entry-item -->
+                @endif
             </div><!-- End .entry-container -->
 
             <nav aria-label="Page navigation">

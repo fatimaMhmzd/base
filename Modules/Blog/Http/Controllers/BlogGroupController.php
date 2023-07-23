@@ -16,7 +16,8 @@ class BlogGroupController extends Controller
     public function list()
     {
         $blogGroup = $this->service->all();
-return $blogGroup;
+//        return $blogGroup;
+
         return view('blog::client.listBlog', compact('blogGroup'));
     }
     /**
