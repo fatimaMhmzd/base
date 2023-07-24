@@ -60,8 +60,8 @@
                                             </td>
                                             <td class="total-col">{{$item->total_price}}</td>
                                             <td class="remove-col">
-                                                <button class="btn-remove"><i
-                                                        class="icon-close"></i></button>
+                                                <a href="{{route('shop_basket_order_destroy',$item->id)}}"><i
+                                                        class="icon-close"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

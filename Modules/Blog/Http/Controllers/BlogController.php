@@ -49,9 +49,12 @@ class BlogController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show($slug)
     {
-        return view('blog::show');
+        $data = $this->service->blogDetail($slug);
+
+        return view('blog::client.blogDetail',compact('data'));
+
     }
 
     /**
@@ -84,10 +87,5 @@ class BlogController extends Controller
     {
         //
     }
-/*    public function blogDetail($slug)
-    {
-        $data = $this->service->productDetail($slug);
-//       return $data;
-        return view('product::client.productDetail',compact('data'));
-    }*/
+
 }

@@ -127,6 +127,9 @@ class BlogService
     {
         return $this->blogRepository->getByInput();
     }
-
+    public function blogDetail($slug)
+    {
+        return $this->blogRepository->findBy("slug",$slug);
+    }
 
 }

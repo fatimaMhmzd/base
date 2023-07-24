@@ -5,6 +5,7 @@ namespace Modules\ShopBasket\Services;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
+use Modules\Product\Services\PriceProductService;
 use Modules\Product\Services\ProductPropertyService;
 use Modules\Product\Services\ProductService;
 use Modules\ShopBasket\Http\Repositories\FactorItemRepository;
@@ -49,24 +50,26 @@ class OrderService
         ];
 
         $all = $this->factorRepository->findWithInputs($inputs);
-        foreach ($all->part as $item) {
-            $partItem = (object)[
-                "id" => $item->id,
-                "title" => $item->product->title,
-                "sub_title" => $item->product->sub_title,
-                "banner" => $item->product->banner,
-                "count" => $item->count,
-                "total_price" => $item->total_price,
-                "price" => $item->product->price,
-                "off_price" => $item->product->off_price,
+        if ($all and count($all->part) != 0) {
+            foreach ($all->part as $item) {
+                $partItem = (object)[
+                    "id" => $item->id,
+                    "title" => $item->product->title,
+                    "sub_title" => $item->product->sub_title,
+                    "banner" => $item->product->banner,
+                    "slug" => $item->product->slug,
+                    "count" => $item->count,
+                    "total_price" => $item->total_price,
+                    "price" => $item->product->price,
+                    "off_price" => $item->product->off_price,
 
-            ];
-            array_push($parts, $partItem);
-
+                ];
+                array_push($parts, $partItem);
+            }
         }
-        $res =(object)[
-            "total_part_price" =>$all->total_part_price,
-            "total_amount" =>$all->total_amount,
+        $res = (object)[
+            "total_part_price" => $all->total_part_price,
+            "total_amount" => $all->total_amount,
             "part" => $parts,
         ];
 
@@ -81,8 +84,9 @@ class OrderService
             DB::beginTransaction();
             try {
                 $itemDeleted = $this->factorItemRepository->delete($item);
+                $totalUpdate = $this->update($item->factor_id);
                 DB::commit();
-                return $itemDeleted;
+                return $totalUpdate;
             } catch (\Exception $exception) {
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.delete_failed"));
@@ -92,32 +96,52 @@ class OrderService
         }
     }
 
-    public function update(ValidateOrderRequest $request, $id): mixed
+    public function update($id)
     {
-        $inputs = $request->validated();
+        $factorUpdate = [];
+        $total_part_price = 0;
+
         $totalUnitItem = $this->factorRepository->find($id);
         if ($totalUnitItem) {
+            $filter[] = (object)[
+                "col" => "factor_id",
+                "value" => $totalUnitItem->id,
+                "like" => false,
+            ];
             DB::beginTransaction();
             try {
-                $totalUnitItemUpdated = $this->factorRepository->update($totalUnitItem, $inputs);
+                $all = $this->factorItemRepository->getByInput($filter);
+                if (!$all->isEmpty()) {
+                    foreach ($all as $item) {
+                        $factorItemUpdate = [];
+                        $total_price = 0;
+                        $count = $item->count;
+                        $priceItem = resolve(PriceProductService::class)->findPrice($count, $item->product_id);
+
+                        if ($priceItem) {
+                            $total_price += $count * $priceItem->price;
+                        } else {
+                            $total_price += $count * $item->product->price;
+                        }
+                        $factorItemUpdate["last_price"] = $item->product->price;
+                        $factorItemUpdate["total_price"] = $total_price;
+                        $totalUnitItemUpdated = $this->factorItemRepository->update($item, $factorItemUpdate);
+                        $total_part_price += $total_price;
+                    }
+                }
+                $factorUpdate["total_part_price"] = $total_part_price;
+                $factorUpdate["total_amount"] = $total_part_price;
+                $totalUnitUpdated = $this->factorRepository->update($totalUnitItem, $factorUpdate);
+
                 DB::commit();
-                return $totalUnitItemUpdated;
+                return $totalUnitItem;
+
             } catch (\Exception $exception) {
                 DB::rollBack();
-                throw new \Exception(trans("custom.defaults.update_failed"));
+                throw new \Exception(trans("custom.defaults.store_failed"));
             }
-
-        } else {
-            throw new \Exception(trans("custom.defaults.not_found"));
         }
-        $image = $inputs["file"] ?? null;
-        if ($image !== null) {
-            foreach ($image as $item) {
-                $this->uploadImage($totalUnitsItem, $item);
-            }
 
-        }
-        return $totalUnitsItem;
     }
 
     public function store($request)
@@ -160,17 +184,11 @@ class OrderService
                 $factorItemUpdate["count"] = $count;
             }
 
-
-            $factorItemUpdate["last_price"] = $price;
-            $factorItemUpdate["total_price"] = $price * $factorItemUpdate["count"];
             $totalUnitItemUpdated = $this->factorItemRepository->update($totalUnitsItem, $factorItemUpdate);
-
-            $factorUpdate["total_part_price"] = $totalUnit->total_part_price + $factorItemUpdate["total_price"];
-            $factorUpdate["total_amount"] = $totalUnit->total_amount + $factorItemUpdate["total_price"];
-            $totalUnitUpdated = $this->factorRepository->update($totalUnit, $factorUpdate);
+            $totalUpdate = $this->update($factorItem["factor_id"]);
 
             DB::commit();
-            return $totalUnitItemUpdated;
+            return $totalUpdate;
 
         } catch (\Exception $exception) {
             DB::rollBack();
