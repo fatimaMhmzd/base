@@ -267,6 +267,7 @@ class ProductService
         $groupService = resolve(ProductGroupService::class);
         $groups = $groupService->all();
         $group = resolve(ProductGroupService::class)->findBy("slug",$slug);
+        $products = $this->productRepository->all();
         $filter = [];
         if ($group){
             $filter[] = (object)[
@@ -276,7 +277,7 @@ class ProductService
             ];
             $products = $this->productRepository->getByInput($filter, $request->perPage, $request->pageNumber);
         }
-        $products = $this->productRepository->all();
+
         /*$sizeService = resolve(SizeSe::class);
         $sizes = $groupService->all();*/
 
