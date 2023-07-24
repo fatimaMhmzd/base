@@ -13,17 +13,18 @@ use Modules\ShopBasket\Http\Requests\order\ValidateOrderRequest;
 
 class OrderService
 {
-    public function __construct(public FactorRepository $factorRepository , public FactorItemRepository $factorItemRepository)
+    public function __construct(public FactorRepository $factorRepository, public FactorItemRepository $factorItemRepository)
     {
     }
+
     public function index()
     {
         $filter = [];
-            $filter[] = (object)[
-                "col" => "user_id",
-                "value" => Auth::id(),
-                "like" => false,
-            ];
+        $filter[] = (object)[
+            "col" => "user_id",
+            "value" => Auth::id(),
+            "like" => false,
+        ];
         $filter[] = (object)[
             "col" => "factor_status",
             "value" => 0,
@@ -32,6 +33,44 @@ class OrderService
 
         $all = $this->factorRepository->getByInput($filter);
         return $all;
+    }
+
+    public function show()
+    {
+        $filter = [];
+        $parts = [];
+        $inputs[] = (object)[
+            "col" => "user_id",
+            "value" => Auth::id(),
+        ];
+        $inputs[] = (object)[
+            "col" => "factor_status",
+            "value" => 0,
+        ];
+
+        $all = $this->factorRepository->findWithInputs($inputs);
+        foreach ($all->part as $item) {
+            $partItem = (object)[
+                "id" => $item->id,
+                "title" => $item->product->title,
+                "sub_title" => $item->product->sub_title,
+                "banner" => $item->product->banner,
+                "count" => $item->count,
+                "total_price" => $item->total_price,
+                "price" => $item->product->price,
+                "off_price" => $item->product->off_price,
+
+            ];
+            array_push($parts, $partItem);
+
+        }
+        $res =(object)[
+            "total_part_price" =>$all->total_part_price,
+            "total_amount" =>$all->total_amount,
+            "part" => $parts,
+        ];
+
+        return $res;
     }
 
 
@@ -73,7 +112,7 @@ class OrderService
         }
         $image = $inputs["file"] ?? null;
         if ($image !== null) {
-            foreach ($image as $item){
+            foreach ($image as $item) {
                 $this->uploadImage($totalUnitsItem, $item);
             }
 
@@ -83,63 +122,61 @@ class OrderService
 
     public function store($request)
     {
-        $factor =[];
-        $factorItem =[];
+        $factor = [];
+        $factorItem = [];
 
-        if ($request->propertyId){
-            $colorId =resolve(ProductPropertyService::class)->find($request->propertyId)->color_id;
-            $sizeId =resolve(ProductPropertyService::class)->find($request->propertyId)->size_id;
-            $price =resolve(ProductPropertyService::class)->find($request->propertyId)->price;
-        }else{
+        if ($request->propertyId) {
+            $colorId = resolve(ProductPropertyService::class)->find($request->propertyId)->color_id;
+            $sizeId = resolve(ProductPropertyService::class)->find($request->propertyId)->size_id;
+            $price = resolve(ProductPropertyService::class)->find($request->propertyId)->price;
+        } else {
             $price = resolve(ProductService::class)->find($request->productId)->price;
         }
         $factor["user_id"] = Auth::id();
-        $factor["factor_status"] =0;
+        $factor["factor_status"] = 0;
 
         $factorItem["product_id"] = $request->productId;
         $factorItem["product_properties_id"] = $request->propertyId ?? 0;
         $factorItem["color_id"] = $colorId ?? null;
         $factorItem["size_id"] = $sizeId ?? null;
 
-            DB::beginTransaction();
-            try {
-                $totalUnit= $this->factorRepository->firstOrCreate($factor);
-                $factorItem["factor_id"] = $totalUnit->id;
-                $totalUnitsItem = $this->factorItemRepository->firstOrCreate($factorItem);
-                $count =$request->count ?? 1 ;
+        DB::beginTransaction();
+        try {
+            $totalUnit = $this->factorRepository->firstOrCreate($factor);
+            $factorItem["factor_id"] = $totalUnit->id;
+            $totalUnitsItem = $this->factorItemRepository->firstOrCreate($factorItem);
+            $count = $request->count ?? 1;
 
-                if ($request->opr == "-"){
+            if ($request->opr == "-") {
 
-                        $factorItemUpdate["count"] = $totalUnitsItem->count - $count ;
-
-
-                }
-                elseif ($request->opr == "+"){
-
-                        $factorItemUpdate["count"] = $totalUnitsItem->count + $count ;
-
-                }else{
-                    $factorItemUpdate["count"] = $count ;
-                }
+                $factorItemUpdate["count"] = $totalUnitsItem->count - $count;
 
 
-                $factorItemUpdate["last_price"] = $price;
-                $factorItemUpdate["total_price"] =$price * $factorItemUpdate["count"] ;
-                $totalUnitItemUpdated = $this->factorItemRepository->update($totalUnitsItem, $factorItemUpdate);
+            } elseif ($request->opr == "+") {
 
-                $factorUpdate["total_part_price"] = $totalUnit->total_part_price + $factorItemUpdate["total_price"];
-                $factorUpdate["total_amount"] = $totalUnit->total_amount + $factorItemUpdate["total_price"];
-                $totalUnitUpdated = $this->factorRepository->update($totalUnit, $factorUpdate);
+                $factorItemUpdate["count"] = $totalUnitsItem->count + $count;
 
-                DB::commit();
-                return $totalUnitItemUpdated;
-
-            } catch (\Exception $exception) {
-                DB::rollBack();
-                return $exception;
-                throw new \Exception(trans("custom.defaults.store_failed"));
+            } else {
+                $factorItemUpdate["count"] = $count;
             }
 
+
+            $factorItemUpdate["last_price"] = $price;
+            $factorItemUpdate["total_price"] = $price * $factorItemUpdate["count"];
+            $totalUnitItemUpdated = $this->factorItemRepository->update($totalUnitsItem, $factorItemUpdate);
+
+            $factorUpdate["total_part_price"] = $totalUnit->total_part_price + $factorItemUpdate["total_price"];
+            $factorUpdate["total_amount"] = $totalUnit->total_amount + $factorItemUpdate["total_price"];
+            $totalUnitUpdated = $this->factorRepository->update($totalUnit, $factorUpdate);
+
+            DB::commit();
+            return $totalUnitItemUpdated;
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return $exception;
+            throw new \Exception(trans("custom.defaults.store_failed"));
+        }
 
 
     }

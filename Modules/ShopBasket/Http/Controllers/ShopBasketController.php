@@ -5,9 +5,13 @@ namespace Modules\ShopBasket\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\ShopBasket\Services\OrderService;
 
 class ShopBasketController extends Controller
 {
+    public function __construct(public OrderService $service)
+    {
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -41,9 +45,10 @@ class ShopBasketController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show()
     {
-        return view('shopbasket::show');
+        $cart = $this->service->index()->first();
+        return view('shopbasket::client.cart', compact('cart'));
     }
 
     /**

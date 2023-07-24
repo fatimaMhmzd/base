@@ -202,7 +202,7 @@
                                 </div><!-- End .dropdown-cart-total -->
 
                                 <div class="dropdown-cart-action">
-                                    <a href="{{route('shop_basket_order_show')}}" class="btn btn-primary">مشاهده سبد
+                                    <a href="{{route('shop_basket_show')}}" class="btn btn-primary">مشاهده سبد
                                         خرید</a>
                                     <a href="{{route('shop_checkoutPageClient')}}"
                                        class="btn btn-outline-primary-2"><span>پرداخت</span><i
