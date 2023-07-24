@@ -17,7 +17,7 @@ use Modules\ShopBasket\Http\Controllers\OrderController;
 use Modules\ShopBasket\Http\Controllers\ShopBasketController;
 
 Route::group(['prefix' => 'shop_basket', 'as' => 'shop_basket_'], function () {
-
+    Route::get('/show', [ShopBasketController::class, 'show'])->name('show');
     Route::group(['prefix' => 'order', 'as' => 'order_'], function () {
         Route::get('/store', [OrderController::class, 'store'])->name('store');
         Route::get('/show', [OrderController::class, 'show'])->name('show');
