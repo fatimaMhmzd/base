@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
     }
 
-    public function index($slug=null)
+    public function index(Request $request ,$slug=null)
     {
         $data = $this->service->shopIndexPage($slug);
 

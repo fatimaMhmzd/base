@@ -262,15 +262,22 @@ class ProductService
         ImageService::saveImage(image: $file, model: $guild, is_cover: $IsCover, is_public: true, destinationPath: $destinationPath);
     }
 
-    public function shopIndexPage($slug): object
+    public function shopIndexPage($request,$slug): object
     {
         $groupService = resolve(ProductGroupService::class);
         $groups = $groupService->all();
-        $groups = resolve(ProductGroupService::class)->findBy("slug",$slug,['products']);
+        $group = resolve(ProductGroupService::class)->findBy("slug",$slug);
+        $filter = [];
+            $filter[] = (object)[
+                "col" => "product_group_id",
+                "value" => $group->id,
+                "like" => true,
+            ];
+        $products = $this->productRepository->getByInput($filter, $request->perPage, $request->pageNumber);
         /*$sizeService = resolve(SizeSe::class);
         $sizes = $groupService->all();*/
 
-        return (object)array("groups"=>$groups);
+        return (object)array("groups"=>$groups,"product"=>$products);
     }
 
     public function productDetail($slug)

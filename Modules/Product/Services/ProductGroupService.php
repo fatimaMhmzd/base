@@ -71,9 +71,9 @@ class ProductGroupService
     {
         return $this->productGroupRepository->find($id);
     }
-    public function findBy($col, $value, $relations)
+    public function findBy($col, $value)
     {
-        return $this->productGroupRepository->findBy($col, $value, $relations);
+        return $this->productGroupRepository->findBy($col, $value);
     }
 
     public function delete($id)
