@@ -268,12 +268,15 @@ class ProductService
         $groups = $groupService->all();
         $group = resolve(ProductGroupService::class)->findBy("slug",$slug);
         $filter = [];
+        if ($group){
             $filter[] = (object)[
                 "col" => "product_group_id",
                 "value" => $group->id,
                 "like" => true,
             ];
-        $products = $this->productRepository->getByInput($filter, $request->perPage, $request->pageNumber);
+            $products = $this->productRepository->getByInput($filter, $request->perPage, $request->pageNumber);
+        }
+        $products = $this->productRepository->all();
         /*$sizeService = resolve(SizeSe::class);
         $sizes = $groupService->all();*/
 
