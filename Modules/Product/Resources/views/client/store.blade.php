@@ -124,18 +124,18 @@
                                                            title="مقایسه"><span>مقایسه</span></a>
                                                     </div><!-- End .product-action -->
 
-                                                    <a href="{{route('shop_basket_order_store',['id'=>$product->id])}}" class="btn-product btn-cart"><span>افزودن به سبد
+                                                    <a href="{{route('shop_basket_order_store',['productId'=>$product->id])}}" class="btn-product btn-cart"><span>افزودن به سبد
                                                         خرید</span></a>
                                                 </div><!-- End .product-list-action -->
                                             </div><!-- End .col-sm-6 col-lg-3 -->
 
                                             <div class="col-lg-6">
                                                 <div class="product-body product-action-inner">
-                                                    <a href="{{route('product_wishList_store',['id'=>$product->id])}}" class="btn-product btn-wishlist"
+                                                    <a href="{{route('product_wishList_store',['productId'=>$product->id])}}" class="btn-product btn-wishlist"
                                                        title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
                                                     <div class="product-cat">
-{{--                                                        <a href="{{route('shop_storePageClient', $product->group->slug)}}">{{route($product->group->title)}}</a>--}}
+                                                        <a href="{{route('shop_storePageClient', $product->group->slug)}}">{{$product->group->title}}</a>
                                                     </div><!-- End .product-cat -->
                                                     <h3 class="product-title"><a href="{{route('shop_productDetail', $product->slug)}}">{{$product->title}}</a>
                                                     </h3><!-- End .product-title -->
@@ -146,7 +146,7 @@
 
                                                     <div class="product-nav product-nav-thumbs">
                                                         @foreach($product->image as $pic)
-                                                            <a href="#" class="active">
+                                                            <a href="#" class="">
                                                                 <img src="/{{$pic->url}}"
                                                                      alt="product desc">
                                                             </a>
@@ -568,7 +568,61 @@
                             <div class="row justify-content-center">
                                 @if(count($data->product) > 0)
                                     @foreach($data->product as $product)
+                                        <div class="col-6">
+                                            <div class="product product-7 text-center">
+                                                <figure class="product-media">
+{{--                                                    <span class="product-label label-new">جدید</span>--}}
+                                                    <a href="{{route('shop_productDetail', $product->slug)}}">
+                                                        <img src="/{{$product->banner}}" alt="تصویر محصول"
+                                                             class="product-image">
+                                                    </a>
 
+                                                    <div class="product-action-vertical">
+                                                        <a href="{{route('product_wishList_store',['productId'=>$product->id])}}"
+                                                           class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                            به لیست علاقه مندی</span></a>
+<!--                                                        <a href="popup/quickView.html"
+                                                           class="btn-product-icon btn-quickview"
+                                                           title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
+                                                        <a href="#" class="btn-product-icon btn-compare"
+                                                           title="مقایسه"><span>مقایسه</span></a>
+                                                    </div><!-- End .product-action-vertical -->
+
+                                                    <div class="product-action">
+                                                        <a href="{{route('shop_basket_order_store',['productId'=>$product->id])}}" class="btn-product btn-cart"><span>افزودن به
+                                                            سبد خرید</span></a>
+                                                    </div><!-- End .product-action -->
+                                                </figure><!-- End .product-media -->
+
+                                                <div class="product-body">
+                                                    <div class="product-cat text-center">
+                                                        <a href="{{route('shop_storePageClient', $product->group->slug)}}">{{$product->group->title}}</a>
+                                                    </div><!-- End .product-cat -->
+                                                    <h3 class="product-title text-center">
+                                                        <a href="{{route('shop_productDetail', $product->slug)}}">{{$product->title}}</a>
+                                                    </h3><!-- End .product-title -->
+                                                    <div class="product-price">
+                                                        {{$product->price}} تومان
+                                                    </div><!-- End .product-price -->
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: {{$product->avg_rate}}%;"></div>
+                                                            <!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                        <span class="ratings-text">( {{$product->num_visit}} بازدید )</span>
+                                                    </div><!-- End .rating-container -->
+
+                                                    <div class="product-nav product-nav-thumbs">
+                                                        @foreach($product->image as $pic)
+                                                            <a href="#" class="">
+                                                                <img src="/{{$pic->url}}"
+                                                                     alt="product desc">
+                                                            </a>
+                                                        @endforeach
+                                                    </div><!-- End .product-nav -->
+                                                </div><!-- End .product-body -->
+                                            </div><!-- End .product -->
+                                        </div><!-- End .col-sm-6 -->
                                     @endforeach
                                 @else
                                 <div class="col-6">
@@ -904,6 +958,61 @@
                             <div class="row justify-content-center">
                                 @if(count($data->product) > 0)
                                     @foreach($data->product as $product)
+                                        <div class="col-6 col-md-4 col-lg-4">
+                                            <div class="product product-7 text-center">
+                                                <figure class="product-media">
+{{--                                                    <span class="product-label label-new">جدید</span>--}}
+                                                    <a href="{{route('shop_productDetail', $product->slug)}}">
+                                                        <img src="/{{$product->banner}}" alt="تصویر محصول"
+                                                             class="product-image">
+                                                    </a>
+
+                                                    <div class="product-action-vertical">
+                                                        <a href="{{route('product_wishList_store',['productId'=>$product->id])}}"
+                                                           class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                            به لیست علاقه مندی</span></a>
+<!--                                                        <a href="popup/quickView.html"
+                                                           class="btn-product-icon btn-quickview"
+                                                           title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
+                                                        <a href="#" class="btn-product-icon btn-compare"
+                                                           title="مقایسه"><span>مقایسه</span></a>
+                                                    </div><!-- End .product-action-vertical -->
+
+                                                    <div class="product-action">
+                                                        <a href="{{route('shop_basket_order_store',['productId'=>$product->id])}}"
+                                                           class="btn-product btn-cart">
+                                                            <span>افزودن به سبد خرید</span></a>
+                                                    </div><!-- End .product-action -->
+                                                </figure><!-- End .product-media -->
+
+                                                <div class="product-body">
+                                                    <div class="product-cat text-center">
+                                                        <a href="{{route('shop_storePageClient', $product->group->slug)}}">{{$product->group->title}}</a>
+                                                    </div><!-- End .product-cat -->
+                                                    <h3 class="product-title text-center">
+                                                        <a href="{{route('shop_productDetail', $product->slug)}}">{{$product->title}}</a>
+                                                    </h3><!-- End .product-title -->
+                                                    <div class="product-price">
+                                                        {{$product->price}} تومان
+                                                    </div><!-- End .product-price -->
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: {{$product->avg_rate}}%;"></div>
+                                                            <!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                        <span class="ratings-text">( {{$product->num_visit}} بازدید )</span>
+                                                    </div><!-- End .rating-container -->
+
+                                                    <div class="product-nav product-nav-thumbs">
+                                                        @foreach($product->image as $pic)
+                                                            <a href="#" class="">
+                                                                <img src="/{{$pic->url}}" alt="product desc">
+                                                            </a>
+                                                        @endforeach
+                                                    </div><!-- End .product-nav -->
+                                                </div><!-- End .product-body -->
+                                            </div><!-- End .product -->
+                                        </div><!-- End .col-sm-6 col-lg-4 -->
 
                                     @endforeach
                                 @else
@@ -1392,7 +1501,61 @@
                             <div class="row justify-content-center">
                                 @if(count($data->product) > 0)
                                     @foreach($data->product as $product)
+                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                            <div class="product product-7 text-center">
+                                                <figure class="product-media">
+{{--                                                    <span class="product-label label-new">جدید</span>--}}
+                                                    <a href="{{route('shop_productDetail', $product->slug)}}">
+                                                        <img src="/{{$product->banner}}" alt="تصویر محصول"
+                                                             class="product-image">
+                                                    </a>
 
+                                                    <div class="product-action-vertical">
+                                                        <a href="{{route('product_wishList_store',['productId'=>$product->id])}}"
+                                                           class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                            به لیست علاقه مندی</span></a>
+<!--                                                        <a href="popup/quickView.html"
+                                                           class="btn-product-icon btn-quickview"
+                                                           title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
+                                                        <a href="#" class="btn-product-icon btn-compare"
+                                                           title="مقایسه"><span>مقایسه</span></a>
+                                                    </div><!-- End .product-action-vertical -->
+
+                                                    <div class="product-action">
+                                                        <a href="{{route('shop_basket_order_store',['productId'=>$product->id])}}"
+                                                           class="btn-product btn-cart">
+                                                            <span>افزودن به سبد خرید</span></a>
+                                                    </div><!-- End .product-action -->
+                                                </figure><!-- End .product-media -->
+
+                                                <div class="product-body">
+                                                    <div class="product-cat text-center">
+                                                        <a href="{{route('shop_storePageClient', $product->group->slug)}}">{{$product->group->title}}</a>
+                                                    </div><!-- End .product-cat -->
+                                                    <h3 class="product-title text-center">
+                                                        <a href="{{route('shop_productDetail', $product->slug)}}">{{$product->title}}</a>
+                                                    </h3><!-- End .product-title -->
+                                                    <div class="product-price">
+                                                        {{$product->price}} تومان
+                                                    </div><!-- End .product-price -->
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: {{$product->avg_rate}}%;"></div>
+                                                            <!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                        <span class="ratings-text">( {{$product->num_visit}} بازدید )</span>
+                                                    </div><!-- End .rating-container -->
+
+                                                    <div class="product-nav product-nav-thumbs">
+                                                        @foreach($product->image as $pic)
+                                                            <a href="#" class="">
+                                                                <img src="/{{$pic->url}}" alt="product desc">
+                                                            </a>
+                                                        @endforeach
+                                                    </div><!-- End .product-nav -->
+                                                </div><!-- End .product-body -->
+                                            </div><!-- End .product -->
+                                        </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
                                     @endforeach
                                 @else
                                 <div class="col-6 col-md-4 col-lg-4 col-xl-3">
