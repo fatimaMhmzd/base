@@ -20,11 +20,6 @@ class BlogController extends Controller
      */
 
 
-    public function blogDetail()
-    {
-        return view('blog::client.blogDetail');
-    }
-
     /**
      * Show the form for creating a new resource.
      * @return Renderable
@@ -52,7 +47,7 @@ class BlogController extends Controller
     public function show($slug)
     {
         $data = $this->service->blogDetail($slug);
-
+//return $data;
         return view('blog::client.blogDetail',compact('data'));
 
     }
