@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Polymorphism\Entities\Images;
 
@@ -52,9 +53,9 @@ class Blog extends Model
     ];
     protected $with = ["image" , "user" ,"lables"];
 
-    public function image(): MorphMany
+    public function image(): MorphOne
     {
-        return $this->morphMany(Images::class, 'imageable');
+        return $this->morphOne(Images::class, 'imageable');
     }
 
     public function group(): HasOne

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Blog\Http\Repositories\BlogLableRepository;
 use Modules\Blog\Http\Repositories\BlogRepository;
 use Modules\Blog\Http\Requests\blog\ValidateBlogRequest;
+use Modules\Polymorphism\Services\ImageService;
 use Yajra\DataTables\Facades\DataTables;
 
 class BlogService
@@ -42,9 +43,16 @@ class BlogService
 
                 return $btn;
             })
+            ->addColumn('image', function ($row) {
+                $img = '';
+                if ($row->image) {
+                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
+                }
 
+                return $img;
+            })
 
-            ->rawColumns(['action'])
+            ->rawColumns(['action','image'])
             ->make(true);
 
     }
@@ -83,7 +91,14 @@ class BlogService
             DB::beginTransaction();
             try {
                 $totalUnitItemUpdated = $this->blogRepository->update($totalUnitItem, $inputs);
+                $image = $inputs["file"] ?? null;
+                if ($image != null) {
+
+                        $this->uploadImage($totalUnitItem, $image);
+
+                }
                 DB::commit();
+
 
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -111,7 +126,13 @@ class BlogService
                     $totalUnitsItem->lables()->save(resolve(LableService::class)->find($item));
                 }
             }
+            $image = $inputs["file"] ?? null;
+            if ($image !== null) {
+
+                $this->uploadImage($totalUnitsItem, $image);
+            }
             DB::commit();
+
 
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -120,6 +141,11 @@ class BlogService
 
         return $totalUnitsItem;
 
+    }
+    public function uploadImage($guild, $file)
+    {
+        $destinationPath = "public/blog/" . $guild->id;
+        ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
     }
 
 
