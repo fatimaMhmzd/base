@@ -246,7 +246,7 @@
                         @foreach($indexPageData->bestProduct as $bestP)
                             <div class="product product-2">
                                 <figure class="product-media">
-                                    <a href={{route('shop_productDetail', $bestP->slug)}}>
+                                    <a href="{{route('shop_productDetail', $bestP->slug)}}">
                                         <img
                                             src="{{$bestP->banner ? $bestP->banner : "/assets/images/demos/demo-3/products/product-1.jpg"}}"
                                             alt="{{$bestP->title}}"
@@ -271,7 +271,8 @@
                                     <div class="product-cat">
                                         <a href="#">{{$bestP->title}}</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">{{$bestP->full_title}}</a>
+                                    <h3 class="product-title">
+                                        <a href="{{route('shop_productDetail', $bestP->slug)}}">{{$bestP->full_title}}</a>
                                     </h3><!-- End .product-title -->
                                     <div class="product-price">
                                         {{$bestP->price}} تومان

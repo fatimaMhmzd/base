@@ -1,5 +1,5 @@
 @inject('groups', 'Modules\Product\Services\ProductGroupService')
-{{--@dd($groups->all())--}}
+{{--@dd($groups->cartItems())--}}
     <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
@@ -164,13 +164,13 @@
                                aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <div class="icon">
                                     <i class="icon-shopping-cart"></i>
-                                    <span class="cart-count">{{count($groups->cartItems())}}</span>
+                                    <span class="cart-count" id="cartCount">{{count($groups->cartItems())}}</span>
                                 </div>
                                 <p>سبد خرید</p>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-cart-products">
+                                <div class="dropdown-cart-products" id="cartList">
                                     @foreach($groups->cartItems() as $item)
                                         <div class="product">
                                             <div class="product-cart-details">
@@ -198,7 +198,7 @@
                                 <div class="dropdown-cart-total">
                                     <span>مجموع</span>
 
-                                    <span class="cart-total-price">0 تومان</span>
+                                    <span class="cart-total-price" id="cartTotal">0 تومان</span>
                                 </div><!-- End .dropdown-cart-total -->
 
                                 <div class="dropdown-cart-action">
@@ -1268,6 +1268,59 @@
 <!-- Main JS File -->
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/demos/demo-3.js"></script>
+
+<script>
+    function cartContent() {
+        $.ajax({
+            url: '{{route('shop_basket_order_show')}}',
+            type: 'Get',
+            success: function (res) {
+                console.log(res);
+                var listItems = res['part'];
+                document.getElementById('cartCount').innerHTML = res['part'].length;
+                document.getElementById('cartTotal').innerHTML = res['total_part_price'] + 'تومان';
+
+                var itemsProductHtml = ``;
+                for (var i = 0; i < listItems.length; i++) {
+                    var id = listItems[i]['id'];
+                    var slug = listItems[i]['slug'];
+                    var urlP = "{{ route('shop_productDetail', ':slug') }}";
+                    var urlD = "{{ route('shop_basket_order_destroy', ':id') }}";
+                    urlP = urlP.replace(':slug', slug);
+                    urlD = urlD.replace(':id', id);
+
+                    var lists = `<div class="product">
+                    <div class="product-cart-details">
+                        <h4 class="product-title">
+                            <a href=urlP>` + listItems[i]['title'] + `</a>
+                        </h4>
+                        <span class="cart-product-info">
+                            <span class="cart-product-qty">` + listItems[i]['count'] + ` x </span>
+                            ` + listItems[i]['total_price'] + ` تومان
+                        </span>
+                    </div>
+                    <!-- End .product-cart-details -->
+
+                    <figure class="product-image-container">
+                        <a href=urlP class="product-image">
+                            <img src="/` + listItems[i]['banner'] + ` " alt="product"/>
+                        </a>
+                    </figure>
+                    <a href=urlD class="btn-remove" title="حذف محصول"><i
+                        class="icon-close"></i></a>
+                    </div>`
+                    itemsProductHtml = itemsProductHtml + lists;
+                }
+                document.getElementById('cartList').innerHTML = itemsProductHtml;
+            }
+        });
+    }
+
+    @if (\Illuminate\Support\Facades\Auth::check())
+    cartContent()
+    @endif
+</script>
+
 </body>
 
 </html>

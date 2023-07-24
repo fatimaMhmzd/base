@@ -120,18 +120,19 @@
                                                     <div class="product-action">
 <!--                                                        <a href="popup/quickView.html" class="btn-product btn-quickview"
                                                            title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
-                                                        <a href="#" class="btn-product btn-compare"
-                                                           title="مقایسه"><span>مقایسه</span></a>
+<!--                                                        <a href="#" class="btn-product btn-compare"
+                                                           title="مقایسه"><span>مقایسه</span></a>-->
                                                     </div><!-- End .product-action -->
 
-                                                    <a href="{{route('shop_basket_order_store',['productId'=>$product->id])}}" class="btn-product btn-cart"><span>افزودن به سبد
-                                                        خرید</span></a>
+                                                    <a onclick="addToBasket({{$product->id}})" type="button"
+                                                       class="btn-product btn-cart">
+                                                        <span>افزودن به سبد خرید</span></a>
                                                 </div><!-- End .product-list-action -->
                                             </div><!-- End .col-sm-6 col-lg-3 -->
 
                                             <div class="col-lg-6">
                                                 <div class="product-body product-action-inner">
-                                                    <a href="{{route('product_wishList_store',['productId'=>$product->id])}}" class="btn-product btn-wishlist"
+                                                    <a onclick="addToWishlist({{$product->id}})" type="button" class="btn-product btn-wishlist"
                                                        title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
                                                     <div class="product-cat">
@@ -151,18 +152,6 @@
                                                                      alt="product desc">
                                                             </a>
                                                         @endforeach
-                                                       {{-- <a href="#" class="active">
-                                                            <img src="/assets/images/products/product-4-thumb.jpg"
-                                                                 alt="product desc">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img src="/assets/images/products/product-4-2-thumb.jpg"
-                                                                 alt="product desc">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img src="/assets/images/products/product-4-3-thumb.jpg"
-                                                                 alt="product desc">
-                                                        </a>--}}
                                                     </div><!-- End .product-nav -->
                                                 </div><!-- End .product-body -->
                                             </div><!-- End .col-lg-6 -->
@@ -578,18 +567,19 @@
                                                     </a>
 
                                                     <div class="product-action-vertical">
-                                                        <a href="{{route('product_wishList_store',['productId'=>$product->id])}}"
+                                                        <a onclick="addToWishlist({{$product->id}})"
                                                            class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
 <!--                                                        <a href="popup/quickView.html"
                                                            class="btn-product-icon btn-quickview"
                                                            title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
-                                                        <a href="#" class="btn-product-icon btn-compare"
-                                                           title="مقایسه"><span>مقایسه</span></a>
+<!--                                                        <a href="#" class="btn-product-icon btn-compare"
+                                                           title="مقایسه"><span>مقایسه</span></a>-->
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a href="{{route('shop_basket_order_store',['productId'=>$product->id])}}" class="btn-product btn-cart"><span>افزودن به
+                                                        <a onclick="addToBasket({{$product->id}})" type="button"
+                                                           class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
                                                     </div><!-- End .product-action -->
                                                 </figure><!-- End .product-media -->
@@ -968,18 +958,18 @@
                                                     </a>
 
                                                     <div class="product-action-vertical">
-                                                        <a href="{{route('product_wishList_store',['productId'=>$product->id])}}"
+                                                        <a onclick="addToWishlist({{$product->id}})" type="button"
                                                            class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
 <!--                                                        <a href="popup/quickView.html"
                                                            class="btn-product-icon btn-quickview"
                                                            title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
-                                                        <a href="#" class="btn-product-icon btn-compare"
-                                                           title="مقایسه"><span>مقایسه</span></a>
+<!--                                                        <a href="#" class="btn-product-icon btn-compare"
+                                                           title="مقایسه"><span>مقایسه</span></a>-->
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a href="{{route('shop_basket_order_store',['productId'=>$product->id])}}"
+                                                        <a onclick="addToBasket({{$product->id}})" type="button"
                                                            class="btn-product btn-cart">
                                                             <span>افزودن به سبد خرید</span></a>
                                                     </div><!-- End .product-action -->
@@ -1511,18 +1501,18 @@
                                                     </a>
 
                                                     <div class="product-action-vertical">
-                                                        <a href="{{route('product_wishList_store',['productId'=>$product->id])}}"
+                                                        <a onclick="addToWishlist({{$product->id}})" type="button"
                                                            class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
 <!--                                                        <a href="popup/quickView.html"
                                                            class="btn-product-icon btn-quickview"
                                                            title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
-                                                        <a href="#" class="btn-product-icon btn-compare"
-                                                           title="مقایسه"><span>مقایسه</span></a>
+<!--                                                        <a href="#" class="btn-product-icon btn-compare"
+                                                           title="مقایسه"><span>مقایسه</span></a>-->
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a href="{{route('shop_basket_order_store',['productId'=>$product->id])}}"
+                                                        <a onclick="addToBasket({{$product->id}})" type="button"
                                                            class="btn-product btn-cart">
                                                             <span>افزودن به سبد خرید</span></a>
                                                     </div><!-- End .product-action -->
@@ -2503,6 +2493,26 @@
     </main><!-- End .main -->
 
     <script>
+        function addToBasket(id) {
+            var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
+            if(isAuth){
+                $.ajax({
+                    url: `/shop_basket/order/store?productId=${id}`,
+                    type: "Get",
+                });
+                cartContent()
+            };
+        }
+
+        function addToWishlist(id) {
+            var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
+            if (isAuth) {
+                $.ajax({
+                    url: `/product/wishlist/store?productId=${id}`,
+                    type: "Get",
+                });
+            }
+        }
 
         function changeStyle(divId, iconId) {
             const divsToHide = document.getElementsByClassName('products-area');
@@ -2517,5 +2527,6 @@
             }
             document.getElementById(`${iconId}`).classList.add('active');
         }
+
     </script>
 @endsection
