@@ -40,7 +40,8 @@
                                     </div>
                                 </div><!-- End .toolbox-sort -->
                                 <div class="toolbox-layout">
-                                    <a onclick="changeStyle('showStyleOne', 'one')" id="one" class="btn-layout active activing">
+                                    <a onclick="changeStyle('showStyleOne', 'one')" id="one"
+                                       class="btn-layout active activing">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="10" height="4"/>
@@ -49,7 +50,8 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('showStyleTwo', 'two')" id="two" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleTwo', 'two')" id="two"
+                                       class="btn-layout activing">
                                         <svg width="10" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -58,7 +60,8 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('showStyleThree', 'three')" id="three" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleThree', 'three')" id="three"
+                                       class="btn-layout activing">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -69,7 +72,8 @@
                                         </svg>
                                     </a>
 
-                                    <a onclick="changeStyle('showStyleFour', 'four')" id="four" class="btn-layout activing">
+                                    <a onclick="changeStyle('showStyleFour', 'four')" id="four"
+                                       class="btn-layout activing">
                                         <svg width="22" height="10">
                                             <rect x="0" y="0" width="4" height="4"/>
                                             <rect x="6" y="0" width="4" height="4"/>
@@ -86,6 +90,86 @@
                         </div><!-- End .toolbox -->
 
                         <div class="products products-area mb-3" style="display: block" id="showStyleOne">
+                            @if(count($data->product) > 0)
+                                @foreach($data->product as $product)
+                                    <div class="product product-list">
+                                        <div class="row">
+                                            <div class="col-6 col-lg-3">
+                                                <figure class="product-media">
+{{--                                                    <span class="product-label label-new">جدید</span>--}}
+                                                    <a href="{{route('shop_productDetail', $product->slug)}}">
+                                                        <img src="/{{$product->banner}}" alt="تصویر محصول"
+                                                             class="product-image">
+                                                    </a>
+                                                </figure><!-- End .product-media -->
+                                            </div><!-- End .col-sm-6 col-lg-3 -->
+
+                                            <div class="col-6 col-lg-3 order-lg-last">
+                                                <div class="product-list-action">
+                                                    <div class="product-price">
+                                                        {{$product->price}} تومان
+                                                    </div><!-- End .product-price -->
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: {{$product->avg_rate}}%;"></div>
+                                                            <!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                        <span class="ratings-text">( {{$product->num_visit}} بازدید )</span>
+                                                    </div><!-- End .rating-container -->
+
+                                                    <div class="product-action">
+<!--                                                        <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                           title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
+                                                        <a href="#" class="btn-product btn-compare"
+                                                           title="مقایسه"><span>مقایسه</span></a>
+                                                    </div><!-- End .product-action -->
+
+                                                    <a href="{{route('shop_basket_order_store',['id'=>$product->id])}}" class="btn-product btn-cart"><span>افزودن به سبد
+                                                        خرید</span></a>
+                                                </div><!-- End .product-list-action -->
+                                            </div><!-- End .col-sm-6 col-lg-3 -->
+
+                                            <div class="col-lg-6">
+                                                <div class="product-body product-action-inner">
+                                                    <a href="{{route('product_wishList_store',['id'=>$product->id])}}" class="btn-product btn-wishlist"
+                                                       title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
+                                                        مندی</span></a>
+                                                    <div class="product-cat">
+{{--                                                        <a href="{{route('shop_storePageClient', $product->group->slug)}}">{{route($product->group->title)}}</a>--}}
+                                                    </div><!-- End .product-cat -->
+                                                    <h3 class="product-title"><a href="{{route('shop_productDetail', $product->slug)}}">{{$product->title}}</a>
+                                                    </h3><!-- End .product-title -->
+
+                                                    <div class="product-content">
+                                                        <p>{{$product->short_description}}</p>
+                                                    </div><!-- End .product-content -->
+
+                                                    <div class="product-nav product-nav-thumbs">
+                                                        @foreach($product->image as $pic)
+                                                            <a href="#" class="active">
+                                                                <img src="/{{$pic->url}}"
+                                                                     alt="product desc">
+                                                            </a>
+                                                        @endforeach
+                                                       {{-- <a href="#" class="active">
+                                                            <img src="/assets/images/products/product-4-thumb.jpg"
+                                                                 alt="product desc">
+                                                        </a>
+                                                        <a href="#">
+                                                            <img src="/assets/images/products/product-4-2-thumb.jpg"
+                                                                 alt="product desc">
+                                                        </a>
+                                                        <a href="#">
+                                                            <img src="/assets/images/products/product-4-3-thumb.jpg"
+                                                                 alt="product desc">
+                                                        </a>--}}
+                                                    </div><!-- End .product-nav -->
+                                                </div><!-- End .product-body -->
+                                            </div><!-- End .col-lg-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .product -->
+                                @endforeach
+                            @else
                             <div class="product product-list">
                                 <div class="row">
                                     <div class="col-6 col-lg-3">
@@ -477,10 +561,16 @@
                                     </div><!-- End .col-lg-6 -->
                                 </div><!-- End .row -->
                             </div><!-- End .product -->
+                            @endif
                         </div><!-- End .products -->
 
                         <div class="products products-area mb-3" style="display: none" id="showStyleTwo">
                             <div class="row justify-content-center">
+                                @if(count($data->product) > 0)
+                                    @foreach($data->product as $product)
+
+                                    @endforeach
+                                @else
                                 <div class="col-6">
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
@@ -806,11 +896,17 @@
                                         </div><!-- End .product-body -->
                                     </div><!-- End .product -->
                                 </div><!-- End .col-sm-6 -->
+                                @endif
                             </div><!-- End .row -->
                         </div><!-- End .products -->
 
                         <div class="products products-area mb-3" style="display: none" id="showStyleThree">
                             <div class="row justify-content-center">
+                                @if(count($data->product) > 0)
+                                    @foreach($data->product as $product)
+
+                                    @endforeach
+                                @else
                                 <div class="col-6 col-md-4 col-lg-4">
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
@@ -1288,11 +1384,17 @@
                                         </div><!-- End .product-body -->
                                     </div><!-- End .product -->
                                 </div><!-- End .col-sm-6 col-lg-4 -->
+                                @endif
                             </div><!-- End .row -->
                         </div><!-- End .products -->
 
                         <div class="products products-area mb-3" style="display: none" id="showStyleFour">
                             <div class="row justify-content-center">
+                                @if(count($data->product) > 0)
+                                    @foreach($data->product as $product)
+
+                                    @endforeach
+                                @else
                                 <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                                     <div class="product product-7 text-center">
                                         <figure class="product-media">
@@ -1931,6 +2033,7 @@
                                         </div><!-- End .product-body -->
                                     </div><!-- End .product -->
                                 </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                @endif
                             </div><!-- End .row -->
                         </div><!-- End .products -->
 
@@ -2238,15 +2341,15 @@
 
     <script>
 
-        function changeStyle(divId , iconId) {
+        function changeStyle(divId, iconId) {
             const divsToHide = document.getElementsByClassName('products-area');
-            for(var i = 0; i < divsToHide.length; i++){
+            for (var i = 0; i < divsToHide.length; i++) {
                 divsToHide[i].style.display = "none";
             }
             document.getElementById(`${divId}`).style.display = "block";
 
             const iconActve = document.getElementsByClassName('activing');
-            for(var j = 0; j < iconActve.length; j++) {
+            for (var j = 0; j < iconActve.length; j++) {
                 iconActve[j].classList.remove('active');
             }
             document.getElementById(`${iconId}`).classList.add('active');
