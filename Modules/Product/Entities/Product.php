@@ -5,6 +5,7 @@ namespace Modules\Product\Entities;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -92,7 +93,7 @@ class Product extends Model
         "created_at" => "timestamp",
         "updated_at" => "timestamp"
     ];
-    protected $with = ["image", "comments", "color", "size", "prices"];
+    protected $with = ["image", "comments","group", "color", "size", "prices"];
 
     public function image(): MorphMany
     {

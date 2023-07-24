@@ -2,6 +2,7 @@
 
 namespace Modules\Page\Services;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Modules\Page\Http\Repositories\PageRepository;
 use Modules\Page\Http\Requests\page\ValidatePageRequest;
@@ -149,6 +150,11 @@ class PageService
         $bestProduct = resolve(ProductService::class)->all();
         $mostSell = resolve(ProductService::class)->all();
         $highestRate = resolve(ProductService::class)->all();
+        /*if (Auth::check()){
+            foreach ($bestProduct as $item){
+            }
+
+        }*/
 
         return (object)array("allSocialMedia"=>$allSocialMedia,"bestProduct"=>$bestProduct,"mostSell"=>$mostSell,"highestRate"=>$highestRate);
     }
