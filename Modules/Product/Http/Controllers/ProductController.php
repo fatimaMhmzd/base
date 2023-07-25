@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function index(Request $request ,$slug=null)
     {
-        $data = $this->service->shopIndexPage($request,$slug);
+        $data = $this->service->shopIndexPage($request,$slug); //return $data;
         return view('product::client.store',compact('data'));
     }
 
