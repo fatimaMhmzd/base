@@ -21,6 +21,7 @@ class ValidateBlogRequest extends FormRequest
             'description' => 'nullable|string',
             'content' => 'nullable|string',
             'lable' => 'nullable|array',
+            'file' => 'nullable|image|mimes:jpg,png|max:5000',
 
         ];
     }
