@@ -50,21 +50,22 @@ class OrderService
         ];
 
         $all = $this->factorRepository->findWithInputs($inputs);
-        foreach ($all->part as $item) {
-            $partItem = (object)[
-                "id" => $item->id,
-                "title" => $item->product->title,
-                "sub_title" => $item->product->sub_title,
-                "banner" => $item->product->banner,
-                "slug" => $item->product->slug,
-                "count" => $item->count,
-                "total_price" => $item->total_price,
-                "price" => $item->product->price,
-                "off_price" => $item->product->off_price,
+        if ($all and count($all->part) != 0) {
+            foreach ($all->part as $item) {
+                $partItem = (object)[
+                    "id" => $item->id,
+                    "title" => $item->product->title,
+                    "sub_title" => $item->product->sub_title,
+                    "banner" => $item->product->banner,
+                    "slug" => $item->product->slug,
+                    "count" => $item->count,
+                    "total_price" => $item->total_price,
+                    "price" => $item->product->price,
+                    "off_price" => $item->product->off_price,
 
-            ];
-            array_push($parts, $partItem);
-
+                ];
+                array_push($parts, $partItem);
+            }
         }
         $res = (object)[
             "total_part_price" => $all->total_part_price,
@@ -137,7 +138,6 @@ class OrderService
 
             } catch (\Exception $exception) {
                 DB::rollBack();
-                return $exception;
                 throw new \Exception(trans("custom.defaults.store_failed"));
             }
         }
