@@ -83,9 +83,9 @@ class OrderService
             DB::beginTransaction();
             try {
                 $itemDeleted = $this->factorItemRepository->delete($item);
-
+                $totalUpdate = $this->update($item->factor_id);
                 DB::commit();
-                return $itemDeleted;
+                return $totalUpdate;
             } catch (\Exception $exception) {
                 DB::rollBack();
                 throw new \Exception(trans("custom.defaults.delete_failed"));
