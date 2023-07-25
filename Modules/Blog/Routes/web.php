@@ -17,7 +17,7 @@ use Modules\Blog\Http\Controllers\BlogGroupController;
 
 Route::group(['prefix' => 'blog', 'as' => 'blog_'], function () {
     Route::get('/blog', [BlogGroupController::class, 'list'])->name('list');
-    Route::get('/blogDetail', [BlogController::class, 'blogDetail'])->name('blogDetail');
+    Route::get('/blogDetail/{slug}', [BlogController::class, 'show'])->name('blogDetail');
 });
 
 ///{slug}
