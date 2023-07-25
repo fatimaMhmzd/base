@@ -56,6 +56,7 @@ class OrderService
                 "title" => $item->product->title,
                 "sub_title" => $item->product->sub_title,
                 "banner" => $item->product->banner,
+                "slug" => $item->product->slug,
                 "count" => $item->count,
                 "total_price" => $item->total_price,
                 "price" => $item->product->price,
@@ -114,7 +115,8 @@ class OrderService
                         $factorItemUpdate = [];
                         $total_price = 0;
                         $count = $item->count;
-                        $priceItem = resolve(PriceProductService::class)->findPrice($count, $item->product->id);
+                        $priceItem = resolve(PriceProductService::class)->findPrice($count, $item->product_id);
+
                         if ($priceItem) {
                             $total_price += $count * $priceItem->price;
                         } else {
@@ -131,7 +133,7 @@ class OrderService
                 $totalUnitUpdated = $this->factorRepository->update($totalUnitItem, $factorUpdate);
 
                 DB::commit();
-              /*  return $totalUnitItem;*/
+                return $totalUnitItem;
 
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -182,17 +184,11 @@ class OrderService
                 $factorItemUpdate["count"] = $count;
             }
 
-
-            $factorItemUpdate["last_price"] = $price;
-            $factorItemUpdate["total_price"] = $price * $factorItemUpdate["count"];
             $totalUnitItemUpdated = $this->factorItemRepository->update($totalUnitsItem, $factorItemUpdate);
-
-            $factorUpdate["total_part_price"] = $totalUnit->total_part_price + $factorItemUpdate["total_price"];
-            $factorUpdate["total_amount"] = $totalUnit->total_amount + $factorItemUpdate["total_price"];
-            $totalUnitUpdated = $this->factorRepository->update($totalUnit, $factorUpdate);
+            $totalUpdate = $this->update($factorItem["factor_id"]);
 
             DB::commit();
-            return $totalUnitItemUpdated;
+            return $totalUpdate;
 
         } catch (\Exception $exception) {
             DB::rollBack();
