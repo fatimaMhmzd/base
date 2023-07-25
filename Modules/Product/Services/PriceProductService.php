@@ -38,6 +38,14 @@ class PriceProductService
     {
         return $this->priceProductRepository->find($id);
     }
+    public function findPrice($number,$productId)
+    {
+
+        $queryItems = $this->priceProductRepository->by(query:null,col:'product_id',value:$productId);
+        $queryItems = $this->priceProductRepository->byOperator(query:$queryItems ,col:'number',value:$number,operator:"<=");
+        $queryItems = $this->priceProductRepository->orderBy(query:$queryItems ,orderByColumn:'number');
+        return $queryItems->first();
+    }
 
     public function delete($id)
     {

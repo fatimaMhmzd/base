@@ -21,7 +21,8 @@ Route::group(['prefix' => 'shop_basket', 'as' => 'shop_basket_'], function () {
     Route::group(['prefix' => 'order', 'as' => 'order_'], function () {
         Route::get('/store', [OrderController::class, 'store'])->name('store');
         Route::get('/show', [OrderController::class, 'show'])->name('show');
-        Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('destroy');
+        Route::get('/destroy/{id}', [OrderController::class, 'destroy'])->name('destroy');
+        Route::get('/update/{id}', [OrderController::class, 'update'])->name('update');
 
 
 
