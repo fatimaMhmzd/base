@@ -96,7 +96,7 @@ class OrderService
         }
     }
 
-    public function update($id)
+    public function updateFactor($id)
     {
         $factorUpdate = [];
         $total_part_price = 0;
@@ -122,6 +122,7 @@ class OrderService
                             $total_price += $count * $priceItem->price;
                         } else {
                             $total_price += $count * $item->product->price;
+
                         }
                         $factorItemUpdate["last_price"] = $item->product->price;
                         $factorItemUpdate["total_price"] = $total_price;
@@ -148,6 +149,7 @@ class OrderService
     {
         $factor = [];
         $factorItem = [];
+        $total_price = 0;
 
         if ($request->propertyId) {
             $colorId = resolve(ProductPropertyService::class)->find($request->propertyId)->color_id;
@@ -171,10 +173,18 @@ class OrderService
             $totalUnitsItem = $this->factorItemRepository->firstOrCreate($factorItem);
             $count = $request->count ?? 1;
             $factorItemUpdate["count"] = $count;
+            $priceItem = resolve(PriceProductService::class)->findPrice($count, $totalUnitsItem->product_id);
+            if ($priceItem) {
+                $total_price = $count * $priceItem->price;
+            } else {
+                $total_price = $count * $price;
 
+            }
+            $factorItemUpdate["last_price"] = $price;
+            $factorItemUpdate["total_price"] = $total_price;
             $totalUnitItemUpdated = $this->factorItemRepository->update($totalUnitsItem, $factorItemUpdate);
             DB::commit();
-            $totalUpdate = $this->update($factorItem["factor_id"]);
+            $totalUpdate = $this->updateFactor($totalUnit->id);
             return $totalUpdate;
 
         } catch (\Exception $exception) {
