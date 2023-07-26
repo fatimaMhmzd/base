@@ -24,7 +24,7 @@
                                     }'>
                                 @if($slider->getBy(1))
                                     @foreach($slider->getBy(1) as $slide)
-                                        @if($slide->title == "پیشنهادهای روزانه")
+{{--                                        @if($slide->title == "پیشنهادهای روزانه")--}}
                                             <div class="intro-slide">
                                                 <figure class="slide-image">
                                                     <picture>
@@ -55,7 +55,7 @@
                                                     </a>
                                                 </div><!-- End .intro-content -->
                                             </div><!-- End .intro-slide -->
-                                        @endif
+{{--                                        @endif--}}
                                     @endforeach
                                 @else
                                     <div class="intro-slide">
@@ -130,7 +130,7 @@
                         <div class="intro-banners">
                             @if($slider->getBy(1))
                                 @foreach($slider->getBy(1) as $slide)
-                                    @if($slide->title != "پیشنهادهای روزانه")
+{{--                                    @if($slide->title != "پیشنهادهای روزانه")--}}
                                         <div class="banner mb-lg-1 mb-xl-2">
                                             <a href="#">
                                                 <img src="/{{$slide->image->url}}" alt="بنر">
@@ -145,7 +145,7 @@
                                                 <a href="#" class="banner-link">خرید<i class="icon-long-arrow-left"></i></a>
                                             </div><!-- End .banner-content -->
                                         </div><!-- End .banner -->
-                                    @endif
+{{--                                    @endif--}}
                                 @endforeach
                             @else
                                 <div class="banner mb-lg-1 mb-xl-2">
@@ -248,20 +248,23 @@
                                 <figure class="product-media">
                                     <a href="{{route('shop_productDetail', $bestP->slug)}}">
                                         <img
-                                            src="{{$bestP->banner ? $bestP->banner : "/assets/images/demos/demo-3/products/product-1.jpg"}}"
+                                            src="/{{$bestP->banner ? $bestP->banner : "assets/images/demos/demo-3/products/product-1.jpg"}}"
                                             alt="{{$bestP->title}}"
                                             class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="/product/wishlist/store?productId={{$bestP->id}}" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                لیست علاقه مندی</span></a>
+                                        <a onclick="addToWishlist({{$bestP->id}})" class="btn-product-icon btn-wishlist btn-expandable">
+                                            <span>افزودن به لیست علاقه مندی</span>
+                                        </a>
+{{--                                        href="/product/wishlist/store?productId={{$bestP->id}}"--}}
                                     </div><!-- End .product-action -->
 
                                     <div class="product-action product-action-dark">
-                                        <a href="/shop_basket/order/store?productId={{$bestP->id}}" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
-                                                به
-                                                سبد خرید</span></a>
+                                        <a onclick="addToBasket({{$bestP->id}}" type="button" class="btn-product btn-cart text-decoration-none" title="افزودن به سبد خرید">
+                                            <span>افزودن به سبد خرید</span>
+                                        </a>
+{{--                                        href="/shop_basket/order/store?productId={{$bestP->id}}"--}}
                                         <a href="#quickview-modal" class="btn-product btn-quickview"
                                            title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
                                     </div><!-- End .product-action -->
@@ -318,17 +321,17 @@
                                 <figure class="product-media">
                                     <a href={{route('shop_productDetail', $mostS->slug)}}>
                                         <img
-                                        src="{{$mostS->banner ? $mostS->banner : "/assets/images/demos/demo-3/products/product-1.jpg"}}"
+                                        src="/{{$mostS->banner ? $mostS->banner : "assets/images/demos/demo-3/products/product-1.jpg"}}"
                                         alt="{{$mostS->title}}" class="product-image">
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
+                                        <a onclick="addToWishlist({{$mostS->id}})" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
                                                 لیست علاقه مندی</span></a>
                                     </div><!-- End .product-action -->
 
                                     <div class="product-action product-action-dark">
-                                        <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
+                                        <a onclick="addToBasket({{$mostS->id}})" class="btn-product btn-cart text-decoration-none" title="افزودن به سبد خرید"><span>افزودن
                                                 به
                                                 سبد خرید</span></a>
                                         <a href="popup/quickView.html" class="btn-product btn-quickview"
@@ -340,7 +343,7 @@
                                     <div class="product-cat">
                                         <a href="#">{{$mostS->title}}</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">{{$mostS->full_title}}</a></h3>
+                                    <h3 class="product-title"><a href="{{route('shop_productDetail', $mostS->slug)}}">{{$mostS->full_title}}</a></h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
                                         {{$mostS->price}} تومان
@@ -386,20 +389,19 @@
                                 <figure class="product-media">
                                     <a href={{route('shop_productDetail', $highR->slug)}}>
                                         <img
-                                            src="{{$highR->banner ? $highR->banner : "/assets/images/demos/demo-3/products/product-1.jpg"}}"
+                                            src="/{{$highR->banner ? $highR->banner : "assets/images/demos/demo-3/products/product-1.jpg"}}"
                                             alt="{{$highR->title}}" class="product-image">
                                     </a>
 
 
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                لیست علاقه مندی</span></a>
+                                        <a onclick="addToWishlist({{$highR->id}})" class="btn-product-icon btn-wishlist btn-expandable text-decoration-none">
+                                            <span>افزودن به لیست علاقه مندی</span></a>
                                     </div><!-- End .product-action -->
 
                                     <div class="product-action product-action-dark">
-                                        <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
-                                                به
-                                                سبد خرید</span></a>
+                                        <a onclick="addToBasket({{$highR->id}})" class="btn-product btn-cart text-decoration-none" title="افزودن به سبد خرید">
+                                            <span>افزودن به سبد خرید </span></a>
                                         <a href="popup/quickView.html" class="btn-product btn-quickview"
                                            title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
                                     </div><!-- End .product-action -->
@@ -409,7 +411,7 @@
                                     <div class="product-cat">
                                         <a href="#">{{$highR->title}}</a>
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">{{$highR->full_title}}</a></h3>
+                                    <h3 class="product-title"><a href="{{route('shop_productDetail', $highR->slug)}}">{{$highR->full_title}}</a></h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="out-price">{{$highR->price}} تومان</span>
