@@ -1275,7 +1275,7 @@
             url: '{{route('shop_basket_order_show')}}',
             type: 'Get',
             success: function (res) {
-                console.log(res);
+                // console.log(res);
                 var listItems = res['part'];
                 document.getElementById('cartCount').innerHTML = res['part'].length;
                 document.getElementById('cartTotal').innerHTML = res['total_part_price'] + 'تومان';

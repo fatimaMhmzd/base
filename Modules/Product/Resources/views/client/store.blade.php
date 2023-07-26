@@ -96,7 +96,7 @@
                                         <div class="row">
                                             <div class="col-6 col-lg-3">
                                                 <figure class="product-media">
-{{--                                                    <span class="product-label label-new">جدید</span>--}}
+                                                    {{--                                                    <span class="product-label label-new">جدید</span>--}}
                                                     <a href="{{route('shop_productDetail', $product->slug)}}">
                                                         <img src="/{{$product->banner}}" alt="تصویر محصول"
                                                              class="product-image">
@@ -111,17 +111,19 @@
                                                     </div><!-- End .product-price -->
                                                     <div class="ratings-container">
                                                         <div class="ratings">
-                                                            <div class="ratings-val" style="width: {{$product->avg_rate}}%;"></div>
+                                                            <div class="ratings-val"
+                                                                 style="width: {{$product->avg_rate}}%;"></div>
                                                             <!-- End .ratings-val -->
                                                         </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( {{$product->num_visit}} بازدید )</span>
+                                                        <span
+                                                            class="ratings-text">( {{$product->num_visit}} بازدید )</span>
                                                     </div><!-- End .rating-container -->
 
                                                     <div class="product-action">
-<!--                                                        <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                                           title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
-<!--                                                        <a href="#" class="btn-product btn-compare"
-                                                           title="مقایسه"><span>مقایسه</span></a>-->
+                                                        <!--                                                        <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                                                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
+                                                        <!--                                                        <a href="#" class="btn-product btn-compare"
+                                                                                                                   title="مقایسه"><span>مقایسه</span></a>-->
                                                     </div><!-- End .product-action -->
 
                                                     <a onclick="addToBasket({{$product->id}})" type="button"
@@ -132,19 +134,24 @@
 
                                             <div class="col-lg-6">
                                                 <div class="product-body product-action-inner">
-                                                    <a onclick="addToWishlist({{$product->id}})" type="button" class="btn-product btn-wishlist"
+                                                    <a onclick="addToWishlist({{$product->id}})" type="button"
+                                                       class="btn-product btn-wishlist"
                                                        title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
                                                     <div class="product-cat">
                                                         <a href="{{route('shop_storePageClient', $product->group->slug)}}">{{$product->group->title}}</a>
                                                     </div><!-- End .product-cat -->
-                                                    <h3 class="product-title"><a href="{{route('shop_productDetail', $product->slug)}}">{{$product->title}}</a>
+                                                    <h3 class="product-title"><a
+                                                            href="{{route('shop_productDetail', $product->slug)}}">{{$product->title}}</a>
                                                     </h3><!-- End .product-title -->
 
                                                     <div class="product-content">
                                                         <p>{{$product->short_description}}</p>
                                                     </div><!-- End .product-content -->
-
+                                                    <div class="mb-3">
+                                                        <p>{{$product->length}} * {{$product->width}}
+                                                            * {{$product->height}}</p>
+                                                    </div><!-- End .product-dims -->
                                                     <div class="product-nav product-nav-thumbs">
                                                         @foreach($product->image as $pic)
                                                             <a href="#" class="">
@@ -159,397 +166,397 @@
                                     </div><!-- End .product -->
                                 @endforeach
                             @else
-                            <div class="product product-list">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3">
-                                        <figure class="product-media">
-                                            <span class="product-label label-new">جدید</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-                                        </figure><!-- End .product-media -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                <div class="product product-list">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <figure class="product-media">
+                                                <span class="product-label label-new">جدید</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
+                                            </figure><!-- End .product-media -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                    <div class="col-6 col-lg-3 order-lg-last">
-                                        <div class="product-list-action">
-                                            <div class="product-price">
-                                                60,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                        <div class="col-6 col-lg-3 order-lg-last">
+                                            <div class="product-list-action">
+                                                <div class="product-price">
+                                                    60,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 2 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-action">
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action -->
+                                                <div class="product-action">
+                                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action -->
 
-                                            <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
+                                                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
                                                         خرید</span></a>
-                                        </div><!-- End .product-list-action -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                            </div><!-- End .product-list-action -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                    <div class="col-lg-6">
-                                        <div class="product-body product-action-inner">
-                                            <a href="#" class="btn-product btn-wishlist"
-                                               title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
+                                        <div class="col-lg-6">
+                                            <div class="product-body product-action-inner">
+                                                <a href="#" class="btn-product btn-wishlist"
+                                                   title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
-                                            <div class="product-cat">
-                                                <a href="#">زنانه</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">دامن چرم قهوه ای</a>
-                                            </h3><!-- End .product-title -->
+                                                <div class="product-cat">
+                                                    <a href="#">زنانه</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">دامن چرم قهوه ای</a>
+                                                </h3><!-- End .product-title -->
 
-                                            <div class="product-content">
-                                                <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن
-                                                    ساختگی با تولید سادگی نامفهوم </p>
-                                            </div><!-- End .product-content -->
+                                                <div class="product-content">
+                                                    <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن
+                                                        ساختگی با تولید سادگی نامفهوم </p>
+                                                </div><!-- End .product-content -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-4-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-4-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-4-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-4-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .col-lg-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product -->
+
+                                <div class="product product-list">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-4-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
+                                            </figure><!-- End .product-media -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-4-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .col-lg-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .product -->
+                                        <div class="col-6 col-lg-3 order-lg-last">
+                                            <div class="product-list-action">
+                                                <div class="product-price">
+                                                    84,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                            <div class="product product-list">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-                                        </figure><!-- End .product-media -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                                <div class="product-action">
+                                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action -->
 
-                                    <div class="col-6 col-lg-3 order-lg-last">
-                                        <div class="product-list-action">
-                                            <div class="product-price">
-                                                84,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-
-                                            <div class="product-action">
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action -->
-
-                                            <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
+                                                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
                                                         خرید</span></a>
-                                        </div><!-- End .product-list-action -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                            </div><!-- End .product-list-action -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                    <div class="col-lg-6">
-                                        <div class="product-body product-action-inner">
-                                            <a href="#" class="btn-product btn-wishlist"
-                                               title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
+                                        <div class="col-lg-6">
+                                            <div class="product-body product-action-inner">
+                                                <a href="#" class="btn-product btn-wishlist"
+                                                   title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
-                                            <div class="product-cat">
-                                                <a href="#">لباس</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">لباس زنانه زرد تیره</a>
-                                            </h3><!-- End .product-title -->
+                                                <div class="product-cat">
+                                                    <a href="#">لباس</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">لباس زنانه زرد تیره</a>
+                                                </h3><!-- End .product-title -->
 
-                                            <div class="product-content">
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                                    ساختگی با تولید سادگی نامفهوم. </p>
-                                            </div><!-- End .product-content -->
+                                                <div class="product-content">
+                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
+                                                        ساختگی با تولید سادگی نامفهوم. </p>
+                                                </div><!-- End .product-content -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-5-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-5-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-5-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .col-lg-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product -->
+
+                                <div class="product product-list">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <figure class="product-media">
+                                                <span class="product-label label-out">ناموجود</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-5-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .col-lg-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .product -->
+                                            </figure><!-- End .product-media -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                            <div class="product product-list">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3">
-                                        <figure class="product-media">
-                                            <span class="product-label label-out">ناموجود</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-                                        </figure><!-- End .product-media -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                        <div class="col-6 col-lg-3 order-lg-last">
+                                            <div class="product-list-action">
+                                                <div class="product-price">
+                                                    <span class="out-price">120,000 تومان</span>
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 80%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 6 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                    <div class="col-6 col-lg-3 order-lg-last">
-                                        <div class="product-list-action">
-                                            <div class="product-price">
-                                                <span class="out-price">120,000 تومان</span>
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 6 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                                <div class="product-action">
+                                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action -->
 
-                                            <div class="product-action">
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action -->
-
-                                            <a href="#" class="btn-product btn-cart disabled"><span>افزودن به سبد
+                                                <a href="#" class="btn-product btn-cart disabled"><span>افزودن به سبد
                                                         خرید</span></a>
-                                        </div><!-- End .product-list-action -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                            </div><!-- End .product-list-action -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                    <div class="col-lg-6">
-                                        <div class="product-body product-action-inner">
-                                            <a href="#" class="btn-product btn-wishlist"
-                                               title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
+                                        <div class="col-lg-6">
+                                            <div class="product-body product-action-inner">
+                                                <a href="#" class="btn-product btn-wishlist"
+                                                   title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
-                                            <div class="product-cat">
-                                                <a href="#">ژاکت</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">بلوز شلوار خاکی</a>
-                                            </h3><!-- End .product-title -->
+                                                <div class="product-cat">
+                                                    <a href="#">ژاکت</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">بلوز شلوار خاکی</a>
+                                                </h3><!-- End .product-title -->
 
-                                            <div class="product-content">
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                                    ساختگی با تولید سادگی نامفهوم </p>
-                                            </div><!-- End .product-content -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .col-lg-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .product -->
+                                                <div class="product-content">
+                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
+                                                        ساختگی با تولید سادگی نامفهوم </p>
+                                                </div><!-- End .product-content -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .col-lg-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product -->
 
-                            <div class="product product-list">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-                                        </figure><!-- End .product-media -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                <div class="product product-list">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
+                                            </figure><!-- End .product-media -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                    <div class="col-6 col-lg-3 order-lg-last">
-                                        <div class="product-list-action">
-                                            <div class="product-price">
-                                                76,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                        <div class="col-6 col-lg-3 order-lg-last">
+                                            <div class="product-list-action">
+                                                <div class="product-price">
+                                                    76,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 2 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-action">
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action -->
+                                                <div class="product-action">
+                                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action -->
 
-                                            <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
+                                                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
                                                         خرید</span></a>
-                                        </div><!-- End .product-list-action -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                            </div><!-- End .product-list-action -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                    <div class="col-lg-6">
-                                        <div class="product-body product-action-inner">
-                                            <a href="#" class="btn-product btn-wishlist"
-                                               title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
+                                        <div class="col-lg-6">
+                                            <div class="product-body product-action-inner">
+                                                <a href="#" class="btn-product btn-wishlist"
+                                                   title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
-                                            <div class="product-cat">
-                                                <a href="#">لی</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">سارافون زنانه آبی</a>
-                                            </h3><!-- End .product-title -->
+                                                <div class="product-cat">
+                                                    <a href="#">لی</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">سارافون زنانه آبی</a>
+                                                </h3><!-- End .product-title -->
 
-                                            <div class="product-content">
-                                                <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                                    ساختگی با تولید سادگی نامفهوم </p>
-                                            </div><!-- End .product-content -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .col-lg-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .product -->
+                                                <div class="product-content">
+                                                    <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
+                                                        ساختگی با تولید سادگی نامفهوم </p>
+                                                </div><!-- End .product-content -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .col-lg-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product -->
 
-                            <div class="product product-list">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3">
-                                        <figure class="product-media">
-                                            <span class="product-label label-new">جدید</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-                                        </figure><!-- End .product-media -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                <div class="product product-list">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <figure class="product-media">
+                                                <span class="product-label label-new">جدید</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
+                                            </figure><!-- End .product-media -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                    <div class="col-6 col-lg-3 order-lg-last">
-                                        <div class="product-list-action">
-                                            <div class="product-price">
-                                                84,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                        <div class="col-6 col-lg-3 order-lg-last">
+                                            <div class="product-list-action">
+                                                <div class="product-price">
+                                                    84,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-action">
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action -->
+                                                <div class="product-action">
+                                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action -->
 
-                                            <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
+                                                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
                                                         خرید</span></a>
-                                        </div><!-- End .product-list-action -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                            </div><!-- End .product-list-action -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                    <div class="col-lg-6">
-                                        <div class="product-body product-action-inner">
-                                            <a href="#" class="btn-product btn-wishlist"
-                                               title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
+                                        <div class="col-lg-6">
+                                            <div class="product-body product-action-inner">
+                                                <a href="#" class="btn-product btn-wishlist"
+                                                   title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
-                                            <div class="product-cat">
-                                                <a href="#">کفش</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">کتونی ورزشی زنانه رنگ
-                                                    بژ</a></h3><!-- End .product-title -->
+                                                <div class="product-cat">
+                                                    <a href="#">کفش</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">کتونی ورزشی زنانه رنگ
+                                                        بژ</a></h3><!-- End .product-title -->
 
-                                            <div class="product-content">
-                                                <p>Lلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                                    ساختگی با تولید سادگی نامفهوم. </p>
-                                            </div><!-- End .product-content -->
+                                                <div class="product-content">
+                                                    <p>Lلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
+                                                        ساختگی با تولید سادگی نامفهوم. </p>
+                                                </div><!-- End .product-content -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-8-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-8-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-8-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .col-lg-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product -->
+
+                                <div class="product product-list">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-8-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .col-lg-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .product -->
+                                            </figure><!-- End .product-media -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                            <div class="product product-list">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-                                        </figure><!-- End .product-media -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                        <div class="col-6 col-lg-3 order-lg-last">
+                                            <div class="product-list-action">
+                                                <div class="product-price">
+                                                    52,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 80%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 1 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                    <div class="col-6 col-lg-3 order-lg-last">
-                                        <div class="product-list-action">
-                                            <div class="product-price">
-                                                52,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 1 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                                <div class="product-action">
+                                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action -->
 
-                                            <div class="product-action">
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action -->
-
-                                            <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
+                                                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
                                                         خرید</span></a>
-                                        </div><!-- End .product-list-action -->
-                                    </div><!-- End .col-sm-6 col-lg-3 -->
+                                            </div><!-- End .product-list-action -->
+                                        </div><!-- End .col-sm-6 col-lg-3 -->
 
-                                    <div class="col-lg-6">
-                                        <div class="product-body product-action-inner">
-                                            <a href="#" class="btn-product btn-wishlist"
-                                               title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
+                                        <div class="col-lg-6">
+                                            <div class="product-body product-action-inner">
+                                                <a href="#" class="btn-product btn-wishlist"
+                                                   title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
-                                            <div class="product-cat">
-                                                <a href="#">کیف</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">کیف بلند دوشی زنجیز
-                                                    دار</a></h3><!-- End .product-title -->
+                                                <div class="product-cat">
+                                                    <a href="#">کیف</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">کیف بلند دوشی زنجیز
+                                                        دار</a></h3><!-- End .product-title -->
 
-                                            <div class="product-content">
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                                    ساختگی با تولید سادگی نامفهوم </p>
-                                            </div><!-- End .product-content -->
+                                                <div class="product-content">
+                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
+                                                        ساختگی با تولید سادگی نامفهوم </p>
+                                                </div><!-- End .product-content -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-9-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-9-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-9-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .col-lg-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .product -->
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-9-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-9-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-9-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .col-lg-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product -->
                             @endif
                         </div><!-- End .products -->
 
@@ -560,7 +567,7 @@
                                         <div class="col-6">
                                             <div class="product product-7 text-center">
                                                 <figure class="product-media">
-{{--                                                    <span class="product-label label-new">جدید</span>--}}
+                                                    {{--                                                    <span class="product-label label-new">جدید</span>--}}
                                                     <a href="{{route('shop_productDetail', $product->slug)}}">
                                                         <img src="/{{$product->banner}}" alt="تصویر محصول"
                                                              class="product-image">
@@ -570,11 +577,11 @@
                                                         <a onclick="addToWishlist({{$product->id}})"
                                                            class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-<!--                                                        <a href="popup/quickView.html"
-                                                           class="btn-product-icon btn-quickview"
-                                                           title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
-<!--                                                        <a href="#" class="btn-product-icon btn-compare"
-                                                           title="مقایسه"><span>مقایسه</span></a>-->
+                                                        <!--                                                        <a href="popup/quickView.html"
+                                                                                                                   class="btn-product-icon btn-quickview"
+                                                                                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
+                                                        <!--                                                        <a href="#" class="btn-product-icon btn-compare"
+                                                                                                                   title="مقایسه"><span>مقایسه</span></a>-->
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
@@ -594,12 +601,18 @@
                                                     <div class="product-price">
                                                         {{$product->price}} تومان
                                                     </div><!-- End .product-price -->
+                                                    <div class="mb-1 d-flex align-items-center justify-content-center">
+                                                        <p>{{$product->length}} * {{$product->width}}
+                                                            * {{$product->height}}</p>
+                                                    </div><!-- End .product-dims -->
                                                     <div class="ratings-container">
                                                         <div class="ratings">
-                                                            <div class="ratings-val" style="width: {{$product->avg_rate}}%;"></div>
+                                                            <div class="ratings-val"
+                                                                 style="width: {{$product->avg_rate}}%;"></div>
                                                             <!-- End .ratings-val -->
                                                         </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( {{$product->num_visit}} بازدید )</span>
+                                                        <span
+                                                            class="ratings-text">( {{$product->num_visit}} بازدید )</span>
                                                     </div><!-- End .rating-container -->
 
                                                     <div class="product-nav product-nav-thumbs">
@@ -615,331 +628,331 @@
                                         </div><!-- End .col-sm-6 -->
                                     @endforeach
                                 @else
-                                <div class="col-6">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-new">جدید</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-new">جدید</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">زنانه</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">دامن چرمی
-                                                    قهوه ای</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                60,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">زنانه</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">دامن چرمی
+                                                        قهوه ای</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    60,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 2 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-4-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-4-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-4-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-4-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-6">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-4-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
 
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-4-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 -->
-
-                                <div class="col-6">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">لباس</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">لباس زنانه
-                                                    زرد تیره</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                84,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">لباس</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">لباس زنانه
+                                                        زرد تیره</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    84,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-5-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-5-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-5-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-6">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-out">ناموجود</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-5-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 -->
 
-                                <div class="col-6">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-out">ناموجود</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">ژاکت</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">بلوز شلوار
-                                                    خاکی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                <span class="out-price">120,000 تومان</span>
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 6 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">ژاکت</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">بلوز شلوار
+                                                        خاکی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    <span class="out-price">120,000 تومان</span>
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 80%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 6 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 -->
 
-                                <div class="col-6">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">لی</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">سارافون
-                                                    آبی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                76,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">لی</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">سارافون
+                                                        آبی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    76,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 2 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 -->
 
-                                <div class="col-6">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-new">جدید</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-new">جدید</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کفش</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کفش ورزشی
-                                                    بژ</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                84,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کفش</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کفش ورزشی
+                                                        بژ</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    84,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-8-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-8-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-8-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-6">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-8-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 -->
 
-                                <div class="col-6">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کیف</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کیف بلند
-                                                    زنجیزی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                66,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 60%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 1 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کیف</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کیف بلند
+                                                        زنجیزی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    66,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 60%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 1 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-9-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-9-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-9-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 -->
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-9-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-9-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-9-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 -->
                                 @endif
                             </div><!-- End .row -->
                         </div><!-- End .products -->
@@ -951,7 +964,7 @@
                                         <div class="col-6 col-md-4 col-lg-4">
                                             <div class="product product-7 text-center">
                                                 <figure class="product-media">
-{{--                                                    <span class="product-label label-new">جدید</span>--}}
+                                                    {{--                                                    <span class="product-label label-new">جدید</span>--}}
                                                     <a href="{{route('shop_productDetail', $product->slug)}}">
                                                         <img src="/{{$product->banner}}" alt="تصویر محصول"
                                                              class="product-image">
@@ -961,11 +974,11 @@
                                                         <a onclick="addToWishlist({{$product->id}})" type="button"
                                                            class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-<!--                                                        <a href="popup/quickView.html"
-                                                           class="btn-product-icon btn-quickview"
-                                                           title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
-<!--                                                        <a href="#" class="btn-product-icon btn-compare"
-                                                           title="مقایسه"><span>مقایسه</span></a>-->
+                                                        <!--                                                        <a href="popup/quickView.html"
+                                                                                                                   class="btn-product-icon btn-quickview"
+                                                                                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
+                                                        <!--                                                        <a href="#" class="btn-product-icon btn-compare"
+                                                                                                                   title="مقایسه"><span>مقایسه</span></a>-->
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
@@ -985,12 +998,18 @@
                                                     <div class="product-price">
                                                         {{$product->price}} تومان
                                                     </div><!-- End .product-price -->
+                                                    <div class="mb-1 d-flex align-items-center justify-content-center">
+                                                        <p>{{$product->length}} * {{$product->width}}
+                                                            * {{$product->height}}</p>
+                                                    </div><!-- End .product-dims -->
                                                     <div class="ratings-container">
                                                         <div class="ratings">
-                                                            <div class="ratings-val" style="width: {{$product->avg_rate}}%;"></div>
+                                                            <div class="ratings-val"
+                                                                 style="width: {{$product->avg_rate}}%;"></div>
                                                             <!-- End .ratings-val -->
                                                         </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( {{$product->num_visit}} بازدید )</span>
+                                                        <span
+                                                            class="ratings-text">( {{$product->num_visit}} بازدید )</span>
                                                     </div><!-- End .rating-container -->
 
                                                     <div class="product-nav product-nav-thumbs">
@@ -1006,483 +1025,483 @@
 
                                     @endforeach
                                 @else
-                                <div class="col-6 col-md-4 col-lg-4">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-new">جدید</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-new">جدید</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">زنانه</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">دامن چرمی
-                                                    قهوه ای</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                64,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">زنانه</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">دامن چرمی
+                                                        قهوه ای</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    64,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 2 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-4-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-4-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-4-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-4-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-4-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
 
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-4-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 -->
-
-                                <div class="col-6 col-md-4 col-lg-4">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">لباس</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">لباس زنانه
-                                                    زرد تیره</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                84,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">لباس</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">لباس زنانه
+                                                        زرد تیره</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    84,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-5-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-5-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-5-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-out">ناموجود</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-5-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 -->
 
-                                <div class="col-6 col-md-4 col-lg-4">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-out">ناموجود</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">ژاکت</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">بلوز شلوار
-                                                    خاکی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                <span class="out-price">120,000 تومان</span>
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 6 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">ژاکت</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">بلوز شلوار
+                                                        خاکی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    <span class="out-price">120,000 تومان</span>
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 80%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 6 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 -->
 
-                                <div class="col-6 col-md-4 col-lg-4">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">لی</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">سارافون
-                                                    آبی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                76,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">لی</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">سارافون
+                                                        آبی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    76,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 2 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 -->
 
-                                <div class="col-6 col-md-4 col-lg-4">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-new">جدید</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-new">جدید</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کفش</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کفش ورزشی
-                                                    بژ</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                84,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کفش</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کفش ورزشی
+                                                        بژ</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    84,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-8-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-8-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-8-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-8-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 -->
 
-                                <div class="col-6 col-md-4 col-lg-4">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کیف</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کیف بلند
-                                                    زنجیزی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                52,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 60%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 1 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کیف</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کیف بلند
+                                                        زنجیزی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    52,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 60%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 1 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-9-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-9-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-9-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-9-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-top">برتر</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-11.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-9-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-9-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 -->
 
-                                <div class="col-6 col-md-4 col-lg-4">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-top">برتر</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-11.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کفش</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کفش زنانه
-                                                    قهوه ای روشن</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                110,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 1 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کفش</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کفش زنانه
+                                                        قهوه ای روشن</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    110,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 80%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 1 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-11-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-11-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-11-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-11-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-10.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-11-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
 
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-11-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 -->
-
-                                <div class="col-6 col-md-4 col-lg-4">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-10.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">لباس ورزشی</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">لباس زنانه
-                                                    زرد دکمه دار</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                66,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">لباس ورزشی</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">لباس زنانه
+                                                        زرد دکمه دار</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    66,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 -->
 
-                                <div class="col-6 col-md-4 col-lg-4">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-12.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6 col-md-4 col-lg-4">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-12.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کیف</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کیف مسافرتی
-                                                    مشکی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                68,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کیف</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کیف مسافرتی
+                                                        مشکی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    68,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 -->
                                 @endif
                             </div><!-- End .row -->
                         </div><!-- End .products -->
@@ -1494,7 +1513,7 @@
                                         <div class="col-6 col-md-4 col-lg-4 col-xl-3">
                                             <div class="product product-7 text-center">
                                                 <figure class="product-media">
-{{--                                                    <span class="product-label label-new">جدید</span>--}}
+                                                    {{--                                                    <span class="product-label label-new">جدید</span>--}}
                                                     <a href="{{route('shop_productDetail', $product->slug)}}">
                                                         <img src="/{{$product->banner}}" alt="تصویر محصول"
                                                              class="product-image">
@@ -1504,11 +1523,11 @@
                                                         <a onclick="addToWishlist({{$product->id}})" type="button"
                                                            class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-<!--                                                        <a href="popup/quickView.html"
-                                                           class="btn-product-icon btn-quickview"
-                                                           title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
-<!--                                                        <a href="#" class="btn-product-icon btn-compare"
-                                                           title="مقایسه"><span>مقایسه</span></a>-->
+                                                        <!--                                                        <a href="popup/quickView.html"
+                                                                                                                   class="btn-product-icon btn-quickview"
+                                                                                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>-->
+                                                        <!--                                                        <a href="#" class="btn-product-icon btn-compare"
+                                                                                                                   title="مقایسه"><span>مقایسه</span></a>-->
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
@@ -1528,12 +1547,18 @@
                                                     <div class="product-price">
                                                         {{$product->price}} تومان
                                                     </div><!-- End .product-price -->
+                                                    <div class="mb-1 d-flex align-items-center justify-content-center">
+                                                        <p>{{$product->length}} * {{$product->width}}
+                                                            * {{$product->height}}</p>
+                                                    </div><!-- End .product-dims -->
                                                     <div class="ratings-container">
                                                         <div class="ratings">
-                                                            <div class="ratings-val" style="width: {{$product->avg_rate}}%;"></div>
+                                                            <div class="ratings-val"
+                                                                 style="width: {{$product->avg_rate}}%;"></div>
                                                             <!-- End .ratings-val -->
                                                         </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( {{$product->num_visit}} بازدید )</span>
+                                                        <span
+                                                            class="ratings-text">( {{$product->num_visit}} بازدید )</span>
                                                     </div><!-- End .rating-container -->
 
                                                     <div class="product-nav product-nav-thumbs">
@@ -1548,644 +1573,644 @@
                                         </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
                                     @endforeach
                                 @else
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-new">جدید</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-new">جدید</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-4.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">زنانه</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">دامن چرمی
-                                                    قهوه ای</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                60,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">زنانه</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">دامن چرمی
+                                                        قهوه ای</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    60,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 2 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-4-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-4-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-4-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-4-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-4-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
 
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-4-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-5.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">لباس</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">لباس زنانه
-                                                    زرد تیره</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                84,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">لباس</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">لباس زنانه
+                                                        زرد تیره</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    84,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-5-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-5-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-5-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-out">ناموجود</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-5-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-out">ناموجود</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-6.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">ژاکت</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">بلوز شلوار
-                                                    خاکی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                <span class="out-price">120,000 تومان</span>
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 6 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">ژاکت</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">بلوز شلوار
+                                                        خاکی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    <span class="out-price">120,000 تومان</span>
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 80%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 6 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-7.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">لی</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">سارافون
-                                                    آبی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                76,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 20%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">لی</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">سارافون
+                                                        آبی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    76,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 2 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-new">جدید</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-new">جدید</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-8.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کفش</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کفش ورزشی
-                                                    بژ</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                84,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کفش</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کفش ورزشی
+                                                        بژ</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    84,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-8-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-8-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-8-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-8-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-9.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کیف</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کیف بلند
-                                                    زنجیزی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                74,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 60%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 1 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کیف</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کیف بلند
+                                                        زنجیزی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    74,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 60%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 1 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-9-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-9-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-9-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-9-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <span class="product-label label-top">برتر</span>
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-11.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-9-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-9-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <span class="product-label label-top">برتر</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-11.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کفش</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کفش زنانه
-                                                    قهوه ای روشن</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                110,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 1 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کفش</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کفش زنانه
+                                                        قهوه ای روشن</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    110,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 80%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 1 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-11-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-11-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-11-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-11-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-10.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-11-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
 
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-11-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-10.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">لباس زنانه</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">لباس زنانه
-                                                    زرد دکمه دار</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                56,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">لباس زنانه</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">لباس زنانه
+                                                        زرد دکمه دار</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    56,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-12.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-12.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کیف</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کیف مسافرتی
-                                                    مشکی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                68,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کیف</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کیف مسافرتی
+                                                        مشکی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    68,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-13.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-13.jpg" alt="تصویر محصول"
+                                                         class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کیف</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کیف
-                                                    زنانه</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                87,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 40%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 1 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کیف</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کیف
+                                                        زنانه</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    87,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 40%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 1 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-13-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-13-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-13-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-14.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-13-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-14.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">لباس</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">لباس زنانه
-                                                    طرح گوره خری قهوه ای</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                90,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">لباس</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">لباس زنانه
+                                                        طرح گوره خری قهوه ای</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    90,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-thumbs">
-                                                <a href="#" class="active">
-                                                    <img src="/assets/images/products/product-14-thumb.jpg"
-                                                         alt="product desc">
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <a href="#" class="active">
+                                                        <img src="/assets/images/products/product-14-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-14-2-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                    <a href="#">
+                                                        <img src="/assets/images/products/product-14-3-thumb.jpg"
+                                                             alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="/assets/images/products/product-15.jpg" alt="تصویر محصول"
+                                                         class="product-image">
                                                 </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-14-2-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                                <a href="#">
-                                                    <img src="/assets/images/products/product-14-3-thumb.jpg"
-                                                         alt="product desc">
-                                                </a>
-                                            </div><!-- End .product-nav -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product product-7 text-center">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="/assets/images/products/product-15.jpg" alt="تصویر محصول"
-                                                     class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <div class="product-action-vertical">
+                                                    <a href="#"
+                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
-                                                <a href="popup/quickView.html"
-                                                   class="btn-product-icon btn-quickview"
-                                                   title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
-                                                <a href="#" class="btn-product-icon btn-compare"
-                                                   title="مقایسه"><span>مقایسه</span></a>
-                                            </div><!-- End .product-action-vertical -->
+                                                    <a href="popup/quickView.html"
+                                                       class="btn-product-icon btn-quickview"
+                                                       title="مشاهده سریع محصول"><span>مشاهده سریع</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                       title="مقایسه"><span>مقایسه</span></a>
+                                                </div><!-- End .product-action-vertical -->
 
-                                            <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به
+                                                <div class="product-action">
+                                                    <a href="#" class="btn-product btn-cart"><span>افزودن به
                                                             سبد خرید</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat text-center">
-                                                <a href="#">کیف</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title text-center"><a href="product.html">کیف زنانه
-                                                    دوشی</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                65,000 تومان
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 0%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 0 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                            <div class="product-body">
+                                                <div class="product-cat text-center">
+                                                    <a href="#">کیف</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title text-center"><a href="product.html">کیف زنانه
+                                                        دوشی</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    65,000 تومان
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 0%;"></div>
+                                                        <!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 0 بازدید )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
                                 @endif
                             </div><!-- End .row -->
                         </div><!-- End .products -->
