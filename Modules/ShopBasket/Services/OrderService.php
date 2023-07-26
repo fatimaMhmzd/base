@@ -84,7 +84,7 @@ class OrderService
             DB::beginTransaction();
             try {
                 $itemDeleted = $this->factorItemRepository->delete($item);
-                $totalUpdate = $this->update($item->factor_id);
+                $totalUpdate = $this->updateFactor($item->factor_id);
                 DB::commit();
                 return $totalUpdate;
             } catch (\Exception $exception) {
