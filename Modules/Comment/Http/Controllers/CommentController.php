@@ -5,9 +5,16 @@ namespace Modules\Comment\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Blog\Entities\Blog;
+use Modules\Comment\Services\CommentService;
+use Modules\Product\Entities\Product;
 
 class CommentController extends Controller
 {
+    public function __construct(public CommentService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -33,7 +40,21 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->productId) {
+            $item = resolve(Product::class)->find($request->productId);
+        } elseif ($request->blogId) {
+            $item = resolve(Blog::class)->find($request->blogId);
+        }
+        try {
+            $this->service->saveComment($request->comment, $item);
+
+            $message = trans("custom.defaults.store_success");
+            return back()->with('success', true)->with('message', $message);
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
+       
     }
 
     /**

@@ -122,7 +122,6 @@ class ProductService
                 $prices = $inputs["pricearray"] ?? null;
                 $numberss = $inputs["numberarray"] ?? null;
                 $ids = $inputs["ids"] ?? null;
-
                 DB::commit();
                 $image = $inputs["file"] ?? null;
                 if ($image != null) {

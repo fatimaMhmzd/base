@@ -2,8 +2,11 @@
 
 namespace Modules\Comment\Entities;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use JetBrains\PhpStorm\ArrayShape;
 
@@ -50,11 +53,17 @@ class Comment extends Model
         'created_at' => 'timestamp',
         'updated_at' => 'timestamp',
     ];
+    protected $with = ["user"];
 
     public function commentable(): MorphTo
     {
         return $this->morphTo();
     }
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class, "id","user_id");
+    }
+
 
     public static function getStatusComment(): array
     {

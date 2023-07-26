@@ -47,7 +47,6 @@ class BlogController extends Controller
     public function show($slug)
     {
         $data = $this->service->blogDetail($slug);
-//return $data;
         return view('blog::client.blogDetail',compact('data'));
 
     }

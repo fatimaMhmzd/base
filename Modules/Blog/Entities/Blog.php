@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Comment\Entities\Comment;
 use Modules\Polymorphism\Entities\Images;
 
 class Blog extends Model
@@ -51,7 +52,7 @@ class Blog extends Model
         "description" => "string",
         "content" => "string"
     ];
-    protected $with = ["image" , "user" ,"lables"];
+    protected $with = ["image", "comments" , "user" ,"lables"];
 
     public function image(): MorphOne
     {
@@ -72,5 +73,11 @@ class Blog extends Model
     {
         return $this->belongsToMany(Lable::class,"blog_lables","blog_id","lable_id");
     }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
 
 }

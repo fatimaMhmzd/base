@@ -14,15 +14,15 @@ class CommentService
     {
         if($comment && filled($comment)){
             $data = [
-                'comment'=>$comment,
-                'user_id' => Auth::id() ?? null,
-                'replay_to_comments_id' => $replay_to_comments_id ?? 0,
-                'name' => $name ?? Auth::user()->username,
-                'email' => $email ?? Auth::user()->email,
-                'title' => $title ?? null,
+                'user_id' => Auth::id(),
+                /*'replay_to_comments_id' => $replay_to_comments_id ?? 0,*/
+                'replay_to_comments_id' => 0,
+                'name' => Auth::user()->username ?? null,
+                'email' => Auth::user()->email ?? null,
+                'title' =>  null,
                 'content' => $comment,
                 ];
-            if($relation && method_exists($model, $relation)){
+            if($relation and method_exists($model, $relation)){
                 $model->$relation()->create($data);
             }
             elseif (method_exists($model, 'comment')) {

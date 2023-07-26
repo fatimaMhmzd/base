@@ -239,36 +239,33 @@
                     </div><!-- End .related-posts -->
 
                     <div class="comments">
-                        <h3 class="title">3 دیدگاه</h3><!-- End .title -->
+                        <h3 class="title">{{count($data->comments)}} دیدگاه</h3><!-- End .title -->
 
                         <ul>
+                            @foreach($data->comments as $comment)
                             <li>
                                 <div class="comment">
                                     <figure class="comment-media">
                                         <a href="#">
-                                            <img src="/assets/images/blog/comments/1.jpg" alt="User name">
+                                            <img  src="/assets/images/blog/comments/1.jpg" alt="User name">
                                         </a>
                                     </figure>
 
                                     <div class="comment-body">
-                                        <a href="#" class="comment-reply">پاسخ</a>
+<!--                                        <a href="#" class="comment-reply">پاسخ</a>-->
                                         <div class="comment-user">
-                                            <h4><a href="#">کاربر 1</a></h4>
-                                            <span class="comment-date">9 اسفند 1401 - 2:19 بعدازظهر</span>
+                                            <h4><a href="#">@if($comment->name) {{$comment->name}} @else کاربر عادی @endif</a></h4>
+                                            <span class="comment-date">{{$comment->created_at}}</span>
                                         </div> <!-- End .comment-user -->
 
                                         <div class="comment-content">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم، لورم
-                                                ایپسوم متن
-                                                ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با
-                                                تولید
-                                                سادگی نامفهوم.
+                                            <p>{{$comment->content}}
                                             </p>
                                         </div><!-- End .comment-content -->
                                     </div><!-- End .comment-body -->
                                 </div><!-- End .comment -->
 
-                                <ul>
+<!--                                <ul>
                                     <li>
                                         <div class="comment">
                                             <figure class="comment-media">
@@ -284,43 +281,18 @@
                                                     <h4><a href="#">کاربر 2</a></h4>
                                                     <span class="comment-date">9 اسفند 1401 - 2:19
                                                                 بعدازظهر</span>
-                                                </div><!-- End .comment-user -->
+                                                </div>&lt;!&ndash; End .comment-user &ndash;&gt;
 
                                                 <div class="comment-content">
                                                     <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم.</p>
-                                                </div><!-- End .comment-content -->
-                                            </div><!-- End .comment-body -->
-                                        </div><!-- End .comment -->
+                                                </div>&lt;!&ndash; End .comment-content &ndash;&gt;
+                                            </div>&lt;!&ndash; End .comment-body &ndash;&gt;
+                                        </div>&lt;!&ndash; End .comment &ndash;&gt;
                                     </li>
-                                </ul>
+                                </ul>-->
                             </li>
 
-                            <li>
-                                <div class="comment">
-                                    <figure class="comment-media">
-                                        <a href="#">
-                                            <img src="/assets/images/blog/comments/3.jpg" alt="User name">
-                                        </a>
-                                    </figure>
-
-                                    <div class="comment-body">
-                                        <a href="#" class="comment-reply">پاسخ</a>
-                                        <div class="comment-user">
-                                            <h4><a href="#">کاربر 3</a></h4>
-                                            <span class="comment-date">9 اسفند 1401 - 2:19 بعدازظهر</span>
-                                        </div> <!-- End .comment-user -->
-
-                                        <div class="comment-content">
-                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                                ساختگی با تولید سادگی نامفهوم
-                                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                                ساختگی با تولید سادگی نامفهوم
-                                            </p>
-                                        </div><!-- End .comment-content -->
-                                    </div><!-- End .comment-body -->
-                                </div><!-- End .comment -->
-                            </li>
+                            @endforeach
                         </ul>
                     </div><!-- End .comments -->
                     <div class="reply">
@@ -330,24 +302,49 @@
                                 شده اند.</p>
                         </div><!-- End .heading -->
 
-                        <form action="#">
+                        @if(Session::has('success'))
+                            <div class="alert alert-success mt-3">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <strong></strong> {{ Session::get('message', '') }}
+                            </div>
+                        @endif
+                        @if(count($errors) > 0 )
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <ul class="p-0 m-0" style="list-style: none;">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form class="form" method="post" action="{{route('comment_store')}}"
+                              enctype="multipart/form-data">
+                            @csrf
+                            <input name="blogId" value="{{$data->id}}" hidden>
                             <label for="reply-message" class="sr-only">دیدگاه</label>
-                            <textarea name="reply-message" id="reply-message" cols="30" rows="4"
+                            <textarea name="comment" id="reply-message" cols="30" rows="4"
                                       class="form-control" required placeholder="دیدگاه شما *"></textarea>
 
+<!--
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="reply-name" class="sr-only">نام</label>
                                     <input type="text" class="form-control" id="reply-name" name="reply-name"
                                            required placeholder="نام شما *">
-                                </div><!-- End .col-md-6 -->
+                                </div>&lt;!&ndash; End .col-md-6 &ndash;&gt;
 
                                 <div class="col-md-6">
                                     <label for="reply-email" class="sr-only">ایمیل</label>
                                     <input type="email" class="form-control" id="reply-email" name="reply-email"
                                            required placeholder="ایمیل شما *">
-                                </div><!-- End .col-md-6 -->
-                            </div><!-- End .row -->
+                                </div>&lt;!&ndash; End .col-md-6 &ndash;&gt;
+                            </div>&lt;!&ndash; End .row &ndash;&gt;
+-->
 
                             <button type="submit" class="btn btn-outline-primary-2 float-right">
                                 <span>ارسال دیدگاه</span>

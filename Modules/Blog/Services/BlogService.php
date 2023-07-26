@@ -12,7 +12,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class BlogService
 {
-    public function __construct(public BlogRepository $blogRepository )
+    public function __construct(public BlogRepository $blogRepository)
     {
     }
 
@@ -34,7 +34,7 @@ class BlogService
     public function ajax()
     {
         $data = $this->blogRepository->getByInput();
-        return  Datatables::of($data)
+        return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
@@ -46,13 +46,12 @@ class BlogService
             ->addColumn('image', function ($row) {
                 $img = '';
                 if ($row->image) {
-                    $img = '<img src="/' . $row->image->url. '" class="danger w-25"/>';
+                    $img = '<img src="/' . $row->image->url . '" class="danger w-25"/>';
                 }
 
                 return $img;
             })
-
-            ->rawColumns(['action','image'])
+            ->rawColumns(['action', 'image'])
             ->make(true);
 
     }
@@ -84,7 +83,7 @@ class BlogService
     public function update(ValidateBlogRequest $request, $id): mixed
     {
         $inputs = $request->validated();
-        $inputs['updator_user_id']=Auth::id()??null;
+        $inputs['updator_user_id'] = Auth::id() ?? null;
         $totalUnitItem = $this->blogRepository->find($id);
         if ($totalUnitItem) {
 
@@ -94,11 +93,10 @@ class BlogService
                 $image = $inputs["file"] ?? null;
                 if ($image != null) {
 
-                        $this->uploadImage($totalUnitItem, $image);
+                    $this->uploadImage($totalUnitItem, $image);
 
                 }
                 DB::commit();
-
 
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -115,14 +113,14 @@ class BlogService
     public function store(ValidateBlogRequest $request)
     {
         $inputs = $request->validated();
-        $inputs['creator_user_id']=Auth::id()??null;
+        $inputs['creator_user_id'] = Auth::id() ?? null;
         $lables = $inputs['lable'] ?? null;
 
         DB::beginTransaction();
         try {
             $totalUnitsItem = $this->blogRepository->create($inputs);
             if ($lables != null and count($lables) != 0) {
-                foreach ($lables as $key => $item){
+                foreach ($lables as $key => $item) {
                     $totalUnitsItem->lables()->save(resolve(LableService::class)->find($item));
                 }
             }
@@ -142,6 +140,7 @@ class BlogService
         return $totalUnitsItem;
 
     }
+
     public function uploadImage($guild, $file)
     {
         $destinationPath = "public/blog/" . $guild->id;
@@ -153,9 +152,10 @@ class BlogService
     {
         return $this->blogRepository->getByInput();
     }
+
     public function blogDetail($slug)
     {
-        return $this->blogRepository->findBy("slug",$slug);
+        return $this->blogRepository->findBy("slug", $slug);
     }
 
 }
