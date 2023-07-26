@@ -11,6 +11,10 @@
 |
 */
 
-Route::prefix('comment')->group(function() {
-    Route::get('/', 'CommentController@index');
+use Illuminate\Support\Facades\Route;
+use Modules\Comment\Http\Controllers\CommentController;
+
+
+Route::group(['prefix' => 'comment', 'as' => 'comment_'], function () {
+    Route::post('/', [CommentController::class, 'store'])->name('store');
 });

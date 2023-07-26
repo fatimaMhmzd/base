@@ -46,7 +46,7 @@
                                     <article class="entry entry-grid text-center">
                                         <figure class="entry-media">
                                             <a href={{route('blog_blogDetail', $blog->slug)}}>
-                                                <img src="/assets/images/blog/grid/3cols/post-1.jpg" alt="توضیحات عکس">
+                                                <img src="{{$blog->image ? "/".$blog->image->url : "/assets/images/blog/grid/3cols/post-1.jpg"}}" alt="توضیحات عکس">
                                             </a>
                                         </figure><!-- End .entry-media -->
 
