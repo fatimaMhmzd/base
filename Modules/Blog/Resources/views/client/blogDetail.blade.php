@@ -23,7 +23,7 @@
                 <div class="col-lg-9">
                     <article class="entry single-entry">
                         <figure class="entry-media">
-                            <img src="/{{$data->image}}" alt="{{$data->slug}}">
+                            <img src="{{$data->image ? "/".$data->image->url : "/assets/images/blog/grid/3cols/post-1.jpg"}}" alt="{{$data->slug}}">
                         </figure><!-- End .entry-media -->
 
                         <div class="entry-body">
@@ -48,7 +48,7 @@
                             <!-- End .entry-cats -->
 
                             <div class="entry-content editor-content">
-                               {!! $data->content !!}
+                              @ {!! $data->content !!}
                             </div><!-- End .entry-content -->
 
                             <div class="entry-footer row no-gutters flex-column flex-md-row">
@@ -255,11 +255,11 @@
 <!--                                        <a href="#" class="comment-reply">پاسخ</a>-->
                                         <div class="comment-user">
                                             <h4><a href="#">@if($comment->name) {{$comment->name}} @else کاربر عادی @endif</a></h4>
-                                            <span class="comment-date">{{$comment->created_at}}</span>
+                                            <span class="comment-date">{{substr($comment->created_at, 0, 9)}}</span>
                                         </div> <!-- End .comment-user -->
 
                                         <div class="comment-content">
-                                            <p>{{$comment->content}}
+                                            <p>{{ htmlspecialchars($comment->content) }}
                                             </p>
                                         </div><!-- End .comment-content -->
                                     </div><!-- End .comment-body -->

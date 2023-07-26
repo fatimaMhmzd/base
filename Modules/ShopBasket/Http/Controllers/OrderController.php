@@ -41,8 +41,9 @@ class OrderController extends Controller
     {
         try {
             $result = $this->service->store($request);
-            $message = trans("custom.defaults.store_success");
-            return back()->with('success', true)->with('message',$message);
+            return $result;
+        /*    $message = trans("custom.defaults.store_success");
+            return back()->with('success', true)->with('message',$message);*/
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
