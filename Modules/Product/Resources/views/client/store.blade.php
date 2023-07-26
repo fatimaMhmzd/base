@@ -2493,26 +2493,7 @@
     </main><!-- End .main -->
 
     <script>
-        function addToBasket(id) {
-            var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
-            if(isAuth){
-                $.ajax({
-                    url: `/shop_basket/order/store?productId=${id}`,
-                    type: "Get",
-                });
-                cartContent()
-            };
-        }
 
-        function addToWishlist(id) {
-            var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
-            if (isAuth) {
-                $.ajax({
-                    url: `/product/wishlist/store?productId=${id}`,
-                    type: "Get",
-                });
-            }
-        }
 
         function changeStyle(divId, iconId) {
             const divsToHide = document.getElementsByClassName('products-area');

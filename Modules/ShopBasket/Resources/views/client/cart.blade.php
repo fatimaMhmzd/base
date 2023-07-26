@@ -40,25 +40,25 @@
                                             <td class="product-col">
                                                 <div class="product">
                                                     <figure class="product-media">
-                                                        <a href="#">
+                                                        <a href="{{route('shop_productDetail', $item->product->slug)}}">
                                                             <img src="/{{$item->product->image[0]->url}}"
                                                                  alt="تصویر محصول">
                                                         </a>
                                                     </figure>
 
                                                     <h3 class="product-title">
-                                                        <a href="#">{{$item->product->title}}</a>
+                                                        <a href="{{route('shop_productDetail', $item->product->slug)}}">{{$item->product->title}}</a>
                                                     </h3><!-- End .product-title -->
                                                 </div><!-- End .product -->
                                             </td>
-                                            <td class="price-col">{{$item->last_price}}</td>
+                                            <td class="price-col" id="pricee">{{$item->last_price}}</td>
                                             <td class="quantity-col">
                                                 <div class="cart-product-quantity">
-                                                    <input type="number" class="form-control" value="1" min="1" max="10"
-                                                           step="1" data-decimals="0" required>
+                                                    <input type="number" class="form-control" value="{{$item->count}}" min="1" max="100"
+                                                           step="1" data-decimals="0" onchange="pricePerQt({{$item->product->id}}, this.value)" required>
                                                 </div><!-- End .cart-product-quantity -->
                                             </td>
-                                            <td class="total-col">{{$item->total_price}}</td>
+                                            <td class="total-col priceeT">{{$item->total_price}}</td>
                                             <td class="remove-col">
                                                 <a href="{{route('shop_basket_order_destroy',$item->id)}}"><i
                                                         class="icon-close"></i></a>
@@ -99,7 +99,7 @@
                                     <tbody>
                                     <tr class="summary-subtotal">
                                         <td>جمع کل سبد خرید :</td>
-{{--                                        <td class="text-left">{{$cart->total_part_price}} تومان</td>--}}
+                                        <td class="text-left totalBasket">{{$cart->total_part_price}} تومان</td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr class="summary-shipping">
                                         <td>شیوه ارسال :</td>
@@ -149,7 +149,7 @@
 
                                     <tr class="summary-total">
                                         <td>مبلغ قابل پرداخت :</td>
-{{--                                        <td class="text-left">{{$cart->total_amount}} تومان</td>--}}
+                                        <td class="text-left totalPayable">{{$cart->total_amount}} تومان</td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
@@ -169,5 +169,31 @@
         </div><!-- End .page-content -->
     </main><!-- End .main -->
 
+    <script>
+        function pricePerQt(id,val) {
+            alert(val)
+            console.log(val)
+            var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
+            if(isAuth){
+                $.ajax({
+                    url: `/shop_basket/order/store?productId=${id}&count=${val}`,
+                    type: "Get",
+                    success: function (res){ alert('1')
+                        console.log('res');console.log(res);
+                        for(var i=0; i < res['part'].length ; i++) {
+                            if (res['part'][i]['id'] === id) {
+                                alert(id)
+                                document.getElementById('pricee').innerHTML = res['part'][i]['price'];
+                                document.getElementById('priceeT').innerHTML = res['part'][i]['total_price'];
+                            }
+                        }
+                        document.getElementById('totalBasket').innerHTML = res['total_part_price'];
+                        document.getElementById('totalPayable').innerHTML = res['total_amount'];
+                    }
+                });
+                cartContent()
+            }
+        }
+    </script>
 
 @endsection

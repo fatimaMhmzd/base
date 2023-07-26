@@ -1319,6 +1319,27 @@
     @if (\Illuminate\Support\Facades\Auth::check())
     cartContent()
     @endif
+
+    function addToBasket(id) {
+        var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
+        if(isAuth){
+            $.ajax({
+                url: `/shop_basket/order/store?productId=${id}`,
+                type: "Get",
+            });
+            cartContent()
+        };
+    }
+
+    function addToWishlist(id) {
+        var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
+        if (isAuth) {
+            $.ajax({
+                url: `/product/wishlist/store?productId=${id}`,
+                type: "Get",
+            });
+        }
+    }
 </script>
 
 </body>
