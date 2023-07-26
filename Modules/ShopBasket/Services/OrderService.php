@@ -170,24 +170,11 @@ class OrderService
             $factorItem["factor_id"] = $totalUnit->id;
             $totalUnitsItem = $this->factorItemRepository->firstOrCreate($factorItem);
             $count = $request->count ?? 1;
-
-            if ($request->opr == "-") {
-
-                $factorItemUpdate["count"] = $totalUnitsItem->count - $count;
-
-
-            } elseif ($request->opr == "+") {
-
-                $factorItemUpdate["count"] = $totalUnitsItem->count + $count;
-
-            } else {
-                $factorItemUpdate["count"] = $count;
-            }
+            $factorItemUpdate["count"] = $count;
 
             $totalUnitItemUpdated = $this->factorItemRepository->update($totalUnitsItem, $factorItemUpdate);
-            $totalUpdate = $this->update($factorItem["factor_id"]);
-
             DB::commit();
+            $totalUpdate = $this->update($factorItem["factor_id"]);
             return $totalUpdate;
 
         } catch (\Exception $exception) {
