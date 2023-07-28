@@ -1,6 +1,4 @@
-@inject('groups', 'Modules\Product\Services\ProductGroupService')
-{{--@dd($groups->cartItems())--}}
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="rtl">
 
 <head>
@@ -33,6 +31,10 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/skins/skin-demo-3.css">
     <link rel="stylesheet" href="/assets/css/demos/demo-3.css">
+    <link rel="stylesheet" href="/sweetAlert/sweetalert2.min.css">
+
+    @yield('style')
+
 </head>
 
 <body>
@@ -41,7 +43,7 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-left">
-                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : {{$groups->setting()->phone}}</a>
+                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : {{setting()->phone}}</a>
                 </div><!-- End .header-left -->
 
                 <div class="header-right">
@@ -95,7 +97,7 @@
                     </button>
 
                     <a href="/" class="logo">
-                        <img src="{{$groups->setting()->logo}}" alt="Molla Logo" width="105" height="25">
+                        <img src="{{setting()->logo}}" alt="Molla Logo" width="105" height="25">
                     </a>
                 </div><!-- End .header-left -->
 
@@ -114,7 +116,7 @@
                 </div>
 
                 <div class="header-right">
-                <!--                    <div class="dropdown compare-dropdown">
+                    <!--                    <div class="dropdown compare-dropdown">
                         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" data-display="static" title="مقایسه محصولات"
                            aria-label="Compare Products">
@@ -147,16 +149,16 @@
                         </div>&lt;!&ndash; End .dropdown-menu &ndash;&gt;
                     </div>--><!-- End .compare-dropdown -->
 
-                @if(\Illuminate\Support\Facades\Auth::check())
-                    <!--                        <div class="wishlist">
+                    @if(\Illuminate\Support\Facades\Auth::check())
+                        <div class="wishlist">
                             <a href="{{route('page_wishlistClient')}}" title="لیست محصولات مورد علاقه شما">
                                 <div class="icon">
                                     <i class="icon-heart-o"></i>
-                                    <span class="wishlist-count badge">3</span>
+                                    <span id="wishlist-count" class="wishlist-count badge">3</span>
                                 </div>
                                 <p>مورد علاقه</p>
                             </a>
-                        </div>-->
+                        </div>
 
                         <div class="dropdown cart-dropdown">
                             <a href="{{route('shop_cartPageClient')}}" class="dropdown-toggle" role="button"
@@ -164,14 +166,14 @@
                                aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <div class="icon">
                                     <i class="icon-shopping-cart"></i>
-                                    <span class="cart-count" id="cartCount">{{count($groups->cartItems())}}</span>
+                                    <span class="cart-count" id="cartCount">{{count(cartItems())}}</span>
                                 </div>
                                 <p>سبد خرید</p>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-cart-products" id="cartList">
-                                    @foreach($groups->cartItems() as $item)
+                                    @foreach(cartItems() as $item)
                                         <div class="product">
                                             <div class="product-cart-details">
                                                 <h4 class="product-title">
@@ -228,8 +230,8 @@
                         <div class="dropdown-menu">
                             <nav class="side-nav">
                                 <ul class="menu-vertical sf-arrows">
-                                    @if(count($groups->all()) > 0)
-                                        @foreach($groups->all() as $group)
+                                    @if(count(allGroup()) > 0)
+                                        @foreach(allGroup() as $group)
                                             @if($group->sub_title === null)
                                                 <li class="item-lead"><a href="#">{{$group->title}}</a></li>
                                             @endif
@@ -525,8 +527,8 @@
                             </li>
                             <li>
                                 <a href="{{route('shop_storePageClient')}}">فروشگاه</a>
-                            {{--                                class="sf-with-ul"--}}
-                            <!--                                <div class="megamenu megamenu-md">
+                                {{--                                class="sf-with-ul"--}}
+                                <!--                                <div class="megamenu megamenu-md">
                                                                     <div class="row no-gutters">
                                                                         <div class="col-md-8">
                                                                             <div class="menu-col">
@@ -769,14 +771,14 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget widget-about">
-                            <img src="{{$groups->setting()->footerLogo}}" class="footer-logo"
+                            <img src="{{setting()->footerLogo}}" class="footer-logo"
                                  alt="Footer Logo" width="105" height="25">
                             <p></p>
 
                             <div class="widget-call">
                                 <i class="icon-phone"></i>
                                 سوالی دارید؟<br/> 7روز هفته/24ساعته
-                                <a href="tel:#">{{$groups->setting()->phone}}</a>
+                                <a href="tel:#">{{setting()->phone}}</a>
                             </div><!-- End .widget-call -->
                         </div><!-- End .widget about-widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
@@ -1030,8 +1032,8 @@
             <div class="tab-pane fade" id="mobile-cats-tab" role="tabpanel" aria-labelledby="mobile-cats-link">
                 <nav class="mobile-cats-nav">
                     <ul class="mobile-cats-menu">
-                        @if(count($groups->all()) > 0)
-                            @foreach($groups->all() as $group)
+                        @if(count(allGroup()) > 0)
+                            @foreach(allGroup() as $group)
                                 @if($group->sub_title === null)
                                     <li class="item-lead"><a href="#">{{$group->title}}</a></li>
                                 @endif
@@ -1265,9 +1267,14 @@
 <script src="/assets/js/jquery.plugin.min.js"></script>
 <script src="/assets/js/jquery.magnific-popup.min.js"></script>
 <script src="/assets/js/jquery.countdown.min.js"></script>
+<script src="/sweetAlert/sweetalert2.all.min.js"></script>
 <!-- Main JS File -->
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/demos/demo-3.js"></script>
+
+<script src="assets/js/jquery.elevateZoom.min.js"></script>
+
+
 
 <script>
     function cartContent() {
@@ -1296,7 +1303,7 @@
                         </h4>
                         <span class="cart-product-info">
                             <span class="cart-product-qty">` + listItems[i]['count'] + ` x </span>
-                            ` + listItems[i]['total_price'] + ` تومان
+                            ` + listItems[i]['price'] + ` تومان
                         </span>
                     </div>
                     <!-- End .product-cart-details -->
@@ -1315,32 +1322,113 @@
             }
         });
     }
+    function favoriteCount() {
+        var favoriteCount = {{count(favoriteItems())}};
+        document.getElementById('wishlist-count').innerHTML = favoriteCount;
+    }
 
     @if (\Illuminate\Support\Facades\Auth::check())
     cartContent()
+    favoriteCount()
     @endif
 
-    function addToBasket(id) {
-        var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
-        if(isAuth){
+    function addToBasket(id,number = 1) {
+        if (logged) {
             $.ajax({
-                url: `/shop_basket/order/store?productId=${id}`,
+                url: `/shop_basket/order/store?productId=${id}&count=${number}`,
                 type: "Get",
+                success: function (data) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'با موفقیت به سبد خرید اضافه شد'
+                    })
+                }
             });
+
             cartContent()
-        };
+        } else {
+            Swal.fire({
+                title: 'ورود به حساب کاربری!',
+                text: 'برای خرید نیاز است وارد حساب کاربری خود شوید.وارد حساب خود میشوید؟',
+                icon: 'question',
+                confirmButtonText: 'بله',
+                cancelButtonText: 'خیر',
+                showCancelButton: true
+            }).then(function (isConfirm) {
+                if (isConfirm.isConfirmed) {
+                    window.location.assign('/login')
+                } else {
+
+                }
+            })
+        }
     }
 
     function addToWishlist(id) {
-        var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
-        if (isAuth) {
+        if (logged) {
             $.ajax({
                 url: `/product/wishlist/store?productId=${id}`,
                 type: "Get",
+                success: function (data) {
+                    favoriteCount()
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'با موفقیت به علاقه مندی ها اضافه شد'
+                    })
+                    favoriteCount()
+                }
             });
+        } else {
+            Swal.fire({
+                title: 'ورود به حساب کاربری!',
+                text: 'برای افزودن به علاقه مندی نیاز است وارد حساب کاربری خود شوید.وارد حساب خود میشوید؟',
+                icon: 'question',
+                confirmButtonText: 'بله',
+                cancelButtonText: 'خیر',
+                showCancelButton: true
+            }).then(function (isConfirm) {
+                if (isConfirm.isConfirmed) {
+                    window.location.assign('/login')
+                } else {
+
+                }
+            })
         }
     }
 </script>
+
+@if(Auth::check())
+
+    <script>{{ 'var logged = true;' }}</script>
+
+@else
+
+    <script>{{ 'var logged = false;' }}</script>
+@endif
+
+@yield('script')
 
 </body>
 

@@ -1,5 +1,7 @@
 <?php
 
+use Modules\Setting\Services\SettingService;
+
 if (!function_exists('generate_random_unique_code_user')) {
     function generate_random_unique_code_user(): int
     {
@@ -179,3 +181,38 @@ if (!function_exists('flatten')) {
         return $return;
     }
 }
+
+
+if (!function_exists('setting')) {
+    function setting()
+    {
+        $settingService = resolve(SettingService::class);
+        return $settingService->allAsObjet();
+    }
+}
+
+if (!function_exists('allGroup')) {
+    function allGroup()
+    {
+        $groupService = resolve(\Modules\Product\Services\ProductGroupService::class);
+        return $groupService->all();
+    }
+}
+
+
+if (!function_exists('cartItems')) {
+    function cartItems(): array
+    {
+        return [];
+    }
+}
+
+if (!function_exists('favoriteItems')) {
+    function favoriteItems()
+    {
+        $wishService = resolve(\Modules\Product\Services\WishListService::class);
+        return $wishService->myWishList();
+    }
+}
+
+

@@ -35,19 +35,11 @@ class WishListController extends Controller
         return view('product::create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
     public function store(Request $request)
     {
-
         try {
             $result = $this->service->store($request);
             return $result;
-           /* $message = trans("custom.defaults.store_success");
-            return back()->with('success', true)->with('message', $message);*/
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
@@ -85,13 +77,25 @@ class WishListController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
+
     public function destroy($id)
     {
-        //
+        try {
+            $result = $this->service->delete($id);
+            return back();
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
+    }
+    public function delete($id)
+    {
+        try {
+            $result = $this->service->delete($id);
+            return back();
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
     }
 }

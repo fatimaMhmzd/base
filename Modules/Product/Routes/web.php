@@ -34,6 +34,7 @@ Route::group(['prefix' => 'product', 'as' => 'product_'], function () {
         Route::get('/edit/{id}', [WishListController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [WishListController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [WishListController::class, 'destroy'])->name('destroy');
+        Route::get('/delete/{id}', [WishListController::class, 'delete'])->name('delete');
 
     });
 });

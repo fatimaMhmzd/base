@@ -151,5 +151,9 @@ class WishListService
 
     }
 
+    public function myWishList(): \Illuminate\Support\Collection
+    {
+        return $this->wishListRepository->all(inputs: array('user_id',Auth::id()));
+    }
 
 }

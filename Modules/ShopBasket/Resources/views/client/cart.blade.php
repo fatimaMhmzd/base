@@ -87,8 +87,8 @@
                                     </form>
                                 </div><!-- End .cart-discount -->
 
-                                <a href="#" class="btn btn-outline-dark-2"><span>به روز رسانی سبد خرید</span><i
-                                        class="icon-refresh"></i></a>
+<!--                                <a href="#" class="btn btn-outline-dark-2"><span>به روز رسانی سبد خرید</span><i
+                                        class="icon-refresh"></i></a>-->
                             </div><!-- End .cart-bottom -->
                         </div><!-- End .col-lg-9 -->
                         <aside class="col-lg-3">
@@ -143,7 +143,7 @@
                                     </tr><!-- End .summary-shipping-row -->
 
                                     <tr class="summary-shipping-estimate">
-                                        <td>آدرس<br> <a href={{route('page_panelClient')}} data-toggle="modal">تغییر آدرس</a></td>
+                                        <td>آدرس<br> <a href={{route('page_panelClient')}}>تغییر آدرس</a></td>
                                         <td>&nbsp;</td>
                                     </tr><!-- End .summary-shipping-estimate -->
 
@@ -189,6 +189,23 @@
                         }
                         document.getElementById('totalBasket').innerHTML = res['total_part_price'];
                         document.getElementById('totalPayable').innerHTML = res['total_amount'];
+
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'سبد خرید با موفقت به روز رسانی شد'
+                        })
+
                     }
                 });
                 cartContent()

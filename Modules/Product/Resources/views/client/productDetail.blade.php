@@ -1,4 +1,8 @@
 @extends('client.layout.total')
+
+@section('style')
+    <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css">
+@stop
 @section('content')
     <div class="page-content mt-2">
         <div class="container">
@@ -47,7 +51,7 @@
                                 </div><!-- End .product-image-gallery -->
                             </div><!-- End .row -->
                         </div><!-- End .product-gallery -->
-                    </div><!-- End .col-md-6 -->
+                    </div>
 
                     <div class="col-md-6">
                         <div class="product-details">
@@ -108,6 +112,7 @@
                                 <a href="#" class="size-guide"><i class="icon-th-list"></i>راهنمای اندازه</a>
                             </div><!-- End .details-filter-row -->
 
+
                             <div class="details-filter-row details-row-size">
                                 <label for="qty">تعداد : </label>
                                 <div class="product-details-quantity">
@@ -117,16 +122,15 @@
                             </div><!-- End .details-filter-row -->
 
                             <div class="product-details-action">
-                                <a class="btn-product btn-cart" href={{route('shop_basket_order_store',$id=$data->id)}} >
-                                <span>افزودن به سبد خرید</span></a>
+                                <button class="btn-product btn-cart" onclick="submitData({{$data->id}})" >
+                                <span>افزودن به سبد خرید</span></button>
 
                                 <div class="details-action-wrapper">
-                                    <a href="#" class="btn-product btn-wishlist"
+                                    <a onclick="addToWishlist({{$data->id}})" class="btn-product btn-wishlist"
                                        title="لیست علاقه مندی"><span>افزودن
                                                     به
                                                     علاقه مندی</span></a>
-                                    <a href="#" class="btn-product btn-compare" title="مقایسه"><span>افزودن به
-                                                    لیست مقایسه</span></a>
+
                                 </div><!-- End .details-action-wrapper -->
                             </div><!-- End .product-details-action -->
 
@@ -544,4 +548,18 @@
             </div><!-- End .owl-carousel -->
         </div><!-- End .container -->
     </div><!-- End .page-content -->
+
+@stop
+
+@section('script')
+
+    <script src="/assets/js/jquery.elevateZoom.min.js"></script>
+
+    <script>
+        function submitData(id){
+            var number = document.getElementById('qty').value;
+            addToBasket(id,number)
+        }
+    </script>
+
 @endsection

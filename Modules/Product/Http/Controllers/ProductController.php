@@ -23,7 +23,6 @@ class ProductController extends Controller
     public function productDetail($slug)
     {
         $data = $this->service->productDetail($slug);
-//       return $data;
         return view('product::client.productDetail',compact('data'));
     }
 
