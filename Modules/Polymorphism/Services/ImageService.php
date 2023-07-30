@@ -10,19 +10,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-function randomString($length = 10, $start_with = '', $end_with = '')
-{
-
-    $start_with = filled($start_with) ? $start_with . "_" : $start_with;
-    $end_with = filled($end_with) ? "_" . $end_with : $end_with;
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[random_int(0, $charactersLength - 1)];
-    }
-    return $start_with . $randomString . $end_with;
-}
 
 class ImageService
 {
@@ -111,15 +98,11 @@ class ImageService
         $start_with = $start_with ?? $type;
         $end_with = $end_with ?? time();
         $end_with = $end_with . "." . ($file?->getClientOriginalExtension() ?? '');
-        return randomString(length: $length, start_with: $start_with, end_with: $end_with);
+        return random_string(length: $length, start_with: $start_with, end_with: $end_with);
     }
 
 
-
-
-
-
-    public static function deleteImages(Model $model )
+    public static function deleteImages(Model $model)
     {
         try {
             if (method_exists($model, 'images')) {

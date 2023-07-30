@@ -43,7 +43,7 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-left">
-                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : {{setting()->phone}}</a>
+                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : {{setting()->phone }}</a>
                 </div><!-- End .header-left -->
 
                 <div class="header-right">
