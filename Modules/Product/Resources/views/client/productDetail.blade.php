@@ -12,8 +12,8 @@
                         <div class="product-gallery product-gallery-vertical">
                             <div class="row">
                                 <figure class="product-main-image">
-                                    <img id="product-zoom" src="/assets/images/products/single/1.jpg"
-                                         data-zoom-image="/assets/images/products/single/1-big.jpg"
+                                    <img id="product-zoom" src="/{{$data->banner}}"
+                                         data-zoom-image="/{{$data->banner}}"
                                          alt="تصویر محصول">
 
                                     <a href="#" id="btn-product-gallery" class="btn-product-gallery">
@@ -22,21 +22,21 @@
                                 </figure><!-- End .product-main-image -->
 
                                 <div id="product-zoom-gallery" class="product-image-gallery">
-                                    <a class="product-gallery-item active" href="#"
+<!--                                    <a class="product-gallery-item active" href="#"
                                        data-image="/assets/images/products/single/1.jpg"
                                        data-zoom-image="/assets/images/products/single/1-big.jpg">
                                         <img src="/assets/images/products/single/1-small.jpg"
                                              alt="توضیحات تصویر">
-                                    </a>
-
-                                    <a class="product-gallery-item" href="#"
-                                       data-image="/assets/images/products/single/2.jpg"
-                                       data-zoom-image="/assets/images/products/single/2-big.jpg">
-                                        <img src="/assets/images/products/single/2-small.jpg"
-                                             alt="توضیحات تصویر">
-                                    </a>
-
-                                    <a class="product-gallery-item" href="#"
+                                    </a>-->
+                                    @foreach($data->image as $img)
+                                        <a class="product-gallery-item @if($img->is_cover) active @endif" href="#"
+                                           data-image="/{{$img->url}}"
+                                           data-zoom-image="/{{$img->url}}">
+                                            <img src="/{{$img->url}}"
+                                                 alt="توضیحات تصویر">
+                                        </a>
+                                    @endforeach
+                                    <!--                                    <a class="product-gallery-item" href="#"
                                        data-image="/assets/images/products/single/3.jpg"
                                        data-zoom-image="/assets/images/products/single/3-big.jpg">
                                         <img src="/assets/images/products/single/3-small.jpg"
@@ -47,7 +47,7 @@
                                        data-image="/assets/images/products/single/4.jpg"
                                        data-zoom-image="/assets/images/products/single/4-big.jpg">
                                         <img src="/assets/images/products/single/4-small.jpg" alt="product back">
-                                    </a>
+                                    </a>-->
                                 </div><!-- End .product-image-gallery -->
                             </div><!-- End .row -->
                         </div><!-- End .product-gallery -->
@@ -76,7 +76,7 @@
                                 <p>{{$data->short_description}}
                                 </p>
                             </div><!-- End .product-content -->
-
+@if(count($data->color) != 0)
                             <div class="details-filter-row details-row-size">
                                 <label>رنگ : </label>
 
@@ -91,7 +91,8 @@
 
                                 </div><!-- End .product-nav -->
                             </div><!-- End .details-filter-row -->
-
+                            @endif
+                            @if(count($data->size) != 0)
                             <div class="details-filter-row details-row-size">
                                 <label for="size">سایز : </label>
                                 <div class="select-custom">
@@ -111,7 +112,7 @@
 
                                 <a href="#" class="size-guide"><i class="icon-th-list"></i>راهنمای اندازه</a>
                             </div><!-- End .details-filter-row -->
-
+                            @endif
 
                             <div class="details-filter-row details-row-size">
                                 <label for="qty">تعداد : </label>
@@ -122,8 +123,8 @@
                             </div><!-- End .details-filter-row -->
 
                             <div class="product-details-action">
-                                <button class="btn-product btn-cart" onclick="submitData({{$data->id}})" >
-                                <span>افزودن به سبد خرید</span></button>
+                                <button class="btn-product btn-cart" onclick="submitData({{$data->id}})">
+                                    <span>افزودن به سبد خرید</span></button>
 
                                 <div class="details-action-wrapper">
                                     <a onclick="addToWishlist({{$data->id}})" class="btn-product btn-wishlist"

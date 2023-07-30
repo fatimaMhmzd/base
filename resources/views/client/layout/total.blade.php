@@ -1089,11 +1089,39 @@
                         <div class="tab-content" id="tab-content-5">
                             <div class="tab-pane fade show active" id="signin" role="tabpanel"
                                  aria-labelledby="signin-tab">
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <strong></strong> {{ Session::get('message', '') }}
+                                    </div>
+                                @endif
+                                @if(Session::has('error'))
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <strong></strong> {{ Session::get('message', '') }}
+                                    </div>
+                                @endif
+                                @if(count($errors) > 0 )
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <ul class="p-0 m-0" style="list-style: none;">
+                                            @foreach($errors->all() as $error)
+                                                <li>{{$error}}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form method="POST" action="{{ route('user_singIn') }}">
                                     @csrf
                                     <div class="form-group">
                                         <label for="singin-email">شماره موبایل *</label>
-                                        <input type="text" class="form-control" id="singin-email"
+                                        <input type="tel" class="form-control" id="singin-email"
                                                name="mobile" required>
                                     </div><!-- End .form-group -->
 
@@ -1299,7 +1327,7 @@
                     var lists = `<div class="product">
                     <div class="product-cart-details">
                         <h4 class="product-title">
-                            <a href=urlP>` + listItems[i]['title'] + `</a>
+                            <a href="` + urlP+ `">` + listItems[i]['title'] + `</a>
                         </h4>
                         <span class="cart-product-info">
                             <span class="cart-product-qty">` + listItems[i]['count'] + ` x </span>
@@ -1309,12 +1337,11 @@
                     <!-- End .product-cart-details -->
 
                     <figure class="product-image-container">
-                        <a href=urlP class="product-image">
+                        <a href="` + urlP+ `" class="product-image">
                             <img src="/` + listItems[i]['banner'] + ` " alt="product"/>
                         </a>
                     </figure>
-                    <a href=urlD class="btn-remove" title="حذف محصول"><i
-                        class="icon-close"></i></a>
+                   <a> <i class="icon-close btn-remove" onclick="deleteFromBasket(` + listItems[i]['id'] + `)"></i><a>
                     </div>`
                     itemsProductHtml = itemsProductHtml + lists;
                 }
@@ -1367,13 +1394,41 @@
                 showCancelButton: true
             }).then(function (isConfirm) {
                 if (isConfirm.isConfirmed) {
-                    window.location.assign('/login')
+                    window.location.assign('/user/login')
                 } else {
 
                 }
             })
         }
     }
+    function deleteFromBasket(id) {
+
+            $.ajax({
+                url: `/shop_basket/order/destroy/${id}`,
+                type: "Get",
+                success: function (data) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'با موفقیت حذف شد'
+                    })
+                }
+            });
+
+            cartContent()
+
+    }
+
 
     function addToWishlist(id) {
         if (logged) {
@@ -1410,7 +1465,7 @@
                 showCancelButton: true
             }).then(function (isConfirm) {
                 if (isConfirm.isConfirmed) {
-                    window.location.assign('/login')
+                    window.location.assign('/user/login')
                 } else {
 
                 }
