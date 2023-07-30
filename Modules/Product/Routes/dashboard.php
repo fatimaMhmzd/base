@@ -20,8 +20,8 @@ Route::group(['prefix' => 'product', 'as' => 'product_'], function (){
         Route::get('/create', [ProductGroupDashboardController::class, 'create'])->name('create');
         Route::post('/store', [ProductGroupDashboardController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [ProductGroupDashboardController::class, 'edit'])->name('edit');
-        Route::post('/update/{id}', [ProductGroupDashboardController::class, 'update'])->name('update');
-        Route::delete('/destroy/{id}', [ProductGroupDashboardController::class, 'destroy'])->name('destroy');
+        Route::put('/update/{id}', [ProductGroupDashboardController::class, 'update'])->name('update');
+        Route::get('/destroy/{id}', [ProductGroupDashboardController::class, 'destroy'])->name('destroy');
         Route::get('/getSubGroup/{id}', [ProductGroupDashboardController::class, 'getSubGroup'])->name('getSubGroup');
 
 

@@ -84,6 +84,7 @@ class BlogService
     {
         $inputs = $request->validated();
         $inputs['updator_user_id'] = Auth::id() ?? null;
+        $lables = $inputs['lable'] ?? null;
         $totalUnitItem = $this->blogRepository->find($id);
         if ($totalUnitItem) {
 
@@ -97,6 +98,16 @@ class BlogService
 
                 }
                 DB::commit();
+
+
+
+                if ($lables != null and count($lables) != 0) {
+                    $totalUnitItem->lables()->sync($lables);
+                } else {
+                    $blogLableRepository = new BlogLableRepository();
+                    $blogLableRepository->by(null,'blog_id',$id)->delete();
+
+                }
 
             } catch (\Exception $exception) {
                 DB::rollBack();

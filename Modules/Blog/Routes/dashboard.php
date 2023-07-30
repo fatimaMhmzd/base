@@ -23,7 +23,7 @@ Route::group(['prefix' => 'blog', 'as' => 'blog_'], function (){
     Route::post('/store', [BlogController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [BlogController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [BlogController::class, 'update'])->name('update');
-    Route::delete('/destroy/{id}', [BlogController::class, 'destroy'])->name('destroy');
+    Route::get('/destroy/{id}', [BlogController::class, 'destroy'])->name('destroy');
     Route::group(['prefix' => 'group', 'as' => 'group_'], function (){
         Route::get('/', [BlogGroupController::class, 'index'])->name('index');
         Route::get('/ajax', [BlogGroupController::class, 'ajax'])->name('ajax');
@@ -31,7 +31,7 @@ Route::group(['prefix' => 'blog', 'as' => 'blog_'], function (){
         Route::post('/store', [BlogGroupController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [BlogGroupController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [BlogGroupController::class, 'update'])->name('update');
-        Route::delete('/destroy/{id}', [BlogGroupController::class, 'destroy'])->name('destroy');
+        Route::get('/destroy/{id}', [BlogGroupController::class, 'destroy'])->name('destroy');
         Route::get('/getSubGroup/{id}', [BlogGroupController::class, 'getSubGroup'])->name('getSubGroup');
 
 
@@ -43,7 +43,7 @@ Route::group(['prefix' => 'blog', 'as' => 'blog_'], function (){
         Route::post('/store', [LableController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [LableController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [LableController::class, 'update'])->name('update');
-        Route::delete('/destroy/{id}', [LableController::class, 'destroy'])->name('destroy');
+        Route::get('/destroy/{id}', [LableController::class, 'destroy'])->name('destroy');
         Route::get('/getSubGroup/{id}', [LableController::class, 'getSubGroup'])->name('getSubGroup');
 
 

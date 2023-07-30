@@ -17,7 +17,7 @@ class ValidateBlogGroupRequest extends FormRequest
             'title' => 'required|string',
             'sub_title' => 'nullable|string',
             'file' => 'nullable|image|mimes:jpg,png|max:5000',
-            'description' => 'nullable|integer',
+            'description' => 'nullable|string',
 
         ];
     }

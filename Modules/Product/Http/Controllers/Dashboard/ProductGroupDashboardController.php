@@ -67,7 +67,8 @@ class ProductGroupDashboardController extends Controller
      */
     public function edit($id)
     {
-        return view('product::edit');
+        $data = $this->service->find($id);
+        return view('product::dashboard.group.update',compact('data'));
     }
 
     /**
@@ -118,7 +119,7 @@ class ProductGroupDashboardController extends Controller
 
         $all = $this->service->subGroup($id);
 
-       return $all;
+        return $all;
 
 
     }

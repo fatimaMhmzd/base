@@ -33,11 +33,11 @@ class ProductGroupService
     public function subGroup($fatherId)
     {
 
-            $filter[] = (object)[
-                "col" => "father_id",
-                "value" => $fatherId,
-                "like" => false,
-            ];
+        $filter[] = (object)[
+            "col" => "father_id",
+            "value" => $fatherId,
+            "like" => false,
+        ];
 
         $all = $this->productGroupRepository->getByInput($filter);
         return $all;
@@ -107,7 +107,7 @@ class ProductGroupService
                 $image = $inputs["file"] ?? null;
                 if ($image !== null) {
 
-                    $this->uploadImage($totalUnitItemUpdated, $image);
+                    $this->uploadImage($totalUnitItem, $image);
                 }
 
             } catch (\Exception $exception) {
@@ -126,19 +126,19 @@ class ProductGroupService
     {
         $inputs = $request->validated();
         $inputs["father_id"]=0;
-            DB::beginTransaction();
-            try {
-                $totalUnitsItem = $this->productGroupRepository->create($inputs);
-                DB::commit();
-                $image = $inputs["file"] ?? null;
-                if ($image !== null) {
-                    $this->uploadImage($totalUnitsItem, $image);
-                }
-
-            } catch (\Exception $exception) {
-                DB::rollBack();
-                throw new \Exception(trans("custom.defaults.store_failed"));
+        DB::beginTransaction();
+        try {
+            $totalUnitsItem = $this->productGroupRepository->create($inputs);
+            DB::commit();
+            $image = $inputs["file"] ?? null;
+            if ($image !== null) {
+                $this->uploadImage($totalUnitsItem, $image);
             }
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            throw new \Exception(trans("custom.defaults.store_failed"));
+        }
 
         return $totalUnitsItem;
 
