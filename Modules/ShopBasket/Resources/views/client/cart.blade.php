@@ -99,7 +99,7 @@
                                     <tbody>
                                     <tr class="summary-subtotal">
                                         <td>جمع کل سبد خرید :</td>
-                                        <td class="text-left" id="totalBasket">{{$cart->total_part_price}} تومان</td>
+                                        <td class="text-left" id="totalBasket">{{$cart->total_part_price ?? "0"}} تومان</td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr class="summary-shipping">
                                         <td>شیوه ارسال :</td>
