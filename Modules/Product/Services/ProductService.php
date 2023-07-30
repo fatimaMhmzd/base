@@ -273,9 +273,9 @@ class ProductService
             $filter[] = (object)[
                 "col" => "product_group_id",
                 "value" => $group->id,
-                "like" => true,
+                "like" => false,
             ];
-            $products = $this->productRepository->getByInput($filter, $request->perPage, $request->pageNumber);
+            $products = $this->productRepository->getByInput($filter, 6, $request->pageNumber);
         }
 
 

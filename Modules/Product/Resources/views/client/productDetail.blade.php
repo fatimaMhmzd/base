@@ -22,12 +22,12 @@
                                 </figure><!-- End .product-main-image -->
 
                                 <div id="product-zoom-gallery" class="product-image-gallery">
-<!--                                    <a class="product-gallery-item active" href="#"
-                                       data-image="/assets/images/products/single/1.jpg"
-                                       data-zoom-image="/assets/images/products/single/1-big.jpg">
-                                        <img src="/assets/images/products/single/1-small.jpg"
-                                             alt="توضیحات تصویر">
-                                    </a>-->
+                                    <!--                                    <a class="product-gallery-item active" href="#"
+                                                                           data-image="/assets/images/products/single/1.jpg"
+                                                                           data-zoom-image="/assets/images/products/single/1-big.jpg">
+                                                                            <img src="/assets/images/products/single/1-small.jpg"
+                                                                                 alt="توضیحات تصویر">
+                                                                        </a>-->
                                     @foreach($data->image as $img)
                                         <a class="product-gallery-item @if($img->is_cover) active @endif" href="#"
                                            data-image="/{{$img->url}}"
@@ -76,42 +76,42 @@
                                 <p>{{$data->short_description}}
                                 </p>
                             </div><!-- End .product-content -->
-@if(count($data->color) != 0)
-                            <div class="details-filter-row details-row-size">
-                                <label>رنگ : </label>
+                            @if(count($data->color) != 0)
+                                <div class="details-filter-row details-row-size">
+                                    <label>رنگ : </label>
 
-                                <div class="product-nav product-nav-thumbs">
-                                    @foreach($data->color as $colour)
-                                        <a href="#">
-                                            {{--<img src="/assets/images/products/single/1-thumb.jpg" alt="product desc">--}}
-                                            <div
-                                                style="width: 50px ; height:40px; background-color: {{$colour->code}}"></div>
-                                        </a>
-                                    @endforeach
+                                    <div class="product-nav product-nav-thumbs">
+                                        @foreach($data->color as $colour)
+                                            <a href="#">
+                                                {{--<img src="/assets/images/products/single/1-thumb.jpg" alt="product desc">--}}
+                                                <div
+                                                    style="width: 50px ; height:40px; background-color: {{$colour->code}}"></div>
+                                            </a>
+                                        @endforeach
 
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .details-filter-row -->
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .details-filter-row -->
                             @endif
                             @if(count($data->size) != 0)
-                            <div class="details-filter-row details-row-size">
-                                <label for="size">سایز : </label>
-                                <div class="select-custom">
-                                    <select name="size" id="size" class="form-control">
-                                        <option value="#" selected="selected">سایز را انتخاب کنید</option>
-                                        @if(count($data->size) > 0)
-                                            @foreach($data->size as $item)
-                                            @endforeach
-                                        @else
-                                            <option value="s">کوچک (Small)</option>
-                                            <option value="m">متوسط (Medium)</option>
-                                            <option value="l">بزرگ (Large)</option>
-                                            <option value="xl">خیلی بزرگ (XLarge)</option>
-                                        @endif
-                                    </select>
-                                </div><!-- End .select-custom -->
+                                <div class="details-filter-row details-row-size">
+                                    <label for="size">سایز : </label>
+                                    <div class="select-custom">
+                                        <select name="size" id="size" class="form-control">
+                                            <option value="#" selected="selected">سایز را انتخاب کنید</option>
+                                            @if(count($data->size) > 0)
+                                                @foreach($data->size as $item)
+                                                @endforeach
+                                            @else
+                                                <option value="s">کوچک (Small)</option>
+                                                <option value="m">متوسط (Medium)</option>
+                                                <option value="l">بزرگ (Large)</option>
+                                                <option value="xl">خیلی بزرگ (XLarge)</option>
+                                            @endif
+                                        </select>
+                                    </div><!-- End .select-custom -->
 
-                                <a href="#" class="size-guide"><i class="icon-th-list"></i>راهنمای اندازه</a>
-                            </div><!-- End .details-filter-row -->
+                                    <a href="#" class="size-guide"><i class="icon-th-list"></i>راهنمای اندازه</a>
+                                </div><!-- End .details-filter-row -->
                             @endif
 
                             <div class="details-filter-row details-row-size">
@@ -138,9 +138,7 @@
                             <div class="product-details-footer">
                                 <div class="product-cat text-center">
                                     <span>دسته بندی : </span>
-                                    <a href="#">زنانه</a>،
-                                    <a href="#">لباس</a>،
-                                    <a href="#">زرد</a>
+                                    <a href="#">{{$data->group->title}}</a>،
                                 </div><!-- End .product-cat -->
 
                                 <div class="social-icons social-icons-sm">
@@ -557,9 +555,9 @@
     <script src="/assets/js/jquery.elevateZoom.min.js"></script>
 
     <script>
-        function submitData(id){
+        function submitData(id) {
             var number = document.getElementById('qty').value;
-            addToBasket(id,number)
+            addToBasket(id, number)
         }
     </script>
 

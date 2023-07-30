@@ -233,7 +233,7 @@
                                     @if(count(allGroup()) > 0)
                                         @foreach(allGroup() as $group)
                                             @if($group->sub_title === null)
-                                                <li class="item-lead"><a href="#">{{$group->title}}</a></li>
+                                                <li class="item-lead"><a href="{{route('shop_storePageClient',$group->slug)}}">{{$group->title}}</a></li>
                                             @endif
                                         @endforeach
                                     @else
