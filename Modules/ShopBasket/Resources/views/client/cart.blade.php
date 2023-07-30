@@ -149,7 +149,7 @@
 
                                     <tr class="summary-total">
                                         <td>مبلغ قابل پرداخت :</td>
-                                        <td class="text-left" id="totalPayable">{{$cart->total_amount}} تومان</td>
+                                        <td class="text-left" id="totalPayable">{{$cart->total_amount ?? "0"}} تومان</td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
