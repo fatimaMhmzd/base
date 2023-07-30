@@ -53,7 +53,7 @@
                                         <div class="entry-body">
                                             <div class="entry-meta">
                                         <span class="entry-author">
-                                            نویسنده : <a href="#">{{$blog->user->full_name}}</a>
+                                            نویسنده : <a href="#">{{$blog->user->full_name ?? "مدیر سایت"}}</a>
                                         </span>
                                                 <span class="meta-separator">|</span>
                                                 <a href="#">{{substr($blog->updated_at, 0, 9)}}</a>
