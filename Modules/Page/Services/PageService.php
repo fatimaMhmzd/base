@@ -9,6 +9,7 @@ use Modules\Page\Http\Requests\page\ValidatePageRequest;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Product\Services\ProductService;
 use Modules\Product\Services\WishListService;
+use Modules\Slider\Http\Repositories\SliderRepository;
 use Modules\SocialMedia\Services\SocialMediaService;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -62,6 +63,8 @@ class PageService
             DB::beginTransaction();
             try {
                 $itemDeleted = $this->pageRepository->delete($item);
+                $sliderRepository = new SliderRepository();
+                $sliderRepository->by(null,'page_id',$id)->delete();
                 DB::commit();
                 return $itemDeleted;
             } catch (\Exception $exception) {

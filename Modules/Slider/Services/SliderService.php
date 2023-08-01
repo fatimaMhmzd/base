@@ -69,7 +69,7 @@ class SliderService
                 return $page;
             })
             ->rawColumns(['action', 'image', 'page'])
-            ->make(true);;
+            ->make(true);
     }
 
     public function find($id)
