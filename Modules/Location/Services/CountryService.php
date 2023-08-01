@@ -34,8 +34,8 @@ class CountryService
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                $btn = '<a href="' . route('dashboard_unit_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_unit_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+                $btn = '<a href="' . route('dashboard_location_country_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+ <a href="' . route('dashboard_location_country_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
 
                 return $btn;
             })

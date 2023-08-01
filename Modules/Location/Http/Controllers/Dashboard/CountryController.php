@@ -19,7 +19,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('location::index');
+        return view('location::dashboard.country.list');
     }
 
     /**
@@ -28,7 +28,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('location::create');
+        return view('location::dashboard.country.add');
     }
 
     /**
@@ -40,7 +40,8 @@ class CountryController extends Controller
     {
         try {
             $result = $this->service->store($request);
-            return back()->with('success', true)->with('message',$result);
+            $message = trans("custom.defaults.store_success");
+            return back()->with('success', true)->with('message',$message);
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
@@ -64,7 +65,7 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        return view('location::edit');
+        return view('location::dashboard.country.update');
     }
 
     /**

@@ -87,6 +87,35 @@
 
                 </ul>
             </li>
+            <li class=" navigation-header"><span>مدیریت آدرس</span>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">کشور</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_location_country_index') ? 'active' : '' }}"><a href="{{route('dashboard_location_country_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_location_country_create') ? 'active' : '' }}"><a href="{{route('dashboard_location_country_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">استان</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_location_province_index') ? 'active' : '' }}"><a href="{{route('dashboard_location_province_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_location_province_create') ? 'active' : '' }}"><a href="{{route('dashboard_location_province_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">شهرستان</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_location_city_index') ? 'active' : '' }}"><a href="{{route('dashboard_location_city_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+                    <li class="{{ Request::routeIs('dashboard_location_city_create') ? 'active' : '' }}"><a href="{{route('dashboard_location_city_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    </li>
+
+                </ul>
+            </li>
 
             <li class=" navigation-header"><span>مدیریت محصولات</span>
             </li>

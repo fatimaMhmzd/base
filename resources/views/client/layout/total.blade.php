@@ -52,7 +52,7 @@
                         <li>
                             <a href="#">لینک ها</a>
                             <ul>
-                                <li>
+<!--                                <li>
                                     <div class="header-dropdown">
                                         <a href="#">تومان</a>
                                         <div class="header-menu">
@@ -60,7 +60,7 @@
                                                 <li><a href="#">دلار</a></li>
                                                 <li><a href="#">تومان</a></li>
                                             </ul>
-                                        </div><!-- End .header-menu -->
+                                        </div>&lt;!&ndash; End .header-menu &ndash;&gt;
                                     </div>
                                 </li>
                                 <li>
@@ -72,9 +72,9 @@
                                                 <li><a href="#">فرانسوی</a></li>
                                                 <li><a href="#">ترکی استانبولی</a></li>
                                             </ul>
-                                        </div><!-- End .header-menu -->
-                                    </div><!-- End .header-dropdown -->
-                                </li>
+                                        </div>&lt;!&ndash; End .header-menu &ndash;&gt;
+                                    </div>&lt;!&ndash; End .header-dropdown &ndash;&gt;
+                                </li>-->
                                 @if(\Illuminate\Support\Facades\Auth::check())
                                     <li><a href="{{ route('user_logout') }}">خروج</a></li>
                                 @else
@@ -232,7 +232,7 @@
                                 <ul class="menu-vertical sf-arrows">
                                     @if(count(allGroup()) > 0)
                                         @foreach(allGroup() as $group)
-                                            @if($group->sub_title === null)
+                                            @if($group->title != null)
                                                 <li class="item-lead"><a href="{{route('shop_storePageClient',$group->slug)}}">{{$group->title}}</a></li>
                                             @endif
                                         @endforeach
