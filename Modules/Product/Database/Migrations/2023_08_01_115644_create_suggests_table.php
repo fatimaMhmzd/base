@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -13,18 +14,26 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_groups', function (Blueprint $table) {
+        Schema::create('suggests', function (Blueprint $table) {
             $table->id();
             $table->string('title')->comment('عنوان');
             $table->string('sub_title')->nullable()->comment('زیر عنوان');
-            $table->string('slug')->nullable();
-            $table->text('description')->nullable()->comment('توضیحات');
-            $table->integer('father_id')->default(0);
             $table->smallInteger('sort_id')->default(0);
             $table->boolean('display_on_homepage')->default(0);
-            $table->softDeletes();
             $table->timestamps();
         });
+        DB::table('suggests')->insert(array(
+            array('title' => 'بالاترین امتیاز'),
+            array('title' => 'بیشترین فروش'),
+            array('title' => 'برترین محصولات'),
+            array('title' => 'تخفیف های ویژه'),
+            array('title' => 'محصولات ویژه'),
+            array('title' => 'محصولات پرفروش' ),
+
+
+
+
+        ));
     }
 
     /**
@@ -34,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_groups');
+        Schema::dropIfExists('suggests');
     }
 };

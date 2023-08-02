@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Modules\Page\Http\Repositories\PageRepository;
 use Modules\Page\Http\Requests\page\ValidatePageRequest;
 use Modules\Polymorphism\Services\ImageService;
+use Modules\Product\Http\Repositories\SuggestRepository;
 use Modules\Product\Services\ProductService;
+use Modules\Product\Services\SuggestService;
 use Modules\Product\Services\WishListService;
 use Modules\Slider\Http\Repositories\SliderRepository;
 use Modules\SocialMedia\Services\SocialMediaService;
@@ -153,13 +155,15 @@ class PageService
         $bestProduct = resolve(ProductService::class)->all();
         $mostSell = resolve(ProductService::class)->all();
         $highestRate = resolve(ProductService::class)->all();
+        $suggestRepository = resolve(SuggestRepository::class);
+        $suggests = $suggestRepository->getByInput(relations:['product']);
         /*if (Auth::check()){
             foreach ($bestProduct as $item){
             }
 
         }*/
 
-        return (object)array("allSocialMedia"=>$allSocialMedia,"bestProduct"=>$bestProduct,"mostSell"=>$mostSell,"highestRate"=>$highestRate);
+        return (object)array("allSocialMedia"=>$allSocialMedia,"bestProduct"=>$bestProduct,"mostSell"=>$mostSell,"highestRate"=>$highestRate ,"suggests"=>$suggests);
     }
 
     public function cartItems($request)

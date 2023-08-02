@@ -42,6 +42,7 @@ class ValidateProductRequest extends FormRequest
             'updater' => 'nullable|integer',
             'pricearray' => 'nullable|array',
             'numberarray' => 'nullable|array',
+            'suggest' => 'nullable|array',
             'ids' => 'nullable|array',
             'video' => "nullable",
         ];

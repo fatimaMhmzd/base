@@ -236,15 +236,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" id="products-featured-link" data-toggle="tab"
                        href="#products-featured-tab" role="tab" aria-controls="products-featured-tab"
-                       aria-selected="true">برترین محصولات</a>
+                       aria-selected="true">{{$indexPageData->suggests[3]->title}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="products-sale-link" data-toggle="tab" href="#products-sale-tab"
-                       role="tab" aria-controls="products-sale-tab" aria-selected="false">بیشترین فروش</a>
+                       role="tab" aria-controls="products-sale-tab" aria-selected="false">{{$indexPageData->suggests[4]->title}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="products-top-link" data-toggle="tab" href="#products-top-tab" role="tab"
-                       aria-controls="products-top-tab" aria-selected="false">بالاترین امتیاز</a>
+                       aria-controls="products-top-tab" aria-selected="false">{{$indexPageData->suggests[5]->title}}</a>
                 </li>
             </ul>
 
@@ -273,7 +273,7 @@
                                     }
                                 }
                             }'>
-                        @foreach($indexPageData->bestProduct as $bestP)
+                        @foreach($indexPageData->suggests[3]->product as $bestP)
                             <div class="product product-2">
                                 <figure class="product-media">
                                     <a href="{{route('shop_productDetail', $bestP->slug)}}">
@@ -345,7 +345,7 @@
                                     }
                                 }
                             }'>
-                        @foreach($indexPageData->mostSell as $mostS)
+                        @foreach($indexPageData->suggests[4]->product as $mostS)
                             <div class="product product-2">
                                 <figure class="product-media">
                                     <a href={{route('shop_productDetail', $mostS->slug)}}>
@@ -411,7 +411,7 @@
                                     }
                                 }
                             }'>
-                        @foreach($indexPageData->highestRate as $highR)
+                        @foreach($indexPageData->suggests[5]->product as $highR)
                             <div class="product product-2">
                                 <figure class="product-media">
                                     <a href={{route('shop_productDetail', $highR->slug)}}>
@@ -454,7 +454,7 @@
                                 </div><!-- End .product-body -->
                             </div><!-- End .product -->
                         @endforeach
-                        <div class="product product-2">
+      {{--                  <div class="product product-2">
                             <figure class="product-media">
                                 <a href="product.html">
                                     <img src="/assets/images/demos/demo-3/products/product-1.jpg" alt="تصویر محصول"
@@ -620,7 +620,7 @@
                                     <span class="ratings-text">( 2 بازدید )</span>
                                 </div><!-- End .rating-container -->
                             </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                        </div><!-- End .product -->--}}
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
             </div><!-- End .tab-content -->
@@ -664,8 +664,8 @@
         <div class="bg-light deal-container pt-7 pb-7 mb-5">
             <div class="container">
                 <div class="heading text-center mb-4">
-                    <h2 class="title text-center">تخفیف های ویژه</h2><!-- End .title -->
-                    <p class="title-desc text-center">تخفیف های ویژه روزانه</p><!-- End .title-desc -->
+                    <h2 class="title text-center">{{$indexPageData->suggests[2]->title}}</h2><!-- End .title -->
+                    <p class="title-desc text-center">{{$indexPageData->suggests[2]->sub_title}}</p><!-- End .title-desc -->
                 </div><!-- End .heading -->
 
                 <div class="row">
@@ -699,39 +699,41 @@
                     <div class="col-lg-6">
                         <div class="products">
                             <div class="row">
+                                @foreach($indexPageData->suggests[2]->product as $off)
                                 <div class="col-6">
                                     <div class="product product-2">
                                         <figure class="product-media">
                                             <span class="product-label label-circle label-top">برتر</span>
                                             <span class="product-label label-circle label-sale">فروش ویژه</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/demos/demo-3/products/product-5.jpg"
-                                                     alt="تصویر محصول" class="product-image">
+                                            <a href={{route('shop_productDetail', $off->slug)}}>
+                                                <img src="/{{$off->banner}}"
+                                                     alt="{{$off->title}}" class="product-image">
                                             </a>
 
                                             <div class="product-action-vertical">
-                                                <a href="#"
+                                                <a onclick="addToWishlist({{$off->id}})"
                                                    class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                             </div><!-- End .product-action -->
 
                                             <div class="product-action product-action-dark">
-                                                <a href="#" class="btn-product btn-cart"
+                                                <a onclick="addToBasket({{$off->id}})" class="btn-product btn-cart"
                                                    title="افزودن به سبد خرید"><span>افزودن به سبد خرید</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                                   title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
+<!--                                                <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                                   title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>-->
                                             </div><!-- End .product-action -->
                                         </figure><!-- End .product-media -->
 
                                         <div class="product-body">
                                             <div class="product-cat">
-                                                <a href="#">دوربین دیجیتال</a>
+                                                <a href="#">{{$off->title}}</a>
                                             </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">دوربین کنون - مدل مارک
-                                                    5D</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                <span class="new-price">1,250,999 تومان</span>
-                                                <span class="old-price">1,890,000 تومان</span>
+                                            <h3 class="product-title"><a href="{{route('shop_productDetail', $off->slug)}}">{{$off->full_title}}</a></h3><!-- End .product-title -->
+                                             <div class="product-price">
+                                                <span class="new-price">{{$off->price}} تومان</span>
+                                                @if(!$off->status)
+                                                    <span class="out-text">ناموجود</span>
+                                            @endif
                                             </div><!-- End .product-price -->
                                             <div class="ratings-container">
                                                 <div class="ratings">
@@ -744,49 +746,7 @@
                                     </div><!-- End .product -->
                                 </div><!-- End .col-sm-6 -->
 
-                                <div class="col-6">
-                                    <div class="product product-2">
-                                        <figure class="product-media">
-                                            <span class="product-label label-circle label-sale">فروش ویژه</span>
-                                            <a href="product.html">
-                                                <img src="/assets/images/demos/demo-3/products/product-6.jpg"
-                                                     alt="تصویر محصول" class="product-image">
-                                            </a>
-
-                                            <div class="product-action-vertical">
-                                                <a href="#"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
-                                                            به لیست علاقه مندی</span></a>
-                                            </div><!-- End .product-action -->
-
-                                            <div class="product-action product-action-dark">
-                                                <a href="#" class="btn-product btn-cart"
-                                                   title="افزودن به سبد خرید"><span>افزودن به سبد خرید</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                                   title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
-
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">کامپیوتر و تب لت</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">آی پد اپل - صفحه کلید
-                                                    هوشمند</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                <span class="new-price">3,330,999 تومان</span>
-                                                <span class="old-price">3,900,000 تومان</span>
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 60%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 4 بازدید )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 -->
+                                @endforeach
                             </div><!-- End .row -->
                         </div><!-- End .products -->
                     </div><!-- End .col-lg-6 -->
@@ -864,10 +824,10 @@
         <div class="container trending">
             <div class="heading heading-flex mb-3">
                 <div class="heading-left">
-                    <h2 class="title">محصولات ویژه</h2><!-- End .title -->
+                    <h2 class="title">{{$indexPageData->suggests[1]->title}}</h2><!-- End .title -->
                 </div><!-- End .heading-left -->
 
-                <div class="heading-right">
+<!--                <div class="heading-right">
                     <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="trending-all-link" data-toggle="tab"
@@ -898,17 +858,20 @@
                                role="tab" aria-controls="trending-acc-tab" aria-selected="false">لوازم جانبی</a>
                         </li>
                     </ul>
-                </div><!-- End .heading-right -->
+                </div>-->
+                <!-- End .heading-right -->
             </div><!-- End .heading -->
 
             <div class="row">
+<!--
                 <div class="col-xl-5col d-none d-xl-block">
                     <div class="banner">
                         <a href="#">
                             <img src="assets/images/demos/demo-3/banners/banner-4.jpg" alt="بنر">
                         </a>
-                    </div><!-- End .banner -->
-                </div><!-- End .col-xl-5col -->
+                    </div>&lt;!&ndash; End .banner &ndash;&gt;
+                </div>&lt;!&ndash; End .col-xl-5col &ndash;&gt;
+-->
 
                 <div class="col-xl-4-5col">
                     <div class="tab-content tab-content-carousel just-action-icons-sm">
@@ -936,22 +899,23 @@
                                             }
                                         }
                                     }'>
+                                @foreach($indexPageData->suggests[1]->product as $sps)
                                 <div class="product product-2">
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-top">برتر</span>
-                                        <a href="product.html">
-                                            <img src="assets/images/demos/demo-3/products/product-7.jpg"
-                                                 alt="تصویر محصول" class="product-image">
+                                        <a href="{{route('shop_productDetail', $sps->slug)}}">
+                                            <img src="/{{$sps->banner}}"
+                                                 alt="{{$sps->title}}" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#"
+                                            <a onclick="addToWishlist({{$sps->id}})"
                                                class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
                                                         لیست علاقه مندی</span></a>
                                         </div><!-- End .product-action -->
 
                                         <div class="product-action product-action-dark">
-                                            <a href="#" class="btn-product btn-cart"
+                                            <a onclick="addToBasket({{$sps->id}})" class="btn-product btn-cart"
                                                title="افزودن به سبد خرید"><span>افزودن
                                                         به سبد خرید</span></a>
                                             <a href="popup/quickView.html" class="btn-product btn-quickview"
@@ -961,12 +925,12 @@
 
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">هدفون و هندزفری</a>
+                                            <a href="#">{{$sps->title}}</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">هدفون بی سیم</a></h3>
+                                        <h3 class="product-title"><a href="{{route('shop_productDetail', $sps->slug)}}">{{$sps->full_title}}</a></h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
-                                            159,999 تومان
+                                            {{$sps->price}} تومان
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
@@ -976,236 +940,17 @@
                                             <span class="ratings-text">( 4 بازدید )</span>
                                         </div><!-- End .rating-container -->
 
-                                        <div class="product-nav product-nav-dots">
+<!--                                        <div class="product-nav product-nav-dots">
                                             <a href="#" style="background: #69b4ff;"><span class="sr-only">نام
                                                         رنگ</span></a>
                                             <a href="#" style="background: #ff887f;"><span class="sr-only">نام
                                                         رنگ</span></a>
                                             <a href="#" class="active" style="background: #333333;"><span
                                                     class="sr-only">نام رنگ</span></a>
-                                        </div><!-- End .product-nav -->
+                                        </div>&lt;!&ndash; End .product-nav &ndash;&gt;-->
                                     </div><!-- End .product-body -->
                                 </div><!-- End .product -->
-
-                                <div class="product product-2">
-                                    <figure class="product-media">
-                                        <a href="product.html">
-                                            <img src="assets/images/demos/demo-3/products/product-8.jpg"
-                                                 alt="تصویر محصول" class="product-image">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#"
-                                               class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                        لیست علاقه مندی</span></a>
-                                        </div><!-- End .product-action -->
-
-                                        <div class="product-action product-action-dark">
-                                            <a href="#" class="btn-product btn-cart"
-                                               title="افزودن به سبد خرید"><span>افزودن
-                                                        به سبد خرید</span></a>
-                                            <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                               title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">بازی ویدئویی</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">دستگاه ایکس باکس وان
-                                                500GB</a></h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            1,250,000 تومان
-                                        </div><!-- End .product-price -->
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: 60%;"></div>
-                                                <!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 6 بازدید )</span>
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-
-                                <div class="product product-2">
-                                    <figure class="product-media">
-                                        <span class="product-label label-circle label-new">جدید</span>
-                                        <a href="product.html">
-                                            <img src="assets/images/demos/demo-3/products/product-9.jpg"
-                                                 alt="تصویر محصول" class="product-image">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#"
-                                               class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                        لیست علاقه مندی</span></a>
-                                        </div><!-- End .product-action -->
-
-                                        <div class="product-action product-action-dark">
-                                            <a href="#" class="btn-product btn-cart"
-                                               title="افزودن به سبد خرید"><span>افزودن
-                                                        به سبد خرید</span></a>
-                                            <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                               title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">ساعت هوشمند</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">ساعت اپل - سری4 - بدنه
-                                                آلمینیومی</a></h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            420,000 تومان
-                                        </div><!-- End .product-price -->
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: 80%;"></div>
-                                                <!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 4 بازدید )</span>
-                                        </div><!-- End .rating-container -->
-
-                                        <div class="product-nav product-nav-dots">
-                                            <a href="#" style="background: #edd2c8;"><span class="sr-only">نام
-                                                        رنگ</span></a>
-                                            <a href="#" style="background: #eaeaec;"><span class="sr-only">نام
-                                                        رنگ</span></a>
-                                            <a href="#" class="active" style="background: #333333;"><span
-                                                    class="sr-only">نام رنگ</span></a>
-                                        </div><!-- End .product-nav -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-
-                                <div class="product product-2">
-                                    <figure class="product-media">
-                                        <span class="product-label label-circle label-top">برتر</span>
-                                        <span class="product-label label-circle label-sale">فروش ویژه</span>
-                                        <a href="product.html">
-                                            <img src="assets/images/demos/demo-3/products/product-10.jpg"
-                                                 alt="تصویر محصول" class="product-image">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#"
-                                               class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                        لیست علاقه مندی</span></a>
-                                        </div><!-- End .product-action -->
-
-                                        <div class="product-action product-action-dark">
-                                            <a href="#" class="btn-product btn-cart"
-                                               title="افزودن به سبد خرید"><span>افزودن
-                                                        به سبد خرید</span></a>
-                                            <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                               title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">تلویزیون و سینما خانگی</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">تلویزیون ال ای دی سونی</a>
-                                        </h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            <span class="new-price">2,320,999 تومان</span>
-                                            <span class="old-price">2,850,000 تومان</span>
-                                        </div><!-- End .product-price -->
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: 80%;"></div>
-                                                <!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 10 بازدید )</span>
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-
-                                <div class="product product-2">
-                                    <figure class="product-media">
-                                        <span class="product-label label-circle label-top">برتر</span>
-                                        <a href="product.html">
-                                            <img src="assets/images/demos/demo-3/products/product-15.jpg"
-                                                 alt="تصویر محصول" class="product-image">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#"
-                                               class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                        لیست علاقه مندی</span></a>
-                                        </div><!-- End .product-action -->
-
-                                        <div class="product-action product-action-dark">
-                                            <a href="#" class="btn-product btn-cart"
-                                               title="افزودن به سبد خرید"><span>افزودن
-                                                        به سبد خرید</span></a>
-                                            <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                               title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">تلویزیون و سینما خانگی</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">تلویزیون سامسونگ 55
-                                                اینچ</a></h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            1,220,000 تومان
-                                        </div><!-- End .product-price -->
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: 60%;"></div>
-                                                <!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 5 بازدید )</span>
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-
-                                <div class="product product-2">
-                                    <figure class="product-media">
-                                        <span class="product-label label-circle label-top">برتر</span>
-                                        <a href="product.html">
-                                            <img src="assets/images/demos/demo-3/products/product-11.jpg"
-                                                 alt="تصویر محصول" class="product-image">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#"
-                                               class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                        لیست علاقه مندی</span></a>
-                                        </div><!-- End .product-action -->
-
-                                        <div class="product-action product-action-dark">
-                                            <a href="#" class="btn-product btn-cart"
-                                               title="افزودن به سبد خرید"><span>افزودن
-                                                        به سبد خرید</span></a>
-                                            <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                               title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">لپ تاپ</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">لپ تاپ مک بوک پرو - 13
-                                                اینچ</a></h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            2,860,000 تومان
-                                        </div><!-- End .product-price -->
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div>
-                                                <!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 4 بازدید )</span>
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
+                                @endforeach
                             </div><!-- End .owl-carousel -->
                         </div><!-- .End .tab-pane -->
                         <div class="tab-pane p-0 fade" id="trending-tv-tab" role="tabpanel"
@@ -1610,14 +1355,16 @@
                                             <span class="ratings-text">( 4 بازدید )</span>
                                         </div><!-- End .rating-container -->
 
-                                        <div class="product-nav product-nav-dots">
+<!--                                        <div class="product-nav product-nav-dots">
                                             <a href="#" style="background: #edd2c8;"><span class="sr-only">نام
                                                         رنگ</span></a>
                                             <a href="#" style="background: #eaeaec;"><span class="sr-only">نام
                                                         رنگ</span></a>
                                             <a href="#" class="active" style="background: #333333;"><span
                                                     class="sr-only">نام رنگ</span></a>
-                                        </div><!-- End .product-nav -->
+                                        </div>-->
+
+                                        <!-- End .product-nav -->
                                     </div><!-- End .product-body -->
                                 </div><!-- End .product -->
 
@@ -2483,10 +2230,10 @@
         <div class="container top">
             <div class="heading heading-flex mb-3">
                 <div class="heading-left">
-                    <h2 class="title">محصولات پرفروش</h2><!-- End .title -->
+                    <h2 class="title">{{$indexPageData->suggests[0]->title}}</h2><!-- End .title -->
                 </div><!-- End .heading-left -->
 
-                <div class="heading-right">
+<!--                <div class="heading-right">
                     <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab"
@@ -2513,7 +2260,7 @@
                                aria-controls="top-acc-tab" aria-selected="false">لوازم جانبی</a>
                         </li>
                     </ul>
-                </div><!-- End .heading-right -->
+                </div>--><!-- End .heading-right -->
             </div><!-- End .heading -->
 
             <div class="tab-content tab-content-carousel just-action-icons-sm">
@@ -2544,36 +2291,38 @@
                                     }
                                 }
                             }'>
+                        @foreach($indexPageData->suggests[0]->product as $mostSell)
                         <div class="product product-2">
                             <figure class="product-media">
                                 <span class="product-label label-circle label-top">برتر</span>
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-11.jpg" alt="تصویر محصول"
-                                         class="product-image">
+                                <a href="{{route('shop_productDetail', $mostSell->slug)}}">
+                                    <img src="/{{$mostSell->banner}}" alt="تصویر محصول"
+                                         class="{{$mostSell->title}}">
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
+                                    <a onclick="addToWishlist({{$mostSell->id}})"
+                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
                                                 لیست علاقه مندی</span></a>
                                 </div><!-- End .product-action -->
 
                                 <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
+                                    <a onclick="addToBasket({{$mostSell->id}})" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
                                                 به
                                                 سبد خرید</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
+<!--                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>-->
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
                                 <div class="product-cat">
-                                    <a href="#">لپ تاپ</a>
+                                    <a href="#">{{$mostSell->title}}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">لپ تاپ مک بوک پرو - 13 اینچ</a>
+                                <h3 class="product-title"><a href="{{route('shop_productDetail', $mostSell->slug)}}">{{$mostSell->full_title}}</a>
                                 </h3><!-- End .product-title -->
                                 <div class="product-price">
-                                    3,850,000 تومان
+                                    {{$mostSell->price}} تومان
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">
@@ -2584,228 +2333,7 @@
                                 </div><!-- End .rating-container -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
-
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-12.jpg" alt="تصویر محصول"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                لیست علاقه مندی</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
-                                                به
-                                                سبد خرید</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">لوازم صوتی</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">اسپیکر بلوتوث</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    560,000 تومان
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 6 بازدید )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-new">جدید</span>
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-13.jpg" alt="تصویر محصول"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                لیست علاقه مندی</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
-                                                به
-                                                سبد خرید</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">تب لت</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">آیپد پرو اپل - سایز 11 اینچ - حافظه
-                                        256 گیگ</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    1,260,000 تومان
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 بازدید )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" style="background: #edd2c8;"><span class="sr-only">نام
-                                                رنگ</span></a>
-                                    <a href="#" style="background: #eaeaec;"><span class="sr-only">نام
-                                                رنگ</span></a>
-                                    <a href="#" class="active" style="background: #333333;"><span
-                                            class="sr-only">نام رنگ</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-top">برتر</span>
-                                <span class="product-label label-circle label-sale">فروش ویژه</span>
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-14.jpg" alt="تصویر محصول"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                لیست علاقه مندی</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
-                                                به
-                                                سبد خرید</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">موبایل</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">گوشی گوشی گوگل مدل پیکسل 3 - 128
-                                        گیگابایت</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    <span class="new-price">2,430,000 تومان</span>
-                                    <span class="old-price">2,850,000 تومان</span>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 10 بازدید )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" class="active" style="background: #edd2c8;"><span
-                                            class="sr-only">نام رنگ</span></a>
-                                    <a href="#" style="background: #eaeaec;"><span class="sr-only">نام
-                                                رنگ</span></a>
-                                    <a href="#" style="background: #333333;"><span class="sr-only">نام
-                                                رنگ</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-top">برتر</span>
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-15.jpg" alt="تصویر محصول"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                لیست علاقه مندی</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
-                                                به
-                                                سبد خرید</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">تلویزیون و سینما خانگی</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">تلویزیون ال ای دی سامسونگ - سایز 55
-                                        اینچ</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    1,260,000 تومان
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 5 بازدید )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-top">برتر</span>
-                                <a href="product.html">
-                                    <img src="assets/images/demos/demo-3/products/product-11.jpg" alt="تصویر محصول"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
-                                                لیست علاقه مندی</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="افزودن به سبد خرید"><span>افزودن
-                                                به
-                                                سبد خرید</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                       title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">لپ تاپ</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">لپ تاپ مک بوک پرو - 13 اینچ</a>
-                                </h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    3,850,000 تومان
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
-                                        <!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 4 بازدید )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                        @endforeach
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
                 <div class="tab-pane p-0 fade" id="top-tv-tab" role="tabpanel" aria-labelledby="top-tv-link">

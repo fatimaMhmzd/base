@@ -7,9 +7,11 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Modules\Color\Services\ColorService;
 use Modules\Polymorphism\Entities\Images;
+use Modules\Product\Http\Repositories\SuggestProductRepository;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
 use Modules\Product\Services\ProductGroupService;
 use Modules\Product\Services\ProductService;
+use Modules\Product\Services\SuggestService;
 use Modules\Size\Entities\Size;
 use Modules\Size\Services\SizeService;
 use Modules\Unit\Services\UnitService;
@@ -38,7 +40,8 @@ class ProductDashboardController extends Controller
     {
         $group = resolve(ProductGroupService::class)->all();
         $unit = resolve(UnitService::class)->all();
-        return view('product::dashboard.product.add', compact('group' ,'unit'));
+        $suggests = resolve(SuggestService::class)->all();
+        return view('product::dashboard.product.add', compact('group' ,'unit','suggests'));
     }
 
     /**
@@ -48,7 +51,6 @@ class ProductDashboardController extends Controller
      */
     public function store(ValidateProductRequest $request)
     {
-
         try {
             $result = $this->service->store($request);
             $message = trans("custom.defaults.store_success");
@@ -76,10 +78,8 @@ class ProductDashboardController extends Controller
      */
     public function edit($id)
     {
-        $data = $this->service->find($id);
-        $group = resolve(ProductGroupService::class)->all();
-        $unit = resolve(UnitService::class)->all();
-        return view('product::dashboard.product.update',compact('data' ,'group' , 'unit'));
+        $data = $this->service->productEditPage($id);
+        return view('product::dashboard.product.update',compact('data'));
     }
 
     /**

@@ -114,14 +114,6 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <label style="margin-top: 20px">اسلاگ </label>
-                                            <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control"
-                                                       placeholder="اسلاگ " name="slug">
-
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6 col-12">
                                             <label style="margin-top: 20px">لینک </label>
                                             <fieldset class="form-group">
                                                 <input type="text" id="last-name-column" class="form-control"
@@ -270,6 +262,7 @@
                                             </div>
                                         </div>
 
+
                                         <div class="col-12" id="pricearea">
                                             <div class="row" id="priceloc0">
                                                 <div class="col-xl-4 col-lg-12">
@@ -308,7 +301,33 @@
                                                 افزودن ردیف جدید برای قیمت گذاری
                                             </button>
                                         </div>
-
+                                        <section class="custom-checkbox">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h4 class="card-title">تنظیمات سفارشی نمایش محصول در صفحه ی اصلی</h4>
+                                                        </div>
+                                                        <div class="card-content">
+                                                            <div class="card-body">
+                                                                <ul class="list-unstyled mb-0">
+                                                                    @foreach($suggests as $suggest)
+                                                                    <li class="d-inline-block mr-2">
+                                                                        <fieldset>
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input" value="{{$suggest->id}}" name="suggest[]" id="customCheck{{$suggest->id}}">
+                                                                                <label class="custom-control-label" for="customCheck{{$suggest->id}}">{{$suggest->title}}</label>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary mr-1 mb-1">ارسال</button>
                                             <button type="reset" class="btn btn-outline-warning mr-1 mb-1">تنظیم مجدد

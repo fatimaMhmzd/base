@@ -8,12 +8,15 @@ use Modules\Color\Services\ColorService;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Polymorphism\Services\VideoService;
 use Modules\Product\Entities\ProductGroup;
+use Modules\Product\Entities\SuggestProduct;
 use Modules\Product\Http\Repositories\PriceProductRepository;
 use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Repositories\ProductRepository;
+use Modules\Product\Http\Repositories\SuggestProductRepository;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
 use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
 use Modules\Size\Services\SizeService;
+use Modules\Unit\Services\UnitService;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -121,6 +124,8 @@ class ProductService
                 $IsCover = $inputs["isCover"] ?? null;
                 $prices = $inputs["pricearray"] ?? null;
                 $numberss = $inputs["numberarray"] ?? null;
+                $suggests = $inputs["suggest"] ?? null;
+
                 $ids = $inputs["ids"] ?? null;
                 DB::commit();
                 $image = $inputs["file"] ?? null;
@@ -169,6 +174,18 @@ class ProductService
 
                     }
                 }
+                if ($suggests != null and count($suggests) != 0) {
+                    $suggestProductRepository = new SuggestProductRepository();
+                    $suggestProducts = $suggestProductRepository->by(null,'product_id',$id)->delete();
+
+                    foreach ($suggests as $key => $item){
+                        $itemSuggest =[];
+                        $itemSuggest["suggest_id"] =$item;
+                        $itemSuggest["product_id"] =$id;
+                        resolve(SuggestProductRepository::class)->create($itemSuggest);
+
+                    }
+                }
 
 
             } catch (\Exception $exception) {
@@ -206,6 +223,7 @@ class ProductService
             $IsCover = $inputs["isCover"] ?? null;
             $prices = $inputs["pricearray"] ?? null;
             $numberss = $inputs["numberarray"] ?? null;
+            $suggests = $inputs["suggest"] ?? null;
 
 
 
@@ -232,6 +250,16 @@ class ProductService
                     $itemPrice["product_id"] =$totalUnitsItem->id;
 
                   $totalUnitsItem->prices()->save(resolve(PriceProductService::class)->store($itemPrice));
+
+                }
+            }
+            if ($suggests != null and count($suggests) != 0) {
+                foreach ($suggests as $key => $item){
+                    $itemSuggest =[];
+                    $itemSuggest["suggest_id"] =$item;
+                    $itemSuggest["product_id"] =$totalUnitsItem->id;
+                  resolve(SuggestProductRepository::class)->create($itemSuggest);
+
 
                 }
             }
@@ -288,5 +316,31 @@ class ProductService
     public function productDetail($slug)
     {
         return $this->productRepository->findBy("slug",$slug);
+    }
+    public function productEditPage($id): object
+    {
+        $data = $this->productRepository->find($id);
+        $group = resolve(ProductGroupService::class)->all();
+        $unit = resolve(UnitService::class)->all();
+        $suggests = resolve(SuggestService::class)->all();
+        $suggestProductRepository = new SuggestProductRepository();
+
+        $suggestProducts = $suggestProductRepository->by(null,'product_id',$id);
+        $suggestItem =[];
+        foreach ($suggests as $suggest){
+         $sugPro = SuggestProduct::query()->where('product_id',$id)->where('suggest_id' , $suggest->id)->first();
+                $checked =false;
+                if ($sugPro){
+                    $checked =true;
+                }
+
+            $suggestpro = (object)[
+                "id" => $suggest->id,
+                "title" => $suggest->title,
+                "checked" => $checked,
+            ];
+            array_push($suggestItem,$suggestpro);
+        }
+        return (object)array("data"=>$data , "group"=>$group,"unit"=>$unit,"suggests"=>$suggestItem);
     }
 }
