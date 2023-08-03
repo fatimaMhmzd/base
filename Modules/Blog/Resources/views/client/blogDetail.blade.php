@@ -117,8 +117,8 @@
                         </a>
                     </nav><!-- End .pager-nav -->
 
-                    <div class="related-posts">
-                        <h3 class="title">پست های مرتبط</h3><!-- End .title -->
+<!--                    <div class="related-posts">
+                        <h3 class="title">پست های مرتبط</h3>&lt;!&ndash; End .title &ndash;&gt;
 
                         <div class="owl-carousel owl-simple" data-toggle="owl" data-owl-options='{
                                         "nav": false,
@@ -143,100 +143,100 @@
                                     <a href="single.html">
                                         <img src="/assets/images/blog/grid/3cols/post-1.jpg" alt="توضیحات عکس">
                                     </a>
-                                </figure><!-- End .entry-media -->
+                                </figure>&lt;!&ndash; End .entry-media &ndash;&gt;
 
                                 <div class="entry-body">
                                     <div class="entry-meta justify-content-start">
                                         <a href="#">22 اسفند 1401</a>
                                         <span class="meta-separator">|</span>
                                         <a href="#">2 دیدگاه</a>
-                                    </div><!-- End .entry-meta -->
+                                    </div>&lt;!&ndash; End .entry-meta &ndash;&gt;
 
                                     <h2 class="entry-title">
                                         <a href="/single.html">لورم ایپسوم متن ساختگی با تولید سادگی</a>
-                                    </h2><!-- End .entry-title -->
+                                    </h2>&lt;!&ndash; End .entry-title &ndash;&gt;
 
                                     <div class="entry-cats">
                                         <a href="#">سبک زندگی</a>،
                                         <a href="#">فروشگاه</a>
-                                    </div><!-- End .entry-cats -->
-                                </div><!-- End .entry-body -->
-                            </article><!-- End .entry -->
+                                    </div>&lt;!&ndash; End .entry-cats &ndash;&gt;
+                                </div>&lt;!&ndash; End .entry-body &ndash;&gt;
+                            </article>&lt;!&ndash; End .entry &ndash;&gt;
 
                             <article class="entry entry-grid">
                                 <figure class="entry-media">
                                     <a href="single.html">
                                         <img src="/assets/images/blog/grid/3cols/post-2.jpg" alt="توضیحات عکس">
                                     </a>
-                                </figure><!-- End .entry-media -->
+                                </figure>&lt;!&ndash; End .entry-media &ndash;&gt;
 
                                 <div class="entry-body">
                                     <div class="entry-meta justify-content-start">
                                         <a href="#">21 اسفند 1401</a>
                                         <span class="meta-separator">|</span>
                                         <a href="#">0 دیدگاه</a>
-                                    </div><!-- End .entry-meta -->
+                                    </div>&lt;!&ndash; End .entry-meta &ndash;&gt;
 
                                     <h2 class="entry-title">
                                         <a href="single.html">لورم ایپسوم متن ساختگی</a>
-                                    </h2><!-- End .entry-title -->
+                                    </h2>&lt;!&ndash; End .entry-title &ndash;&gt;
 
                                     <div class="entry-cats">
                                         <a href="#">سبک زندگی</a>
-                                    </div><!-- End .entry-cats -->
-                                </div><!-- End .entry-body -->
-                            </article><!-- End .entry -->
+                                    </div>&lt;!&ndash; End .entry-cats &ndash;&gt;
+                                </div>&lt;!&ndash; End .entry-body &ndash;&gt;
+                            </article>&lt;!&ndash; End .entry &ndash;&gt;
 
                             <article class="entry entry-grid">
                                 <figure class="entry-media">
                                     <a href="single.html">
                                         <img src="/assets/images/blog/grid/3cols/post-3.jpg" alt="توضیحات عکس">
                                     </a>
-                                </figure><!-- End .entry-media -->
+                                </figure>&lt;!&ndash; End .entry-media &ndash;&gt;
 
                                 <div class="entry-body">
                                     <div class="entry-meta justify-content-start">
                                         <a href="#">18 اسفند 1401</a>
                                         <span class="meta-separator">|</span>
                                         <a href="#">3 دیدگاه</a>
-                                    </div><!-- End .entry-meta -->
+                                    </div>&lt;!&ndash; End .entry-meta &ndash;&gt;
 
                                     <h2 class="entry-title">
                                         <a href="single.html">لورم ایپسوم متن ساختگی.</a>
-                                    </h2><!-- End .entry-title -->
+                                    </h2>&lt;!&ndash; End .entry-title &ndash;&gt;
 
                                     <div class="entry-cats">
                                         <a href="#">مد</a>،
                                         <a href="#">سبک زندگی</a>
-                                    </div><!-- End .entry-cats -->
-                                </div><!-- End .entry-body -->
-                            </article><!-- End .entry -->
+                                    </div>&lt;!&ndash; End .entry-cats &ndash;&gt;
+                                </div>&lt;!&ndash; End .entry-body &ndash;&gt;
+                            </article>&lt;!&ndash; End .entry &ndash;&gt;
 
                             <article class="entry entry-grid">
                                 <figure class="entry-media">
                                     <a href="single.html">
                                         <img src="/assets/images/blog/grid/3cols/post-4.jpg" alt="توضیحات عکس">
                                     </a>
-                                </figure><!-- End .entry-media -->
+                                </figure>&lt;!&ndash; End .entry-media &ndash;&gt;
 
                                 <div class="entry-body">
                                     <div class="entry-meta justify-content-start">
                                         <a href="#">15 اسفند 1401</a>
                                         <span class="meta-separator">|</span>
                                         <a href="#">4 دیدگاه</a>
-                                    </div><!-- End .entry-meta -->
+                                    </div>&lt;!&ndash; End .entry-meta &ndash;&gt;
 
                                     <h2 class="entry-title">
                                         <a href="single.html">لورم ایپسوم متن ساختگی</a>
-                                    </h2><!-- End .entry-title -->
+                                    </h2>&lt;!&ndash; End .entry-title &ndash;&gt;
 
                                     <div class="entry-cats">
                                         <a href="#">سفر</a>
-                                    </div><!-- End .entry-cats -->
-                                </div><!-- End .entry-body -->
-                            </article><!-- End .entry -->
-                        </div><!-- End .owl-carousel -->
-                    </div><!-- End .related-posts -->
+                                    </div>&lt;!&ndash; End .entry-cats &ndash;&gt;
+                                </div>&lt;!&ndash; End .entry-body &ndash;&gt;
+                            </article>&lt;!&ndash; End .entry &ndash;&gt;
+                        </div>&lt;!&ndash; End .owl-carousel &ndash;&gt;
+                    </div>--><!-- End .related-posts -->
 
                     <div class="comments">
                         <h3 class="title">{{count($data->comments)}} دیدگاه</h3><!-- End .title -->

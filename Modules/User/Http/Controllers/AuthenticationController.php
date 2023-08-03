@@ -25,14 +25,18 @@ class AuthenticationController extends Controller
             'mobile.required' => 'شماره موبایل الزامی است',
             'password.required' => 'پسورد الزامی است',
         ]);
-
+        if ($request->check == null) {
+            Session::put('check', false);
+        } else {
+            Session::put('check', true);
+        }
         $user = $this->authenticationService->singUp($request);
         if ($user){
             Session::put('mobile',$request->phone);
         }
         if ($user){
-            Auth::loginUsingId($user->id,false);
-            return back();
+            Auth::loginUsingId($user->id,Session::get('check'));
+            return Redirect::route('indexClient');
         }else{
             return back()->with('error', true)->with('message', trans("custom.defaults.store_failed"));
         }
@@ -47,6 +51,11 @@ class AuthenticationController extends Controller
             'password.required' => 'پسورد الزامی است',
 
         ]);
+        if ($request->check == null) {
+            Session::put('check', false);
+        } else {
+            Session::put('check', true);
+        }
         $user = $this->authenticationService->singIn($request);
 
         if ($user){
@@ -54,8 +63,8 @@ class AuthenticationController extends Controller
         }
 
         if ($user){
-            Auth::loginUsingId($user->id,false);
-            return back();
+            Auth::loginUsingId($user->id,Session::get('check'));
+            return Redirect::route('indexClient');
         }else{
             return back()->with('error', true)->with('message', trans("custom.defaults.store_failed"));
         }

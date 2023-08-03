@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Product\Http\Controllers\Dashboard\ProductDashboardController;
 use Modules\Product\Http\Controllers\Dashboard\ProductGroupDashboardController;
 use Modules\Product\Http\Controllers\Dashboard\ProductPropertyController;
+use Modules\Product\Http\Controllers\Dashboard\SuggestController;
 
 Route::group(['prefix' => 'product', 'as' => 'product_'], function (){
     Route::get('/', [ProductDashboardController::class, 'index'])->name('index');
@@ -33,6 +34,17 @@ Route::group(['prefix' => 'product', 'as' => 'product_'], function (){
         Route::post('/store', [ProductPropertyController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [ProductPropertyController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [ProductPropertyController::class, 'update'])->name('update');
+
+
+
+    });
+    Route::group(['prefix' => 'suggest', 'as' => 'suggest_'], function (){
+        Route::get('/', [SuggestController::class, 'index'])->name('index');
+        Route::get('/ajax', [SuggestController::class, 'ajax'])->name('ajax');
+        Route::get('/create/{id}', [SuggestController::class, 'create'])->name('create');
+        Route::post('/store', [SuggestController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [SuggestController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [SuggestController::class, 'update'])->name('update');
 
 
 

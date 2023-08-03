@@ -14,6 +14,6 @@ class SuggestRepository extends BaseRepository
 
     public function relations(): array
     {
-        return [];
+        return ["product"];
     }
 }

@@ -19,6 +19,11 @@ class ProductController extends Controller
         $data = $this->service->shopIndexPage($request,$slug); //return $data;
         return view('product::client.store',compact('data'));
     }
+    public function search(Request $request)
+    {
+        $data = $this->service->search($request);
+        return view('product::client.store',compact('data'));
+    }
 
     public function productDetail($slug)
     {

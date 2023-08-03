@@ -16,8 +16,14 @@ class ValidateSuggestRequest extends FormRequest
         return [
             'title' => 'required|string',
             'sub_title' => 'nullable|string',
+            'title_banner' => 'nullable|string',
+            'sub_title_banner' => 'nullable|string',
+            'lable_banner' => 'nullable|string',
+            'link_banner' => 'nullable|string',
+            'lable_description' => 'nullable|string',
             'sort_id' => 'nullable|string',
             'display_on_homepage' => 'nullable|integer',
+            'file' => 'nullable|image|mimes:jpg,png|max:5000',
 
         ];
     }

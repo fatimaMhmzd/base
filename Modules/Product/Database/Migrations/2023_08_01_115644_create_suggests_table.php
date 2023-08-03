@@ -18,6 +18,11 @@ return new class extends Migration
             $table->id();
             $table->string('title')->comment('عنوان');
             $table->string('sub_title')->nullable()->comment('زیر عنوان');
+            $table->string('title_banner')->nullable()->comment('عنوان بنر');
+            $table->string('sub_title_banner')->nullable()->comment('زیر عنوان بنر');
+            $table->string('lable_banner')->nullable()->comment('برچسب بنر');
+            $table->string('link_banner')->nullable()->comment('لینک بنر');
+            $table->string('lable_description')->nullable()->comment('توضیحات بنر');
             $table->smallInteger('sort_id')->default(0);
             $table->boolean('display_on_homepage')->default(0);
             $table->timestamps();
@@ -29,9 +34,6 @@ return new class extends Migration
             array('title' => 'تخفیف های ویژه'),
             array('title' => 'محصولات ویژه'),
             array('title' => 'محصولات پرفروش' ),
-
-
-
 
         ));
     }

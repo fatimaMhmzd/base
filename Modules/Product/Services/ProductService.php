@@ -312,6 +312,30 @@ class ProductService
 
         return (object)array("groups"=>$groups,"product"=>$products);
     }
+    public function search($request): object
+    {
+        $groups = resolve(ProductGroupService::class)->all();
+
+        $filter = [];
+        $products = [];
+        if ($request->search){
+            $filter[] = (object)[
+                "col" => "title",
+                "value" => $request->search,
+                "like" => true,
+            ];
+            $product = $this->productRepository->getByInput($filter, 6, $request->pageNumber);
+            if (count($product) != 0){
+                $products = $product;
+            }
+        }
+
+
+        /*$sizeService = resolve(SizeSe::class);
+        $sizes = $groupService->all();*/
+
+        return (object)array("groups"=>$groups,"product"=>$products);
+    }
 
     public function productDetail($slug)
     {

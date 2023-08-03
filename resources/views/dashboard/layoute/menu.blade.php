@@ -173,6 +173,16 @@
 
                 </ul>
             </li>
+            <li class=" navigation-header"><span>مدیریت سایت</span>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">صفحه ی اول سایت</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_product_suggest_index') ? 'active' : '' }}"><a href="{{route('dashboard_product_suggest_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
 
             <li class=" navigation-header"><span>مدیریت کاربران</span>
             </li>

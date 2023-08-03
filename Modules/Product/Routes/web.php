@@ -24,6 +24,7 @@ Route::group(['prefix' => 'shop', 'as' => 'shop_'], function () {
     Route::get('/productDetail/{slug}', [ProductController::class, 'productDetail'])->name('productDetail');
     Route::get('/cartPage', [ProductController::class, 'cart'])->name('cartPageClient');
     Route::get('/checkoutPage', [ProductController::class, 'checkout'])->name('checkoutPageClient');
+    Route::get('/search', [ProductController::class, 'search'])->name('search');
 });
 Route::group(['prefix' => 'product', 'as' => 'product_'], function () {
     Route::group(['prefix' => 'wishlist', 'as' => 'wishList_'], function () {

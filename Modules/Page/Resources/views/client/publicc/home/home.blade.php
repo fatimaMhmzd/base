@@ -669,6 +669,37 @@
                 </div><!-- End .heading -->
 
                 <div class="row">
+                    @if($indexPageData->suggests[2]->image)
+                    <div class="col-lg-6 deal-col">
+                        <div class="deal"
+                             style="background-image: url('/{{$indexPageData->suggests[2]->image->url}}');">
+                            <div class="deal-top">
+                                <h2>{{$indexPageData->suggests[2]->title_banner}}</h2>
+                                <h4 class="text-center">{{$indexPageData->suggests[2]->sub_title_banner}}</h4>
+                            </div><!-- End .deal-top -->
+
+                            <div class="deal-content">
+                                <h3 class="product-title"><a href="product.html">{{$indexPageData->suggests[2]->lable_banner}}</a>
+                                </h3>
+                                <!-- End .product-title -->
+<!--
+
+                                <div class="product-price mt-3">
+                                    <span class="new-price d-block w-100">129,000 تومان</span>
+                                    <span class="old-price d-block w-100">قیمت قبلی 214,000 تومان</span>
+                                </div>&lt;!&ndash; End .product-price &ndash;&gt;
+-->
+
+                                <a href="{{$indexPageData->suggests[2]->link_banner}}" class="btn btn-link mt-3"><span>خرید</span><i
+                                        class="icon-long-arrow-left"></i></a>
+                            </div><!-- End .deal-content -->
+
+                            <div class="deal-bottom">
+                                <div class="deal-countdown" data-until="+10h"></div><!-- End .deal-countdown -->
+                            </div><!-- End .deal-bottom -->
+                        </div><!-- End .deal -->
+                    </div><!-- End .col-lg-6 -->
+                    @else
                     <div class="col-lg-6 deal-col">
                         <div class="deal"
                              style="background-image: url('/assets/images/demos/demo-3/deal/bg-1.jpg');">
@@ -696,6 +727,7 @@
                             </div><!-- End .deal-bottom -->
                         </div><!-- End .deal -->
                     </div><!-- End .col-lg-6 -->
+                    @endif
                     <div class="col-lg-6">
                         <div class="products">
                             <div class="row">
@@ -703,8 +735,8 @@
                                 <div class="col-6">
                                     <div class="product product-2">
                                         <figure class="product-media">
-                                            <span class="product-label label-circle label-top">برتر</span>
-                                            <span class="product-label label-circle label-sale">فروش ویژه</span>
+<!--                                            <span class="product-label label-circle label-top">برتر</span>
+                                            <span class="product-label label-circle label-sale">فروش ویژه</span>-->
                                             <a href={{route('shop_productDetail', $off->slug)}}>
                                                 <img src="/{{$off->banner}}"
                                                      alt="{{$off->title}}" class="product-image">
@@ -863,15 +895,6 @@
             </div><!-- End .heading -->
 
             <div class="row">
-<!--
-                <div class="col-xl-5col d-none d-xl-block">
-                    <div class="banner">
-                        <a href="#">
-                            <img src="assets/images/demos/demo-3/banners/banner-4.jpg" alt="بنر">
-                        </a>
-                    </div>&lt;!&ndash; End .banner &ndash;&gt;
-                </div>&lt;!&ndash; End .col-xl-5col &ndash;&gt;
--->
 
                 <div class="col-xl-4-5col">
                     <div class="tab-content tab-content-carousel just-action-icons-sm">
@@ -902,7 +925,7 @@
                                 @foreach($indexPageData->suggests[1]->product as $sps)
                                 <div class="product product-2">
                                     <figure class="product-media">
-                                        <span class="product-label label-circle label-top">برتر</span>
+<!--                                        <span class="product-label label-circle label-top">برتر</span>-->
                                         <a href="{{route('shop_productDetail', $sps->slug)}}">
                                             <img src="/{{$sps->banner}}"
                                                  alt="{{$sps->title}}" class="product-image">
@@ -2294,7 +2317,7 @@
                         @foreach($indexPageData->suggests[0]->product as $mostSell)
                         <div class="product product-2">
                             <figure class="product-media">
-                                <span class="product-label label-circle label-top">برتر</span>
+<!--                                <span class="product-label label-circle label-top">برتر</span>-->
                                 <a href="{{route('shop_productDetail', $mostSell->slug)}}">
                                     <img src="/{{$mostSell->banner}}" alt="تصویر محصول"
                                          class="{{$mostSell->title}}">
@@ -3445,7 +3468,7 @@
 
                         <div class="product product-2">
                             <figure class="product-media">
-                                <span class="product-label label-circle label-top">برتر</span>
+<!--                                <span class="product-label label-circle label-top">برتر</span>-->
                                 <a href="product.html">
                                     <img src="assets/images/demos/demo-3/products/product-11.jpg" alt="تصویر محصول"
                                          class="product-image">

@@ -79,7 +79,7 @@
 
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input"
-                                                   id="signin-remember-2">
+                                                   id="signin-remember-2" name="check">
                                             <label class="custom-control-label" for="signin-remember-2">مرا به خاطر
                                                 بسپار</label>
                                         </div><!-- End .custom-checkbox -->
@@ -87,7 +87,7 @@
                                         <a href="{{route('user_forgetPassword')}}" class="forgot-link">رمز عبور خود را فراموش کرده اید؟</a>
                                     </div><!-- End .form-footer -->
                                 </form>
-                                <div class="form-choice">
+<!--                                <div class="form-choice">
                                     <p class="text-center">یا ورود با </p>
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -95,15 +95,16 @@
                                                 <i class="icon-google"></i>
                                                 حساب کاربری گوگل
                                             </a>
-                                        </div><!-- End .col-6 -->
+                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
                                         <div class="col-sm-6">
                                             <a href="#" class="btn btn-login btn-f">
                                                 <i class="icon-facebook-f"></i>
                                                 حساب کاربری فیسبوک
                                             </a>
-                                        </div><!-- End .col-6 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .form-choice -->
+                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                    </div>&lt;!&ndash; End .row &ndash;&gt;
+                                </div>-->
+                                <!-- End .form-choice -->
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane fade show active" id="register-2" role="tabpanel"
                                  aria-labelledby="register-tab-2">
@@ -135,7 +136,7 @@
                                         </div><!-- End .custom-checkbox -->
                                     </div><!-- End .form-footer -->
                                 </form>
-                                <div class="form-choice">
+<!--                                <div class="form-choice">
                                     <p class="text-center">یا ورود با </p>
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -143,15 +144,16 @@
                                                 <i class="icon-google"></i>
                                                 حساب کاربری گوگل
                                             </a>
-                                        </div><!-- End .col-6 -->
+                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
                                         <div class="col-sm-6">
                                             <a href="#" class="btn btn-login  btn-f">
                                                 <i class="icon-facebook-f"></i>
                                                 حساب کاربری فیسبوک
                                             </a>
-                                        </div><!-- End .col-6 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .form-choice -->
+                                        </div>&lt;!&ndash; End .col-6 &ndash;&gt;
+                                    </div>&lt;!&ndash; End .row &ndash;&gt;
+                                </div>-->
+                                <!-- End .form-choice -->
                             </div><!-- .End .tab-pane -->
                         </div><!-- End .tab-content -->
                     </div><!-- End .form-tab -->

@@ -3,6 +3,7 @@
 namespace Modules\Product\Services;
 
 use Illuminate\Support\Facades\DB;
+use Modules\Polymorphism\Services\ImageService;
 use Modules\Product\Http\Repositories\SuggestRepository;
 use Modules\Product\Http\Requests\suggest\ValidateSuggestRequest;
 use Yajra\DataTables\Facades\DataTables;
@@ -46,8 +47,7 @@ class SuggestService
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                $btn = '<a href="' . route('dashboard_product_group_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_product_group_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+                $btn = '<a href="' . route('dashboard_product_suggest_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
 
                 return $btn;
             })
@@ -100,7 +100,11 @@ class SuggestService
             try {
                 $totalUnitItemUpdated = $this->suggestRepository->update($totalUnitItem, $inputs);
                 DB::commit();
+                $image = $inputs["file"] ?? null;
+                if ($image !== null) {
 
+                    $this->uploadImage($totalUnitItem, $image);
+                }
 
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -132,7 +136,11 @@ class SuggestService
         return $totalUnitsItem;
 
     }
-
+    public function uploadImage($guild, $file)
+    {
+        $destinationPath = "public/suggest/banner" . $guild->id;
+        ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
+    }
 
     public function all(): \Illuminate\Support\Collection
     {

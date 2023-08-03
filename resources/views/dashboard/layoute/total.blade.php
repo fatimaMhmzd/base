@@ -132,6 +132,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/dashboard/app-assets/js/scripts/pages/app-user.min.js"></script>
 <script src="/dashboard/app-assets/js/scripts/navs/navs.min.js"></script>
 <!-- END: Page JS-->
+
 @yield('script')
 </body>
 <!-- END: Body-->

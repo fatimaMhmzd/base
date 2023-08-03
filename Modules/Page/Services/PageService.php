@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Page\Http\Repositories\PageRepository;
 use Modules\Page\Http\Requests\page\ValidatePageRequest;
 use Modules\Polymorphism\Services\ImageService;
+use Modules\Product\Entities\Suggest;
 use Modules\Product\Http\Repositories\SuggestRepository;
 use Modules\Product\Services\ProductService;
 use Modules\Product\Services\SuggestService;
@@ -156,12 +157,7 @@ class PageService
         $mostSell = resolve(ProductService::class)->all();
         $highestRate = resolve(ProductService::class)->all();
         $suggestRepository = resolve(SuggestRepository::class);
-        $suggests = $suggestRepository->getByInput(relations:['product']);
-        /*if (Auth::check()){
-            foreach ($bestProduct as $item){
-            }
-
-        }*/
+        $suggests = $suggestRepository->all(relations:['product']);
 
         return (object)array("allSocialMedia"=>$allSocialMedia,"bestProduct"=>$bestProduct,"mostSell"=>$mostSell,"highestRate"=>$highestRate ,"suggests"=>$suggests);
     }

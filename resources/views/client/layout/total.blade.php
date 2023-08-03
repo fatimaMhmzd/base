@@ -104,11 +104,11 @@
                 <div class="header-center">
                     <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
                         <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                        <form action="#" method="get">
+                        <form  method="get" id="searchForm" action="{{route('shop_search')}}" enctype="multipart/form-data">
                             <div class="header-search-wrapper search-wrapper-wide">
                                 <label for="q" class="sr-only">جستجو</label>
                                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                                <input type="search" class="form-control" name="q" id="q"
+                                <input type="search" class="form-control" name="search" id="q"
                                        placeholder="جستجوی محصول ..." required>
                             </div><!-- End .header-search-wrapper -->
                         </form>
@@ -1387,7 +1387,7 @@
         } else {
             Swal.fire({
                 title: 'ورود به حساب کاربری!',
-                text: 'برای خرید نیاز است وارد حساب کاربری خود شوید.وارد حساب خود میشوید؟',
+                text: 'برای افزودن به علاقه مندی نیاز است وارد حساب کاربری خود شوید.وارد حساب خود میشوید؟',
                 icon: 'question',
                 confirmButtonText: 'بله',
                 cancelButtonText: 'خیر',
@@ -1400,6 +1400,7 @@
                 }
             })
         }
+
     }
     function deleteFromBasket(id) {
 
@@ -1426,6 +1427,7 @@
             });
 
             cartContent()
+
 
     }
 
@@ -1473,6 +1475,14 @@
         }
     }
 </script>
+<script>
+    $('body').keypress(function(e) {
+        if (e.keyCode == 13) {
+            $('#searchForm').submit();
+        }
+    });
+</script>
+
 
 @if(Auth::check())
 
