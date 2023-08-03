@@ -24,69 +24,69 @@
                         <div class="toolbox">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
-                                    نمایش <span>9 از 56</span> محصول
+                                    نمایش <span>{{count($data->product)}} </span> محصول
                                 </div><!-- End .toolbox-info -->
                             </div><!-- End .toolbox-left -->
 
-<!--                            <div class="toolbox-right">
-                                <div class="toolbox-sort">
-                                    <label for="sortby">مرتب سازی براساس : </label>
-                                    <div class="select-custom">
-                                        <select name="sortby" id="sortby" class="form-control">
-                                            <option value="popularity" selected="selected">بیشترین خرید</option>
-                                            <option value="rating">بیشترین امتیاز</option>
-                                            <option value="date">تاریخ</option>
-                                        </select>
-                                    </div>
-                                </div>&lt;!&ndash; End .toolbox-sort &ndash;&gt;
-                                <div class="toolbox-layout">
-                                    <a onclick="changeStyle('showStyleOne', 'one')" id="one"
-                                       class="btn-layout active activing">
-                                        <svg width="16" height="10">
-                                            <rect x="0" y="0" width="4" height="4"/>
-                                            <rect x="6" y="0" width="10" height="4"/>
-                                            <rect x="0" y="6" width="4" height="4"/>
-                                            <rect x="6" y="6" width="10" height="4"/>
-                                        </svg>
-                                    </a>
+                            <!--                            <div class="toolbox-right">
+                                                            <div class="toolbox-sort">
+                                                                <label for="sortby">مرتب سازی براساس : </label>
+                                                                <div class="select-custom">
+                                                                    <select name="sortby" id="sortby" class="form-control">
+                                                                        <option value="popularity" selected="selected">بیشترین خرید</option>
+                                                                        <option value="rating">بیشترین امتیاز</option>
+                                                                        <option value="date">تاریخ</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>&lt;!&ndash; End .toolbox-sort &ndash;&gt;
+                                                            <div class="toolbox-layout">
+                                                                <a onclick="changeStyle('showStyleOne', 'one')" id="one"
+                                                                   class="btn-layout active activing">
+                                                                    <svg width="16" height="10">
+                                                                        <rect x="0" y="0" width="4" height="4"/>
+                                                                        <rect x="6" y="0" width="10" height="4"/>
+                                                                        <rect x="0" y="6" width="4" height="4"/>
+                                                                        <rect x="6" y="6" width="10" height="4"/>
+                                                                    </svg>
+                                                                </a>
 
-                                    <a onclick="changeStyle('showStyleTwo', 'two')" id="two"
-                                       class="btn-layout activing">
-                                        <svg width="10" height="10">
-                                            <rect x="0" y="0" width="4" height="4"/>
-                                            <rect x="6" y="0" width="4" height="4"/>
-                                            <rect x="0" y="6" width="4" height="4"/>
-                                            <rect x="6" y="6" width="4" height="4"/>
-                                        </svg>
-                                    </a>
+                                                                <a onclick="changeStyle('showStyleTwo', 'two')" id="two"
+                                                                   class="btn-layout activing">
+                                                                    <svg width="10" height="10">
+                                                                        <rect x="0" y="0" width="4" height="4"/>
+                                                                        <rect x="6" y="0" width="4" height="4"/>
+                                                                        <rect x="0" y="6" width="4" height="4"/>
+                                                                        <rect x="6" y="6" width="4" height="4"/>
+                                                                    </svg>
+                                                                </a>
 
-                                    <a onclick="changeStyle('showStyleThree', 'three')" id="three"
-                                       class="btn-layout activing">
-                                        <svg width="16" height="10">
-                                            <rect x="0" y="0" width="4" height="4"/>
-                                            <rect x="6" y="0" width="4" height="4"/>
-                                            <rect x="12" y="0" width="4" height="4"/>
-                                            <rect x="0" y="6" width="4" height="4"/>
-                                            <rect x="6" y="6" width="4" height="4"/>
-                                            <rect x="12" y="6" width="4" height="4"/>
-                                        </svg>
-                                    </a>
+                                                                <a onclick="changeStyle('showStyleThree', 'three')" id="three"
+                                                                   class="btn-layout activing">
+                                                                    <svg width="16" height="10">
+                                                                        <rect x="0" y="0" width="4" height="4"/>
+                                                                        <rect x="6" y="0" width="4" height="4"/>
+                                                                        <rect x="12" y="0" width="4" height="4"/>
+                                                                        <rect x="0" y="6" width="4" height="4"/>
+                                                                        <rect x="6" y="6" width="4" height="4"/>
+                                                                        <rect x="12" y="6" width="4" height="4"/>
+                                                                    </svg>
+                                                                </a>
 
-                                    <a onclick="changeStyle('showStyleFour', 'four')" id="four"
-                                       class="btn-layout activing">
-                                        <svg width="22" height="10">
-                                            <rect x="0" y="0" width="4" height="4"/>
-                                            <rect x="6" y="0" width="4" height="4"/>
-                                            <rect x="12" y="0" width="4" height="4"/>
-                                            <rect x="18" y="0" width="4" height="4"/>
-                                            <rect x="0" y="6" width="4" height="4"/>
-                                            <rect x="6" y="6" width="4" height="4"/>
-                                            <rect x="12" y="6" width="4" height="4"/>
-                                            <rect x="18" y="6" width="4" height="4"/>
-                                        </svg>
-                                    </a>
-                                </div>&lt;!&ndash; End .toolbox-layout &ndash;&gt;
-                            </div>--><!-- End .toolbox-right -->
+                                                                <a onclick="changeStyle('showStyleFour', 'four')" id="four"
+                                                                   class="btn-layout activing">
+                                                                    <svg width="22" height="10">
+                                                                        <rect x="0" y="0" width="4" height="4"/>
+                                                                        <rect x="6" y="0" width="4" height="4"/>
+                                                                        <rect x="12" y="0" width="4" height="4"/>
+                                                                        <rect x="18" y="0" width="4" height="4"/>
+                                                                        <rect x="0" y="6" width="4" height="4"/>
+                                                                        <rect x="6" y="6" width="4" height="4"/>
+                                                                        <rect x="12" y="6" width="4" height="4"/>
+                                                                        <rect x="18" y="6" width="4" height="4"/>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>&lt;!&ndash; End .toolbox-layout &ndash;&gt;
+                                                        </div>--><!-- End .toolbox-right -->
                         </div><!-- End .toolbox -->
 
                         <div class="products products-area mb-3" style="display: block" id="showStyleOne">
@@ -134,8 +134,8 @@
 
                                             <div class="col-lg-6">
                                                 <div class="product-body product-action-inner">
-                                                    <a onclick="addToWishlist({{$product->id}})" type="button"
-                                                       class="btn-product btn-wishlist"
+                                                    <a onclick="addToWishlist(this,{{$product->id}})" type="button"
+                                                       class="btn-product btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif "
                                                        title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
                                                     <div class="product-cat">
@@ -183,8 +183,8 @@
                                                     </a>
 
                                                     <div class="product-action-vertical">
-                                                        <a onclick="addToWishlist({{$product->id}})"
-                                                           class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                        <a onclick="addToWishlist(this,{{$product->id}})"
+                                                           class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                         <!--                                                        <a href="popup/quickView.html"
                                                                                                                    class="btn-product-icon btn-quickview"
@@ -255,8 +255,8 @@
                                                     </a>
 
                                                     <div class="product-action-vertical">
-                                                        <a onclick="addToWishlist({{$product->id}})" type="button"
-                                                           class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                        <a onclick="addToWishlist(this,{{$product->id}})" type="button"
+                                                           class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                         <!--                                                        <a href="popup/quickView.html"
                                                                                                                    class="btn-product-icon btn-quickview"
@@ -320,7 +320,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -381,7 +381,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -438,7 +438,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -483,7 +483,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -529,7 +529,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -585,7 +585,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -646,7 +646,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -707,7 +707,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -752,7 +752,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -804,8 +804,8 @@
                                                     </a>
 
                                                     <div class="product-action-vertical">
-                                                        <a onclick="addToWishlist({{$product->id}})" type="button"
-                                                           class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                        <a onclick="addToWishlist(this,{{$product->id}})" type="button"
+                                                           class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                         <!--                                                        <a href="popup/quickView.html"
                                                                                                                    class="btn-product-icon btn-quickview"
@@ -868,7 +868,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -929,7 +929,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -986,7 +986,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1031,7 +1031,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1077,7 +1077,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1133,7 +1133,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1194,7 +1194,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1255,7 +1255,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1300,7 +1300,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1345,7 +1345,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1401,7 +1401,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1461,7 +1461,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a href="#"
-                                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                       class="btn-product-icon btn-wishlist  @if($product->is_wish) btn-wishlist-selected @endif  btn-expandable"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                                     <a href="popup/quickView.html"
                                                        class="btn-product-icon btn-quickview"
@@ -1500,26 +1500,26 @@
                         </div><!-- End .products -->
 
 
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1"
-                                       aria-disabled="true">
-                                        <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>قبلی
-                                    </a>
-                                </li>
-                                <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item-total">از 6</li>
-                                <li class="page-item">
-                                    <a class="page-link page-link-next" href="#" aria-label="Next">
-                                        بعدی <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        <!--                        <nav aria-label="Page navigation">
+                                                    <ul class="pagination">
+                                                        <li class="page-item disabled">
+                                                            <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1"
+                                                               aria-disabled="true">
+                                                                <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>قبلی
+                                                            </a>
+                                                        </li>
+                                                        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a>
+                                                        </li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item-total">از 6</li>
+                                                        <li class="page-item">
+                                                            <a class="page-link page-link-next" href="#" aria-label="Next">
+                                                                بعدی <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>-->
                     </div><!-- End .col-lg-9 -->
                     <aside class="col-lg-3 order-lg-first">
                         <div class="sidebar sidebar-shop">
@@ -1535,265 +1535,226 @@
                                         دسته بندی
                                     </a>
                                 </h3><!-- End .widget-title -->
+                                <form method="get" action="{{route('shop_search')}}" enctype="multipart/form-data">
+                                    <input name="search" @if(Request::get('search')) value="{{Request::get('search')}}"
+                                           @endif hidden>
+                                    <div class="collapse show" id="widget-1">
+                                        <div class="widget-body">
+                                            <div class="filter-items filter-items-count">
 
-                                <div class="collapse show" id="widget-1">
-                                    <div class="widget-body">
-                                        <div class="filter-items filter-items-count">
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-1">
-                                                    <label class="custom-control-label" for="cat-1">لباس</label>
-                                                </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">3</span>
-                                            </div><!-- End .filter-item -->
+                                                @foreach($data->groups as $groupData)
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-2">
-                                                    <label class="custom-control-label" for="cat-2">تی شرت</label>
-                                                </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">0</span>
-                                            </div><!-- End .filter-item -->
+                                                    <div class="filter-item">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" value="{{$groupData->id}}"
+                                                                   name="groupIds[]"
+                                                                   class="custom-control-input"
+                                                                   id="cat{{$loop->index}}" @if(Request::get('groupIds') and in_array($groupData->id , Request::get('groupIds'))) checked @endif @if(isset($data->group) and $data->group->id == $groupData->id) checked @endif>
+                                                            <label class="custom-control-label"
+                                                                   for="cat{{$loop->index}}">{{$groupData->title}}</label>
+                                                        </div><!-- End .custom-checkbox -->
+                                                        <!--                                                    <span class="item-count">3</span>-->
+                                                    </div>
+                                                @endforeach
+                                                <div class="mt-1 text-center">
+                                                    <div class="custom-control custom-checkbox text-center">
+                                                        <button class="btn btn-secondary">اعمال فیلتر</button>
+                                                    </div><!-- End .custom-checkbox -->
+                                                    <!--                                                    <span class="item-count">3</span>-->
+                                                </div>
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-3">
-                                                    <label class="custom-control-label" for="cat-3">کیف</label>
-                                                </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">4</span>
-                                            </div><!-- End .filter-item -->
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-4">
-                                                    <label class="custom-control-label" for="cat-4">ژاکت</label>
-                                                </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">2</span>
-                                            </div><!-- End .filter-item -->
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-5">
-                                                    <label class="custom-control-label" for="cat-5">کفش</label>
-                                                </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">2</span>
-                                            </div><!-- End .filter-item -->
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-6">
-                                                    <label class="custom-control-label" for="cat-6">شال و
-                                                        روسری</label>
-                                                </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">1</span>
-                                            </div><!-- End .filter-item -->
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-7">
-                                                    <label class="custom-control-label" for="cat-7">لی</label>
-                                                </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">1</span>
-                                            </div><!-- End .filter-item -->
-
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="cat-8">
-                                                    <label class="custom-control-label" for="cat-8">لباس
-                                                        ورزشی</label>
-                                                </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">0</span>
-                                            </div><!-- End .filter-item -->
-                                        </div><!-- End .filter-items -->
-                                    </div><!-- End .widget-body -->
-                                </div><!-- End .collapse -->
+                                                <!-- End .filter-item -->
+                                            </div><!-- End .filter-items -->
+                                        </div><!-- End .widget-body -->
+                                    </div><!-- End .collapse -->
+                                </form>
                             </div><!-- End .widget -->
 
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true"
-                                       aria-controls="widget-2">
-                                        سایز
-                                    </a>
-                                </h3><!-- End .widget-title -->
+                            <!--                            <div class="widget widget-collapsible">
+                                                            <h3 class="widget-title">
+                                                                <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true"
+                                                                   aria-controls="widget-2">
+                                                                    سایز
+                                                                </a>
+                                                            </h3>&lt;!&ndash; End .widget-title &ndash;&gt;
 
-                                <div class="collapse show" id="widget-2">
-                                    <div class="widget-body">
-                                        <div class="filter-items">
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="size-1">
-                                                    <label class="custom-control-label" for="size-1">XS</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                            <div class="collapse show" id="widget-2">
+                                                                <div class="widget-body">
+                                                                    <div class="filter-items">
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input" id="size-1">
+                                                                                <label class="custom-control-label" for="size-1">XS</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="size-2">
-                                                    <label class="custom-control-label" for="size-2">S</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input" id="size-2">
+                                                                                <label class="custom-control-label" for="size-2">S</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" checked
-                                                           id="size-3">
-                                                    <label class="custom-control-label" for="size-3">M</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input" checked
+                                                                                       id="size-3">
+                                                                                <label class="custom-control-label" for="size-3">M</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" checked
-                                                           id="size-4">
-                                                    <label class="custom-control-label" for="size-4">L</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input" checked
+                                                                                       id="size-4">
+                                                                                <label class="custom-control-label" for="size-4">L</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="size-5">
-                                                    <label class="custom-control-label" for="size-5">XL</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input" id="size-5">
+                                                                                <label class="custom-control-label" for="size-5">XL</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="size-6">
-                                                    <label class="custom-control-label" for="size-6">XXL</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
-                                        </div><!-- End .filter-items -->
-                                    </div><!-- End .widget-body -->
-                                </div><!-- End .collapse -->
-                            </div><!-- End .widget -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input" id="size-6">
+                                                                                <label class="custom-control-label" for="size-6">XXL</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
+                                                                    </div>&lt;!&ndash; End .filter-items &ndash;&gt;
+                                                                </div>&lt;!&ndash; End .widget-body &ndash;&gt;
+                                                            </div>&lt;!&ndash; End .collapse &ndash;&gt;
+                                                        </div>&lt;!&ndash; End .widget &ndash;&gt;
 
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true"
-                                       aria-controls="widget-3">
-                                        رنگ
-                                    </a>
-                                </h3><!-- End .widget-title -->
+                                                        <div class="widget widget-collapsible">
+                                                            <h3 class="widget-title">
+                                                                <a data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true"
+                                                                   aria-controls="widget-3">
+                                                                    رنگ
+                                                                </a>
+                                                            </h3>&lt;!&ndash; End .widget-title &ndash;&gt;
 
-                                <div class="collapse show" id="widget-3">
-                                    <div class="widget-body">
-                                        <div class="filter-colors">
-                                            <a href="#" style="background: #b87145;"><span
-                                                    class="sr-only">نام رنگ</span></a>
-                                            <a href="#" style="background: #f0c04a;"><span
-                                                    class="sr-only">نام رنگ</span></a>
-                                            <a href="#" style="background: #333333;"><span
-                                                    class="sr-only">نام رنگ</span></a>
-                                            <a href="#" class="selected" style="background: #cc3333;"><span
-                                                    class="sr-only">نام رنگ</span></a>
-                                            <a href="#" style="background: #3399cc;"><span
-                                                    class="sr-only">نام رنگ</span></a>
-                                            <a href="#" style="background: #669933;"><span
-                                                    class="sr-only">نام رنگ</span></a>
-                                            <a href="#" style="background: #f2719c;"><span
-                                                    class="sr-only">نام رنگ</span></a>
-                                            <a href="#" style="background: #ebebeb;"><span
-                                                    class="sr-only">نام رنگ</span></a>
-                                        </div><!-- End .filter-colors -->
-                                    </div><!-- End .widget-body -->
-                                </div><!-- End .collapse -->
-                            </div><!-- End .widget -->
+                                                            <div class="collapse show" id="widget-3">
+                                                                <div class="widget-body">
+                                                                    <div class="filter-colors">
+                                                                        <a href="#" style="background: #b87145;"><span
+                                                                                class="sr-only">نام رنگ</span></a>
+                                                                        <a href="#" style="background: #f0c04a;"><span
+                                                                                class="sr-only">نام رنگ</span></a>
+                                                                        <a href="#" style="background: #333333;"><span
+                                                                                class="sr-only">نام رنگ</span></a>
+                                                                        <a href="#" class="selected" style="background: #cc3333;"><span
+                                                                                class="sr-only">نام رنگ</span></a>
+                                                                        <a href="#" style="background: #3399cc;"><span
+                                                                                class="sr-only">نام رنگ</span></a>
+                                                                        <a href="#" style="background: #669933;"><span
+                                                                                class="sr-only">نام رنگ</span></a>
+                                                                        <a href="#" style="background: #f2719c;"><span
+                                                                                class="sr-only">نام رنگ</span></a>
+                                                                        <a href="#" style="background: #ebebeb;"><span
+                                                                                class="sr-only">نام رنگ</span></a>
+                                                                    </div>&lt;!&ndash; End .filter-colors &ndash;&gt;
+                                                                </div>&lt;!&ndash; End .widget-body &ndash;&gt;
+                                                            </div>&lt;!&ndash; End .collapse &ndash;&gt;
+                                                        </div>&lt;!&ndash; End .widget &ndash;&gt;
 
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true"
-                                       aria-controls="widget-4">
-                                        برند
-                                    </a>
-                                </h3><!-- End .widget-title -->
+                                                        <div class="widget widget-collapsible">
+                                                            <h3 class="widget-title">
+                                                                <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true"
+                                                                   aria-controls="widget-4">
+                                                                    برند
+                                                                </a>
+                                                            </h3>&lt;!&ndash; End .widget-title &ndash;&gt;
 
-                                <div class="collapse show" id="widget-4">
-                                    <div class="widget-body">
-                                        <div class="filter-items">
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                           id="brand-1">
-                                                    <label class="custom-control-label" for="brand-1">نکست</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                            <div class="collapse show" id="widget-4">
+                                                                <div class="widget-body">
+                                                                    <div class="filter-items">
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input"
+                                                                                       id="brand-1">
+                                                                                <label class="custom-control-label" for="brand-1">نکست</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                           id="brand-2">
-                                                    <label class="custom-control-label" for="brand-2">ریور
-                                                        ایسلند</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input"
+                                                                                       id="brand-2">
+                                                                                <label class="custom-control-label" for="brand-2">ریور
+                                                                                    ایسلند</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                           id="brand-3">
-                                                    <label class="custom-control-label" for="brand-3">جیوکس</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input"
+                                                                                       id="brand-3">
+                                                                                <label class="custom-control-label" for="brand-3">جیوکس</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                           id="brand-4">
-                                                    <label class="custom-control-label" for="brand-4">نیو بالانس</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input"
+                                                                                       id="brand-4">
+                                                                                <label class="custom-control-label" for="brand-4">نیو بالانس</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                           id="brand-5">
-                                                    <label class="custom-control-label" for="brand-5">یو جی جی</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input"
+                                                                                       id="brand-5">
+                                                                                <label class="custom-control-label" for="brand-5">یو جی جی</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                           id="brand-6">
-                                                    <label class="custom-control-label" for="brand-6">اف اند اف</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input"
+                                                                                       id="brand-6">
+                                                                                <label class="custom-control-label" for="brand-6">اف اند اف</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                           id="brand-7">
-                                                    <label class="custom-control-label" for="brand-7">نایکی</label>
-                                                </div><!-- End .custom-checkbox -->
-                                            </div><!-- End .filter-item -->
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input"
+                                                                                       id="brand-7">
+                                                                                <label class="custom-control-label" for="brand-7">نایکی</label>
+                                                                            </div>&lt;!&ndash; End .custom-checkbox &ndash;&gt;
+                                                                        </div>&lt;!&ndash; End .filter-item &ndash;&gt;
 
-                                        </div><!-- End .filter-items -->
-                                    </div><!-- End .widget-body -->
-                                </div><!-- End .collapse -->
-                            </div><!-- End .widget -->
+                                                                    </div>&lt;!&ndash; End .filter-items &ndash;&gt;
+                                                                </div>&lt;!&ndash; End .widget-body &ndash;&gt;
+                                                            </div>&lt;!&ndash; End .collapse &ndash;&gt;
+                                                        </div>&lt;!&ndash; End .widget &ndash;&gt;
 
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true"
-                                       aria-controls="widget-5">
-                                        قیمت
-                                    </a>
-                                </h3><!-- End .widget-title -->
+                                                        <div class="widget widget-collapsible">
+                                                            <h3 class="widget-title">
+                                                                <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true"
+                                                                   aria-controls="widget-5">
+                                                                    قیمت
+                                                                </a>
+                                                            </h3>&lt;!&ndash; End .widget-title &ndash;&gt;
 
-                                <div class="collapse show" id="widget-5">
-                                    <div class="widget-body">
-                                        <div class="filter-price">
-                                            <div class="filter-price-text">
-                                                محدوده قیمت :
-                                                <span id="filter-price-range"></span>
-                                            </div><!-- End .filter-price-text -->
+                                                            <div class="collapse show" id="widget-5">
+                                                                <div class="widget-body">
+                                                                    <div class="filter-price">
+                                                                        <div class="filter-price-text">
+                                                                            محدوده قیمت :
+                                                                            <span id="filter-price-range"></span>
+                                                                        </div>&lt;!&ndash; End .filter-price-text &ndash;&gt;
 
-                                            <div id="price-slider"></div><!-- End #price-slider -->
-                                        </div><!-- End .filter-price -->
-                                    </div><!-- End .widget-body -->
-                                </div><!-- End .collapse -->
-                            </div><!-- End .widget -->
+                                                                        <div id="price-slider"></div>&lt;!&ndash; End #price-slider &ndash;&gt;
+                                                                    </div>&lt;!&ndash; End .filter-price &ndash;&gt;
+                                                                </div>&lt;!&ndash; End .widget-body &ndash;&gt;
+                                                            </div>&lt;!&ndash; End .collapse &ndash;&gt;
+                                                        </div>--><!-- End .widget -->
                         </div><!-- End .sidebar sidebar-shop -->
                     </aside><!-- End .col-lg-3 -->
                 </div><!-- End .row -->

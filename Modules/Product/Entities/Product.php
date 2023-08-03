@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Modules\Color\Entities\Color;
 use Modules\Comment\Entities\Comment;
 use Modules\Polymorphism\Entities\Images;
@@ -32,7 +33,7 @@ class Product extends Model
 
     protected $table = "products";
 
-    protected $appends = ['banner'];
+    protected $appends = ['banner','is_wish'];
 
 
     protected $fillable = [
@@ -139,6 +140,17 @@ class Product extends Model
         /*$image ? $image->url : null;*/
         $image =Images::query()->where('imageable_type',Product::class)->where('imageable_id',$this->id,)->where('is_cover',1)->first();
         return $image?->url;
+    }
+
+    public function getIsWishAttribute()
+    {
+        if (Auth::check()){
+            $isWish = WishList::query()->where('product_id',$this->id)->where('user_id',Auth::id())->first();
+            if ($isWish){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

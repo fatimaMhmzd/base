@@ -12456,6 +12456,10 @@ a:focus {
   content: '\f234';
 }
 
+.btn-wishlist-selected:before {
+    content: '💗' !important;
+}
+
 .product-body .btn-wishlist {
   position: absolute;
   top: 3.4rem;

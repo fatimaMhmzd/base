@@ -284,7 +284,7 @@
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a onclick="addToWishlist({{$bestP->id}})" class="btn-product-icon btn-wishlist btn-expandable">
+                                        <a onclick="addToWishlist(this,{{$bestP->id}})" class="btn-product-icon btn-wishlist btn-wishlist-selected btn-expandable @if($bestP->is_wish) btn-wishlist-selected @endif">
                                             <span>افزودن به لیست علاقه مندی</span>
                                         </a>
 {{--                                        href="/product/wishlist/store?productId={{$bestP->id}}"--}}
@@ -355,7 +355,7 @@
                                     </a>
 
                                     <div class="product-action-vertical">
-                                        <a onclick="addToWishlist({{$mostS->id}})" class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
+                                        <a onclick="addToWishlist(this,{{$mostS->id}})" class="btn-product-icon btn-wishlist btn-expandable @if($mostS->is_wish) btn-wishlist-selected @endif"><span>افزودن به
                                                 لیست علاقه مندی</span></a>
                                     </div><!-- End .product-action -->
 
@@ -422,7 +422,7 @@
 
 
                                     <div class="product-action-vertical">
-                                        <a onclick="addToWishlist({{$highR->id}})" class="btn-product-icon btn-wishlist btn-expandable text-decoration-none">
+                                        <a onclick="addToWishlist(this,{{$highR->id}})" class="btn-product-icon btn-wishlist btn-expandable text-decoration-none @if($highR->is_wish) btn-wishlist-selected @endif">
                                             <span>افزودن به لیست علاقه مندی</span></a>
                                     </div><!-- End .product-action -->
 
@@ -743,8 +743,8 @@
                                             </a>
 
                                             <div class="product-action-vertical">
-                                                <a onclick="addToWishlist({{$off->id}})"
-                                                   class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن
+                                                <a onclick="addToWishlist(this,{{$off->id}})"
+                                                   class="btn-product-icon btn-wishlist btn-expandable @if($off->is_wish) btn-wishlist-selected @endif"><span>افزودن
                                                             به لیست علاقه مندی</span></a>
                                             </div><!-- End .product-action -->
 
@@ -932,8 +932,8 @@
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a onclick="addToWishlist({{$sps->id}})"
-                                               class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
+                                            <a onclick="addToWishlist(this,{{$sps->id}})"
+                                               class="btn-product-icon btn-wishlist btn-expandable @if($sps->is_wish) btn-wishlist-selected @endif"><span>افزودن به
                                                         لیست علاقه مندی</span></a>
                                         </div><!-- End .product-action -->
 
@@ -941,8 +941,9 @@
                                             <a onclick="addToBasket({{$sps->id}})" class="btn-product btn-cart"
                                                title="افزودن به سبد خرید"><span>افزودن
                                                         به سبد خرید</span></a>
-                                            <a href="popup/quickView.html" class="btn-product btn-quickview"
-                                               title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>
+<!--                                            <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                               title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>--><!--                                            <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                               title="مشاهده سریع محصولات"><span>مشاهده سریع</span></a>-->
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
@@ -2324,8 +2325,8 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a onclick="addToWishlist({{$mostSell->id}})"
-                                       class="btn-product-icon btn-wishlist btn-expandable"><span>افزودن به
+                                    <a onclick="addToWishlist(this,{{$mostSell->id}})"
+                                       class="btn-product-icon btn-wishlist btn-expandable @if($mostSell->is_wish) btn-wishlist-selected @endif"><span>افزودن به
                                                 لیست علاقه مندی</span></a>
                                 </div><!-- End .product-action -->
 

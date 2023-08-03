@@ -83,20 +83,10 @@
                                 </div><!-- End .col-sm-6 -->
                             </div><!-- End .row -->
 
-                            <label>ایمیل *</label>
-                            <input type="email" class="form-control" required>
+                            <label>ایمیل </label>
+                            <input type="email" class="form-control">
 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
-                                <label class="custom-control-label" for="checkout-create-acc">ایجاد یک حساب
-                                    کاربری؟</label>
-                            </div><!-- End .custom-checkbox -->
 
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="checkout-diff-address">
-                                <label class="custom-control-label" for="checkout-diff-address">ارسال به یک آدرس
-                                    متفاوت؟</label>
-                            </div><!-- End .custom-checkbox -->
 
                             <label>توضیحات (اختیاری)</label>
                             <textarea class="form-control" cols="30" rows="4"

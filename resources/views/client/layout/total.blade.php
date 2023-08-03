@@ -109,7 +109,7 @@
                                 <label for="q" class="sr-only">جستجو</label>
                                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
                                 <input type="search" class="form-control" name="search" id="q"
-                                       placeholder="جستجوی محصول ..." required>
+                                       placeholder="جستجوی محصول ..." required @if(Request::get('search')) value="{{Request::get('search')}}" @endif>
                             </div><!-- End .header-search-wrapper -->
                         </form>
                     </div><!-- End .header-search -->
@@ -1432,7 +1432,7 @@
     }
 
 
-    function addToWishlist(id) {
+    function addToWishlist(e,id) {
         if (logged) {
             $.ajax({
                 url: `/product/wishlist/store?productId=${id}`,
@@ -1454,6 +1454,11 @@
                         icon: 'success',
                         title: 'با موفقیت به علاقه مندی ها اضافه شد'
                     })
+                    if(e.classList.contains("btn-wishlist-selected")){
+                        e.classList.remove("btn-wishlist-selected");
+                    }else{
+                        e.classList.add("btn-wishlist-selected");
+                    }
                     favoriteCount()
                 }
             });

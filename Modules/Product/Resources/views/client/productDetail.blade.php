@@ -127,7 +127,7 @@
                                     <span>افزودن به سبد خرید</span></button>
 
                                 <div class="details-action-wrapper">
-                                    <a onclick="addToWishlist({{$data->id}})" class="btn-product btn-wishlist"
+                                    <a onclick="addToWishlist(this,{{$data->id}})" class="btn-product btn-wishlist @if($data->is_wish) btn-wishlist-selected @endif"
                                        title="لیست علاقه مندی"><span>افزودن
                                                     به
                                                     علاقه مندی</span></a>

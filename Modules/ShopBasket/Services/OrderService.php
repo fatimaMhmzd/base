@@ -40,14 +40,8 @@ class OrderService
     {
         $filter = [];
         $parts = [];
-        $inputs[] = (object)[
-            "col" => "user_id",
-            "value" => Auth::id(),
-        ];
-        $inputs[] = (object)[
-            "col" => "factor_status",
-            "value" => 0,
-        ];
+
+        $inputs = array('user_id'=>Auth::id(),'factor_status'=>0);
 
         $all = $this->factorRepository->findWithInputs($inputs);
         if ($all and count($all->part) != 0) {
@@ -66,12 +60,19 @@ class OrderService
                 ];
                 array_push($parts, $partItem);
             }
+            $res = (object)[
+                "total_part_price" => $all->total_part_price,
+                "total_amount" => $all->total_amount,
+                "part" => $parts,
+            ];
+        }else{
+            $res = (object)[
+                "total_part_price" => 0,
+                "total_amount" => 0,
+                "part" => [],
+            ];
         }
-        $res = (object)[
-            "total_part_price" => $all->total_part_price,
-            "total_amount" => $all->total_amount,
-            "part" => $parts,
-        ];
+
 
         return $res;
     }

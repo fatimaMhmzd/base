@@ -46,7 +46,7 @@ class ProductService
         $all = $this->productRepository->getByInput();
 
 
-        return  Datatables::of($all)
+        return Datatables::of($all)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
@@ -63,13 +63,13 @@ class ProductService
             })
             ->addColumn('image', function ($row) {
                 $img = '';
-                if (count($row->image) !=0) {
-                    $img = '<img src="/' . $row->banner. '" class="danger w-25"/>';
+                if (count($row->image) != 0) {
+                    $img = '<img src="/' . $row->banner . '" class="danger w-25"/>';
                 }
 
                 return $img;
             })
-            ->rawColumns(['action', 'image','property'])
+            ->rawColumns(['action', 'image', 'property'])
             ->make(true);
     }
 
@@ -104,14 +104,14 @@ class ProductService
     {
 
         $inputs = $request->validated();
-        $inputs["off_price"] = $inputs["off_price"] ?? 0 ;
-        $inputs["off"] = $inputs["off"] ?? 0 ;
-        $inputs["available"] = $inputs["available"] ?? 0 ;
-        $inputs["weight"] = $inputs["weight"] ?? 0 ;
-        $inputs["weight_with_packaging"] = $inputs["weight_with_packaging"] ?? 0 ;
-        $inputs["unit_weight"] = $inputs["unit_weight"] ?? 0 ;
-        $inputs["status"] = $inputs["status"] ?? 0 ;
-        $inputs["full_title"] = $inputs["full_title"] ?? $inputs["title"] ;
+        $inputs["off_price"] = $inputs["off_price"] ?? 0;
+        $inputs["off"] = $inputs["off"] ?? 0;
+        $inputs["available"] = $inputs["available"] ?? 0;
+        $inputs["weight"] = $inputs["weight"] ?? 0;
+        $inputs["weight_with_packaging"] = $inputs["weight_with_packaging"] ?? 0;
+        $inputs["unit_weight"] = $inputs["unit_weight"] ?? 0;
+        $inputs["status"] = $inputs["status"] ?? 0;
+        $inputs["full_title"] = $inputs["full_title"] ?? $inputs["title"];
         $totalUnitItem = $this->productRepository->find($id);
 
 
@@ -130,58 +130,58 @@ class ProductService
                 DB::commit();
                 $image = $inputs["file"] ?? null;
                 if ($image != null) {
-                    foreach ($image as $key =>$item){
-                        $cover =$IsCover[$key] ?? false;
-                        if ($key == 0){
-                            $cover =true;
+                    foreach ($image as $key => $item) {
+                        $cover = $IsCover[$key] ?? false;
+                        if ($key == 0) {
+                            $cover = true;
                         }
 
-                        $this->uploadImage($totalUnitItem, $item ,$cover);
+                        $this->uploadImage($totalUnitItem, $item, $cover);
                     }
                 }
 
-                if(isset($inputs['video'])){
+                if (isset($inputs['video'])) {
                     $video = $inputs['video'] ?? null;
-                    VideoService::saveVideo(video:$video,model:$totalUnitItem);
+                    VideoService::saveVideo(video: $video, model: $totalUnitItem);
                 }
 
                 if ($prices != null and count($prices) != 0) {
                     $priceProductRepository = new PriceProductRepository();
-                    $procuctPrices = $priceProductRepository->by(null,'product_id',$id);
+                    $procuctPrices = $priceProductRepository->by(null, 'product_id', $id);
 
-                    if ($ids){
+                    if ($ids) {
 
-                        $priceProductRepository->byArray($procuctPrices,'id',$ids,'Not')->delete();
-                    }else{
+                        $priceProductRepository->byArray($procuctPrices, 'id', $ids, 'Not')->delete();
+                    } else {
 
                         $procuctPrices->delete();
 
                     }
 
-                    foreach ($prices as $key => $item){
-                        $itemPrice =[];
-                        $itemPrice["price"] =(int)$item;
-                        $itemPrice["number"] =(int)$numberss[$key] ?? 0;
-                        $itemPrice["product_id"] =$totalUnitItem->id;
+                    foreach ($prices as $key => $item) {
+                        $itemPrice = [];
+                        $itemPrice["price"] = (int)$item;
+                        $itemPrice["number"] = (int)$numberss[$key] ?? 0;
+                        $itemPrice["product_id"] = $totalUnitItem->id;
                         $priceProductService = resolve(PriceProductService::class);
-                        if ($ids and $key < count($ids)){
-                            $priceProductService->update($itemPrice,$ids[$key]) ;
-                        }else{
+                        if ($ids and $key < count($ids)) {
+                            $priceProductService->update($itemPrice, $ids[$key]);
+                        } else {
 
-                           $totalUnitItem->prices()->save($priceProductService->store($itemPrice));
-                           /* dump($priceProductService->store($itemPrice)) ;*/
+                            $totalUnitItem->prices()->save($priceProductService->store($itemPrice));
+                            /* dump($priceProductService->store($itemPrice)) ;*/
                         }
 
                     }
                 }
                 if ($suggests != null and count($suggests) != 0) {
                     $suggestProductRepository = new SuggestProductRepository();
-                    $suggestProducts = $suggestProductRepository->by(null,'product_id',$id)->delete();
+                    $suggestProducts = $suggestProductRepository->by(null, 'product_id', $id)->delete();
 
-                    foreach ($suggests as $key => $item){
-                        $itemSuggest =[];
-                        $itemSuggest["suggest_id"] =$item;
-                        $itemSuggest["product_id"] =$id;
+                    foreach ($suggests as $key => $item) {
+                        $itemSuggest = [];
+                        $itemSuggest["suggest_id"] = $item;
+                        $itemSuggest["product_id"] = $id;
                         resolve(SuggestProductRepository::class)->create($itemSuggest);
 
                     }
@@ -205,15 +205,14 @@ class ProductService
     {
 
         $inputs = $request->validated();
-        $inputs["off_price"] = $inputs["off_price"] ?? 0 ;
-        $inputs["off"] = $inputs["off"] ?? 0 ;
-        $inputs["available"] = $inputs["available"] ?? 0 ;
-        $inputs["weight"] = $inputs["weight"] ?? 0 ;
-        $inputs["weight_with_packaging"] = $inputs["weight_with_packaging"] ?? 0 ;
-        $inputs["unit_weight"] = $inputs["unit_weight"] ?? 0 ;
-        $inputs["status"] = $inputs["status"] ?? 0 ;
-        $inputs["full_title"] = $inputs["full_title"] ?? $inputs["title"] ;
-
+        $inputs["off_price"] = $inputs["off_price"] ?? 0;
+        $inputs["off"] = $inputs["off"] ?? 0;
+        $inputs["available"] = $inputs["available"] ?? 0;
+        $inputs["weight"] = $inputs["weight"] ?? 0;
+        $inputs["weight_with_packaging"] = $inputs["weight_with_packaging"] ?? 0;
+        $inputs["unit_weight"] = $inputs["unit_weight"] ?? 0;
+        $inputs["status"] = $inputs["status"] ?? 0;
+        $inputs["full_title"] = $inputs["full_title"] ?? $inputs["title"];
 
 
         DB::beginTransaction();
@@ -226,39 +225,38 @@ class ProductService
             $suggests = $inputs["suggest"] ?? null;
 
 
-
             if ($image != null) {
-                foreach ($image as $key =>$item){
-                    $cover =$IsCover[$key] ?? false;
-                    if ($key == 0){
-                        $cover =true;
+                foreach ($image as $key => $item) {
+                    $cover = $IsCover[$key] ?? false;
+                    if ($key == 0) {
+                        $cover = true;
                     }
 
-                    $this->uploadImage($totalUnitsItem, $item ,$cover);
+                    $this->uploadImage($totalUnitsItem, $item, $cover);
                 }
             }
 
-            if(isset($inputs['video'])){
+            if (isset($inputs['video'])) {
                 $video = $inputs['video'] ?? null;
-                VideoService::saveVideo(video:$video,model:$totalUnitsItem);
+                VideoService::saveVideo(video: $video, model: $totalUnitsItem);
             }
             if ($prices != null and count($prices) != 0) {
-                foreach ($prices as $key => $item){
-                    $itemPrice =[];
-                    $itemPrice["price"] =$item;
-                    $itemPrice["number"] =$numberss[$key] ?? 0;
-                    $itemPrice["product_id"] =$totalUnitsItem->id;
+                foreach ($prices as $key => $item) {
+                    $itemPrice = [];
+                    $itemPrice["price"] = $item;
+                    $itemPrice["number"] = $numberss[$key] ?? 0;
+                    $itemPrice["product_id"] = $totalUnitsItem->id;
 
-                  $totalUnitsItem->prices()->save(resolve(PriceProductService::class)->store($itemPrice));
+                    $totalUnitsItem->prices()->save(resolve(PriceProductService::class)->store($itemPrice));
 
                 }
             }
             if ($suggests != null and count($suggests) != 0) {
-                foreach ($suggests as $key => $item){
-                    $itemSuggest =[];
-                    $itemSuggest["suggest_id"] =$item;
-                    $itemSuggest["product_id"] =$totalUnitsItem->id;
-                  resolve(SuggestProductRepository::class)->create($itemSuggest);
+                foreach ($suggests as $key => $item) {
+                    $itemSuggest = [];
+                    $itemSuggest["suggest_id"] = $item;
+                    $itemSuggest["product_id"] = $totalUnitsItem->id;
+                    resolve(SuggestProductRepository::class)->create($itemSuggest);
 
 
                 }
@@ -275,7 +273,6 @@ class ProductService
         }
 
 
-
     }
 
 
@@ -283,21 +280,22 @@ class ProductService
     {
         return $this->productRepository->getByInput();
     }
-    public function uploadImage($guild, $file , $IsCover = false)
+
+    public function uploadImage($guild, $file, $IsCover = false)
     {
         $destinationPath = "public/product/" . $guild->id;
         ImageService::saveImage(image: $file, model: $guild, is_cover: $IsCover, is_public: true, destinationPath: $destinationPath);
     }
 
-    public function shopIndexPage($request,$slug): object
+    public function shopIndexPage($request, $slug): object
     {
         $groupService = resolve(ProductGroupService::class);
         $groups = $groupService->all();
-        $group = resolve(ProductGroupService::class)->findBy("slug",$slug);
+        $group = resolve(ProductGroupService::class)->findBy("slug", $slug);
         $products = $this->productRepository->all();
 
         $filter = [];
-        if ($group){
+        if ($group) {
             $filter[] = (object)[
                 "col" => "product_group_id",
                 "value" => $group->id,
@@ -310,37 +308,35 @@ class ProductService
         /*$sizeService = resolve(SizeSe::class);
         $sizes = $groupService->all();*/
 
-        return (object)array("groups"=>$groups,"product"=>$products);
+        return (object)array("groups" => $groups, "product" => $products,'group'=>$group);
     }
+
     public function search($request): object
     {
         $groups = resolve(ProductGroupService::class)->all();
 
-        $filter = [];
-        $products = [];
-        if ($request->search){
-            $filter[] = (object)[
-                "col" => "title",
-                "value" => $request->search,
-                "like" => true,
-            ];
-            $product = $this->productRepository->getByInput($filter, 6, $request->pageNumber);
-            if (count($product) != 0){
-                $products = $product;
-            }
+
+        $query = $this->productRepository->createQuery();
+        if ($request->search) {
+            $query = $this->productRepository->byLike($query,'title', $request->search);
         }
+        if ($request->groupIds) {
+            $query = $this->productRepository->byArray($query,'product_group_id', $request->groupIds);
+        }
+        $products = $query->get();
 
 
         /*$sizeService = resolve(SizeSe::class);
         $sizes = $groupService->all();*/
 
-        return (object)array("groups"=>$groups,"product"=>$products);
+        return (object)array("groups" => $groups, "product" => $products);
     }
 
     public function productDetail($slug)
     {
-        return $this->productRepository->findBy("slug",$slug);
+        return $this->productRepository->findBy("slug", $slug);
     }
+
     public function productEditPage($id): object
     {
         $data = $this->productRepository->find($id);
@@ -349,22 +345,22 @@ class ProductService
         $suggests = resolve(SuggestService::class)->all();
         $suggestProductRepository = new SuggestProductRepository();
 
-        $suggestProducts = $suggestProductRepository->by(null,'product_id',$id);
-        $suggestItem =[];
-        foreach ($suggests as $suggest){
-         $sugPro = SuggestProduct::query()->where('product_id',$id)->where('suggest_id' , $suggest->id)->first();
-                $checked =false;
-                if ($sugPro){
-                    $checked =true;
-                }
+        $suggestProducts = $suggestProductRepository->by(null, 'product_id', $id);
+        $suggestItem = [];
+        foreach ($suggests as $suggest) {
+            $sugPro = SuggestProduct::query()->where('product_id', $id)->where('suggest_id', $suggest->id)->first();
+            $checked = false;
+            if ($sugPro) {
+                $checked = true;
+            }
 
             $suggestpro = (object)[
                 "id" => $suggest->id,
                 "title" => $suggest->title,
                 "checked" => $checked,
             ];
-            array_push($suggestItem,$suggestpro);
+            array_push($suggestItem, $suggestpro);
         }
-        return (object)array("data"=>$data , "group"=>$group,"unit"=>$unit,"suggests"=>$suggestItem);
+        return (object)array("data" => $data, "group" => $group, "unit" => $unit, "suggests" => $suggestItem);
     }
 }
