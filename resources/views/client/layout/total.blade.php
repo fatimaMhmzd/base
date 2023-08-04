@@ -817,11 +817,13 @@
                             <h4 class="widget-title">حساب کاربری</h4><!-- End .widget-title -->
 
                             <ul class="widget-list">
-                                <li><a href="#">ورود</a></li>
-                                <li><a href="{{route('shop_cartPageClient')}}">سبد خرید</a></li>
-                                <li><a href="{{route('page_wishlistClient')}}">لیست علاقه مندی ها</a></li>
-                                <li><a href="#">پیگیری سفارشات</a></li>
-                                <li><a href="#">راهنما</a></li>
+                                @if(\Illuminate\Support\Facades\Auth::check())
+                                    <li><a href="{{route('shop_cartPageClient')}}">سبد خرید</a></li>
+                                    <li><a href="{{route('page_wishlistClient')}}">لیست علاقه مندی ها</a></li>
+                                    <li><a href="{{route('page_panelClient')}}">پروفایل</a></li>
+                                @else
+                                    <li><a href="{{route('user_login')}}">ورود</a></li>
+                                @endif
                             </ul><!-- End .widget-list -->
                         </div><!-- End .widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
@@ -1300,7 +1302,7 @@
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/demos/demo-3.js"></script>
 
-<script src="assets/js/jquery.elevateZoom.min.js"></script>
+<script src="/assets/js/jquery.elevateZoom.min.js"></script>
 
 
 

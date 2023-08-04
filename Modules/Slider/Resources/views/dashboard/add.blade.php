@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label  style="margin-top: 20px"> زیر عنوان</label>
+                                                <label  style="margin-top: 20px"> متن کلید</label>
                                                 <fieldset class="form-group">
                                                 <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title3">
                                                 </fieldset>

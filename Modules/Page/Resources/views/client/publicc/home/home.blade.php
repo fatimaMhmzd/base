@@ -69,19 +69,19 @@
                                                     <h3 class="intro-subtitle text-primary">{{$slide->title}}</h3>
                                                     <!-- End .h3 intro-subtitle -->
                                                     <h1 class="intro-title">
-                                                        {{$slide->sub_title}}
+                                                        {{$slide->sub_title1}}
                                                     </h1><!-- End .intro-title -->
 
                                                     <div class="intro-price">
-                                                        <sup>امروز : </sup>
+                                                        <sup>{{$slide->sub_title2}} </sup>
                                                         <span class="text-primary">
-                                                    247,000 تومان
+                                                    {{$slide->sub_title4}}
                                                 </span>
                                                     </div><!-- End .intro-price -->
 
-                                                    <a href="category.html" class="btn btn-primary btn-round">
+                                                    <a href="{{$slide->link}}" class="btn btn-primary btn-round">
                                                         <i class="icon-long-arrow-left"></i>
-                                                        <span>اینجا کلیک کنید</span>
+                                                        <span>{{$slide->sub_title3}}</span>
                                                     </a>
                                                 </div><!-- End .intro-content -->
                                             </div><!-- End .intro-slide -->
@@ -170,9 +170,9 @@
                                                 <h4 class="banner-subtitle d-lg-none d-xl-block"><a
                                                         href="#">{{$slide->title}}</a>
                                                 </h4><!-- End .banner-subtitle -->
-                                                <h3 class="banner-title"><a href="#">{{$slide->sub_title}}</a></h3>
+                                                <h3 class="banner-title"><a href="#">{{$slide->sub_title1}}</a></h3>
                                                 <!-- End .banner-title -->
-                                                <a href="#" class="banner-link">خرید<i class="icon-long-arrow-left"></i></a>
+                                                <a href="{{$slide->url}}" class="banner-link">{{$slide->sub_title3}}<i class="icon-long-arrow-left"></i></a>
                                             </div><!-- End .banner-content -->
                                         </div><!-- End .banner -->
 {{--                                    @endif--}}
