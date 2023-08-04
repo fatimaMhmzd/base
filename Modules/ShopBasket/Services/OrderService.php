@@ -5,9 +5,11 @@ namespace Modules\ShopBasket\Services;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
+use Modules\Address\Services\AddressService;
 use Modules\Product\Services\PriceProductService;
 use Modules\Product\Services\ProductPropertyService;
 use Modules\Product\Services\ProductService;
+use Modules\ShopBasket\Entities\Factor;
 use Modules\ShopBasket\Http\Repositories\FactorItemRepository;
 use Modules\ShopBasket\Http\Repositories\FactorRepository;
 use Modules\ShopBasket\Http\Requests\order\ValidateOrderRequest;
@@ -199,6 +201,29 @@ class OrderService
             throw new \Exception(trans("custom.defaults.store_failed"));
         }
 
+
+    }
+    public function finalfactor($request)
+    {
+        $factor =  Factor::query()->where('user_id' , Auth::id())->where('factor_status' ,0)->first();
+        if ($factor){
+        DB::beginTransaction();
+        try {
+
+        $address = resolve(AddressService::class)->store($request);
+            $factorItemUpdate['factor_status']=1;
+            $totalUnitItemUpdated = $this->factorItemRepository->update($factor, $factorItemUpdate);
+            DB::commit();
+
+            return $address;
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            throw new \Exception(trans("custom.defaults.store_failed"));
+        }
+        } else {
+            throw new \Exception(trans("custom.defaults.not_found"));
+        }
 
     }
 

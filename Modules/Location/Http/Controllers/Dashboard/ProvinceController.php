@@ -5,9 +5,13 @@ namespace Modules\Location\Http\Controllers\Dashboard;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Location\Services\ProvinceService;
 
 class ProvinceController extends Controller
 {
+    public function __construct(public ProvinceService $service)
+    {
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -81,5 +85,9 @@ class ProvinceController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function getProvince($countryId)
+    {
+        return $this->service->getProvince($countryId);
     }
 }

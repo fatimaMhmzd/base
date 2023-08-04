@@ -37,7 +37,15 @@ class ShopBasketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $result = $this->service->finalfactor($request);
+            return $result;
+                $message = trans("custom.defaults.store_success");
+                return back()->with('success', true)->with('message',$message);
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
     }
 
     /**

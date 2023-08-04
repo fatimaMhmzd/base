@@ -37,6 +37,7 @@ class ProductController extends Controller
     }
     public function checkout()
     {
-        return view('product::client.checkout');
+        $data = $this->service->checkout();
+        return view('product::client.checkout' , compact('data'));
     }
 }

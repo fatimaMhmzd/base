@@ -15,7 +15,7 @@ Route::group(['prefix' => 'location', 'as' => 'location_'], function () {
         Route::post('/store', [CountryController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [CountryController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [CountryController::class, 'update'])->name('update');
-        Route::delete('/destroy/{id}', [CountryController::class, 'destroy'])->name('destroy');
+        Route::get('/destroy/{id}', [CountryController::class, 'destroy'])->name('destroy');
 
 
     });
@@ -26,7 +26,8 @@ Route::group(['prefix' => 'location', 'as' => 'location_'], function () {
         Route::post('/store', [ProvinceController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [ProvinceController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [ProvinceController::class, 'update'])->name('update');
-        Route::delete('/destroy/{id}', [ProvinceController::class, 'destroy'])->name('destroy');
+        Route::get('/destroy/{id}', [ProvinceController::class, 'destroy'])->name('destroy');
+        Route::get('/all/{id}', [ProvinceController::class, 'getProvince'])->name('all');
 
 
     });
@@ -37,7 +38,8 @@ Route::group(['prefix' => 'location', 'as' => 'location_'], function () {
         Route::post('/store', [CityController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [CityController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [CityController::class, 'update'])->name('update');
-        Route::delete('/destroy/{id}', [CityController::class, 'destroy'])->name('destroy');
+        Route::get('/destroy/{id}', [CityController::class, 'destroy'])->name('destroy');
+        Route::get('/all/{id}', [CityController::class, 'getCity'])->name('all');
 
 
     });
@@ -48,7 +50,7 @@ Route::group(['prefix' => 'location', 'as' => 'location_'], function () {
         Route::post('/store', [TownController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [TownController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [TownController::class, 'update'])->name('update');
-        Route::delete('/destroy/{id}', [TownController::class, 'destroy'])->name('destroy');
+        Route::get('/destroy/{id}', [TownController::class, 'destroy'])->name('destroy');
 
 
     });
@@ -59,7 +61,7 @@ Route::group(['prefix' => 'location', 'as' => 'location_'], function () {
         Route::post('/store', [AreaController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [AreaController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [AreaController::class, 'update'])->name('update');
-        Route::delete('/destroy/{id}', [AreaController::class, 'destroy'])->name('destroy');
+        Route::get('/destroy/{id}', [AreaController::class, 'destroy'])->name('destroy');
 
 
     });

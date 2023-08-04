@@ -111,5 +111,14 @@ class CityService
     {
         return $this->cityRepository->getByInput();
     }
+    public function getCity($provinceId)
+    {
+        $filter[] = (object)[
+            "col" => "province_id",
+            "value" => $provinceId,
+            "like" => false,
+        ];
+        return $this->cityRepository->getByInput($filter);
+    }
 
 }

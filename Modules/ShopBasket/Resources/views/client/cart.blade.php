@@ -169,6 +169,8 @@
         </div><!-- End .page-content -->
     </main><!-- End .main -->
 
+@stop
+@section('script')
     <script>
         function pricePerQt(id, val, part) {
             //alert(id + 'idme')

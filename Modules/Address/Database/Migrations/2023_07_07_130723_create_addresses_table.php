@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('mobile')->nullable();
             $table->string('tel')->nullable();
             $table->string('email')->nullable();
-            $table->string('compony')->nullable();
+            $table->string('company')->nullable();
             $table->text('total_address');
             $table->longText('description')->nullable();
             $table->longText('en_description')->nullable();

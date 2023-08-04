@@ -109,4 +109,8 @@ class CityController extends Controller
         $data = $this->service->ajax();
         return $data;
     }
+    public function getCity($provinceId)
+    {
+        return $this->service->getCity($provinceId);
+    }
 }

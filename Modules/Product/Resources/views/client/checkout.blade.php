@@ -21,50 +21,60 @@
         <div class="checkout">
             <div class="container">
                 <div class="checkout-discount">
-                    <form action="#">
+                    <form action="#" >
                         <input type="text" class="form-control" required id="checkout-discount-input">
                         <label for="checkout-discount-input" class="text-truncate">کد تخفیف دارید؟ <span>برای
                                         وارد کردن کد تخفیف خود اینجا کلیک کنید</span></label>
                     </form>
                 </div><!-- End .checkout-discount -->
-                <form action="#">
+                <form class="form" method="post" action="{{route('shop_basket_store')}}"
+                      enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-9">
                             <h2 class="checkout-title">جزئیات صورت حساب</h2><!-- End .checkout-title -->
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label>نام *</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="name" required @if(\Illuminate\Support\Facades\Auth::user() and Auth::user()->name) value="{{\Illuminate\Support\Facades\Auth::user()->name}}" @endif>
                                 </div><!-- End .col-sm-6 -->
 
                                 <div class="col-sm-6">
                                     <label>نام خانوادگی *</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="family" required @if(\Illuminate\Support\Facades\Auth::user() and Auth::user()->family) value="{{\Illuminate\Support\Facades\Auth::user()->family}}" @endif>
                                 </div><!-- End .col-sm-6 -->
                             </div><!-- End .row -->
 
                             <label>نام شرکت (اختیاری)</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="company">
 
                             <label>کشور *</label>
-                            <input type="text" class="form-control" required>
+                            <select class="form-control" name="country_id"  onchange="getProvince()" id="country">
+                                @foreach($data->countries as $country)
+                                    <option value="{{$country->id}}">{{$country->fa_name}}({{$country->en_name}})</option>
+                                @endforeach
+                            </select>
 
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label>شهر *</label>
-                                    <input type="text" class="form-control" required>
+                                    <select class="form-control" name="province_id" id="province">
+
+                                    </select>
 
                                 </div><!-- End .col-sm-6 -->
 
                                 <div class="col-sm-6">
                                     <label>شهرستان *</label>
-                                    <input type="text" class="form-control" required>
+                                    <select class="form-control" name="city_id" id="city">
+
+                                    </select>
                                 </div><!-- End .col-sm-6 -->
                             </div><!-- End .row -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <label>خیابان *</label>
-                                    <input type="text" class="form-control" placeholder="نام خیابان و پلاک"
+                                    <input type="text" class="form-control" placeholder="نام خیابان و پلاک" name="address"
                                            required>
 
                                 </div><!-- End .col-sm-12 -->
@@ -74,22 +84,18 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label>کد پستی *</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" required name="post_code">
                                 </div><!-- End .col-sm-6 -->
 
                                 <div class="col-sm-6">
                                     <label>تلفن *</label>
-                                    <input type="tel" class="form-control" required>
+                                    <input type="tel" class="form-control" required name="tel">
                                 </div><!-- End .col-sm-6 -->
                             </div><!-- End .row -->
 
-                            <label>ایمیل </label>
-                            <input type="email" class="form-control">
-
-
 
                             <label>توضیحات (اختیاری)</label>
-                            <textarea class="form-control" cols="30" rows="4"
+                            <textarea class="form-control" cols="30" rows="4" name="description"
                                       placeholder="شما میتوانید توضیحات اضافی خود را اینجا بنویسید"></textarea>
                         </div><!-- End .col-lg-9 -->
                         <aside class="col-lg-3">
@@ -105,18 +111,17 @@
                                     </thead>
 
                                     <tbody>
+                                    @if($data->factor)
+                                    @foreach($data->factor->part as $part)
                                     <tr>
-                                        <td><a href="#">کتونی ورزشی مخصوص دویدن رنگ بژ</a></td>
-                                        <td class="text-left">84,000 تومان</td>
+                                        <td><a href="#">{{$part->product->title}}</a></td>
+                                        <td class="text-left">{{$part->total_price}} تومان</td>
                                     </tr>
+                                    @endforeach
 
-                                    <tr>
-                                        <td><a href="#">سارافون آبی بلند</a></td>
-                                        <td class="text-left">152,000 تومان</td>
-                                    </tr>
                                     <tr class="summary-subtotal">
                                         <td>جمع سبد خرید</td>
-                                        <td class="text-left">236,000 تومان</td>
+                                        <td class="text-left">{{$data->factor->total_part_price}} تومان</td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr>
                                         <td>شیوه ارسال : </td>
@@ -124,9 +129,10 @@
                                     </tr>
                                     <tr class="summary-total">
                                         <td>مبلغ قابل پرداخت :</td>
-                                        <td class="text-left">236,000 تومان</td>
+                                        <td class="text-left">{{$data->factor->total_amount}} تومان</td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
+                                    @endif
                                 </table><!-- End .table table-summary -->
 
                                 <div class="accordion-summary" id="accordion-payment">
@@ -237,5 +243,67 @@
         </div><!-- End .checkout -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->
+@stop
+@section('script')
+    <script>
+        getProvince()
+        $('#country').on('change', function() {
+            getProvince()
 
+        });
+        $('#province').on('change', function() {
+            getCity()
+
+        });
+
+
+        function getProvince() {
+
+            var countryId = $('#country').val();
+            var url = '{{ route("dashboard_location_province_all", ":id") }}';
+            url = url.replace(':id', countryId);
+            var input =``;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (res) {
+                    console.log(res)
+                    for(var i = 0 ; i < res.length ; i++){
+                        input += ` <option value="`+res[i]['id']+`">`+res[i]['fa_name']+`</option>`
+                    }
+                    $('#province').html(input)
+                    getCity()
+
+
+                }
+            });
+
+
+        }
+
+        function getCity() {
+            var provinceId = $('#province').val();
+            var url = '{{ route("dashboard_location_city_all", ":id") }}';
+            url = url.replace(':id', provinceId);
+            var input =``;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (res) {
+                    console.log(res)
+                    for(var i = 0 ; i < res.length ; i++){
+                        input += ` <option value="`+res[i]['id']+`">`+res[i]['fa_name']+`</option>`
+                    }
+                    $('#city').html(input)
+
+
+                }
+
+            });
+
+
+        }
+
+
+    </script>
     @endsection

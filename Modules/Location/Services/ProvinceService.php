@@ -112,5 +112,14 @@ class ProvinceService
     {
         return $this->provinceRepository->getByInput();
     }
+    public function getProvince($countryId)
+    {
+        $filter[] = (object)[
+            "col" => "country_id",
+            "value" => $countryId,
+            "like" => false,
+        ];
+        return $this->provinceRepository->getByInput($filter);
+    }
 
 }

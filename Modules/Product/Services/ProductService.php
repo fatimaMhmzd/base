@@ -2,9 +2,11 @@
 
 namespace Modules\Product\Services;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Modules\Color\Entities\Color;
 use Modules\Color\Services\ColorService;
+use Modules\Location\Services\CountryService;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Polymorphism\Services\VideoService;
 use Modules\Product\Entities\ProductGroup;
@@ -15,6 +17,7 @@ use Modules\Product\Http\Repositories\ProductRepository;
 use Modules\Product\Http\Repositories\SuggestProductRepository;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
 use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
+use Modules\ShopBasket\Http\Repositories\FactorRepository;
 use Modules\Size\Services\SizeService;
 use Modules\Unit\Services\UnitService;
 use Yajra\DataTables\Facades\DataTables;
@@ -338,6 +341,15 @@ class ProductService
     public function productDetail($slug)
     {
         return $this->productRepository->findBy("slug", $slug);
+    }
+    public function checkout()
+    {
+        $countries = resolve(CountryService::class)->all();
+        $factorRepository = resolve(factorRepository::class);
+        $inputs = array('user_id'=>Auth::id(),'factor_status'=>0);
+
+        $factor = $factorRepository->findWithInputs($inputs);
+        return (object)array("countries" => $countries , "factor" => $factor);
     }
 
     public function productEditPage($id): object
