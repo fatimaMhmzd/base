@@ -14,10 +14,12 @@ class ValidateAddressRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'country_id' => 'required|string',
-            'province_id' => 'required|string',
+            'addressType' => 'required',
+            'country_id' => 'required_if:addressType,==,new',
+            'province_id' => 'required_if:addressType,==,new',
+            'pre_address' => 'required_if:addressType,==,pre',
             'city_id' => 'nullable|string',
-            'address' => 'required|string',
+            'address' => 'required_if:addressType,==,new',
             'post_code' => 'nullable|string',
             'name' => 'nullable|string',
             'family' => 'nullable|string',

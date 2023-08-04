@@ -125,11 +125,45 @@ class AddressService
         return $totalUnitsItem;
 
     }
+    public function storeService($inputs)
+    {
+        $inputs['user_id'] = Auth::id();
+        $inputs['name'] = $inputs['name'] ?? Auth::user()->name;
+        $inputs['family'] = $inputs['family'] ?? Auth::user()->family;
+        $inputs['mobile'] = $inputs['mobile'] ?? $inputs['tel'];
+        $inputs['province_id'] = $inputs['province_id'] ?? 0;
+        $inputs['city_id'] = $inputs['city_id'] ?? 0;
+
+
+        $country = resolve(CountryService::class)->find($inputs['country_id'])->fa_name ?? "";
+        $province = resolve(ProvinceService::class)->find($inputs['province_id'])->fa_name ?? "";
+        $city = resolve(City::class)->find($inputs['city_id'])->fa_name ?? "";
+        $inputs['total_address'] = $country .'-'. $province .'-'. $city .'-'. $inputs['address'];
+
+
+        DB::beginTransaction();
+        try {
+            $totalUnitsItem = $this->addressRepository->create($inputs);
+            DB::commit();
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            throw new \Exception(trans("custom.defaults.store_failed"));
+        }
+
+        return $totalUnitsItem;
+
+    }
 
 
     public function all(): \Illuminate\Support\Collection
     {
         return $this->addressRepository->getByInput();
+    }
+
+    public function myAddress(): \Illuminate\Support\Collection
+    {
+        return $this->addressRepository->all(array('user_id'=>Auth::id()),['user','province','city']);
     }
 
 

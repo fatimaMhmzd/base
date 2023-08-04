@@ -14,6 +14,6 @@ class AddressRepository extends BaseRepository
 
     public function relations(): array
     {
-        return [];
+        return ['user','province','city'];
     }
 }

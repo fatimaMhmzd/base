@@ -5,6 +5,7 @@ namespace Modules\ShopBasket\Services;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
+use Modules\Address\Http\Requests\address\ValidateAddressRequest;
 use Modules\Address\Services\AddressService;
 use Modules\Product\Services\PriceProductService;
 use Modules\Product\Services\ProductPropertyService;
@@ -43,7 +44,7 @@ class OrderService
         $filter = [];
         $parts = [];
 
-        $inputs = array('user_id'=>Auth::id(),'factor_status'=>0);
+        $inputs = array('user_id' => Auth::id(), 'factor_status' => 0);
 
         $all = $this->factorRepository->findWithInputs($inputs);
         if ($all and count($all->part) != 0) {
@@ -67,7 +68,7 @@ class OrderService
                 "total_amount" => $all->total_amount,
                 "part" => $parts,
             ];
-        }else{
+        } else {
             $res = (object)[
                 "total_part_price" => 0,
                 "total_amount" => 0,
@@ -156,7 +157,7 @@ class OrderService
 
         $count = $request->count ?? 1;
         $product = resolve(ProductService::class)->find($request->productId);
-        if($product->available < $count){
+        if ($product->available < $count) {
             throw new \Exception(trans("custom.invoice.cart.insufficient_inventory"));
         }
 
@@ -203,24 +204,31 @@ class OrderService
 
 
     }
-    public function finalfactor($request)
+
+    public function finalfactor(ValidateAddressRequest $request)
     {
-        $factor =  Factor::query()->where('user_id' , Auth::id())->where('factor_status' ,0)->first();
-        if ($factor){
-        DB::beginTransaction();
-        try {
-
-        $address = resolve(AddressService::class)->store($request);
-            $factorItemUpdate['factor_status']=1;
-            $totalUnitItemUpdated = $this->factorItemRepository->update($factor, $factorItemUpdate);
-            DB::commit();
-
-            return $address;
-
-        } catch (\Exception $exception) {
-            DB::rollBack();
-            throw new \Exception(trans("custom.defaults.store_failed"));
+        $inputs = $request->validated();
+        if ($inputs["addressType"] == "new"){
+            $addressId = resolve(AddressService::class)->storeService($inputs)->id;
+        }else{
+            $addressId = $inputs["pre_address"];
         }
+
+        $factor = Factor::query()->where('user_id', Auth::id())->where('factor_status', 0)->first();
+        if ($factor) {
+            DB::beginTransaction();
+            try {
+                $factorItemUpdate['factor_status'] = 1;
+                $factorItemUpdate['address_id'] = $addressId;
+                $totalUnitItemUpdated = $this->factorItemRepository->update($factor, $factorItemUpdate);
+                DB::commit();
+
+                return $totalUnitItemUpdated;
+
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                throw new \Exception(trans("custom.defaults.store_failed"));
+            }
         } else {
             throw new \Exception(trans("custom.defaults.not_found"));
         }

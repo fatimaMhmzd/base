@@ -113,7 +113,8 @@ class PageController extends Controller
 //    PANEL PAGE
     public function panel()
     {
-        return view('page::client.myAccount.maccount');
+        $data = $this->service->panel();
+        return view('page::client.myAccount.maccount',compact('data'));
     }
 
     //    FAQ PAGE

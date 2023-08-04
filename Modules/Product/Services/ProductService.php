@@ -4,6 +4,7 @@ namespace Modules\Product\Services;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Modules\Address\Services\AddressService;
 use Modules\Color\Entities\Color;
 use Modules\Color\Services\ColorService;
 use Modules\Location\Services\CountryService;
@@ -65,7 +66,7 @@ class ProductService
                 return $property;
             })
             ->addColumn('status', function ($row) {
-               return $row->status ? 'فعال' : 'غیرفعال';
+                return $row->status ? 'فعال' : 'غیرفعال';
             })
             ->addColumn('image', function ($row) {
                 $img = '';
@@ -75,7 +76,7 @@ class ProductService
 
                 return $img;
             })
-            ->rawColumns(['action', 'image', 'property','status'])
+            ->rawColumns(['action', 'image', 'property', 'status'])
             ->make(true);
     }
 
@@ -314,7 +315,7 @@ class ProductService
         /*$sizeService = resolve(SizeSe::class);
         $sizes = $groupService->all();*/
 
-        return (object)array("groups" => $groups, "product" => $products,'group'=>$group);
+        return (object)array("groups" => $groups, "product" => $products, 'group' => $group);
     }
 
     public function search($request): object
@@ -324,10 +325,10 @@ class ProductService
 
         $query = $this->productRepository->createQuery();
         if ($request->search) {
-            $query = $this->productRepository->byLike($query,'title', $request->search);
+            $query = $this->productRepository->byLike($query, 'title', $request->search);
         }
         if ($request->groupIds) {
-            $query = $this->productRepository->byArray($query,'product_group_id', $request->groupIds);
+            $query = $this->productRepository->byArray($query, 'product_group_id', $request->groupIds);
         }
         $products = $query->get();
 
@@ -342,14 +343,18 @@ class ProductService
     {
         return $this->productRepository->findBy("slug", $slug);
     }
+
     public function checkout()
     {
         $countries = resolve(CountryService::class)->all();
         $factorRepository = resolve(factorRepository::class);
-        $inputs = array('user_id'=>Auth::id(),'factor_status'=>0);
+        $inputs = array('user_id' => Auth::id(), 'factor_status' => 0);
 
         $factor = $factorRepository->findWithInputs($inputs);
-        return (object)array("countries" => $countries , "factor" => $factor);
+
+        $myAddress = resolve(AddressService::class)->myAddress();
+
+        return (object)array("countries" => $countries, "factor" => $factor, "myAddress" => $myAddress);
     }
 
     public function productEditPage($id): object

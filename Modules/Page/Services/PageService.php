@@ -4,6 +4,7 @@ namespace Modules\Page\Services;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Modules\Address\Services\AddressService;
 use Modules\Page\Http\Repositories\PageRepository;
 use Modules\Page\Http\Requests\page\ValidatePageRequest;
 use Modules\Polymorphism\Services\ImageService;
@@ -168,4 +169,11 @@ class PageService
         $data = resolve(WishListService::class)->index($request);
         return $data;
     }
+
+    public function panel()
+    {
+        $myAddress = resolve(AddressService::class)->myAddress();
+        return (object)array("myAddress" => $myAddress);
+    }
+
 }

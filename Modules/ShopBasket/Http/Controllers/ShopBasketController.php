@@ -5,6 +5,8 @@ namespace Modules\ShopBasket\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Modules\Address\Http\Requests\address\ValidateAddressRequest;
 use Modules\ShopBasket\Services\OrderService;
 
 class ShopBasketController extends Controller
@@ -12,6 +14,7 @@ class ShopBasketController extends Controller
     public function __construct(public OrderService $service)
     {
     }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -35,13 +38,12 @@ class ShopBasketController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidateAddressRequest $request)
     {
         try {
             $result = $this->service->finalfactor($request);
-            return $result;
-                $message = trans("custom.defaults.store_success");
-                return back()->with('success', true)->with('message',$message);
+            $message = trans("custom.defaults.store_success");
+            return Redirect::route('indexClient');
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);

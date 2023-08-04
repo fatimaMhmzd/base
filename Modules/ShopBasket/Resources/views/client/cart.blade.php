@@ -142,10 +142,10 @@
                                         <td class="text-left">20,000 تومان</td>
                                     </tr><!-- End .summary-shipping-row -->
 
-                                    <tr class="summary-shipping-estimate">
+<!--                                    <tr class="summary-shipping-estimate">
                                         <td>آدرس<br> <a href={{route('page_panelClient')}}>تغییر آدرس</a></td>
                                         <td>&nbsp;</td>
-                                    </tr><!-- End .summary-shipping-estimate -->
+                                    </tr>--><!-- End .summary-shipping-estimate -->
 
                                     <tr class="summary-total">
                                         <td>مبلغ قابل پرداخت :</td>

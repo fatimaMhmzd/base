@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Location\Entities\City;
+use Modules\Location\Entities\Province;
 
 class Address extends Model
 {
@@ -37,6 +39,18 @@ class Address extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class , 'user_id');
+
+    }
+
+    public function province(): BelongsTo
+    {
+        return $this->belongsTo(Province::class , 'province_id');
+
+    }
+
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class , 'city_id');
 
     }
 

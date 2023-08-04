@@ -84,27 +84,24 @@
 
                                 <div class="tab-pane fade" id="tab-address" role="tabpanel"
                                      aria-labelledby="tab-address-link">
-                                    <p>آدرسی که اینجا ثبت می کنید به صورت پیش فرض برای ارسال محصولات برای شما استفاده
-                                        می شود.</p>
+                                    @foreach($data->myAddress as $address)
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card card-dashboard">
+                                                    <div class="card-body">
+                                                        <h3 class="card-title">آدرس شما</h3><!-- End .card-title -->
 
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="card card-dashboard">
-                                                <div class="card-body">
-                                                    <h3 class="card-title">آدرس شما</h3><!-- End .card-title -->
-
-                                                    <p>نام کاربری شما<br>
-                                                        نام شرکت شما<br>
-                                                        محمد محمدی<br>
-                                                        تهران-تهران<br>
-                                                        خیابان آزادی - پلاک 7<br>
-                                                        yourmail@mail.com<br>
-                                                        <a href="#address-modal" data-bs-dismiss="modal">ویرایش <i class="icon-edit"></i></a>
-                                                    </p>
-                                                </div><!-- End .card-body -->
-                                            </div><!-- End .card-dashboard -->
-                                        </div><!-- End .col-lg-12 -->
-                                    </div><!-- End .row -->
+                                                        <p>{{$address->name.'-'.$address->family}}<br>
+                                                            {{$address->company}}<br>
+                                                            {{$address->province->fa_name}}-{{$address->city->fa_name}}<br>
+                                                            {{$address->address}}<br>
+                                                            {{$address->mobile}}<br>
+                                                        </p>
+                                                    </div><!-- End .card-body -->
+                                                </div><!-- End .card-dashboard -->
+                                            </div><!-- End .col-lg-12 -->
+                                        </div>
+                                    @endforeach
                                 </div><!-- .End .tab-pane -->
 
                                 <div class="tab-pane fade" id="tab-account" role="tabpanel"
