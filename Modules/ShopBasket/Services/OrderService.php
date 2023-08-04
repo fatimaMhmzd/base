@@ -152,12 +152,18 @@ class OrderService
         $factorItem = [];
         $total_price = 0;
 
+        $count = $request->count ?? 1;
+        $product = resolve(ProductService::class)->find($request->productId);
+        if($product->available < $count){
+            throw new \Exception(trans("custom.invoice.cart.insufficient_inventory"));
+        }
+
         if ($request->propertyId) {
             $colorId = resolve(ProductPropertyService::class)->find($request->propertyId)->color_id;
             $sizeId = resolve(ProductPropertyService::class)->find($request->propertyId)->size_id;
             $price = resolve(ProductPropertyService::class)->find($request->propertyId)->price;
         } else {
-            $price = resolve(ProductService::class)->find($request->productId)->price;
+            $price = $product->price;
         }
         $factor["user_id"] = Auth::id();
         $factor["factor_status"] = 0;
@@ -172,7 +178,7 @@ class OrderService
             $totalUnit = $this->factorRepository->firstOrCreate($factor);
             $factorItem["factor_id"] = $totalUnit->id;
             $totalUnitsItem = $this->factorItemRepository->firstOrCreate($factorItem);
-            $count = $request->count ?? 1;
+
             $factorItemUpdate["count"] = $count;
             $priceItem = resolve(PriceProductService::class)->findPrice($count, $totalUnitsItem->product_id);
             if ($priceItem) {
@@ -190,7 +196,6 @@ class OrderService
 
         } catch (\Exception $exception) {
             DB::rollBack();
-            return $exception;
             throw new \Exception(trans("custom.defaults.store_failed"));
         }
 

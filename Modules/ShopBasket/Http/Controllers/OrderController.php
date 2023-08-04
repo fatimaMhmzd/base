@@ -2,6 +2,7 @@
 
 namespace Modules\ShopBasket\Http\Controllers;
 
+use App\Helper\Response\ResponseHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -46,7 +47,10 @@ class OrderController extends Controller
             return back()->with('success', true)->with('message',$message);*/
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
-            return back()->with('error', true)->with('message', $message);
+            return response()->json([
+                'data' => $message
+            ], 402);
+            //return back()->with('error', true)->with('message', $message);
         }
     }
 

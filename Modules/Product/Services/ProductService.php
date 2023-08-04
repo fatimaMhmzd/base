@@ -61,6 +61,9 @@ class ProductService
 
                 return $property;
             })
+            ->addColumn('status', function ($row) {
+               return $row->status ? 'فعال' : 'غیرفعال';
+            })
             ->addColumn('image', function ($row) {
                 $img = '';
                 if (count($row->image) != 0) {
@@ -69,7 +72,7 @@ class ProductService
 
                 return $img;
             })
-            ->rawColumns(['action', 'image', 'property'])
+            ->rawColumns(['action', 'image', 'property','status'])
             ->make(true);
     }
 

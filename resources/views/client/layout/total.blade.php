@@ -1363,24 +1363,30 @@
 
     function addToBasket(id,number = 1) {
         if (logged) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
             $.ajax({
                 url: `/shop_basket/order/store?productId=${id}&count=${number}`,
                 type: "Get",
-                success: function (data) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
+                success: function (data, textStatus, xhr) {
+
                     Toast.fire({
                         icon: 'success',
                         title: 'با موفقیت به سبد خرید اضافه شد'
+                    })
+                },error: function (request, status, error) {
+                    Toast.fire({
+                        icon: 'error',
+                        title: JSON.parse(request.responseText).data
                     })
                 }
             });
