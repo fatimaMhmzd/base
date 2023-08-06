@@ -54,7 +54,6 @@
                                     }'>
                                 @if($slider->getBy(1))
                                     @foreach($slider->getBy(1) as $slide)
-{{--                                        @if($slide->title == "پیشنهادهای روزانه")--}}
                                             <div class="intro-slide">
                                                 <figure class="slide-image">
                                                     <picture>
@@ -85,7 +84,6 @@
                                                     </a>
                                                 </div><!-- End .intro-content -->
                                             </div><!-- End .intro-slide -->
-{{--                                        @endif--}}
                                     @endforeach
                                 @else
                                     <div class="intro-slide">
@@ -161,6 +159,7 @@
                             @if($slider->getBy(1))
                                 @foreach($slider->getBy(1) as $slide)
 {{--                                    @if($slide->title != "پیشنهادهای روزانه")--}}
+                                    @if($loop->index < 3)
                                         <div class="banner mb-lg-1 mb-xl-2">
                                             <a href="#">
                                                 <img src="/{{$slide->image->url}}" alt="بنر">
@@ -175,7 +174,7 @@
                                                 <a href="{{$slide->url}}" class="banner-link">{{$slide->sub_title3}}<i class="icon-long-arrow-left"></i></a>
                                             </div><!-- End .banner-content -->
                                         </div><!-- End .banner -->
-{{--                                    @endif--}}
+                                    @endif
                                 @endforeach
                             @else
                                 <div class="banner mb-lg-1 mb-xl-2">

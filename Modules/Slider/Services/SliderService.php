@@ -84,6 +84,7 @@ class SliderService
             DB::beginTransaction();
             try {
                 $itemDeleted = $this->sliderRepository->delete($item);
+                $item->image()->delete();
                 DB::commit();
                 return $itemDeleted;
             } catch (\Exception $exception) {
