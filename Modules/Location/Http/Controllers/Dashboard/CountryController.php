@@ -65,7 +65,8 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        return view('location::dashboard.country.update');
+        $data = $this->service->find($id);
+        return view('location::dashboard.country.update',compact('data'));
     }
 
     /**

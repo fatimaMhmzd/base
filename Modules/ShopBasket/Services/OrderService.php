@@ -240,5 +240,9 @@ class OrderService
     {
         return $this->factorRepository->getByInput();
     }
+    public function myOrder(): \Illuminate\Support\Collection
+    {
+        return $this->factorRepository->all(array('user_id'=>Auth::id() , 'status' , 1));
+    }
 
 }

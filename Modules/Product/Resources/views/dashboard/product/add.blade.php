@@ -191,9 +191,12 @@
                                         <div class="col-md-6 col-12">
                                             <label style="margin-top: 20px">وضعیت</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control"
-                                                       placeholder="وضعیت " name="status">
+                                                <select class="form-control" id="basicSelect" name="status">
 
+                                                        <option value="0">موجود</option>
+                                                        <option value="1">ناموجود</option>
+
+                                                </select>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">

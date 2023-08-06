@@ -5,6 +5,8 @@ namespace Modules\Location\Http\Controllers\Dashboard;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Location\Http\Requests\province\ValidateProvinceRequest;
+use Modules\Location\Services\CountryService;
 use Modules\Location\Services\ProvinceService;
 
 class ProvinceController extends Controller
@@ -18,7 +20,7 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        return view('location::index');
+        return view('location::dashboard.province.list');
     }
 
     /**
@@ -27,7 +29,8 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        return view('location::create');
+        $country = resolve(CountryService::class)->all();
+        return view('location::dashboard.province.add' , compact('country'));
     }
 
     /**
@@ -35,11 +38,12 @@ class ProvinceController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ValidateProvinceRequest $request)
     {
         try {
             $result = $this->service->store($request);
-            return back()->with('success', true)->with('message',$result);
+            $message = trans("custom.defaults.store_success");
+            return back()->with('success', true)->with('message',$message);
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
@@ -63,7 +67,9 @@ class ProvinceController extends Controller
      */
     public function edit($id)
     {
-        return view('location::edit');
+        $country = resolve(CountryService::class)->all();
+        $data = $this->service->find($id);
+        return view('location::dashboard.province.update' ,compact('country','data'));
     }
 
     /**
@@ -72,9 +78,18 @@ class ProvinceController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(ValidateProvinceRequest $request, $id)
     {
-        //
+        try {
+            $this->service->update($request, $id);
+            $message = trans("custom.defaults.update_success");
+            return back()->with('success', true)->with('message', $message);
+
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+
+        }
     }
 
     /**
@@ -84,7 +99,21 @@ class ProvinceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->service->delete($id);
+            /* $message = "انجام شد";*/
+            $message = trans("custom.defaults.delete_success");
+            return back()->with('success', true)->with('message', $message);
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+        }
+    }
+
+    public function ajax()
+    {
+        $data = $this->service->ajax();
+        return $data;
     }
     public function getProvince($countryId)
     {

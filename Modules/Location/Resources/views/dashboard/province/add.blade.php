@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">افزودن اندازه جدید</h4>
+                        <h4 class="card-title">افزودن استان جدید</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -29,40 +29,38 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form" method="post" action="{{route('dashboard_size_store')}}"
+                            <form class="form" method="post" action="{{route('dashboard_location_province_store')}}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
-
+                                        <div class="col-md-6 col-12">
+                                            <label style="margin-top: 20px">انتخاب کشور</label>
+                                            <fieldset class="form-group">
+                                                <select class="form-control" id="basicSelect" name="country_id"
+                                                        id="group">
+                                                    @foreach($country as $item)
+                                                        <option value="{{$item->id}}">{{$item->fa_name}}({{$item->en_name}})</option>
+                                                    @endforeach
+                                                </select>
+                                            </fieldset>
+                                        </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label  style="margin-top: 20px">عنوان</label>
+                                                <label  style="margin-top: 20px">عنوان فارسی</label>
                                                 <fieldset class="form-group">
-                                                <input type="text"  class="form-control" placeholder="عنوان" name="title">
+                                                    <input type="text"  class="form-control" placeholder="نام فارسی کشور" name="fa_name">
                                                 </fieldset>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label  style="margin-top: 20px"> زیر عنوان</label>
+                                                <label  style="margin-top: 20px">عنوان انگلیسی</label>
                                                 <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title">
+                                                    <input type="text" id="last-name-column" class="form-control" placeholder="نام انگلیسی کشور در صورت دلخواه" name="en_name">
                                                 </fieldset>
                                             </div>
                                         </div>
-
-
-                                        <div class="col-md-12 col-12">
-                                            <div class="form-group">
-                                                <label for="companyinput8">توضیحات </label>
-                                                <textarea id="companyinput8" rows="5" class="form-control"
-                                                          name="description"
-                                                          placeholder="توضیحات "></textarea>
-                                            </div>
-                                        </div>
-
-
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary mr-1 mb-1">ارسال</button>
                                             <button type="reset" class="btn btn-outline-warning mr-1 mb-1">تنظیم مجدد</button>

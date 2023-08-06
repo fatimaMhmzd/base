@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('title')->nullable()->comment('عنوان');
             $table->text('content')->comment('متن');
-            $table->boolean('display')->nullable()->comment('');
-            $table->boolean('pin')->nullable();
-            $table->tinyInteger('status')->nullable();
+            $table->boolean('display')->default(0)->nullable()->comment('');
+            $table->boolean('pin')->default(0)->nullable();
+            $table->tinyInteger('status')->default(0)->nullable();
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Page\Services\PageService;
 use Modules\Product\Services\ProductGroupService;
 use Modules\Product\Services\ProductService;
+use Modules\ShopBasket\Entities\Factor;
 
 class PageController extends Controller
 {

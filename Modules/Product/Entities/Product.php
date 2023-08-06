@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use JetBrains\PhpStorm\ArrayShape;
 use Modules\Color\Entities\Color;
 use Modules\Comment\Entities\Comment;
 use Modules\Polymorphism\Entities\Images;
@@ -22,6 +23,8 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes,Sluggable;
 
+    const status_available = 0;
+    const status_unavailable = 1;
     public function sluggable(): array
     {
         return [
@@ -33,7 +36,7 @@ class Product extends Model
 
     protected $table = "products";
 
-    protected $appends = ['banner','is_wish'];
+    protected $appends = ['banner','is_wish','product_status'];
 
 
     protected $fillable = [
@@ -151,6 +154,45 @@ class Product extends Model
             }
         }
         return false;
+    }
+    public static function getStatus(): array
+    {
+        return [
+            self::status_available,
+            self::status_unavailable,
+        ];
+    }
+
+    #[ArrayShape([self::status_available => "string", self::status_unavailable => "string"])]
+    public static function getStatusPersian(): array
+    {
+        return [
+            self::status_available => 'موجود',
+            self::status_unavailable => 'ناموجود',
+        ];
+    }
+
+    public static function getStatusTitle($status = null): array|bool|int|string|null
+    {
+        $statuses = self::getStatusPersian();
+        if (!is_null($status)) {
+            if (is_string_persian($status)) {
+                return array_search($status, $statuses) ?? null;
+            }
+            if (is_int($status) && in_array($status, array_keys($statuses))) {
+                return $statuses[$status] ?? null;
+            }
+            return null;
+        }
+        return $statuses;
+    }
+    public function getProductStatusAttribute()
+    {
+
+        $status= Product::query()->find($this->id)->status;
+
+
+        return $this->getStatusTitle($status);
     }
 
 }

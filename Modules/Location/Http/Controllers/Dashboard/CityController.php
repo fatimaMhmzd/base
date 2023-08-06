@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Location\Http\Requests\city\ValidateCityRequest;
 use Modules\Location\Services\CityService;
+use Modules\Location\Services\CountryService;
 
 class CityController extends Controller
 {
@@ -19,7 +20,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        return view('location::index');
+        return view('location::dashboard.city.list');
     }
 
     /**
@@ -28,7 +29,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('location::create');
+        $country = resolve(CountryService::class)->all();
+        return view('location::dashboard.city.add' , compact('country'));
     }
 
     /**
@@ -40,7 +42,8 @@ class CityController extends Controller
     {
         try {
             $result = $this->service->store($request);
-            return back()->with('success', true)->with('message',$result);
+            $message = trans("custom.defaults.store_success");
+            return back()->with('success', true)->with('message',$message);
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
             return back()->with('error', true)->with('message', $message);
@@ -64,7 +67,9 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        return view('location::edit');
+        $country = resolve(CountryService::class)->all();
+        $data = $this->service->find($id);
+        return view('location::dashboard.city.update' ,compact('country','data'));
     }
 
     /**

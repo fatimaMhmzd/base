@@ -64,7 +64,7 @@
                                     <!-- End .ratings-val -->
                                 </div><!-- End .ratings -->
                                 <a class="ratings-text" href="#product-review-link"
-                                   id="review-link">( {{$data->num_visit}} نظر
+                                   id="review-link">( {{count($data->comments)}} نظر
                                     )</a>
                             </div><!-- End .rating-container -->
 
@@ -169,11 +169,11 @@
                         <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab"
                            role="tab" aria-controls="product-info-tab" aria-selected="false">اطلاعات بیشتر</a>
                     </li>
-                    <li class="nav-item">
+<!--                    <li class="nav-item">
                         <a class="nav-link" id="product-shipping-link" data-toggle="tab"
                            href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab"
                            aria-selected="false">ارسال و بازگشت</a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" id="product-review-link" data-toggle="tab"
                            href="#product-review-tab" role="tab" aria-controls="product-review-tab"
@@ -185,33 +185,25 @@
                          aria-labelledby="product-desc-link">
                         <div class="product-desc-content">
                             <h3>اطلاعات محصول</h3>
-                            {!! $data->long_description !!}
+                            {!! $data->short_description !!}
                         </div><!-- End .product-desc-content -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-info-tab" role="tabpanel"
                          aria-labelledby="product-info-link">
                         <div class="product-desc-content">
                             <h3>اطلاعات</h3>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
-                                سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن
-                                ساختگی با تولید سادگی نامفهوملورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم
-                                ایپسوم متن ساختگی با تولید سادگی نامفهوم. </p>
-
+                            <p> {!! $data->short_description !!}</p>
                             <h3>اطلاعات بیشتر</h3>
+
                             <ul>
-                                <li>لورم ایپسوم متن ساختگی</li>
-                                <li>لورم ایپسوم متن ساختگی با تولید سادگی</li>
-                                <li>لورم ایپسوم</li>
-                                <li>لورم ایپسوم متن ساختگی</li>
-                                <li>لورم ایپسوم متن ساختگی با تولید سادگی</li>
-                                <li> ارتفاع: 31سانتی متر; عرض: 32سانتی متر; عمق: 12سانتی متر</li>
+                                {!! $data->long_description !!}
                             </ul>
 
                             <h3>سایز</h3>
                             <p>تک سایز</p>
                         </div><!-- End .product-desc-content -->
                     </div><!-- .End .tab-pane -->
-                    <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel"
+<!--                    <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel"
                          aria-labelledby="product-shipping-link">
                         <div class="product-desc-content">
                             <h3>ارسال و بازگشت</h3>
@@ -222,13 +214,15 @@
                                 سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن
                                 ساختگی با تولید سادگی نامفهوملورم ایپسوم متن ساختگی با تولید سادگی نامفهوم.
                             </p>
-                        </div><!-- End .product-desc-content -->
-                    </div><!-- .End .tab-pane -->
+                        </div>&lt;!&ndash; End .product-desc-content &ndash;&gt;
+                    </div>-->
+                    <!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-review-tab" role="tabpanel"
                          aria-labelledby="product-review-link">
                         <div class="reviews">
 
                             @foreach($data->comments as $command)
+                                @if($command->status == 2)
                                 <div class="review">
                                     <div class="row no-gutters">
                                         <div class="col-auto">
@@ -257,6 +251,7 @@
                                         </div><!-- End .col-auto -->
                                     </div><!-- End .row -->
                                 </div><!-- End .review -->
+                                @endif
                             @endforeach
                             <div class="reply">
                                 <div class="heading">

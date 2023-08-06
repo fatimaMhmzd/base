@@ -54,7 +54,7 @@ class Comment extends Model
         'updated_at' => 'timestamp',
     ];
     protected $with = ["user"];
-
+    protected $appends = ['status_comment_title' , 'status_comment'];
     public function commentable(): MorphTo
     {
         return $this->morphTo();
@@ -84,7 +84,7 @@ class Comment extends Model
         ];
     }
 
-    public static function getStatusCommentTitle($status = null): array|bool|int|string|null
+    public static function getStatusCommentTitleAttribute($status = null): array|bool|int|string|null
     {
         $statuses = self::getStatusCommentPersian();
         if (!is_null($status)) {
@@ -99,4 +99,12 @@ class Comment extends Model
         return $statuses;
     }
 
+    public function getStatusCommentAttribute()
+    {
+
+        $status= Comment::query()->find($this->id)->status;
+
+
+        return $this->getStatusCommentTitleAttribute($status);
+    }
 }

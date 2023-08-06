@@ -39,7 +39,16 @@ class ProvinceService
 
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('country', function ($row) {
+                $country = '';
+                $countryItem = resolve(CountryService::class)->find($row->country_id);
+                if ($countryItem){
+                    $country = $countryItem->fa_name .'(' .   $countryItem->en_name . ')';
+                }
+
+                return $country;
+            })
+            ->rawColumns(['action','country'])
             ->make(true);
     }
 

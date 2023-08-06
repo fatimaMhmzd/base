@@ -11,7 +11,7 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header"><h4 class="card-title">لیست اندازه ها</h4></div>
+                    <div class="card-header"><h4 class="card-title">لیست شهرستان ها</h4></div>
                     <div class="card-content">
                         <div class="card-body">
 
@@ -29,9 +29,10 @@
                                 <thead>
                                 <tr>
                                     <th>ردیف</th>
-                                    <th>عنوان</th>
-                                    <th>زیرعنوان</th>
-                                    <th>توضیحات</th>
+                                    <th>کشور</th>
+                                    <th>استان</th>
+                                    <th>عنوان فارسی</th>
+                                    <th>عنوان انگلیسی</th>
                                     <th width="100px">عملیات</th>
                                 </tr>
                                 </thead>
@@ -67,12 +68,13 @@
                 "pageLength": 25,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('dashboard_size_ajax') }}",
+                ajax: "{{ route('dashboard_location_city_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'title', name: 'title'},
-                    {data: 'sub_title', name: 'sub_title'},
-                    {data: 'description', name: 'description'},
+                    {data: 'country', name: 'country'},
+                    {data: 'province', name: 'province'},
+                    {data: 'fa_name', name: 'fa_name'},
+                    {data: 'en_name', name: 'en_name'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });

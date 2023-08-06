@@ -13,6 +13,7 @@ use Modules\Product\Http\Repositories\SuggestRepository;
 use Modules\Product\Services\ProductService;
 use Modules\Product\Services\SuggestService;
 use Modules\Product\Services\WishListService;
+use Modules\ShopBasket\Services\OrderService;
 use Modules\Slider\Http\Repositories\SliderRepository;
 use Modules\SocialMedia\Services\SocialMediaService;
 use Yajra\DataTables\Facades\DataTables;
@@ -173,7 +174,8 @@ class PageService
     public function panel()
     {
         $myAddress = resolve(AddressService::class)->myAddress();
-        return (object)array("myAddress" => $myAddress);
+        $myOrder = resolve(OrderService::class)->myOrder();
+        return (object)array("myAddress" => $myAddress , "myOrder" =>$myOrder);
     }
 
 }

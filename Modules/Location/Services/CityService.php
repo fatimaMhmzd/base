@@ -39,7 +39,26 @@ class CityService
 
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('country', function ($row) {
+                $country = '';
+                $countryItem = resolve(CountryService::class)->find($row->country_id);
+                if ($countryItem){
+                    $country = $countryItem->fa_name .'(' .   $countryItem->en_name . ')';
+                }
+
+                return $country;
+            })
+            ->addColumn('province', function ($row) {
+
+                $province = '';
+                $provinceItem = resolve(ProvinceService::class)->find($row->province_id);
+                if ($provinceItem){
+                    $province = $provinceItem->fa_name .'(' .   $provinceItem->en_name . ')';
+                }
+
+                return $province;
+            })
+            ->rawColumns(['action','country','province'])
             ->make(true);
     }
 

@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Modules\Color\Services\ColorService;
+use Modules\Comment\Entities\Comment;
 use Modules\Polymorphism\Entities\Images;
+use Modules\Product\Entities\Product;
 use Modules\Product\Http\Repositories\SuggestProductRepository;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
 use Modules\Product\Services\ProductGroupService;
@@ -66,9 +68,10 @@ class ProductDashboardController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function showComments($id)
     {
-        return view('product::show');
+        $comments = $this->service->find($id)->comments;
+        return view('product::dashboard.product.comments' , compact('comments'));
     }
 
     /**
@@ -127,6 +130,21 @@ class ProductDashboardController extends Controller
     {
         $data = Images::where('id',$id)->delete();
         return back()->with('success', true)->with('message', 'اطلاعات با حذف شد');
+    }
+    public function deleteComments($id)
+    {
+        $data = Comment::where('id',$id)->delete();
+        return back();
+    }
+    public function statusComments($id,$status)
+    {
+        $data = Comment::query()->where('id',$id)->update(['status'=>$status]);
+        return back();
+    }
+    public function status($id,$status)
+    {
+        $data = Product::query()->where('id',$id)->update(['status'=>$status]);
+        return back();
     }
 
 }

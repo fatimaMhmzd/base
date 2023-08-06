@@ -200,9 +200,12 @@
                                         <div class="col-md-6 col-12">
                                             <label style="margin-top: 20px">وضعیت</label>
                                             <fieldset class="form-group">
-                                                <input type="text" id="last-name-column" class="form-control"
-                                                       placeholder="وضعیت " name="status" value="{{$data->data->status}}">
+                                                <select class="form-control" id="basicSelect" name="status">
 
+                                                    <option @if($data->data->status == 0) selected @endif  value="0">موجود</option>
+                                                    <option @if($data->data->status == 1) selected @endif  value="1">ناموجود</option>
+
+                                                </select>
                                             </fieldset>
                                         </div>
                                         <div class="col-md-6 col-12">

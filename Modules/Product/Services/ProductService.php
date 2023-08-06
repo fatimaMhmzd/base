@@ -59,14 +59,21 @@ class ProductService
 
                 return $btn;
             })
+            ->addColumn('comments', function ($row) {
+
+                $btn = '<a title="نظرات" href="' . route('dashboard_product_comments', $row->id) . '" class="round"><i class="fa fa-bar-chart info"></i></a>';
+
+                return $btn;
+            })
             ->addColumn('property', function ($row) {
 
-                $property = '<a href="' . route('dashboard_product_property_create', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+                $property = '<a href="' . route('dashboard_product_property_create', $row->id) . '" class="round" ><i class="fa fa-edit warning"></i></a>';
 
                 return $property;
             })
             ->addColumn('status', function ($row) {
-                return $row->status ? 'فعال' : 'غیرفعال';
+                return $row->product_status;
+
             })
             ->addColumn('image', function ($row) {
                 $img = '';
@@ -76,7 +83,7 @@ class ProductService
 
                 return $img;
             })
-            ->rawColumns(['action', 'image', 'property', 'status'])
+            ->rawColumns(['action', 'image', 'property', 'status' ,'comments'])
             ->make(true);
     }
 

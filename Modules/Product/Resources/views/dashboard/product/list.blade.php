@@ -40,6 +40,7 @@
                                     <th>مشخصات محصول</th>
                                     <th>عکس</th>
                                     <th width="100px">عملیات</th>
+                                    <th width="100px">مشاهده نظرات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -88,6 +89,7 @@
                     {data: 'property', name: 'property', orderable: false, searchable: false},
                     {data: 'image', name: 'image', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
+                    {data: 'comments', name: 'comments', orderable: false, searchable: false},
                 ]
             });
 
