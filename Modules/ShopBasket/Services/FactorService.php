@@ -31,14 +31,22 @@ class FactorService
         $data = $this->factorRepository->getByInput();
         return Datatables::of($data)
             ->addIndexColumn()
+            ->addColumn('user', function ($row) {
+                $user = $row->user->username;
+                return $user;
+            })
+            ->addColumn('mobile', function ($row) {
+                $mobile = $row->user->mobile;
+                return $mobile;
+            })
             ->addColumn('action', function ($row) {
 
-                $btn = '<a href="' . route('dashboard_shop_basket_payment_method_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
- <a href="' . route('dashboard_shop_basket_payment_method_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';
+                /*  $btn = '<a href="' . route('dashboard_shop_basket_payment_method_destroy', $row->id) . '" class="round"><i class="fa fa-trash danger"></i></a>
+   <a href="' . route('dashboard_shop_basket_payment_method_edit', $row->id) . '" class="round" ><i class="fa fa-edit success"></i></a>';*/
 
-                return $btn;
+                return "";
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['action','user','mobile'])
             ->make(true);
     }
 

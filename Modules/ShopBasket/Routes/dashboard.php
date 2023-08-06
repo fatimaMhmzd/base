@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\ShopBasket\Http\Controllers\Dashboard\FactorController;
 use Modules\ShopBasket\Http\Controllers\Dashboard\PaymentMethodController;
 use Modules\ShopBasket\Http\Controllers\Dashboard\SendingMethodController;
 
@@ -23,6 +24,13 @@ Route::group(['prefix' => 'shop_basket', 'as' => 'shop_basket_'], function (){
         Route::get('/edit/{id}', [PaymentMethodController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [PaymentMethodController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [PaymentMethodController::class, 'destroy'])->name('destroy');
+
+    });
+    Route::group(['prefix' => 'factor', 'as' => 'factor_'], function () {
+        Route::get('/', [FactorController::class, 'index'])->name('index');
+        Route::get('/ajax', [FactorController::class, 'ajax'])->name('ajax');
+        Route::get('/edit/{id}', [FactorController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [FactorController::class, 'update'])->name('update');
 
     });
 

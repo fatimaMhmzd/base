@@ -5,16 +5,20 @@ namespace Modules\ShopBasket\Http\Controllers\Dashboard;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\ShopBasket\Services\FactorService;
 
 class FactorController extends Controller
 {
+    public function __construct(public FactorService $service)
+    {
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('shopbasket::index');
+        return view('shopbasket::dashboard.factor.list');
     }
 
     /**
@@ -75,5 +79,10 @@ class FactorController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function ajax()
+    {
+        $data = $this->service->ajax();
+        return $data;
     }
 }

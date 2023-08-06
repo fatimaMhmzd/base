@@ -183,6 +183,32 @@
 
                 </ul>
             </li>
+            <li class=" navigation-header"><span>مدیریت سفارشات</span>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">سفارشات</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_shop_basket_factor_index') ? 'active' : '' }}"><a href="{{route('dashboard_shop_basket_factor_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">شیوه های ارسال</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_shop_basket_sending_method_index') ? 'active' : '' }}"><a href="{{route('dashboard_shop_basket_sending_method_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">شیوه های پرداخت</span></a>
+                <ul class="menu-content">
+                    <li class="{{ Request::routeIs('dashboard_shop_basket_payment_method_index') ? 'active' : '' }}"><a href="{{route('dashboard_shop_basket_payment_method_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
 
             <li class=" navigation-header"><span>مدیریت کاربران</span>
             </li>
