@@ -2,6 +2,7 @@
 
 namespace Modules\Blog\Entities;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,8 +14,15 @@ use Modules\Polymorphism\Entities\Images;
 
 class BlogGroup extends Model
 {
-    use HasFactory,SoftDeletes;
-
+    use HasFactory,SoftDeletes,Sluggable;
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
     protected $table = "blog_groups";
 
     protected $fillable = [

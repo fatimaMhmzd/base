@@ -53,7 +53,7 @@ class Blog extends Model
         "content" => "string"
     ];
     protected $with = ["image", "comments" , "user" ,"lables"];
-
+    protected $appends = ['date_shamsi'];
     public function image(): MorphOne
     {
         return $this->morphOne(Images::class, 'imageable');
@@ -79,5 +79,10 @@ class Blog extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    public function getDateShamsiAttribute()
+    {
+        $date= Blog::query()->find($this->id)->created_at;
 
+        return verta($date)->format('%B %d، %Y');
+    }
 }

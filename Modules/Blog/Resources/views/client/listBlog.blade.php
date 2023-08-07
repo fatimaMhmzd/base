@@ -21,10 +21,10 @@
         <div class="container">
             <nav class="blog-nav">
                 <ul class="menu-cat entry-filter justify-content-center">
-                    <li class="active"><a href="#" data-filter="*">همه اخبار<span>9</span></a></li>
+                    <li class="active"><a href="#" data-filter="*">همه اخبار</a></li>
                     @if(count($blogGroup) > 0)
                     @foreach($blogGroup as $group)
-                        <li><a href="#" data-filter=".{{$group->sub_title}}">{{$group->title}}<span>3</span></a></li>
+                        <li><a href="{{route('blog_list',$group->slug)}}" data-filter=".{{$group->sub_title}}">{{$group->title}}</a></li>
                     @endforeach
                     @else
                     <li><a href="#" data-filter=".lifestyle">سبک زندگی<span>3</span></a></li>
@@ -56,9 +56,9 @@
                                             نویسنده : <a href="#">{{$blog->user->full_name ?? "مدیر سایت"}}</a>
                                         </span>
                                                 <span class="meta-separator">|</span>
-                                                <a href="#">{{substr($blog->updated_at, 0, 9)}}</a>
+                                                <a href="#">{{$blog->date_shamsi}}</a>
                                                 <span class="meta-separator">|</span>
-                                                <a href="#">2 دیدگاه</a>
+                                                <a href="#">{{count($blog->comments)}} دیدگاه</a>
 {{--                                                {{count($blog->comments)}}--}}
                                             </div><!-- End .entry-meta -->
 
@@ -442,7 +442,7 @@
                 @endif
             </div><!-- End .entry-container -->
 
-            <nav aria-label="Page navigation">
+<!--            <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
                         <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1"
@@ -458,7 +458,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav>-->
         </div><!-- End .container -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->

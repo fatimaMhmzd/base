@@ -142,6 +142,19 @@ class BlogGroupService
         ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
     }
 
+    public function findBy($slug)
+    {
+        return $this->blogGroupRepository->findBy("slug",$slug);
+    }
+    public function search($search)
+    {
+
+        $query = $this->blogGroupRepository->createQuery();
+        if ($search) {
+            $query = $this->blogGroupRepository->byLike($query, 'title', $search);
+        }
 
 
+        return $query->get();
+    }
 }

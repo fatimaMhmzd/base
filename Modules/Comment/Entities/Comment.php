@@ -54,7 +54,7 @@ class Comment extends Model
         'updated_at' => 'timestamp',
     ];
     protected $with = ["user"];
-    protected $appends = ['status_comment_title' , 'status_comment'];
+    protected $appends = ['status_comment_title' , 'status_comment','date_shamsi'];
     public function commentable(): MorphTo
     {
         return $this->morphTo();
@@ -106,5 +106,12 @@ class Comment extends Model
 
 
         return $this->getStatusCommentTitleAttribute($status);
+    }
+
+    public function getDateShamsiAttribute()
+    {
+        $date= Comment::query()->find($this->id)->created_at;
+
+        return verta($date)->format('%B %d، %Y');
     }
 }

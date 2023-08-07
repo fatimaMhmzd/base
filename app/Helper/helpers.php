@@ -1,5 +1,6 @@
 <?php
 
+use Hekmatinasser\Verta\Facades\Verta;
 use Modules\Setting\Services\SettingService;
 
 if (!function_exists('generate_random_unique_code_user')) {

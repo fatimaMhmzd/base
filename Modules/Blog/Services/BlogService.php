@@ -166,7 +166,11 @@ class BlogService
 
     public function blogDetail($slug)
     {
-        return $this->blogRepository->findBy("slug", $slug);
+        $blog= $this->blogRepository->findBy("slug", $slug);
+        $group = resolve(BlogGroupService::class)->all();
+        $lable = resolve(LableService::class)->all();
+        return (object)array("blog" => $blog , "group" =>$group ,"lable" =>$lable);
     }
+
 
 }

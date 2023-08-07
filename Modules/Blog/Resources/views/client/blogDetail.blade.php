@@ -4,7 +4,7 @@
     <main class="main">
     <div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
         <div class="container">
-            <h1 class="page-title">{{$data->title}}<span>{{$data->sub_title}}</span></h1>
+            <h1 class="page-title">{{$data->blog->title}}<span>{{$data->blog->sub_title}}</span></h1>
         </div><!-- End .container -->
     </div><!-- End .page-header -->
     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
@@ -23,22 +23,22 @@
                 <div class="col-lg-9">
                     <article class="entry single-entry">
                         <figure class="entry-media">
-                            <img src="{{$data->image ? "/".$data->image->url : "/assets/images/blog/grid/3cols/post-1.jpg"}}" alt="{{$data->slug}}">
+                            <img src="{{$data->blog->image ? "/".$data->blog->image->url : "/assets/images/blog/grid/3cols/post-1.jpg"}}" alt="{{$data->blog->slug}}">
                         </figure><!-- End .entry-media -->
 
                         <div class="entry-body">
                             <div class="entry-meta">
                                         <span class="entry-author">
-                                            نویسنده : <a href="#">{{$data->user->full_name}}</a>
+                                            نویسنده : <a href="#">{{$data->blog->user->full_name  ?? "مدیر سایت" }}</a>
                                         </span>
                                 <span class="meta-separator">|</span>
-                                <a href="#">{{substr($data->created_at, 0, 9)}}</a>
+                                <a href="#">{{$data->blog->date_shamsi}}</a>
                                 <span class="meta-separator">|</span>
 {{--                                <a href="#">{{count($data->comment)}} دیدگاه</a>--}}
                             </div><!-- End .entry-meta -->
 
                             <h2 class="entry-title">
-                                {{$data->description}}
+                                {{$data->blog->description}}
                             </h2><!-- End .entry-title -->
 
 <!--                            <div class="entry-cats">
@@ -48,14 +48,14 @@
                             <!-- End .entry-cats -->
 
                             <div class="entry-content editor-content">
-                              @ {!! $data->content !!}
+                              @ {!! $data->blog->content !!}
                             </div><!-- End .entry-content -->
 
                             <div class="entry-footer row no-gutters flex-column flex-md-row">
                                 <div class="col-md">
                                     <div class="entry-tags">
                                         <span>برچسب : </span>
-                                        @foreach($data->lables as $label)
+                                        @foreach($data->blog->lables as $label)
                                         <a href="#">{{$label->title}}</a>
                                         @endforeach
                                     </div><!-- End .entry-tags -->
@@ -239,10 +239,10 @@
                     </div>--><!-- End .related-posts -->
 
                     <div class="comments">
-                        <h3 class="title">{{count($data->comments)}} دیدگاه</h3><!-- End .title -->
+                        <h3 class="title">{{count($data->blog->comments)}} دیدگاه</h3><!-- End .title -->
 
                         <ul>
-                            @foreach($data->comments as $comment)
+                            @foreach($data->blog->comments as $comment)
                             <li>
                                 <div class="comment">
                                     <figure class="comment-media">
@@ -255,7 +255,7 @@
 <!--                                        <a href="#" class="comment-reply">پاسخ</a>-->
                                         <div class="comment-user">
                                             <h4><a href="#">@if($comment->name) {{$comment->name}} @else کاربر عادی @endif</a></h4>
-                                            <span class="comment-date">{{substr($comment->created_at, 0, 9)}}</span>
+                                            <span class="comment-date">{{$comment->date_shamsi}}</span>
                                         </div> <!-- End .comment-user -->
 
                                         <div class="comment-content">
@@ -325,7 +325,7 @@
                         <form class="form" method="post" action="{{route('comment_store')}}"
                               enctype="multipart/form-data">
                             @csrf
-                            <input name="blogId" value="{{$data->id}}" hidden>
+                            <input name="blogId" value="{{$data->blog->id}}" hidden>
                             <label for="reply-message" class="sr-only">دیدگاه</label>
                             <textarea name="comment" id="reply-message" cols="30" rows="4"
                                       class="form-control" required placeholder="دیدگاه شما *"></textarea>
@@ -359,9 +359,9 @@
                         <div class="widget widget-search">
                             <h3 class="widget-title">جستجو</h3><!-- End .widget-title -->
 
-                            <form action="#">
+                            <form method="get" action="{{route('blog_list')}}">
                                 <label for="ws" class="sr-only">جستجوی اخبار</label>
-                                <input type="search" class="form-control" name="ws" id="ws"
+                                <input type="search" class="form-control" name="search" id="ws"
                                        placeholder="جستجوی خبر مورد نظر" required>
                                 <button type="submit" class="btn"><i class="icon-search"></i><span
                                         class="sr-only">جستجو</span></button>
@@ -372,11 +372,9 @@
                             <h3 class="widget-title">دسته بندی ها</h3><!-- End .widget-title -->
 
                             <ul>
-                                <li><a href="#">سبد زندگی<span>3</span></a></li>
-                                <li><a href="#">خرید<span>3</span></a></li>
-                                <li><a href="#">مد<span>1</span></a></li>
-                                <li><a href="#">سفر<span>3</span></a></li>
-                                <li><a href="#">سرگرمی<span>2</span></a></li>
+                                @foreach($data->group as $group)
+                                <li><a href="{{route('blog_list',$group->slug)}}">{{$group->title}}</a></li>
+                                @endforeach
                             </ul>
                         </div><!-- End .widget -->
 
