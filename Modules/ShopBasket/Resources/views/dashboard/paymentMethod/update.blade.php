@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">بروزرسانی اسلایدر </h4>
+                        <h4 class="card-title">ویرایش روش پرداخت</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -29,71 +29,32 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form" method="post" action="{{route('dashboard_slider_update' , $data->id)}}"
+                            <form class="form" method="post" action="{{route('dashboard_shop_basket_payment_method_update',$data->id)}}"
                                   enctype="multipart/form-data">
+                                @method('put')
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <label  style="margin-top: 20px">صفحه ی مربوطه</label>
-                                            <fieldset class="form-group">
-                                                <select class="form-control" id="basicSelect" name="page_id">
-                                                    @foreach($allPage as $item)
-                                                        <option @if($data->page_id == $item->id) selected @endif value="{{$item->id}}">{{$item->title}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </fieldset>
-                                        </div>
+
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label  style="margin-top: 20px">عنوان</label>
                                                 <fieldset class="form-group">
-                                                    <input type="text"  class="form-control" placeholder="عنوان" name="title" value="{{$data->title}}" >
+                                                    <input type="text"  class="form-control" placeholder="عنوان" name="title" value="{{$data->title}}">
                                                 </fieldset>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label  style="margin-top: 20px"> زیر عنوان</label>
-                                                <fieldset class="form-group">
-                                                    <input type="text" id="last-name-column" class="form-control" placeholder="زیر عنوان" name="sub_title" value="{{$data->sub_title}}">
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="companyinput1" style="margin-top: 20px">عکس اصلی</label>
-                                                <fieldset class="form-group">
-                                                    <input type="file" name="file" class="form-control-file"
-                                                           id="exampleInputFile"  value="{{$data->file}}">
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="companyinput1" style="margin-top: 20px">link</label>
-                                                <fieldset class="form-group">
-                                                    <input type="text" id="company-column" class="form-control" name="link" placeholder="link"  value="{{$data->link}}">
-                                                </fieldset>
-                                            </div>
-                                        </div>
+
+
                                         <div class="col-md-12 col-12">
                                             <div class="form-group">
                                                 <label for="companyinput8">توضیحات </label>
                                                 <textarea id="companyinput8" rows="5" class="form-control"
-                                                          name="description" value="{{$data->description}}"
-                                                          placeholder="توضیحات "></textarea>
+                                                          name="description"
+                                                          placeholder="توضیحات ">{{$data->description}}</textarea>
                                             </div>
                                         </div>
 
-
-                                        <!--                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                                                                    <div class="form-group">
-                                                                                        <label for="companyinput8">محتوا</label>
-                                                                                        <textarea id="companyinput8" rows="10" class="form-control"
-                                                                                                  name="content" placeholder="محتوا"></textarea>
-                                                                                    </div>
-                                                                                </div>-->
 
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary mr-1 mb-1">ارسال</button>

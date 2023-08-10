@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">افزودن واحد جدید</h4>
+                        <h4 class="card-title">افزودن روش ارسال</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -29,7 +29,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form" method="post" action="{{route('dashboard_unit_store')}}"
+                            <form class="form" method="post" action="{{route('dashboard_shop_basket_sending_method_store')}}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">
@@ -40,6 +40,14 @@
                                                 <label  style="margin-top: 20px">عنوان</label>
                                                 <fieldset class="form-group">
                                                 <input type="text"  class="form-control" placeholder="عنوان" name="title">
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label  style="margin-top: 20px">مبلغ</label>
+                                                <fieldset class="form-group">
+                                                <input type="number"  class="form-control" placeholder="مبلغ" name="price">
                                                 </fieldset>
                                             </div>
                                         </div>

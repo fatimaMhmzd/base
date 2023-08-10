@@ -11,7 +11,7 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header"><h4 class="card-title">لیست واحد ها</h4></div>
+                    <div class="card-header"><h4 class="card-title">لیست روش های ارسال</h4></div>
                     <div class="card-content">
                         <div class="card-body">
 
@@ -30,6 +30,7 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>عنوان</th>
+                                    <th>مبلغ</th>
                                     <th>توضیحات</th>
                                     <th width="100px">عملیات</th>
                                 </tr>
@@ -66,10 +67,11 @@
                 "pageLength": 25,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('dashboard_unit_ajax') }}",
+                ajax: "{{ route('dashboard_shop_basket_sending_method_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'title', name: 'title'},
+                    {data: 'price', name: 'price'},
                     {data: 'description', name: 'description'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]

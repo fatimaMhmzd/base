@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">افزودن واحد جدید</h4>
+                        <h4 class="card-title">افزودن روش پرداخت</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -29,7 +29,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form" method="post" action="{{route('dashboard_unit_store')}}"
+                            <form class="form" method="post" action="{{route('dashboard_shop_basket_payment_method_store')}}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-body">

@@ -22,7 +22,7 @@
                 <div class="container">
                     <div class="checkout-discount">
                         <form action="#">
-                            <input type="text" class="form-control"  id="checkout-discount-input">
+                            <input type="text" class="form-control" id="checkout-discount-input">
                             <label for="checkout-discount-input" class="text-truncate">کد تخفیف دارید؟ <span>برای
                                         وارد کردن کد تخفیف خود اینجا کلیک کنید</span></label>
                         </form>
@@ -47,12 +47,14 @@
 
                                 <div>
                                     <div style="direction: ltr" class="d-flex flex-row-reverse">
-                                        <input onclick="handleClick(this);" type="radio" id="html" name="addressType" value="pre">
+                                        <input onclick="handleClick(this);" type="radio" id="html" name="addressType"
+                                               value="pre">
                                         <label for="html">ادرس های قبلی</label>
                                     </div>
                                     <br>
                                     <div style="direction: ltr" class="d-flex flex-row-reverse">
-                                        <input onclick="handleClick(this);" checked type="radio" id="css" name="addressType" value="new">
+                                        <input onclick="handleClick(this);" checked type="radio" id="css"
+                                               name="addressType" value="new">
                                         <label for="css">ثبت آدرس جدید</label><br>
                                     </div>
                                 </div>
@@ -122,7 +124,7 @@
                                             <label>خیابان *</label>
                                             <input type="text" class="form-control" placeholder="نام خیابان و پلاک"
                                                    name="address"
-                                                   >
+                                            >
 
                                         </div><!-- End .col-sm-12 -->
 
@@ -131,12 +133,12 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label>کد پستی *</label>
-                                            <input type="text" class="form-control"  name="post_code">
+                                            <input type="text" class="form-control" name="post_code">
                                         </div><!-- End .col-sm-6 -->
 
                                         <div class="col-sm-6">
                                             <label>تلفن *</label>
-                                            <input type="tel" class="form-control"  name="tel">
+                                            <input type="tel" class="form-control" name="tel">
                                         </div><!-- End .col-sm-6 -->
                                     </div>
 
@@ -186,43 +188,42 @@
 
                                     <div class="accordion-summary" id="accordion-payment">
                                         <div class="card">
-                                            <div class="card-header" id="heading-1">
+<!--                                            <div class="card-header" id="heading-1">
                                                 <h2 class="card-title">
                                                     <a role="button" data-toggle="collapse" href="#collapse-1"
                                                        aria-expanded="true" aria-controls="collapse-1">
                                                         درگاه بانک ملت
                                                     </a>
                                                 </h2>
-                                            </div><!-- End .card-header -->
+                                            </div>&lt;!&ndash; End .card-header &ndash;&gt;
                                             <div id="collapse-1" class="collapse show" aria-labelledby="heading-1"
                                                  data-parent="#accordion-payment">
                                                 <div class="card-body">
                                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
                                                     ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
                                                     سادگی نامفهوم.
-                                                </div><!-- End .collapse -->
-                                            </div><!-- End .card -->
-
-                                            <div class="card">
-                                                <div class="card-header" id="heading-2">
-                                                    <h2 class="card-title">
-                                                        <a class="collapsed" role="button" data-toggle="collapse"
-                                                           href="#collapse-2" aria-expanded="false"
-                                                           aria-controls="collapse-2">
-                                                            درگاه شاپرک
-                                                        </a>
-                                                    </h2>
-                                                </div><!-- End .card-header -->
-                                                <div id="collapse-2" class="collapse" aria-labelledby="heading-2"
-                                                     data-parent="#accordion-payment">
-                                                    <div class="card-body">
-                                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن
-                                                        ساختگی با تولید سادگی نامفهوم.
-                                                    </div><!-- End .card-body -->
-                                                </div><!-- End .collapse -->
-                                            </div><!-- End .card -->
-
-                                            <div class="card">
+                                                </div>&lt;!&ndash; End .collapse &ndash;&gt;
+                                            </div>--><!-- End .card -->
+                                            @foreach($data->paymentMethod as $itemPay)
+                                                <div class="card">
+                                                    <div class="card-header" id="heading-2">
+                                                        <h2 class="card-title">
+                                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                                               href="#collapse-2" aria-expanded="false"
+                                                               aria-controls="collapse-2">
+                                                                {{$itemPay->title}}
+                                                            </a>
+                                                        </h2>
+                                                    </div><!-- End .card-header -->
+                                                    <div id="collapse-2" class="collapse" aria-labelledby="heading-2"
+                                                         data-parent="#accordion-payment">
+                                                        <div class="card-body">
+                                                            {{$itemPay->description}}
+                                                        </div><!-- End .card-body -->
+                                                    </div><!-- End .collapse -->
+                                                </div><!-- End .card -->
+                                            @endforeach
+                                       {{--     <div class="card">
                                                 <div class="card-header" id="heading-3">
                                                     <h2 class="card-title">
                                                         <a class="collapsed" role="button" data-toggle="collapse"
@@ -277,7 +278,8 @@
                                                         نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم.
                                                     </div><!-- End .card-body -->
                                                 </div><!-- End .collapse -->
-                                            </div><!-- End .card -->
+                                            </div>--}}
+
                                         </div><!-- End .accordion -->
 
                                         <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
@@ -356,10 +358,10 @@
         }
 
         function handleClick(myRadio) {
-            if(myRadio.value == "new"){
+            if (myRadio.value == "new") {
                 document.getElementById("newAddress").style.display = "block";
                 document.getElementById("addressSelect").style.display = "none";
-            }else if(myRadio.value == "pre"){
+            } else if (myRadio.value == "pre") {
                 document.getElementById("addressSelect").style.display = "block";
                 document.getElementById("newAddress").style.display = "none";
             }

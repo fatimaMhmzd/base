@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Modules\Address\Http\Requests\address\ValidateAddressRequest;
 use Modules\ShopBasket\Services\OrderService;
+use Modules\ShopBasket\Services\SendingMethodService;
 
 class ShopBasketController extends Controller
 {
@@ -58,7 +59,8 @@ class ShopBasketController extends Controller
     public function show()
     {
         $cart = $this->service->index()->first();
-        return view('shopbasket::client.cart', compact('cart'));
+        $sendingMethod = resolve(SendingMethodService::class)->all();
+        return view('shopbasket::client.cart', compact('cart','sendingMethod'));
     }
 
     /**

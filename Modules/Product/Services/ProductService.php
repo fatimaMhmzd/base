@@ -18,7 +18,9 @@ use Modules\Product\Http\Repositories\ProductRepository;
 use Modules\Product\Http\Repositories\SuggestProductRepository;
 use Modules\Product\Http\Requests\product\ValidateProductRequest;
 use Modules\Product\Http\Requests\productGroup\ValidateProductGroupRequest;
+use Modules\ShopBasket\Entities\PaymentMethod;
 use Modules\ShopBasket\Http\Repositories\FactorRepository;
+use Modules\ShopBasket\Services\PaymentMethodService;
 use Modules\Size\Services\SizeService;
 use Modules\Unit\Services\UnitService;
 use Yajra\DataTables\Facades\DataTables;
@@ -360,8 +362,9 @@ class ProductService
         $factor = $factorRepository->findWithInputs($inputs);
 
         $myAddress = resolve(AddressService::class)->myAddress();
+        $paymentMethod = resolve(PaymentMethodService::class)->all();
 
-        return (object)array("countries" => $countries, "factor" => $factor, "myAddress" => $myAddress);
+        return (object)array("countries" => $countries, "factor" => $factor, "myAddress" => $myAddress ,"paymentMethod" =>$paymentMethod);
     }
 
     public function productEditPage($id): object

@@ -77,35 +77,35 @@
                             </div><!-- End .entry-footer row no-gutters -->
                         </div><!-- End .entry-body -->
 
-                        <div class="entry-author-details">
+<!--                        <div class="entry-author-details">
                             <figure class="author-media">
                                 <a href="#">
                                     <img src="/assets/images/blog/single/author.jpg" alt="User name">
                                 </a>
-                            </figure><!-- End .author-media -->
+                            </figure>&lt;!&ndash; End .author-media &ndash;&gt;
 
                             <div class="author-body">
                                 <div class="author-header row no-gutters flex-column flex-md-row">
                                     <div class="col-12">
                                         <h4><a href="#">مدیر سایت</a></h4>
-                                    </div><!-- End .col -->
+                                    </div>&lt;!&ndash; End .col &ndash;&gt;
                                     <div class="col-auto mt-1 mt-md-0">
                                         <a href="#" class="author-link">مشاهده همه پست های این نویسنده <i
                                                 class="icon-long-arrow-left"></i></a>
-                                    </div><!-- End .col -->
-                                </div><!-- End .row -->
+                                    </div>&lt;!&ndash; End .col &ndash;&gt;
+                                </div>&lt;!&ndash; End .row &ndash;&gt;
 
                                 <div class="author-content">
                                     <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با
                                         تولید سادگی نامفهوملورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم
                                         ایپسوم متن ساختگی با تولید سادگی
                                     </p>
-                                </div><!-- End .author-content -->
-                            </div><!-- End .author-body -->
-                        </div><!-- End .entry-author-details-->
+                                </div>&lt;!&ndash; End .author-content &ndash;&gt;
+                            </div>&lt;!&ndash; End .author-body &ndash;&gt;
+                        </div>--><!-- End .entry-author-details-->
                     </article><!-- End .entry -->
 
-                    <nav class="pager-nav" aria-label="Page navigation">
+<!--                    <nav class="pager-nav" aria-label="Page navigation">
                         <a class="pager-link pager-link-prev" href="#" aria-label="Previous" tabindex="-1">
                             پست قبلی
                             <span class="pager-link-title">لورم ایپسوم متن ساختگی با تولید سادگی</span>
@@ -115,7 +115,7 @@
                             پست بعدی
                             <span class="pager-link-title">لورم ایپسوم متن ساختگی</span>
                         </a>
-                    </nav><!-- End .pager-nav -->
+                    </nav>--><!-- End .pager-nav -->
 
 <!--                    <div class="related-posts">
                         <h3 class="title">پست های مرتبط</h3>&lt;!&ndash; End .title &ndash;&gt;
@@ -373,13 +373,14 @@
 
                             <ul>
                                 @foreach($data->group as $group)
-                                <li><a href="{{route('blog_list',$group->slug)}}">{{$group->title}}</a></li>
+                                <li><a href="/blog/blog?slug={{$group->slug}}">{{$group->title}}</a></li>
                                 @endforeach
                             </ul>
                         </div><!-- End .widget -->
 
+<!--
                         <div class="widget">
-                            <h3 class="widget-title">محبوب ترین اخبار</h3><!-- End .widget-title -->
+                            <h3 class="widget-title">محبوب ترین اخبار</h3>&lt;!&ndash; End .widget-title &ndash;&gt;
 
                             <ul class="posts-list">
                                 <li>
@@ -430,43 +431,41 @@
                                         <h4><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a></h4>
                                     </div>
                                 </li>
-                            </ul><!-- End .posts-list -->
-                        </div><!-- End .widget -->
+                            </ul>&lt;!&ndash; End .posts-list &ndash;&gt;
+                        </div>&lt;!&ndash; End .widget &ndash;&gt;
 
                         <div class="widget widget-banner-sidebar">
                             <div class="banner-sidebar-title">قسمت تبلیغات 280 در 280</div>
-                            <!-- End .ad-title -->
+                            &lt;!&ndash; End .ad-title &ndash;&gt;
 
                             <div class="banner-sidebar banner-overlay">
                                 <a href="#">
                                     <img src="/assets/images/blog/sidebar/banner.jpg" alt="بنر">
                                 </a>
-                            </div><!-- End .banner-ad -->
-                        </div><!-- End .widget -->
+                            </div>&lt;!&ndash; End .banner-ad &ndash;&gt;
+                        </div>&lt;!&ndash; End .widget &ndash;&gt;
+-->
 
                         <div class="widget">
                             <h3 class="widget-title">برچسب ها</h3><!-- End .widget-title -->
 
                             <div class="tagcloud">
-                                <a href="#">مد</a>
-                                <a href="#">استایل</a>
-                                <a href="#">زنانه</a>
-                                <a href="#">عکس</a>
-                                <a href="#">سفر</a>
-                                <a href="#">خرید</a>
-                                <a href="#">سرگرمی</a>
+                                @foreach($data->lable as $item)
+                                <a href="#">{{$item->title}}</a>
+                                @endforeach
                             </div><!-- End .tagcloud -->
                         </div><!-- End .widget -->
 
-                        <div class="widget widget-text">
-                            <h3 class="widget-title">درباره بخش اخبار</h3><!-- End .widget-title -->
+<!--                        <div class="widget widget-text">
+                            <h3 class="widget-title">درباره بخش اخبار</h3>&lt;!&ndash; End .widget-title &ndash;&gt;
 
                             <div class="widget-text-content">
                                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم، لورم ایپسوم متن ساختگی با
                                     تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با لورم ایپسوم متن ساختگی با
                                     تولید سادگی نامفهوم</p>
-                            </div><!-- End .widget-text-content -->
-                        </div><!-- End .widget -->
+                            </div>&lt;!&ndash; End .widget-text-content &ndash;&gt;
+                        </div>-->
+                        <!-- End .widget -->
                     </div><!-- End .sidebar -->
                 </aside><!-- End .col-lg-3 -->
             </div><!-- End .row -->

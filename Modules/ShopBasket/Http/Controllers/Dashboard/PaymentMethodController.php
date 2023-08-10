@@ -66,7 +66,8 @@ class PaymentMethodController extends Controller
      */
     public function edit($id)
     {
-        return view('shopbasket::edit');
+        $data = $this->service->find($id);
+        return view('shopbasket::dashboard.paymentMethod.update',compact('data'));
     }
 
     /**

@@ -2,7 +2,9 @@
 
 namespace Modules\Blog\Services;
 
+use http\Env\Request;
 use Illuminate\Support\Facades\DB;
+use Modules\Blog\Entities\Blog;
 use Modules\Blog\Http\Repositories\BlogGroupRepository;
 use Modules\Blog\Http\Requests\group\ValidateBlogGroupRequest;
 use Modules\Polymorphism\Services\ImageService;
@@ -142,19 +144,30 @@ class BlogGroupService
         ImageService::saveImage(image: $file, model: $guild, is_cover: false, is_public: true, destinationPath: $destinationPath);
     }
 
-    public function findBy($slug)
-    {
-        return $this->blogGroupRepository->findBy("slug",$slug);
-    }
-    public function search($search)
+    public function listBlog($request)
     {
 
-        $query = $this->blogGroupRepository->createQuery();
-        if ($search) {
-            $query = $this->blogGroupRepository->byLike($query, 'title', $search);
+        if ($request->search){
+            $filter[] = (object)[
+                "col" => "title",
+                "value" => $request->search,
+                "like" => true,
+            ];
+            $blogGroups = $this->blogGroupRepository->getByInput($filter)->pluck('id');
+        }elseif ($request->slug){
+            $filter[] = (object)[
+                "col" => "slug",
+                "value" => $request->slug,
+                "like" => false,
+            ];
+            $blogGroups =$this->blogGroupRepository->getByInput($filter)->pluck('id');
+        }else{
+            $blogGroups =$this->blogGroupRepository->getByInput(relations: [])->pluck('id');
         }
+        $blogs = Blog::query()->whereIn('group_id',$blogGroups)->get();
+        $groups = $this->blogGroupRepository->getByInput(relations: []);
 
 
-        return $query->get();
+        return (object)array("blogs" => $blogs , "groups"=>$groups);
     }
 }

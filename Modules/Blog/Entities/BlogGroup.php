@@ -45,7 +45,7 @@ class BlogGroup extends Model
         "display_on_homepage" => "integer",
 
     ];
-    protected $with = ["image","blogs"];
+    protected $with = ["image"];
 
     public function image(): MorphOne
     {

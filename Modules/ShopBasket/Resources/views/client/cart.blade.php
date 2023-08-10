@@ -54,8 +54,11 @@
                                             <td class="price-col" id="pricee{{$item->id}}">{{$item->last_price}}</td>
                                             <td class="quantity-col">
                                                 <div class="cart-product-quantity">
-                                                    <input type="number" class="form-control" value="{{$item->count}}" min="1" max="100"
-                                                           step="1" data-decimals="0" onchange="pricePerQt({{$item->product->id}}, this.value, {{$item->id}})" required>
+                                                    <input type="number" class="form-control" value="{{$item->count}}"
+                                                           min="1" max="100"
+                                                           step="1" data-decimals="0"
+                                                           onchange="pricePerQt({{$item->product->id}}, this.value, {{$item->id}})"
+                                                           required>
                                                 </div><!-- End .cart-product-quantity -->
                                             </td>
                                             <td class="total-col" id="priceeT{{$item->id}}">{{$item->total_price}}</td>
@@ -66,9 +69,11 @@
                                         </tr>
                                     @endforeach
                                 @else
-                                    <tr><td>
+                                    <tr>
+                                        <td>
                                             <div><h5>سبد خرید شما خالی است</h5></div>
-                                        </td></tr>
+                                        </td>
+                                    </tr>
 
                                 @endif
                                 </tbody>
@@ -87,8 +92,8 @@
                                     </form>
                                 </div><!-- End .cart-discount -->
 
-<!--                                <a href="#" class="btn btn-outline-dark-2"><span>به روز رسانی سبد خرید</span><i
-                                        class="icon-refresh"></i></a>-->
+                                <!--                                <a href="#" class="btn btn-outline-dark-2"><span>به روز رسانی سبد خرید</span><i
+                                                                        class="icon-refresh"></i></a>-->
                             </div><!-- End .cart-bottom -->
                         </div><!-- End .col-lg-9 -->
                         <aside class="col-lg-3">
@@ -99,64 +104,45 @@
                                     <tbody>
                                     <tr class="summary-subtotal">
                                         <td>جمع کل سبد خرید :</td>
-                                        <td class="text-left" id="totalBasket">{{$cart->total_part_price ?? "0"}} تومان</td>
+                                        <td class="text-left" id="totalBasket">{{$cart->total_part_price ?? "0"}}تومان
+                                        </td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr class="summary-shipping">
                                         <td>شیوه ارسال :</td>
                                         <td>&nbsp;</td>
                                     </tr>
+                                    @foreach($sendingMethod as $item)
 
-                                    <tr class="summary-shipping-row">
-                                        <td>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="free-shipping" name="shipping"
-                                                       class="custom-control-input">
-                                                <label class="custom-control-label" for="free-shipping">ارسال
-                                                    رایگان</label>
-                                            </div><!-- End .custom-control -->
-                                        </td>
-                                        <td class="text-left">-</td>
-                                    </tr><!-- End .summary-shipping-row -->
+                                        <tr class="summary-shipping-row">
+                                            <td>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="standart-shipping" name="send_method"
+                                                           class="custom-control-input" value="{{$item->id}}">
+                                                    <label class="custom-control-label"
+                                                           for="standart-shipping">{{$item->title}}:</label>
+                                                </div><!-- End .custom-control -->
+                                            </td>
+                                            <td class="text-left">{{$item->price?? "0"}} تومان</td>
+                                        </tr><!-- End .summary-shipping-row -->
 
-                                    <tr class="summary-shipping-row">
-                                        <td>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="standart-shipping" name="shipping"
-                                                       class="custom-control-input">
-                                                <label class="custom-control-label" for="standart-shipping">پست
-                                                    سفارشی :</label>
-                                            </div><!-- End .custom-control -->
-                                        </td>
-                                        <td class="text-left">10,000 تومان</td>
-                                    </tr><!-- End .summary-shipping-row -->
-
-                                    <tr class="summary-shipping-row">
-                                        <td>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="express-shipping" name="shipping"
-                                                       class="custom-control-input">
-                                                <label class="custom-control-label" for="express-shipping">پست
-                                                    پیشتاز :</label>
-                                            </div><!-- End .custom-control -->
-                                        </td>
-                                        <td class="text-left">20,000 تومان</td>
-                                    </tr><!-- End .summary-shipping-row -->
-
-<!--                                    <tr class="summary-shipping-estimate">
+                                    @endforeach
+                                    <!--                                    <tr class="summary-shipping-estimate">
                                         <td>آدرس<br> <a href={{route('page_panelClient')}}>تغییر آدرس</a></td>
                                         <td>&nbsp;</td>
                                     </tr>--><!-- End .summary-shipping-estimate -->
 
                                     <tr class="summary-total">
                                         <td>مبلغ قابل پرداخت :</td>
-                                        <td class="text-left" id="totalPayable">{{$cart->total_amount ?? "0"}} تومان</td>
+                                        <td class="text-left" id="totalPayable">{{$cart->total_amount ?? "0"}}تومان
+                                        </td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
-
+                                @if($cart)
                                 <a href="{{route('shop_checkoutPageClient')}}"
                                    class="btn btn-outline-primary-2 btn-order btn-block">رفتن
                                     به صفحه پرداخت</a>
+                                @endif
                             </div><!-- End .summary -->
 
                             <a href="{{route('shop_storePageClient')}}"
@@ -176,13 +162,14 @@
             //alert(id + 'idme')
             console.log(val)
             var isAuth = {{\Illuminate\Support\Facades\Auth::check()}};
-            if(isAuth){
+            if (isAuth) {
                 $.ajax({
                     url: `/shop_basket/order/store?productId=${id}&count=${val}`,
                     type: "Get",
-                    success: function (res){ //alert('1')
-                        console.log('res');console.log(res);
-                        for(var i=0; i < res['part'].length ; i++) {
+                    success: function (res) { //alert('1')
+                        console.log('res');
+                        console.log(res);
+                        for (var i = 0; i < res['part'].length; i++) {
                             if (res['part'][i]['product_id'] == id) {
                                 //alert(res['part'][i]['product_id'] + 'idif')
                                 document.getElementById(`pricee${part}`).innerHTML = res['part'][i]['last_price'];

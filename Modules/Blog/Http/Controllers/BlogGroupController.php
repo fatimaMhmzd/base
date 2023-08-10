@@ -14,17 +14,11 @@ class BlogGroupController extends Controller
     public function __construct(public BlogGroupService $service)
     {
     }
-    public function list(Request $request ,$slug=null)
+
+    public function list(Request $request)
     {
-        if ($slug){
-            $blogGroup = $this->service->findBy($slug);
-        }elseif ($request->search){
-            $blogGroup = $this->service->search($request->search);
-        }
-        else{
-            $blogGroup = $this->service->all();
-        }
-        return view('blog::client.listBlog', compact('blogGroup'));
+        $data = $this->service->listBlog($request);
+        return view('blog::client.listBlog', compact('data'));
     }
 
 }

@@ -11,7 +11,7 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header"><h4 class="card-title">لیست واحد ها</h4></div>
+                    <div class="card-header"><h4 class="card-title">لیست روش های پرداخت</h4></div>
                     <div class="card-content">
                         <div class="card-body">
 
@@ -66,7 +66,7 @@
                 "pageLength": 25,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('dashboard_unit_ajax') }}",
+                ajax: "{{ route('dashboard_shop_basket_payment_method_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'title', name: 'title'},

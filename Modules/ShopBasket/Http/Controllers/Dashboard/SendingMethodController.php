@@ -66,7 +66,8 @@ class SendingMethodController extends Controller
      */
     public function edit($id)
     {
-        return view('shopbasket::edit');
+        $data = $this->service->find($id);
+        return view('shopbasket::dashboard.sendingMethod.update',compact('data'));
     }
 
     /**
