@@ -59,8 +59,8 @@
                             <!-- End .product-title -->
 
                             <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: {{$data->avg_rate}}%;"></div>
+                                <div ><!--class="ratings"-->
+                                    <div id="rateYo"> <!--class="ratings-val" style="width: {{$data->avg_rate}}%;"--></div>
                                     <!-- End .ratings-val -->
                                 </div><!-- End .ratings -->
                                 <a class="ratings-text" href="#product-review-link"
@@ -578,7 +578,6 @@
 @stop
 
 @section('script')
-
     <script src="/assets/js/jquery.elevateZoom.min.js"></script>
 
     <script>
@@ -586,6 +585,26 @@
             var number = document.getElementById('qty').value;
             addToBasket(id, number)
         }
+    </script>
+    <script>
+        $(function () {
+
+            $("#rateYo").rateYo({
+
+                onSet: function (rating, rateYoInstance) {
+
+                    alert("Rating is set to: " + rating);
+                }
+            });
+        });
+        // Getter
+        var onSet = $("#rateYo").rateYo("option", "onSet"); //returns the function
+
+        // Setter
+        $("#rateYo").rateYo("option", "onSet", function () {
+
+            console.log("This is a new function");
+        }); //returns a jQuery Element
     </script>
 
 @endsection

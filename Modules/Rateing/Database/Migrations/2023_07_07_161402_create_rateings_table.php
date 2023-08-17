@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rateings', function (Blueprint $table) {
+        Schema::create('rateings_polymorphism', function (Blueprint $table) {
             $table->id();
             $table->morphs('rateingable');
             $table->integer('user_id')->nullable();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rateings');
+        Schema::dropIfExists('rateings_polymorphism');
     }
 };

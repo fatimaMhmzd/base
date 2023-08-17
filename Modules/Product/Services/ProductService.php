@@ -10,6 +10,7 @@ use Modules\Color\Services\ColorService;
 use Modules\Location\Services\CountryService;
 use Modules\Polymorphism\Services\ImageService;
 use Modules\Polymorphism\Services\VideoService;
+use Modules\Product\Entities\Product;
 use Modules\Product\Entities\ProductGroup;
 use Modules\Product\Entities\SuggestProduct;
 use Modules\Product\Http\Repositories\PriceProductRepository;
@@ -80,12 +81,78 @@ class ProductService
             ->addColumn('image', function ($row) {
                 $img = '';
                 if (count($row->image) != 0) {
-                    $img = '<img src="/' . $row->banner . '" class="danger w-25"/>';
+                    $img = '<img src="/' . $row->banner . '" class="danger w-150"/>';
                 }
 
                 return $img;
             })
-            ->rawColumns(['action', 'image', 'property', 'status' ,'comments'])
+            ->addColumn('titles', function ($row) {
+                $titles = ' <div>'.$row->title .$row->sub_title .$row->brand.'</div>';
+                $titles = '<div class="d-flex flex-column">
+  <div class="p-2">'.$row->title .'</div>
+  <div class="p-2">'.$row->sub_title .'</div>
+  <div class="p-2">'.$row->brand .'</div>
+</div>';
+
+
+
+                return $titles;
+            })
+            ->addColumn('detail', function ($row) {
+                $status = '';
+                if ($row->status == 1){
+                    $status = 'checked';
+                }
+                $detail = ' <form class="form" method="get" action="' . route('dashboard_product_update_price') . '"
+                                  enctype="multipart/form-data">
+                                  <input name="id" value="' . $row->id . '" hidden>
+<div class="col-12">
+                                            <label style="margin-top: 10px">قیمت سازمانی</label>
+                                            <fieldset class="form-group">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="قیمت" name="price" value="' . $row->price . '">
+
+                                            </fieldset>
+                                        </div>
+                                         <div class="col-12">
+                                            <label style="margin-top: 10px">قیمت با تخفیف </label>
+                                            <fieldset class="form-group">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="قیمت با تخفیف " name="off_price"
+                                                       value="' . $row->off_price . '">
+
+                                            </fieldset>
+                                        </div>
+                                           <div class="col-12">
+                                            <label style="margin-top: 10px">موجودی </label>
+                                            <fieldset class="form-group">
+                                                <input type="number" id="last-name-column" class="form-control"
+                                                       placeholder="موجودی " name="available"
+                                                          value="' . $row->available . '">
+
+                                            </fieldset>
+                                        </div>
+                                         <div class="col-12">
+  <ul class="list-unstyled mb-0">
+              <li class="d-inline-block mr-2">
+                <fieldset>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="status" id="customCheck' . $row->id . '"  '.$status.' value="1">
+                    <label class="custom-control-label" for="customCheck' . $row->id . '">موجود</label>
+                  </div>
+                </fieldset>
+              </li>
+
+            </ul>
+            </div>
+                                         <div class="col-12">
+                                            <button type="submit" class="btn btn-primary mr-1 mb-1">ذخیره</button>
+                                        </div>
+                                        </form>
+                                        ';
+                return $detail;
+            })
+            ->rawColumns(['action', 'image', 'property', 'status' ,'comments','detail','titles'])
             ->make(true);
     }
 
@@ -203,6 +270,33 @@ class ProductService
                     }
                 }
 
+
+            } catch (\Exception $exception) {
+                DB::rollBack();
+
+                throw new \Exception(trans("custom.defaults.update_failed"));
+            }
+
+        } else {
+            throw new \Exception(trans("custom.defaults.not_found"));
+        }
+
+        return $totalUnitItemUpdated;
+    }
+    public function updatePrice($request)
+    {
+        $inputs =[];
+        $inputs ['price'] =  $request->price ;
+        $inputs ['off_price'] = $request->off_price ;
+        $inputs ['available'] =  $request->available ;
+        $inputs ['status'] =  $request->status ?? 0 ;
+
+        $totalUnitItem = $this->productRepository->find($request->id);
+        if ($totalUnitItem) {
+            DB::beginTransaction();
+            try {
+                $totalUnitItemUpdated = $this->productRepository->update($totalUnitItem, $inputs);
+                DB::commit();
 
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -350,7 +444,10 @@ class ProductService
 
     public function productDetail($slug)
     {
-        return $this->productRepository->findBy("slug", $slug);
+        $product = $this->productRepository->findBy("slug", $slug);
+        $inputs["num_visit"] = $product->num_visit + 1;
+        $totalUnitItemUpdated = $this->productRepository->update($product, $inputs);
+        return $product;
     }
 
     public function checkout()

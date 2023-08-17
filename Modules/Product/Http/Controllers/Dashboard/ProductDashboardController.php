@@ -102,6 +102,20 @@ class ProductDashboardController extends Controller
 
         }
     }
+    public function updatePrice(Request $request)
+    {
+
+        try {
+             $this->service->updatePrice($request);
+            $message = trans("custom.defaults.update_success");
+            return back()->with('success', true)->with('message', $message);
+
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+            return back()->with('error', true)->with('message', $message);
+
+        }
+    }
 
     /**
      * Remove the specified resource from storage.

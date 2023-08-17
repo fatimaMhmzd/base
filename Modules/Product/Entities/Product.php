@@ -16,6 +16,7 @@ use JetBrains\PhpStorm\ArrayShape;
 use Modules\Color\Entities\Color;
 use Modules\Comment\Entities\Comment;
 use Modules\Polymorphism\Entities\Images;
+use Modules\Rateing\Entities\Rateing;
 use Modules\Size\Entities\Size;
 use Modules\Unit\Entities\Unit;
 
@@ -102,6 +103,10 @@ class Product extends Model
     public function image(): MorphMany
     {
         return $this->morphMany(Images::class, 'imageable');
+    }
+    public function rate(): MorphMany
+    {
+        return $this->morphMany(Rateing::class, 'rateingable');
     }
 
     public function comments(): MorphMany
@@ -194,5 +199,6 @@ class Product extends Model
 
         return $this->getStatusTitle($status);
     }
+
 
 }

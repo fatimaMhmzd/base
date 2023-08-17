@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="/assets/css/skins/skin-demo-3.css">
     <link rel="stylesheet" href="/assets/css/demos/demo-3.css">
     <link rel="stylesheet" href="/sweetAlert/sweetalert2.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     @yield('style')
 
 </head>
@@ -1303,7 +1303,7 @@
 <script src="/assets/js/demos/demo-3.js"></script>
 
 <script src="/assets/js/jquery.elevateZoom.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
 
 <script>

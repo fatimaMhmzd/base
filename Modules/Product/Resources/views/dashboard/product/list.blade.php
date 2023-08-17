@@ -29,16 +29,10 @@
                                 <thead>
                                 <tr>
                                     <th>ردیف</th>
-                                    <th>عنوان</th>
-                                    <th>زیرعنوان</th>
-                                    <th>برند</th>
-                                    <th>قیمت</th>
-                                    <th>قیمت با تخفیف</th>
-                                    <th>موجودی</th>
-                                    <th>وزن</th>
-                                    <th>وضعیت</th>
-                                    <th>مشخصات محصول</th>
+                                    <th>عنوان/زیرعنوان/برند</th>
                                     <th>عکس</th>
+                                    <th>قیمت</th>
+                                    <th>مشخصات محصول</th>
                                     <th width="100px">عملیات</th>
                                     <th width="100px">مشاهده نظرات</th>
                                 </tr>
@@ -78,16 +72,10 @@
                 ajax: "{{ route('dashboard_product_ajax') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'title', name: 'title'},
-                    {data: 'sub_title', name: 'sub_title'},
-                    {data: 'brand', name: 'brand'},
-                    {data: 'price', name: 'price'},
-                    {data: 'off_price', name: 'off_price'},
-                    {data: 'available', name: 'available'},
-                    {data: 'weight', name: 'weight'},
-                    {data: 'status', name: 'status'},
-                    {data: 'property', name: 'property', orderable: false, searchable: false},
+                    {data: 'titles', name: 'titles'},
                     {data: 'image', name: 'image', orderable: false, searchable: false},
+                    {data: 'detail', name: 'detail', orderable: false, searchable: false},
+                    {data: 'property', name: 'property', orderable: false, searchable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                     {data: 'comments', name: 'comments', orderable: false, searchable: false},
                 ]

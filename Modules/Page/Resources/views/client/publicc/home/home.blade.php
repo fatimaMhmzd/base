@@ -768,7 +768,7 @@
                                             </div><!-- End .product-price -->
                                             <div class="ratings-container">
                                                 <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
+                                                    <div class="ratings-val" style="width: {{$off->avg_rate}}%;"></div>
                                                     <!-- End .ratings-val -->
                                                 </div><!-- End .ratings -->
                                                 <span class="ratings-text">( 5 بازدید )</span>
@@ -957,7 +957,7 @@
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
-                                                <div class="ratings-val" style="width: 100%;"></div>
+                                                <div class="ratings-val" style="width: {{$sps->avg_rate}}%;"></div>
                                                 <!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
                                             <span class="ratings-text">( 4 بازدید )</span>
@@ -2349,7 +2349,7 @@
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 100%;"></div>
+                                        <div class="ratings-val" style="width: {{$mostSell->avg_rate}}%;"></div>
                                         <!-- End .ratings-val -->
                                     </div><!-- End .ratings -->
                                     <span class="ratings-text">( 4 بازدید )</span>

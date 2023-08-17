@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
             $table->longText('content')->nullable();
+            $table->bigInteger('avg_rate')->default(0);
+            $table->bigInteger('num_visit')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

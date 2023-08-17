@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Comment\Entities\Comment;
 use Modules\Polymorphism\Entities\Images;
+use Modules\Rateing\Entities\Rateing;
 
 class Blog extends Model
 {
@@ -59,6 +60,10 @@ class Blog extends Model
         return $this->morphOne(Images::class, 'imageable');
     }
 
+    public function rate(): MorphMany
+    {
+        return $this->morphMany(Rateing::class, 'rateingable');
+    }
     public function group(): HasOne
     {
         return $this->hasOne(BlogGroup::class, "id", "group_id");

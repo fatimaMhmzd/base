@@ -11,6 +11,9 @@
 |
 */
 
-Route::prefix('rateing')->group(function() {
-    Route::get('/', 'RateingController@index');
+use Illuminate\Support\Facades\Route;
+use Modules\Rateing\Http\Controllers\RateingController;
+
+Route::group(['prefix' => 'rate', 'as' => 'rate_'], function () {
+    Route::get('/', [RateingController::class, 'store'])->name('store');
 });

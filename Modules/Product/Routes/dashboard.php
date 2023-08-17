@@ -13,6 +13,7 @@ Route::group(['prefix' => 'product', 'as' => 'product_'], function (){
     Route::post('/store', [ProductDashboardController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [ProductDashboardController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [ProductDashboardController::class, 'update'])->name('update');
+    Route::get('/update/price', [ProductDashboardController::class, 'updatePrice'])->name('update_price');
     Route::get('/destroy/{id}', [ProductDashboardController::class, 'destroy'])->name('destroy');
     Route::get('/deleteImage/{id}', [ProductDashboardController::class, 'deleteImage'])->name('deleteImage');
     Route::get('/comments/{id}', [ProductDashboardController::class, 'showComments'])->name('comments');
