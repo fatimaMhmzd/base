@@ -34,6 +34,7 @@ class ProductDashboardController extends Controller
         return view('product::dashboard.product.list');
     }
 
+
     /**
      * Show the form for creating a new resource.
      * @return Renderable
@@ -161,4 +162,10 @@ class ProductDashboardController extends Controller
         return back();
     }
 
+    public function report()
+    {
+        $data = $this->service->report();
+
+        return view('product::dashboard.product.report' , compact('data'));
+    }
 }

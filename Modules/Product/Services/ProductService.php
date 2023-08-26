@@ -2,6 +2,7 @@
 
 namespace Modules\Product\Services;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Modules\Address\Services\AddressService;
@@ -13,6 +14,7 @@ use Modules\Polymorphism\Services\VideoService;
 use Modules\Product\Entities\Product;
 use Modules\Product\Entities\ProductGroup;
 use Modules\Product\Entities\SuggestProduct;
+use Modules\Product\Entities\VisitProduct;
 use Modules\Product\Http\Repositories\PriceProductRepository;
 use Modules\Product\Http\Repositories\ProductGroupRepository;
 use Modules\Product\Http\Repositories\ProductRepository;
@@ -447,6 +449,7 @@ class ProductService
         $product = $this->productRepository->findBy("slug", $slug);
         $inputs["num_visit"] = $product->num_visit + 1;
         $totalUnitItemUpdated = $this->productRepository->update($product, $inputs);
+        VisitProduct::query()->create(['user_id' => Auth::id()??0 , 'product_id' => $product->id]);
         return $product;
     }
 
@@ -489,5 +492,15 @@ class ProductService
             array_push($suggestItem, $suggestpro);
         }
         return (object)array("data" => $data, "group" => $group, "unit" => $unit, "suggests" => $suggestItem);
+    }
+    public function report(): object
+    {
+       /* $data = $this->productRepository->find();*/
+        $lastMonth = VisitProduct::query()->whereYear('created_at', '=', Carbon::now()->year)
+        ->whereMonth('created_at', '=', Carbon::now()->month)->get();
+        $lastWeek = VisitProduct::query()->whereDate('created_at', '>', Carbon::now()->subDays(7))->get();
+        $yesterday = VisitProduct::query()->whereDate('created_at', '>', Carbon::now()->subDays(1))->get();
+
+        return (object)array("lastMonth" => $lastMonth,'lastWeek' =>$lastWeek , 'yesterday'=>$yesterday);
     }
 }

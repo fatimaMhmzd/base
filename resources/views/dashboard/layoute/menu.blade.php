@@ -214,13 +214,11 @@
                 </ul>
             </li>
 
-            <li class=" navigation-header"><span>مدیریت کاربران</span>
+            <li class=" navigation-header"><span>گزارش ها</span>
             </li>
-            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">کاربران</span></a>
+            <li class=" nav-item"><a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="User">گزارش ها</span></a>
                 <ul class="menu-content">
-                    <li class="{{ Request::routeIs('dashboard_user_index') ? 'active' : '' }}"><a href="{{route('dashboard_user_index')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">لیست</span></a>
-                    </li>
-                    <li class="{{ Request::routeIs('dashboard_user_create') ? 'active' : '' }}"><a href="{{route('dashboard_user_create')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">افزودن</span></a>
+                    <li class="{{ Request::routeIs('dashboard_product_report') ? 'active' : '' }}"><a href="{{route('dashboard_product_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">بازدید محصولات</span></a>
                     </li>
 
                 </ul>

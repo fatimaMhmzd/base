@@ -20,6 +20,7 @@ Route::group(['prefix' => 'product', 'as' => 'product_'], function (){
     Route::get('/deleteComments/{id}', [ProductDashboardController::class, 'deleteComments'])->name('deleteComments');
     Route::get('/statusComments/{id}/{status}', [ProductDashboardController::class, 'statusComments'])->name('statusComments');
     Route::get('/status/{id}/{status}', [ProductDashboardController::class, 'status'])->name('status');
+    Route::get('/report', [ProductDashboardController::class, 'report'])->name('report');
     Route::group(['prefix' => 'group', 'as' => 'group_'], function (){
         Route::get('/', [ProductGroupDashboardController::class, 'index'])->name('index');
         Route::get('/ajax', [ProductGroupDashboardController::class, 'ajax'])->name('ajax');
