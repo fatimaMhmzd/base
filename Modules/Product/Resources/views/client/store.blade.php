@@ -421,6 +421,60 @@
                                                         <!--                                                    <span class="item-count">3</span>-->
                                                     </div>
                                                 @endforeach
+
+
+                                                    <div class="widget">
+                                                        <h3 class="widget-title">قیمت</h3><!-- End .widget-title -->
+
+                                                        <div class="widget-body">
+                                                            <div class="filter-items">
+                                                                <div class="filter-item">
+                                                                    <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input" id="price-1"
+                                                                               name="price" value="1">
+                                                                        <label class="custom-control-label" for="price-1">زیر 25,000
+                                                                            تومان</label>
+                                                                    </div><!-- End .custom-checkbox -->
+                                                                </div><!-- End .filter-item -->
+
+                                                                <div class="filter-item">
+                                                                    <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input" id="price-2"
+                                                                               name="price" value="2">
+                                                                        <label class="custom-control-label" for="price-2">بین 25,000 تا
+                                                                            50,000 تومان</label>
+                                                                    </div><!-- End .custom-checkbox -->
+                                                                </div><!-- End .filter-item -->
+
+                                                                <div class="filter-item">
+                                                                    <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input" id="price-3"
+                                                                               name="price" value="3">
+                                                                        <label class="custom-control-label" for="price-3">بین 50,000 تا
+                                                                            100,000 تومان</label>
+                                                                    </div><!-- End .custom-checkbox -->
+                                                                </div><!-- End .filter-item -->
+
+                                                                <div class="filter-item">
+                                                                    <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input" id="price-4"
+                                                                               name="price" value="4">
+                                                                        <label class="custom-control-label" for="price-4">بین 100,000 تا
+                                                                            200,000 تومان</label>
+                                                                    </div><!-- End .custom-checkbox -->
+                                                                </div><!-- End .filter-item -->
+
+                                                                <div class="filter-item">
+                                                                    <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input" id="price-5"
+                                                                               name="price" value="5">
+                                                                        <label class="custom-control-label" for="price-5">بیش تر از
+                                                                            200,000</label>
+                                                                    </div><!-- End .custom-checkbox -->
+                                                                </div><!-- End .filter-item -->
+                                                            </div><!-- End .filter-items -->
+                                                        </div><!-- End .widget-body -->
+                                                    </div><!-- End .widget -->
                                                 <div class="mt-1 text-center">
                                                     <div class="custom-control custom-checkbox text-center">
                                                         <button class="btn btn-secondary">اعمال فیلتر</button>
@@ -428,12 +482,16 @@
                                                     <!--                                                    <span class="item-count">3</span>-->
                                                 </div>
 
+
                                                 <!-- End .filter-item -->
                                             </div><!-- End .filter-items -->
                                         </div><!-- End .widget-body -->
                                     </div><!-- End .collapse -->
+
                                 </form>
                             </div><!-- End .widget -->
+
+
 
                             <!--                            <div class="widget widget-collapsible">
                                                             <h3 class="widget-title">
