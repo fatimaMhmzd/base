@@ -437,21 +437,21 @@ class ProductService
         }
         if ($request->price) {
             if ($request->price == 1){
-                $query = Product::query()->where('price','<','25000');
+                $query = Product::query()->where('price','<',25000);
             }
             elseif ($request->price == 2){
-                $query = Product::query()->where('price','>','25000')->where('price','<','50000');
+                $query = Product::query()->where('price','>',25000)->where('price','<',50000);
 
             }
             elseif ($request->price == 3){
-                $query = Product::query()->where('price','>','50000')->where('price','<','100000');
+                $query = Product::query()->where('price','>',50000)->where('price','<',100000);
 
             }
             elseif ($request->price == 4){
-                $query = Product::query()->where('price','>','100000')->where('price','<','200000');
+                $query = Product::query()->where('price','>',100000)->where('price','<',200000);
             }
             else{
-                $query = Product::query()->where('price','>','200000');
+                $query = Product::query()->where('price','>',200000);
             }
 
         }
