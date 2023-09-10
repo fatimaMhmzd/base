@@ -16,15 +16,20 @@ class ProductController extends Controller
 
     public function index(Request $request ,$slug=null)
     {
+
         $data = $this->service->shopIndexPage($request,$slug);
         return view('product::client.store',compact('data'));
     }
 
     public function search(Request $request)
     {
-
         $data = $this->service->search($request);
         return view('product::client.store',compact('data'));
+    }
+    public function filter(Request $request)
+    {
+        $data = $this->service->search($request);
+        return $data;
     }
 
     public function productDetail($slug)

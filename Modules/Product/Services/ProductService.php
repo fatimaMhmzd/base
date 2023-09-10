@@ -435,24 +435,10 @@ class ProductService
         if ($request->groupIds) {
             $query = $this->productRepository->byArray($query, 'product_group_id', $request->groupIds);
         }
-        if ($request->price) {
-            if ($request->price == 1){
-                $query = Product::query()->where('price','<',25000);
-            }
-            elseif ($request->price == 2){
-                $query = Product::query()->where('price','>',25000)->where('price','<',50000);
+        if ($request->range) {
 
-            }
-            elseif ($request->price == 3){
-                $query = Product::query()->where('price','>',50000)->where('price','<',100000);
+                $query = Product::query()->where('price','<',$request->range);
 
-            }
-            elseif ($request->price == 4){
-                $query = Product::query()->where('price','>',100000)->where('price','<',200000);
-            }
-            else{
-                $query = Product::query()->where('price','>',200000);
-            }
 
         }
         $products = $query->get();
