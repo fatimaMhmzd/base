@@ -434,10 +434,10 @@ class ProductService
         }
         if ($request->groupIds) {
             $query = $this->productRepository->byArray($query, 'product_group_id', $request->groupIds);
+
         }
         if ($request->range) {
-
-                $query = Product::query()->where('price','<',$request->range);
+            $query = $this->productRepository->byOperator($query, 'price', $request->range,'<');
 
 
         }
