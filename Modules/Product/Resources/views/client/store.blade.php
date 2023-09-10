@@ -25,7 +25,7 @@
                         <div class="toolbox">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
-                                    نمایش <span id ="productLenght">{{count($data->product)}} </span> محصول
+                                    نمایش <span id="productLenght">{{count($data->product)}} </span> محصول
                                 </div><!-- End .toolbox-info -->
                             </div><!-- End .toolbox-left -->
 
@@ -171,17 +171,15 @@
                         </div><!-- End .products -->
 
 
-
-
                     </div><!-- End .col-lg-9 -->
                     <aside class="col-lg-3 order-lg-first">
                         <div class="widget widget-search">
                             <h3 class="widget-title">جستجو</h3><!-- End .widget-title -->
 
-                            <form method="get" >
+                            <form method="get">
                                 <label for="ws" class="sr-only">جستجوی </label>
                                 <input type="search" class="form-control" name="search" id="inputSearch"
-                                       placeholder="جستجوی محصول مورد نظر" required onchange="search()">
+                                       placeholder="جستجوی محصول مورد نظر" onkeyup="filterAll(this)">
                                 <button type="submit" class="btn"><i class="icon-search"></i><span
                                         class="sr-only">جستجو</span></button>
                             </form>
@@ -199,7 +197,7 @@
                                         دسته بندی
                                     </a>
                                 </h3><!-- End .widget-title -->
-                                <form method="get" action="{{route('shop_search')}}" enctype="multipart/form-data">
+                                <form method="get" enctype="multipart/form-data">
                                     <input name="search" @if(Request::get('search')) value="{{Request::get('search')}}"
                                            @endif hidden>
                                     <div class="collapse show" id="widget-1">
@@ -212,8 +210,11 @@
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" value="{{$groupData->id}}"
                                                                    name="groupIds[]"
+                                                                   onchange="filterAll(this)"
                                                                    class="custom-control-input"
-                                                                   id="cat{{$loop->index}}" @if(Request::get('groupIds') and in_array($groupData->id , Request::get('groupIds'))) checked @endif @if(isset($data->group) and $data->group->id == $groupData->id) checked @endif>
+                                                                   id="cat{{$loop->index}}"
+                                                                   @if(Request::get('groupIds') and in_array($groupData->id , Request::get('groupIds'))) checked
+                                                                   @endif @if(isset($data->group) and $data->group->id == $groupData->id) checked @endif>
                                                             <label class="custom-control-label"
                                                                    for="cat{{$loop->index}}">{{$groupData->title}}</label>
                                                         </div><!-- End .custom-checkbox -->
@@ -222,17 +223,26 @@
                                                 @endforeach
 
 
-                                                    <div class="widget">
-                                                        <h3 class="widget-title">قیمت</h3><!-- End .widget-title -->
+                                                <div class="widget">
+                                                    <h3 class="widget-title">قیمت</h3><!-- End .widget-title -->
 
-                                                        <div class="widget-body">
-                                                            <div class="filter-items">
-                                                                    <label for="vol">فیلتر قیمت از 0 تومان تا 1000000 تومان</label>
-                                                                    <div class="slider"><input name="range" type="range" min="100" max="100000" value="100" oninput="rangeValue.innerText = this.value"><p id="rangeValue">100</p></div>
+                                                    <div class="widget-body">
+                                                        <div class="filter-items">
+                                                            <!--                                                                    <label for="vol">فیلتر قیمت از 0 تومان تا 1000000 تومان</label>-->
+                                                            <!--                                                                    <div class="slider"><input name="range" type="range" min="100" max="100000" value="100" oninput="rangeValue.innerText = this.value"><p id="rangeValue">100</p></div>-->
+                                                            <p id="rangeValue">ازمبلغ</p>
+                                                            <div class="slider"><input id="fromRange" name="fromRange"
+                                                                                       type="number" value="0"
+                                                                                       oninput="filterAll(this)"></div>
+                                                            <p id="rangeValue">تا مبلغ</p>
+                                                            <div class="slider"><input id="toRange" name="toRange"
+                                                                                       type="number" value="1000000"
+                                                                                       oninput="filterAll(this)"></div>
 
-                                                            </div><!-- End .filter-items -->
-                                                        </div><!-- End .widget-body -->
-                                                    </div><!-- End .widget -->
+
+                                                        </div><!-- End .filter-items -->
+                                                    </div><!-- End .widget-body -->
+                                                </div><!-- End .widget -->
                                                 <div class="mt-1 text-center">
                                                     <div class="custom-control custom-checkbox text-center">
                                                         <button class="btn btn-secondary">اعمال فیلتر</button>
@@ -248,7 +258,6 @@
 
                                 </form>
                             </div><!-- End .widget -->
-
 
 
                             <!--                            <div class="widget widget-collapsible">
@@ -481,28 +490,53 @@
     </script>
     <script>
         document.getElementById('inputSearch').addEventListener("keyup", function (evt) {
+
             search(this.value);
         }, false);
-        function search(text) {
-            var url = '/shop/filter?search='+text;
 
+
+        function filterAll(e) {
+
+            var text = "";
+            if (e.name == "search" && e.value !== null) {
+
+                text = e.value;
+            }
+            var fromRange = 0
+            if (e.name == "fromRange" && e.value !== null) {
+
+                fromRange = e.value;
+            }
+            var toRange = 0
+            if (e.name == "toRange" && e.value !== null) {
+
+                toRange = e.value;
+            }
+            var url = '/shop/filter?search=' + text + '&fromRange=' + fromRange + '&toRange=' + toRange;
+
+            if (e.name == "groupIds[]") {
+                let opts = $(":checkbox:checked").map((i, el) => el.value).get();
+                url += '&groupIds=' + opts
+            }
+
+            console.log(url);
             $.ajax({
                 url: url,
                 type: 'GET',
                 success: function (res) {
-                    console.log(res.product.length)
-                    var card ="";
-                    var data =res.product;
-                    document.getElementById('productLenght').innerHTML= data.length
-                    for (var k=0;k< data.length;k++){
+
+                    var card = "";
+                    var data = res.product;
+                    document.getElementById('productLenght').innerHTML = data.length
+                    for (var k = 0; k < data.length; k++) {
 
                         var item = `
  <div class="product product-list">
                                     <div class="row">
                                         <div class="col-6 col-lg-3">
                                             <figure class="product-media">
-                                                <a href="/shop/productDetail/`+data[k]['slug']+`">
-                                                    <img src="/`+data[k]['banner']+`" alt="تصویر محصول"
+                                                <a href="/shop/productDetail/` + data[k]['slug'] + `">
+                                                    <img src="/` + data[k]['banner'] + `" alt="تصویر محصول"
                                                         class="product-image">
                                                 </a>
                                             </figure><!-- End .product-media -->
@@ -511,36 +545,35 @@
                                         <div class="col-6 col-lg-3 order-lg-last">
                                             <div class="product-list-action">
                                                 <div class="product-price">
-                                                    `+data[k]['price']+` تومان
+                                                    ` + data[k]['price'] + ` تومان
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
                                                         <div class="ratings-val" style="width: 20%;"></div>
                                                         <!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
-                                                    <span class="ratings-text">( `+data[k]['num_visit']+` بازدید )</span>
+                                                    <span class="ratings-text">( ` + data[k]['num_visit'] + ` بازدید )</span>
                                                 </div><!-- End .rating-container -->
 
 
-                                                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد
+                                                <a onclick="addToBasket(` + data[k]['id'] + `)" class="btn-product btn-cart"><span>افزودن به سبد
                                                         خرید</span></a>
                                             </div><!-- End .product-list-action -->
                                         </div><!-- End .col-sm-6 col-lg-3 -->
 
                                         <div class="col-lg-6">
                                             <div class="product-body product-action-inner">
-                                                <a href="#" class="btn-product btn-wishlist"
+                                                <a onclick="addToWishlist(this,` + data[k]['id'] + `)" class="btn-product btn-wishlist"
                                                     title="افزودن به لیست علاقه مندی"><span>افزودن به لیست علاقه
                                                         مندی</span></a>
                                                 <div class="product-cat">
-                                                    <a href="#">لی</a>
+                                                    <a href="#"> ` + data[k]['group']['title'] + `</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">`+data[k]['title']+`</a>
+                                                <h3 class="product-title"><a href="product.html">` + data[k]['title'] + `</a>
                                                 </h3><!-- End .product-title -->
 
                                                 <div class="product-content">
-                                                    <p> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                                        ساختگی با تولید سادگی نامفهوم </p>
+                                                    <p> ` + data[k]['short_description'] + ` </p>
                                                 </div><!-- End .product-content -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .col-lg-6 -->
@@ -548,10 +581,10 @@
                                 </div>
                             `;
                         card += item
-                        console.log('item');
+
                     }
-console.log(card);
-                    document.getElementById('showAllProduct').innerHTML= card
+
+                    document.getElementById('showAllProduct').innerHTML = card
 
                 }
             });

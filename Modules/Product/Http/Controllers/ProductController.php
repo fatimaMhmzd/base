@@ -28,6 +28,7 @@ class ProductController extends Controller
     }
     public function filter(Request $request)
     {
+
         $data = $this->service->search($request);
         return $data;
     }

@@ -433,11 +433,17 @@ class ProductService
             $query = $this->productRepository->byLike($query, 'title', $request->search);
         }
         if ($request->groupIds) {
-            $query = $this->productRepository->byArray($query, 'product_group_id', $request->groupIds);
+            $kinds = explode(",", $request->groupIds);
+            $query = $this->productRepository->byArray($query, 'product_group_id', $kinds);
 
         }
-        if ($request->range) {
-            $query = $this->productRepository->byOperator($query, 'price', $request->range,'<');
+        if ($request->fromRange) {
+            $query = $this->productRepository->byOperator($query, 'price', $request->fromRange,'<');
+
+
+        }
+        if ($request->toRange) {
+            $query = $this->productRepository->byOperator($query, 'price', $request->toRange,'>');
 
 
         }
