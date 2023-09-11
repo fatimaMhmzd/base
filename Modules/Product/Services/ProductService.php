@@ -440,10 +440,10 @@ class ProductService
 
         if ($request->fromRange or $request->fromRange == "0") {
             //$query = $this->productRepository->byOperator($query, 'price', $request->fromRange,'<');
-            $query = $this->productRepository->byOperator($query, 'price', $request->fromRange,'>');
+            $query = $this->productRepository->byOperator($query, 'price', (int)$request->fromRange,'>');
         }
         if ($request->toRange) {
-            $query = $this->productRepository->byOperator($query, 'price', $request->toRange,'<');
+            $query = $this->productRepository->byOperator($query, 'price', (int)$request->toRange,'<');
         }
         $products = $query->get();
 

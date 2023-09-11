@@ -236,7 +236,7 @@
                                                                                        oninput="filterAll(this)"></div>
                                                             <p id="rangeValue">تا مبلغ</p>
                                                             <div class="slider"><input id="toRange" name="toRange"
-                                                                                       type="number" value="1000000"
+                                                                                       type="number" value="1000000000"
                                                                                        oninput="filterAll(this)"></div>
 
 
@@ -502,15 +502,15 @@
 
                 text = e.value;
             }
-            var fromRange = 0
+
             if (e.name == "fromRange" && e.value !== null) {
 
                 fromRange = e.value;
             }
-            var toRange = 1000000
+
             if (e.name == "toRange" && e.value !== null) {
                 toRange = e.value;
-                alert(toRange)
+
             }
             var url = '/shop/filter?search=' + text + '&fromRange=' + fromRange + '&toRange=' + toRange;
 
