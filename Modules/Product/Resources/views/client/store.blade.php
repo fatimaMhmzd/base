@@ -507,10 +507,10 @@
 
                 fromRange = e.value;
             }
-            var toRange = 0
+            var toRange = 1000000
             if (e.name == "toRange" && e.value !== null) {
-
                 toRange = e.value;
+                alert(toRange)
             }
             var url = '/shop/filter?search=' + text + '&fromRange=' + fromRange + '&toRange=' + toRange;
 
