@@ -43,7 +43,7 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-left">
-                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : {{setting()->phone }}</a>
+                    <a href="tel_3A#"><i class="icon-phone"></i>تلفن تماس : {{setting()->phone ?? "" }}</a>
                 </div><!-- End .header-left -->
 
                 <div class="header-right">
@@ -97,7 +97,7 @@
                     </button>
 
                     <a href="/" class="logo">
-                        <img src="{{setting()->logo}}" alt="Molla Logo" width="105" height="25">
+                        <img src="{{setting()->logo ?? ""}}" alt="Molla Logo" width="105" height="25">
                     </a>
                 </div><!-- End .header-left -->
 
@@ -771,14 +771,14 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget widget-about">
-                            <img src="{{setting()->footerLogo}}" class="footer-logo"
+                            <img src="{{setting()->footerLogo ?? ""}}" class="footer-logo"
                                  alt="Footer Logo" width="105" height="25">
                             <p></p>
 
                             <div class="widget-call">
                                 <i class="icon-phone"></i>
                                 سوالی دارید؟<br/> 7روز هفته/24ساعته
-                                <a href="tel:#">{{setting()->phone}}</a>
+                                <a href="tel:#">{{setting()->phone ?? ""}}</a>
                             </div><!-- End .widget-call -->
                         </div><!-- End .widget about-widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
